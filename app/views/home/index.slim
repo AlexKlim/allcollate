@@ -15,12 +15,18 @@ header.masthead.text-white.text-center
           br
           | Save and have in one place!
       .col-md-10.col-lg-8.col-xl-7.mx-auto
-        form
-          .form-row
-            .col-12.col-md-8.mb-2.mb-md-0
-              input.form-control.form-control-lg placeholder=("Enter your email to notify you") type="email" /
-            .col-12.col-md-4
-              button.btn.btn-block.btn-lg.btn-primary type="submit" Get In Touch
+        - if flash[:notice].present?
+          .alert.alert-success= flash[:notice]
+        - else
+          = form_for Subscription.new, class: 'needs-validation' do |f|
+            .form-row
+              .col-12.col-md-8.mb-2.mb-md-0
+                = f.email_field :email, class: 'form-control form-control-lg', placeholder: 'Enter your email to notify you'
+                - if flash[:alert].present?
+                  .text-danger Please provide a valid email.
+              .col-12.col-md-4
+                button.btn.btn-block.btn-lg.btn-primary type="submit" Get In Touch
+
 
 / Icons Grid
 section.features-icons.bg-light.text-center
@@ -75,12 +81,17 @@ section.call-to-action.text-white.text-center
       .col-xl-9.mx-auto
         h2.mb-4 Ready to get started? Sign up now!
       .col-md-10.col-lg-8.col-xl-7.mx-auto
-        form
-          .form-row
-            .col-12.col-md-8.mb-2.mb-md-0
-              input.form-control.form-control-lg placeholder=("Enter your email to notify you") type="email" /
-            .col-12.col-md-4
-              button.btn.btn-block.btn-lg.btn-primary type="submit"  Coming soon!
+        - if flash[:notice].present?
+          .alert.alert-success= flash[:notice]
+        - else
+          = form_for Subscription.new, class: 'needs-validation' do |f|
+            .form-row
+              .col-12.col-md-8.mb-2.mb-md-0
+                = f.email_field :email, class: 'form-control form-control-lg', placeholder: 'Enter your email to notify you'
+                - if flash[:alert].present?
+                  .text-danger Please provide a valid email.
+              .col-12.col-md-4
+                button.btn.btn-block.btn-lg.btn-primary type="submit"  Coming soon!
 
 / Footer
 footer.footer.bg-light
