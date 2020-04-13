@@ -1,0 +1,31 @@
+[
+  {
+    "image": "${image}",
+    "name": "${name}",
+
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "${log_stream_prefix}"
+      }
+    },
+
+    "portMappings": [
+      {
+        "hostPort": 0,
+        "protocol": "tcp",
+        "containerPort": 3000
+      }
+    ],
+    "command": [],
+    "cpu": 0,
+    "mountPoints": [],
+    "memory": 500,
+    "memoryReservation": 500,
+    "volumesFrom": [],
+    "essential": true,
+    "links": []
+  }
+]

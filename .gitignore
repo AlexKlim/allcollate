@@ -67,3 +67,7 @@ yarn-debug.log*
 !/storage/.keep
 
 .DS_Store
+
+secret.tfvars
+
+.terraform
