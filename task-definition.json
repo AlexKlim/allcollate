@@ -28,7 +28,7 @@
     "requiresCompatibilities": [
       "EC2"
     ],
-    "networkMode": "awsvpc",
+    "networkMode": "bridge",
     "cpu": "0",
     "memory": "500"
   }
