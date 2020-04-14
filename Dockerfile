@@ -16,7 +16,7 @@ RUN mkdir /allcollate
 WORKDIR /allcollate
 
 ENV RAILS_ENV production
-
+ENV RAILS_MASTER_KEY 0a94c83c678fbc018b1a909a63f9c8ca
 ADD . /allcollate
 
 RUN yarn install

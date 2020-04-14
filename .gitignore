@@ -71,3 +71,4 @@ yarn-debug.log*
 secret.tfvars
 
 .terraform
+/config/credentials/production.key
