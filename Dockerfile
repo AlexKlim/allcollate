@@ -15,6 +15,8 @@ RUN apt-get install -y openssh-server yarn
 RUN mkdir /allcollate
 WORKDIR /allcollate
 
+ENV RAILS_ENV production
+
 ADD . /allcollate
 
 RUN yarn install
