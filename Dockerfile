@@ -21,6 +21,7 @@ ADD . /allcollate
 
 RUN yarn install
 RUN bundle install --without development test
+RUN rake assets:precompile
 RUN bin/webpack
 
 EXPOSE 3000

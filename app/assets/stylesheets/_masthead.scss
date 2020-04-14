@@ -1,7 +1,10 @@
+@import "variables.scss";
+@import "mixins.scss";
+
 header.masthead {
   position: relative;
   background-color: $gray-800;
-  background: url('bg-masthead.jpg') no-repeat center center;
+  background: url(asset_path('bg-masthead.jpg')) no-repeat center center;
   @include background-cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
