@@ -49,5 +49,5 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: allcollate
-        cluster: allcollate-cluster
+        cluster: allcollate_cluster
         wait-for-service-stability: true
