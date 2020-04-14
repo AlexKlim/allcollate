@@ -29,6 +29,6 @@
       "EC2"
     ],
     "networkMode": "bridge",
-    "cpu": 0,
-    "memory": 500
+    "cpu": "512",
+    "memory": "500"
   }
