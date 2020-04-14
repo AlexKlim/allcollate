@@ -59,6 +59,8 @@ resource "aws_lb_listener_rule" "default" {
 
 data "aws_iam_policy_document" "iam_policy_document_for_assume_role" {
   statement {
+    effect = "Allow"
+
     actions = [
       "sts:AssumeRole",
     ]
@@ -120,35 +122,6 @@ resource "aws_iam_role" "ecs_role" {
 resource "aws_cloudwatch_log_group" "log_group" {
   name              = "${var.log_group}"
   retention_in_days = 90
-}
-
-resource "aws_iam_role_policy_attachment" "ec2_service_role" {
-  role       = "${aws_iam_role.ecs_role.name}"
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
-}
-
-resource "aws_iam_instance_profile" "container_instance" {
-  name = "${aws_iam_role.ecs_role.name}"
-  role = "${aws_iam_role.ecs_role.name}"
-}
-
-resource "aws_iam_instance_profile" "ecs_instance_profile" {
-  name = "${var.container_name}_ecs_instance_profile"
-  path = "/"
-  role = "${aws_iam_role.ecs_role.name}"
-}
-
-resource "aws_appautoscaling_target" "scale_target" {
-  service_namespace  = "ecs"
-  resource_id        = "service/${aws_ecs_cluster.ecs_cluster.name}/${var.container_name}"
-  scalable_dimension = "ecs:service:DesiredCount"
-  role_arn           = "${aws_iam_role.ecs_role.arn}"
-  min_capacity       = "${var.min_capacity}"
-  max_capacity       = "${var.max_capacity}"
-
-  depends_on = [
-    "aws_ecs_service.service",
-  ]
 }
 
 output "aws_lb_target_group_lb_target_arn" {

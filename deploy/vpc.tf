@@ -12,10 +12,20 @@ module "vpc" {
   private_subnets = ["172.0.1.0/24", "172.0.2.0/24", "172.0.3.0/24"]
   public_subnets  = ["172.0.101.0/24", "172.0.102.0/24", "172.0.103.0/24"]
 
-  # enable_nat_gateway   = false
-  # enable_vpn_gateway   = false
-  # enable_dns_hostnames = false
-  # enable_dns_support   = false
+  enable_nat_gateway   = true
+}
+
+data "aws_vpc" "primary" {
+  id = "${module.vpc.vpc_id}"
+}
+
+data "aws_route_table" "primary" {
+  vpc_id = "${data.aws_vpc.primary.id}"
+
+  filter = {
+    name   = "association.main"
+    values = ["true"]
+  }
 }
 
 resource "aws_security_group" "allow_vpc" {
