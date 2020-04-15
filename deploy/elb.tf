@@ -47,32 +47,3 @@ resource "aws_lb_listener" "lb_listener" {
     type             = "forward"
   }
 }
-
-# resource "aws_lb_listener" "lb_listener_https" {
-#   load_balancer_arn = "${aws_lb.lb.arn}"
-#   port              = "443"
-#   protocol          = "HTTPS"
-#   ssl_policy        = "ELBSecurityPolicy-2015-05"
-#   certificate_arn   = "${data.aws_acm_certificate.domain_craftco_certificate.arn}"
-
-#   default_action {
-#     target_group_arn = "${aws_lb_target_group.lb_target.arn}"
-#     type             = "forward"
-#   }
-# }
-
-# resource "aws_route53_record" "lb_route53_record" {
-#   zone_id = "${aws_route53_zone.public_zone.zone_id}"
-#   name    = ""
-#   type    = "A"
-
-#   alias {
-#     name                   = "${aws_lb.lb.dns_name}"
-#     zone_id                = "${aws_lb.lb.zone_id}"
-#     evaluate_target_health = true
-#   }
-# }
-
-# data "aws_acm_certificate" "domain_craftco_certificate" {
-#   domain = "${terraform.workspace == "production" ? "" : format("%s.", terraform.workspace)}craft.co"
-# }

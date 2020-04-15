@@ -1,232 +1,34 @@
 {
-  "family": "allcollate",
-  "taskRoleArn": "",
-  "executionRoleArn": "",
-  "networkMode": "Bridge",
-  "containerDefinitions": [
-  {
-      "name": "allcollate",
-      "image": "",
-      "repositoryCredentials": {
-          "credentialsParameter": ""
-      },
-      "cpu": 0,
-      "memory": 500,
-      "memoryReservation": 500,
-      "links": [
-          ""
-      ],
-      "portMappings": [
-          {
-              "containerPort": 3000,
-              "hostPort": 0,
-              "protocol": "tcp"
-          }
-      ],
-      "essential": true,
-      "entryPoint": [
-          ""
-      ],
-      "command": [
-          ""
-      ],
-      "environment": [
-          {
-              "name": "",
-              "value": ""
-          }
-      ],
-      "mountPoints": [
-          {
-              "sourceVolume": "",
-              "containerPath": "",
-              "readOnly": true
-          }
-      ],
-      "volumesFrom": [
-          {
-              "sourceContainer": "",
-              "readOnly": true
-          }
-      ],
-      "linuxParameters": {
-          "capabilities": {
-              "add": [
-                  ""
-              ],
-              "drop": [
-                  ""
-              ]
-          },
-          "devices": [
+    "family": "allcollate",
+    "executionRoleArn": "",
+    "containerDefinitions": [
+        {
+            "name": "allcollate",
+            "image": "730466093989.dkr.ecr.us-east-1.amazonaws.com/allcollate:065dd961badd3e3b019425eaa733739ab66066d8",
+            "cpu": 0,
+            "portMappings": [
               {
-                  "hostPath": "",
-                  "containerPath": "",
-                  "permissions": [
-                      "write"
-                  ]
+                "hostPort": 0,
+                "protocol": "tcp",
+                "containerPort": 3000
               }
-          ],
-          "initProcessEnabled": true,
-          "sharedMemorySize": 0,
-          "tmpfs": [
-              {
-                  "containerPath": "",
-                  "size": 0,
-                  "mountOptions": [
-                      ""
-                  ]
+            ],
+            "memory": 500,
+            "essential": true,
+            "logConfiguration": {
+              "logDriver": "awslogs",
+              "options": {
+                "awslogs-group": "allcollate_log",
+                "awslogs-region": "us-east-1",
+                "awslogs-stream-prefix": "allcollate_log_stream_"
               }
-          ],
-          "maxSwap": 0,
-          "swappiness": 0
-      },
-      "secrets": [
-          {
-              "name": "",
-              "valueFrom": ""
-          }
-      ],
-      "dependsOn": [
-          {
-              "containerName": "",
-              "condition": "START"
-          }
-      ],
-      "startTimeout": 0,
-      "stopTimeout": 0,
-      "hostname": "",
-      "user": "",
-      "workingDirectory": "",
-      "disableNetworking": true,
-      "privileged": true,
-      "readonlyRootFilesystem": true,
-      "dnsServers": [
-          ""
-      ],
-      "dnsSearchDomains": [
-          ""
-      ],
-      "extraHosts": [
-          {
-              "hostname": "",
-              "ipAddress": ""
-          }
-      ],
-      "dockerSecurityOptions": [
-          ""
-      ],
-      "interactive": true,
-      "pseudoTerminal": true,
-      "dockerLabels": {
-          "KeyName": ""
-      },
-      "ulimits": [
-          {
-              "name": "core",
-              "softLimit": 0,
-              "hardLimit": 0
-          }
-      ],
-      "logConfiguration": {
-          "logDriver": "awslogs",
-          "options": {
-              "awslogs-group": "allcollate_log",
-              "awslogs-region": "us-east-1",
-              "awslogs-stream-prefix": "allcollate_log_stream_"
-          },
-          "secretOptions": [
-              {
-                  "name": "",
-                  "valueFrom": ""
-              }
-          ]
-      },
-      "healthCheck": {
-          "command": [
-              ""
-          ],
-          "interval": 300,
-          "timeout": 30,
-          "retries": 3,
-          "startPeriod": 3
-      },
-      "systemControls": [
-          {
-              "namespace": "",
-              "value": ""
-          }
-      ],
-      "resourceRequirements": [
-          {
-              "value": "",
-              "type": "GPU"
-          }
-      ],
-      "firelensConfiguration": {
-          "type": "fluentbit",
-          "options": {
-              "KeyName": ""
-          }
-      }
+            }
+        }
+    ],
+    "requiresCompatibilities": [
+      "EC2"
+    ],
+    "networkMode": "bridge",
+    "cpu": "512",
+    "memory": "500"
   }
-],
-"volumes": [
-  {
-      "name": "",
-      "host": {
-          "sourcePath": ""
-      },
-      "dockerVolumeConfiguration": {
-          "scope": "shared",
-          "autoprovision": true,
-          "driver": "",
-          "driverOpts": {
-              "KeyName": ""
-          },
-          "labels": {
-              "KeyName": ""
-          }
-      },
-      "efsVolumeConfiguration": {
-          "fileSystemId": "",
-          "rootDirectory": ""
-      }
-  }
-],
-"placementConstraints": [
-  {
-      "type": "memberOf",
-      "expression": ""
-  }
-],
-"requiresCompatibilities": [
-  "EC2"
-],
-"cpu": "",
-"memory": "",
-"tags": [
-  {
-      "key": "",
-      "value": ""
-  }
-],
-"pidMode": "task",
-"ipcMode": "none",
-"proxyConfiguration": {
-  "type": "APPMESH",
-  "containerName": "",
-  "properties": [
-      {
-          "name": "",
-          "value": ""
-      }
-  ]
-},
-"inferenceAccelerators": [
-  {
-      "deviceName": "",
-      "deviceType": ""
-  }
-]
-}
