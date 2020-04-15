@@ -47,3 +47,7 @@ resource "aws_security_group" "allow_vpc" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+output "vpc_id" {
+  value = "${module.vpc.vpc_id}"
+}

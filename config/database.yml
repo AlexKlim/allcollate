@@ -82,4 +82,5 @@ production:
   <<: *default
   database: allcollate_production
   username: allcollate
-  password: <%= ENV['ALLCOLLATE_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.credentials.databse[:password] %>
+  host: <%= Rails.application.credentials.databse[:host] %>

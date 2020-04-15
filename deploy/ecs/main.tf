@@ -29,7 +29,7 @@ locals {
 }
 
 data "template_file" "service_container_definitions" {
-  template = "${file("templates/service.json.tftemplate")}"
+  template = "${file("service.json.tftemplate")}"
 
   vars {
     image       = "${var.image}"
