@@ -13,12 +13,12 @@ header.masthead.text-white.text-center
         h1.mb-5
           | Find and compare hotels.
           br
-          | Save and have in one place!
+          | Save and have all in one place!
       .col-md-10.col-lg-8.col-xl-7.mx-auto
         - if flash[:notice].present?
           .alert.alert-success= flash[:notice]
         - else
-          / = form_for Subscription.new, class: 'needs-validation' do |f|
+          = form_for Subscription.new, class: 'needs-validation' do |f|
             .form-row
               .col-12.col-md-8.mb-2.mb-md-0
                 = f.email_field :email, class: 'form-control form-control-lg', placeholder: 'Enter your email to notify you'
@@ -84,7 +84,7 @@ section.call-to-action.text-white.text-center
         - if flash[:notice].present?
           .alert.alert-success= flash[:notice]
         - else
-          / = form_for Subscription.new, class: 'needs-validation' do |f|
+          = form_for Subscription.new, class: 'needs-validation' do |f|
             .form-row
               .col-12.col-md-8.mb-2.mb-md-0
                 = f.email_field :email, class: 'form-control form-control-lg', placeholder: 'Enter your email to notify you'

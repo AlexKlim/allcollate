@@ -47,3 +47,7 @@ resource "aws_lb_listener" "lb_listener" {
     type             = "forward"
   }
 }
+
+output "lb_listener_arn" {
+  value = "${aws_lb_listener.lb_listener.arn}"
+}

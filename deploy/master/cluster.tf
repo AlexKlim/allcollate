@@ -241,3 +241,7 @@ resource "aws_autoscaling_policy" "container_instance_scale_down" {
   cooldown               = "300"
   autoscaling_group_name = "${aws_autoscaling_group.container_instance.name}"
 }
+
+output "ecs_cluster_id" {
+  value = "${aws_ecs_cluster.ecs_cluster.id}"
+}

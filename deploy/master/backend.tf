@@ -8,7 +8,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket     = "allcollate-tfstate"
-    key        = "main.tfstate"
+    key        = "master.tfstate"
     region     = "us-east-1"
     access_key = "AKIA2UEZMBOS3JDYS4O5"
   }
