@@ -22,8 +22,8 @@
     "command": [],
     "cpu": 0,
     "mountPoints": [],
-    "memory": 500,
-    "memoryReservation": 500,
+    "memory": 450,
+    "memoryReservation": 450,
     "volumesFrom": [],
     "essential": true,
     "links": []
