@@ -19,6 +19,7 @@ RUN apk --no-cache add --update \
       postgresql-dev \
       libxml2-dev \
       tzdata \
+      bash \
       libxslt-dev && rm -rf /var/cache/apk/*
 
 RUN mkdir -p /allcollate
