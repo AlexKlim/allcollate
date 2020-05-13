@@ -12,7 +12,7 @@ module "vpc" {
   private_subnets = ["172.0.1.0/24", "172.0.2.0/24", "172.0.3.0/24"]
   public_subnets  = ["172.0.101.0/24", "172.0.102.0/24", "172.0.103.0/24"]
 
-  enable_nat_gateway   = true
+  enable_nat_gateway   = false
 }
 
 data "aws_vpc" "primary" {
