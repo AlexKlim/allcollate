@@ -1,0 +1,2 @@
+class AgodaCore < ApplicationRecord
+end
