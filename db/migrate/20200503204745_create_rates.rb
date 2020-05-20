@@ -6,7 +6,7 @@ class CreateRates < ActiveRecord::Migration[6.0]
       t.string :roomtype_name
 
       t.string :currency
-      t.float :dailyRate
+      t.float :daily_rate
       t.date :actual_on
       t.float :crossed_out_rate
       t.float :discount_percentage
