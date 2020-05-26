@@ -32,6 +32,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
 gem 'simple-line-icons-rails', '~> 0.1.6'
 
+gem 'httparty', '~> 0.18.0'
+gem 'sidekiq', '~> 6.0.7'
+
 group :development, :test do
   gem 'pry'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

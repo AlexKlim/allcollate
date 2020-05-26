@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_204914) do
     t.integer "partner_id"
     t.string "roomtype_name"
     t.string "currency"
-    t.float "dailyRate"
+    t.float "daily_rate"
     t.date "actual_on"
     t.float "crossed_out_rate"
     t.float "discount_percentage"
