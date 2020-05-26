@@ -2,6 +2,6 @@ class AgodaHotelStatsWorker
   include Sidekiq::Worker
 
   def perform
-    Services::AgodaImporter.new.import_hotel_stats!
+    Services::AgodaImporter.new.hotel_stats!
   end
 end
