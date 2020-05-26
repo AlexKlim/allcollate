@@ -36,10 +36,12 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    - name: Apply ECS Task
+    - name: Use terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 0.11.14
+
+    - name: Apply ECS Task
       run: |
         cd deploy/ecs
         terraform init -backend-config="access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -backend-config="secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
