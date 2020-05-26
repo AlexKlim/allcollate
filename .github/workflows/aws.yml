@@ -10,6 +10,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 0.11.14
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -36,30 +39,9 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    - name: Use terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 0.11.14
-
     - name: Apply ECS Task
       run: |
         cd deploy/ecs
         terraform init -backend-config="access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -backend-config="secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
         terraform workspace select production
         terraform apply -var "image=${{ steps.build-image.outputs.image }}" -var "secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" -var "access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -auto-approve -input=false
-
-    # - name: Fill in the new image ID in the Amazon ECS task definition
-    #   id: task-def
-    #   uses: aws-actions/amazon-ecs-render-task-definition@v1
-    #   with:
-    #     task-definition: task-definition.json
-    #     container-name: allcollate
-    #     image: ${{ steps.build-image.outputs.image }}
-
-    # - name: Deploy Amazon ECS task definition
-    #   uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-    #   with:
-    #     task-definition: ${{ steps.task-def.outputs.task-definition }}
-    #     service: allcollate
-    #     cluster: allcollate_cluster
-    #     wait-for-service-stability: true
