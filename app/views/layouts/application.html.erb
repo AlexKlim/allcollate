@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Allcollate</title>
+    <title>Allcollate - Compare hotels, price, rooms</title>
+    <meta content='Allcollate is an analytics platform providing comparing and analyzing for hotels. We collect and organize data from thousands of sources to provide up-to-date information, prices, rooms across the whole world.' name='description' />
+
+    <meta content='Allcollate - Compare hotels, price, rooms' property='og:title'>
+    <meta content='Allcollate is an analytics platform providing comparing and analyzing for hotels. We collect and organize data from thousands of sources to provide up-to-date information, prices, rooms across the whole world.' property='og:description'>
+
+    <link href='http://www.allcollate.com' rel='canonical'>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+
+    <%- if Rails.env.production? %>
+      <script async src='https://www.googletagmanager.com/gtag/js?id=UA-167845499-1' />
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-167845499-1');
+      </script>
+
+      <!-- Google Tag Manager -->
+      <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-T9G8H4C');
+      </script>
+      <!-- End Google Tag Manager -->
+
+      <script src="https://www.googleoptimize.com/optimize.js?id=OPT-KSNSK8X"></script>
+    <% end %>
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <meta name="agd-partner-manual-verification" />
   </head>
 
   <body>
+    <%- if Rails.env.production? %>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9G8H4C"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
