@@ -1,1 +1,12 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+User-agent: JamesBOT
+Disallow: /
+
+User-agent: VegeBot
+Disallow: /
+
+User-agent: coccoc
+Disallow: /
+
+User-agent: *
+
+Sitemap: http://www.allcollate.com/sitemap.xml

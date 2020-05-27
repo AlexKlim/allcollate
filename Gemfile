@@ -35,6 +35,8 @@ gem 'simple-line-icons-rails', '~> 0.1.6'
 gem 'httparty', '~> 0.18.0'
 gem 'sidekiq', '~> 6.0.7'
 
+gem 'sitemap_generator', '~> 6.1.1'
+
 group :development, :test do
   gem 'pry'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
