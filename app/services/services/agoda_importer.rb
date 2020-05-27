@@ -7,7 +7,7 @@ class Services::AgodaImporter
     request[:criteria][:checkInDate] = (Date.current + 1.day).to_s
     request[:criteria][:checkOutDate] = (Date.current + 2.day).to_s
 
-    Hotel.find_in_batches(batch_size: 100).each do |hotels|
+    Hotel.find_in_batches(batch_size: 200).each do |hotels|
       request[:criteria][:hotelId] = hotels.map(&:agoda_hotel_id)
 
       options = { body: request.to_json, verify: false, timeout: 180, headers: headers }
@@ -30,15 +30,17 @@ class Services::AgodaImporter
     response['results'].each do |hotel_result|
       hotel = Hotel.find_by(agoda_hotel_id: hotel_result['hotelId'])
 
-      hotel.rates.create(
-        partner_id: partner_id,
-        roomtype_name: hotel_result['roomtypeName'],
-        currency: hotel_result['currency'],
-        daily_rate: hotel_result['dailyRate'],
-        actual_on: actual_on,
-        crossed_out_rate: hotel_result['crossedOutRate'],
-        discount_percentage: hotel_result['discountPercentage']
-      )
+      ActiveRecord::Base.transaction do
+        hotel.rates.create(
+          partner_id: partner_id,
+          roomtype_name: hotel_result['roomtypeName'],
+          currency: hotel_result['currency'],
+          daily_rate: hotel_result['dailyRate'],
+          actual_on: actual_on,
+          crossed_out_rate: hotel_result['crossedOutRate'],
+          discount_percentage: hotel_result['discountPercentage']
+        )
+      end
     end
   end
 
