@@ -8,7 +8,7 @@ class Services::AgodaImporter
     request[:criteria][:checkOutDate] = (Date.current + 2.day).to_s
 
     Hotel.find_in_batches(batch_size: 100).each do |hotels|
-      request[:criteria][:hotelId] = hotels.map(&:id)
+      request[:criteria][:hotelId] = hotels.map(&:agoda_hotel_id)
 
       options = { body: request.to_json, verify: false, timeout: 180, headers: headers }
       response = HTTParty.post(URL, options)
