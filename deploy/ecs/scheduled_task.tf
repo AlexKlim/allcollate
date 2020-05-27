@@ -25,6 +25,6 @@ data "template_file" "service_scheduled_container_definitions" {
     log_stream_prefix  = "${local.log_stream_prefix}_scheduled"
     container_port     = "${var.container_port}"
     name               = "${var.container_name}"
-    command            = "rake agoda:hotels:update_rates"
+    command            = "RAILS_ENV=production rake agoda:hotels:update_rates"
   }
 }

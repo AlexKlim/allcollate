@@ -19,7 +19,7 @@
         "containerPort": 3000
       }
     ],
-    "command": ["${command}"],
+    "command": ["/bin/bash","-c", ${command}"],
     "cpu": 0,
     "mountPoints": [],
     "memory": 400,
