@@ -17,16 +17,17 @@ class Services::AgodaImporter
         response = HTTParty.post(URL, options)
       end
 
-      if response&.success?
+      if response&.success? && response['results']
         parse_time = Benchmark.realtime do
           parse_response(response, request[:criteria][:checkInDate])
         end
       else
-        Rails.logger.error('Agoda', {
+        Rails.logger.error('[Agoda][Error]', {
           status: response.code,
           message: "Error request body: #{response.body}"
         })
-        puts "[Agoda] status: #{response.code} - message: Error request body: #{response.body}"
+        hotel_ids = request[:criteria][:hotelId]
+        puts "[Agoda][Error] status: #{response.code} - message: #{response.body} - ids: #{hotel_ids}"
       end
 
       puts "Batch##{index} has been downloaded: response time (sec): #{response_time}, parse time (sec): #{parse_time}"
