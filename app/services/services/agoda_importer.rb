@@ -22,10 +22,6 @@ class Services::AgodaImporter
           parse_response(response, request[:criteria][:checkInDate])
         end
       else
-        Rails.logger.error('[Agoda][Error]', {
-          status: response.code,
-          message: "Error request body: #{response.body}"
-        })
         hotel_ids = request[:criteria][:hotelId]
         puts "[Agoda][Error] status: #{response.code} - message: #{response.body} - ids: #{hotel_ids}"
       end
