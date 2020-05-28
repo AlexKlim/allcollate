@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_204914) do
+ActiveRecord::Schema.define(version: 2020_05_28_081814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "agoda_core", id: false, force: :cascade do |t|
+  create_table "agoda_cores", id: false, force: :cascade do |t|
     t.integer "hotel_id"
     t.integer "chain_id"
     t.text "chain_name"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_204914) do
     t.string "agoda_url"
     t.datetime "created_at", precision: 6, default: -> { "now()" }, null: false
     t.datetime "updated_at", precision: 6, default: -> { "now()" }, null: false
+    t.index ["agoda_hotel_id"], name: "index_hotels_on_agoda_hotel_id"
     t.index ["brand_id"], name: "index_hotels_on_brand_id"
   end
 
@@ -107,8 +108,8 @@ ActiveRecord::Schema.define(version: 2020_05_03_204914) do
     t.integer "partner_id"
     t.string "url"
     t.integer "order"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, default: -> { "now()" }, null: false
+    t.datetime "updated_at", precision: 6, default: -> { "now()" }, null: false
     t.index ["hotel_id"], name: "index_photos_on_hotel_id"
   end
 
