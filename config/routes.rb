@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   end if Rails.env.production?
 
   mount Sidekiq::Web, at: "/sidekiq"
+
+  get '/hotel/:id' => 'frontend/hotels#show', as: :hotel
 end

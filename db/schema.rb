@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_204914) do
+ActiveRecord::Schema.define(version: 2020_06_03_201138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "agoda_core", id: false, force: :cascade do |t|
+  create_table "agoda_cores", id: false, force: :cascade do |t|
     t.integer "hotel_id"
     t.integer "chain_id"
     t.text "chain_name"
@@ -64,6 +64,17 @@ ActiveRecord::Schema.define(version: 2020_05_03_204914) do
     t.datetime "updated_at", precision: 6, default: -> { "now()" }, null: false
   end
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
   create_table "hotels", force: :cascade do |t|
     t.bigint "brand_id"
     t.string "name"
@@ -91,7 +102,10 @@ ActiveRecord::Schema.define(version: 2020_05_03_204914) do
     t.string "agoda_url"
     t.datetime "created_at", precision: 6, default: -> { "now()" }, null: false
     t.datetime "updated_at", precision: 6, default: -> { "now()" }, null: false
+    t.string "slug"
+    t.index ["agoda_hotel_id"], name: "index_hotels_on_agoda_hotel_id"
     t.index ["brand_id"], name: "index_hotels_on_brand_id"
+    t.index ["slug"], name: "index_hotels_on_slug", unique: true
   end
 
   create_table "partners", force: :cascade do |t|
@@ -107,8 +121,8 @@ ActiveRecord::Schema.define(version: 2020_05_03_204914) do
     t.integer "partner_id"
     t.string "url"
     t.integer "order"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, default: -> { "now()" }, null: false
+    t.datetime "updated_at", precision: 6, default: -> { "now()" }, null: false
     t.index ["hotel_id"], name: "index_photos_on_hotel_id"
   end
 
