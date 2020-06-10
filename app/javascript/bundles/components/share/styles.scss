@@ -43,3 +43,31 @@
 .allcollate-logo {
   margin-left: 1rem;
 }
+
+.hotel-name {
+  float: left;
+}
+
+.rating-wrapper {
+  display: initial;
+
+  .star-ratings {
+    top: -10px;
+    margin-left: 5px;
+  }
+}
+
+.allcollate-title {
+  color: white;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.allcollate-title-beta {
+  font-size: 12px;
+}
+
+.allcollate-title-link {
+  margin-right: 0rem !important;
+  margin-left: 2rem;
+}
