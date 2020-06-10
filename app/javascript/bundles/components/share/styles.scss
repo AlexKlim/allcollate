@@ -1,0 +1,73 @@
+.page-main {
+  .header {
+    padding-top: 0rem !important;
+  }
+}
+
+.header-brand-img {
+  height: 3rem !important;
+  border-radius: 10px;
+}
+
+.header-brand-title {
+  margin: auto 0;
+  font-size: 20px;
+  display: flex !important;
+}
+
+.header-container {
+  max-width: none !important;
+  display: block !important;
+  padding: 0px !important;
+
+  .d-flex {
+    display: block !important;
+  }
+}
+
+.header-subtitle {
+  display: flex;
+}
+
+.main-header {
+  margin-bottom: 1.5rem;
+  background-color: #a5a2a2;
+  padding: 15px;
+}
+
+.search-field-group {
+  width: 600px !important;
+  margin-left: 3rem;
+}
+
+.allcollate-logo {
+  margin-left: 1rem;
+}
+
+.hotel-name {
+  float: left;
+}
+
+.rating-wrapper {
+  display: initial;
+
+  .star-ratings {
+    top: -10px;
+    margin-left: 5px;
+  }
+}
+
+.allcollate-title {
+  color: white;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.allcollate-title-beta {
+  font-size: 12px;
+}
+
+.allcollate-title-link {
+  margin-right: 0rem !important;
+  margin-left: 2rem;
+}

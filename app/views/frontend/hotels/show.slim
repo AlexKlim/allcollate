@@ -1,0 +1,4 @@
+= content_for :javascript_pack_tag do
+  = javascript_pack_tag 'hotelShowBundle'
+
+= react_component('HotelShow', props: @hotel, prerender: false)
