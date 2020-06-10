@@ -1,6 +1,7 @@
 class Hotel < ApplicationRecord
-  extend FriendlyId
-  friendly_id :name, use: :slugged
+  include Sluggable
+
+  sluggable_from :name
 
   belongs_to :brand
 
