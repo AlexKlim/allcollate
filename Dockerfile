@@ -34,8 +34,8 @@ ADD . /allcollate
 RUN yarn install
 RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle install --without development test
-RUN rake assets:precompile
 RUN bin/webpack
+RUN rake assets:precompile
 
 EXPOSE 3000
 CMD ["/bin/bash", "-c", "puma"]

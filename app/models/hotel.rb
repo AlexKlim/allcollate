@@ -3,8 +3,10 @@ class Hotel < ApplicationRecord
 
   sluggable_from :name
 
-  belongs_to :brand
+  belongs_to :brand, optional: true
 
   has_many :rates
   has_many :photos
+
+  enum hotel_state: { active: 'active', draft: 'draft' }
 end

@@ -39,6 +39,9 @@ gem 'simple-line-icons-rails', '~> 0.1.6'
 gem 'httparty', '~> 0.18.0'
 gem 'sidekiq', '~> 6.0.7'
 
+gem 'carrierwave', '~> 2.1.0'
+gem 'mini_magick', '~> 4.10.1'
+gem 'fog-aws', '~> 3.6.5'
 gem 'sitemap_generator', '~> 6.1.1'
 
 group :development, :test do
@@ -58,5 +61,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# gem 'mini_racer', platforms: :ruby
