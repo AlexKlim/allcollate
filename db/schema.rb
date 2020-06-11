@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_201138) do
+ActiveRecord::Schema.define(version: 2020_06_11_204322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,8 +103,11 @@ ActiveRecord::Schema.define(version: 2020_06_03_201138) do
     t.datetime "created_at", precision: 6, default: -> { "now()" }, null: false
     t.datetime "updated_at", precision: 6, default: -> { "now()" }, null: false
     t.string "slug"
+    t.string "hotel_state", default: "draft"
     t.index ["agoda_hotel_id"], name: "index_hotels_on_agoda_hotel_id"
     t.index ["brand_id"], name: "index_hotels_on_brand_id"
+    t.index ["id", "hotel_state"], name: "index_hotels_on_id_and_hotel_state"
+    t.index ["slug", "hotel_state"], name: "index_hotels_on_slug_and_hotel_state"
     t.index ["slug"], name: "index_hotels_on_slug", unique: true
   end
 
