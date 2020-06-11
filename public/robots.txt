@@ -9,4 +9,4 @@ Disallow: /
 
 User-agent: *
 
-Sitemap: http://www.allcollate.com/sitemap.xml
+Sitemap: https://allcollate-production.s3.amazonaws.com/sitemaps/sitemap.xml
