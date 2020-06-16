@@ -40,11 +40,12 @@ export default class HotelShow extends React.Component {
       addressline1,
       rates: hotelRates,
       agoda_url: agodaUrl,
+      star_rating: starRating
     } = this.props;
     const sortedPhotos = photos.sort(photo => photo.order)
 
     return (
-      <SiteWrapper headerLink={`/hotel/${slug}`} headerAlt={hotelName} headerLogo={sortedPhotos[0].url}>
+      <SiteWrapper headerLink={`/hotel/${slug}`} headerAlt={hotelName} headerLogo={sortedPhotos[0]?.url} starRating={starRating}>
         <Page.Content>
         <section>
             {/* <PageSectionHeader title={`${hotelName} BRAND`} /> */}
@@ -87,18 +88,20 @@ export default class HotelShow extends React.Component {
         </section>
 
         <Page.Content>
-          <section>
-            <PageSectionHeader title={`${hotelName} Images`} />
-            <Grid.Row className="row-cards">
-              {sortedPhotos.map((item, key) => (
-                <Grid.Col sm={6} lg={4} key={key} className="gallery-grid-col">
-                  <GalleryCard className="gallery-card">
-                    <img src={item.url} />
-                  </GalleryCard>
-                </Grid.Col>
-              ))}
-            </Grid.Row>
-          </section>
+          {sortedPhotos.length > 0 && (
+            <section>
+              <PageSectionHeader title={`${hotelName} Images`} />
+              <Grid.Row className="row-cards">
+                {sortedPhotos.map((item, key) => (
+                  <Grid.Col sm={6} lg={4} key={key} className="gallery-grid-col">
+                    <GalleryCard className="gallery-card">
+                      <img src={item.url} />
+                    </GalleryCard>
+                  </Grid.Col>
+                ))}
+              </Grid.Row>
+            </section>
+          )}
 
           <section className="view-on-agoda">
             <a className="btn btn-info" href={agodaUrl} target="_blank" rel="nofollow noopener noreferrer">View on Agoda</a>
