@@ -39,7 +39,7 @@ module "sitemap_scheduled_task" {
   name                  = "sitemap_update"
   environment           = "production"
   container_definitions = "${data.template_file.service_scheduled_sitemap.rendered}"
-  schedule_expression   = "cron(0 17 * * * *)"
+  schedule_expression   = "cron(0 17 * * ? *)"
   cluster_arn           = "${data.terraform_remote_state.master.ecs_cluster_arn}"
   memory                = 400
   cpu                   = 400
