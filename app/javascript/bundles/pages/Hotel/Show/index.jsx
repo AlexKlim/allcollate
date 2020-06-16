@@ -52,11 +52,13 @@ export default class HotelShow extends React.Component {
 
           <section>
             <PageSectionHeader title="Overview" />
-            <Card>
-              <Card.Body>
-                {overview}
-              </Card.Body>
-            </Card>
+            {overview && (
+              <Card>
+                <Card.Body>
+                  {overview}
+                </Card.Body>
+              </Card>
+            )}
           </section>
 
           <HighlightedMetrics hotel={this.props} />
