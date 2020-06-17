@@ -20,5 +20,7 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web, at: "/sidekiq"
 
+  get '/sitemap.xml'   => redirect('https://allcollate-production.s3.amazonaws.com/sitemaps/sitemap.xml', status: 301)
+
   get '/hotel/:id' => 'frontend/hotels#show', as: :hotel
 end
