@@ -1,0 +1,35 @@
+.suggestion-form--group {
+  margin-left: 1rem;
+}
+
+.suggestion-results {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  list-style: none;
+  z-index: 4;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 0;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
+  max-height: calc(100vh - 60px);
+  overflow: auto;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  &__item {
+    z-index: 10;
+    display: block;
+    color: #34394c;
+    align-items: center;
+    padding: 8px 24px 8px 10px;
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+
+    &--active {
+      background: #ececec;
+    }
+  }
+}

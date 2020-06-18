@@ -3,14 +3,10 @@ import * as React from "react";
 
 import {
   Site,
-  // Nav,
-  // Grid,
-  // List,
-  Button,
-  Form,
-  // Container
 } from "tabler-react";
 import StarRatings from 'react-star-ratings';
+
+import SuggestionForm from '../Search/SuggestionForm'
 
 import './styles.scss'
 
@@ -31,11 +27,7 @@ class SiteWrapper extends React.Component {
                       <span className="allcollate-title">Allcollate</span>
                     </a>
                       <span className="allcollate-title allcollate-title-beta">beta</span>
-                    {/* <Form.InputGroup className="search-field-group" append={
-                      <Button RootComponent="a" color="primary" href="http://www.google.com">Search</Button>
-                    }>
-                      <Form.Input className="adasda" placeholder="Search for..." />
-                    </Form.InputGroup> */}
+                      <SuggestionForm />
                   </div>
                 </React.Fragment>
               </div>

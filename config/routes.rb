@@ -22,5 +22,7 @@ Rails.application.routes.draw do
 
   get '/sitemap.xml'   => redirect('https://allcollate-production.s3.amazonaws.com/sitemaps/sitemap.xml', status: 301)
 
+  get '/search/suggestions' => 'frontend/searches#suggestions'
+
   get '/hotel/:id' => 'frontend/hotels#show', as: :hotel
 end
