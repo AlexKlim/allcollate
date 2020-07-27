@@ -43,7 +43,7 @@ export default class HotelShow extends React.Component {
       star_rating: starRating
     } = this.props;
     const sortedPhotos = photos.sort(photo => photo.order)
-    const sortedRates = hotelRates.sort(r => new Date(r.actual_on))
+    const sortedRates = _.sortBy(hotelRates, function(r) { return r.actual_on })
 
     return (
       <SiteWrapper headerLink={`/hotel/${slug}`} headerAlt={hotelName} headerLogo={sortedPhotos[0]?.url} starRating={starRating}>
