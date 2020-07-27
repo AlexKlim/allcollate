@@ -44,6 +44,8 @@ gem 'mini_magick', '~> 4.10.1'
 gem 'fog-aws', '~> 3.6.5'
 gem 'sitemap_generator', '~> 6.1.1'
 
+gem 'ransack', '~> 2.3.2'
+
 group :development, :test do
   gem 'pry'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

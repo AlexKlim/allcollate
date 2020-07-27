@@ -143,6 +143,8 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     pg (1.2.3)
+    polyamorous (2.3.2)
+      activerecord (>= 5.2.1)
     popper_js (1.16.0)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -185,6 +187,11 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rainbow (3.0.0)
     rake (13.0.1)
+    ransack (2.3.2)
+      activerecord (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      i18n
+      polyamorous (= 2.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -268,6 +275,7 @@ DEPENDENCIES
   pry
   puma (~> 4.1)
   rails (= 6.0.2.2)
+  ransack (~> 2.3.2)
   react_on_rails (~> 11.3.0)
   sass-rails (>= 6)
   sidekiq (~> 6.0.7)
