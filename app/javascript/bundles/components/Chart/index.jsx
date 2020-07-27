@@ -5,7 +5,7 @@ import ReactEcharts from 'echarts-for-react';
 class Chart extends React.Component {
 
   getOption() {
-    const sortedRates = this.props.rates.sort(r => new Date(r.actual_on))
+    const sortedRates = this.props.rates
     const date = sortedRates.map(r => r.actual_on)
     const data = sortedRates.map(r => r.daily_rate)
 

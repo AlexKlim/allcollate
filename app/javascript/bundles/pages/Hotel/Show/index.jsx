@@ -43,6 +43,7 @@ export default class HotelShow extends React.Component {
       star_rating: starRating
     } = this.props;
     const sortedPhotos = photos.sort(photo => photo.order)
+    const sortedRates = hotelRates.sort(r => new Date(r.actual_on))
 
     return (
       <SiteWrapper headerLink={`/hotel/${slug}`} headerAlt={hotelName} headerLogo={sortedPhotos[0]?.url} starRating={starRating}>
@@ -64,11 +65,11 @@ export default class HotelShow extends React.Component {
 
           <HighlightedMetrics hotel={this.props} />
 
-          {hotelRates.length > 1 && (
+          {sortedRates.length > 1 && (
             <section>
               <PageSectionHeader title={`${hotelName} History Rates`} />
-              <Chart rates={hotelRates} hotelName={hotelName}/>
-              <span className="seo-snippet-for-graph">The latest daily rate is ${_.last(hotelRates).daily_rate}.</span>
+              <Chart rates={sortedRates} hotelName={hotelName}/>
+              <span className="seo-snippet-for-graph">The latest daily rate is ${_.last(sortedRates).daily_rate}.</span>
             </section>
           )}
         </Page.Content>
