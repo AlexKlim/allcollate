@@ -4,7 +4,9 @@ class Frontend::SearchesController < ApplicationController
     results = results.map do |result|
                 {
                   name: result.name,
-                  slug: result.slug
+                  slug: result.slug,
+                  city: result.city,
+                  country: result.country,
                 }
               end
 

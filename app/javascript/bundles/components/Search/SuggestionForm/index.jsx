@@ -87,6 +87,9 @@ class SuggestionForm extends React.Component {
         <ul className="list-unstyled us-results__list">
           <li className="suggestion-results__item">
             {suggestion.name}
+            <small className="text-muted suggestion-results__help-text">
+              {suggestion.city}, {suggestion.country}
+            </small>
           </li>
         </ul>
       </div>
