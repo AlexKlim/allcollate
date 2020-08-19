@@ -1,7 +1,55 @@
-= content_for :javascript_pack_tag do
-  = javascript_pack_tag 'hotelShowBundle'
+= content_for :stylesheet_link_tag do
+  = stylesheet_link_tag 'hotel-show', media: 'all', 'data-turbolinks-track': 'reload'
 
-= content_for :stylesheet_pack_tag do
-  = stylesheet_pack_tag 'hotelShowBundle'
+.page
+  .page-main
+    .header.py-4
+      .container.header-container
+        .d-flex
+          .main-header-py4
+            .d-flex.main-header
+              .order-lg-2.header-brand-title
+                a.navbar-brand.allcollate-title-link href='/'
+                  span.allcollate-title Allcollate
+                span.allcollate-title.allcollate-title-beta beta
+                = react_component('Search/SuggestionForm', {}, prerender: false, class: 'suggestion-form__container')
 
-= react_component('HotelShow', props: @hotel, prerender: false)
+            = react_component('Header/Subtitle', { header_link: hotel_path(@hotel),
+              header_alt: @hotel.name,
+              header_logo: @hotel.photos.order(order: :asc).first&.url,
+              star_rating: @hotel.star_rating }, prerender: true)
+
+    .page-content
+      .container
+        = react_component('Hotel/Overview', { overview: @hotel.overview,
+                number_rooms: @hotel.number_rooms,
+                number_floors: @hotel.number_floors,
+                year_opened: @hotel.year_opened,
+                year_renovated: @hotel.year_renovated,
+                checkin: @hotel.checkin,
+                checkout: @hotel.checkout } , prerender: true)
+        = react_component('Hotel/Chart', { hotel_name: @hotel.name, hotel_rates: @hotel.rates }, prerender: true)
+
+    section
+      .map-container
+        .container
+          .page-subheader
+            h2.page-title= @hotel.name
+          .card.map-card
+            .card-body The #{@hotel.name} is located in #{@hotel.country}, #{@hotel.state}, #{@hotel.city}, #{@hotel.addressline1}.
+        = react_component('Hotel/Location', { latitude: @hotel.latitude, longitude: @hotel.longitude })
+
+    .page-content
+      .container
+        = react_component('Hotel/Photo', { hotel_name: @hotel.name, photos: @hotel.photos }, prerender: true)
+        = react_component('Hotel/Basement', { agoda_url: @hotel.agoda_url }, prerender: true)
+
+  .footer
+    .container
+      .row.align-items-center.flex-row-reverse
+        .col.col-auto.ml-auto
+          .row.row.align-items-center
+        .col.col-12.col-lg-auto.mt-3.mt-lg-0.text-center
+          | &copy; #{Date.current.year}
+          = link_to ' allcollate.com', root_path
+          |  All rights reserved.
