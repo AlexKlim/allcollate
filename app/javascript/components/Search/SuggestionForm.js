@@ -7,10 +7,8 @@ import {
   Grid,
 } from "tabler-react";
 
-import SearchSuggestionAPI from '../../../services/api/SearchSuggestionAPI'
+import SearchSuggestionAPI from '../../api/SearchSuggestionAPI'
 import theme from './theme';
-
-import './styles.scss'
 
 class SuggestionForm extends React.Component {
 

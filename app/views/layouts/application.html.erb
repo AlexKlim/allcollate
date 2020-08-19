@@ -13,6 +13,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:stylesheet_link_tag) %>
 
 
     <%- if Rails.env.production? %>
@@ -40,6 +41,7 @@
     <% end %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= stylesheet_pack_tag 'application' %>
 
     <%= yield(:javascript_pack_tag) %>
     <%= yield(:stylesheet_pack_tag) %>

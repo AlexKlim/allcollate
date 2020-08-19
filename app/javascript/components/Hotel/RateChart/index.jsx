@@ -2,7 +2,7 @@ import * as React from "react";
 import echarts from 'echarts';
 import ReactEcharts from 'echarts-for-react';
 
-class Chart extends React.Component {
+class RateChart extends React.Component {
 
   getOption() {
     const sortedRates = this.props.rates
@@ -81,4 +81,4 @@ class Chart extends React.Component {
   }
 }
 
-export default Chart;
+export default RateChart;

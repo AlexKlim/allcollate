@@ -8,10 +8,10 @@ import TopMetric from '../TopMetric'
 class HighlightedMetrics extends React.Component {
   render() {
     const {
-      number_rooms: numberRooms,
-      number_floors: numberFloors,
-      year_opened: yearOpened,
-      year_renovated: yearRenovated,
+      numberRooms,
+      numberFloors,
+      yearOpened,
+      yearRenovated,
       checkin,
       checkout,
     } = this.props.hotel;

@@ -1,0 +1,18 @@
+.header-brand-title {
+  margin: auto 0;
+  font-size: 20px;
+  display: flex !important;
+}
+
+.hotel-name {
+  float: left;
+}
+
+.rating-wrapper {
+  display: initial;
+
+  .star-ratings {
+    top: -10px;
+    margin-left: 5px;
+  }
+}

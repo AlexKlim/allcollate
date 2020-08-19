@@ -1,7 +1,4 @@
 import * as React from "react";
-import cn from "classnames";
-
-import "./styles.scss";
 
 function PageSectionHeader({ title }) {
   return (
