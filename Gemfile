@@ -44,6 +44,7 @@ gem 'mini_magick', '~> 4.10.1'
 gem 'fog-aws', '~> 3.6.5'
 gem 'sitemap_generator', '~> 6.1.1'
 
+gem 'kaminari', '~> 1.2.1'
 gem 'ransack', '~> 2.3.2'
 
 group :development, :test do
