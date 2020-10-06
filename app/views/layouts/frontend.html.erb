@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Allcollate - Compare hotels, price, rooms</title>
+    <meta content='Allcollate is an analytics platform providing comparing and analyzing for hotels. We collect and organize data from thousands of sources to provide up-to-date information, prices, rooms across the whole world.' name='description' />
+
+    <meta content='Allcollate - Compare hotels, price, rooms' property='og:title'>
+    <meta content='Allcollate is an analytics platform providing comparing and analyzing for hotels. We collect and organize data from thousands of sources to provide up-to-date information, prices, rooms across the whole world.' property='og:description'>
+
+    <link href='http://www.allcollate.com' rel='canonical'>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'frontend', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:stylesheet_link_tag) %>
+
+
+    <%- if Rails.env.production? %>
+      <script async src='https://www.googletagmanager.com/gtag/js?id=UA-167845499-1'></script>
+
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-167845499-1');
+      </script>
+
+      <!-- Google Tag Manager -->
+      <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-T9G8H4C');
+      </script>
+      <!-- End Google Tag Manager -->
+
+      <script src="https://www.googleoptimize.com/optimize.js?id=OPT-KSNSK8X"></script>
+    <% end %>
+
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= yield(:javascript_pack_tag) %>
+    <%= yield(:stylesheet_pack_tag) %>
+
+    <meta name="agd-partner-manual-verification" />
+  </head>
+
+  <body>
+    <%- if Rails.env.production? %>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9G8H4C"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    <% end %>
+
+  <div class="page">
+    <div class="page-main">
+      <div class="search-header">
+        <div class="container header-container">
+          <div class="d-flex">
+            <div class="main-header-py4">
+              <div class="d-flex main-header">
+                <div class="order-lg-2 header-brand-title">
+                  <a class="navbar-brand allcollate-title-link" href='/'>
+                    <span class="allcollate-title"> Allcollate </span>
+                  </a>
+                  <span class="allcollate-title allcollate-title-beta"> beta </span>
+
+                  <%= react_component('Search/SuggestionForm', {}, prerender: false, class: 'suggestion-form__container') %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div >
+
+      <%= yield %>
+    </div>
+    <div class="footer">
+      <div class="container">
+        <div class="row align-items-center flex-row-reverse">
+          <div class="col col-auto ml-auto">
+            <div class="row row align-items-center">
+              <%= link_to 'Hotel directory', hotel_directory_path(prefix: 'a') %>
+            </div>
+          </div>
+          <div class="col col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+            &copy;
+            <%= Date.current.year %>
+            <%= link_to ' allcollate.com', root_path %>
+            All rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </body>
+</html>
