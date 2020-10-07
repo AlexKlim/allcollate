@@ -19,6 +19,11 @@ SitemapGenerator::Sitemap.create do
   add '/', changefreq: 'weekly', priority: 1
 
   Hotel.active.find_each do |hotel|
-    add hotel_path(hotel), lastmod: I18n.l(hotel.updated_at, format: :w3c), changefreq: 'weekly', priority: 1.0
+    add hotel_path(hotel), lastmod: I18n.l(hotel.updated_at, format: :w3c), changefreq: 'daily', priority: 1.0
   end
+
+  ('a'..'z').each do |symbol|
+    add hotel_directory_path(prefix: symbol), lastmod: I18n.l(Date.today.to_time, format: :w3c), changefreq: 'daily', priority: 1.0
+  end
+  add hotel_directory_path(prefix: 'more'), lastmod: I18n.l(Date.today.to_time, format: :w3c), changefreq: 'daily', priority: 1.0
 end
