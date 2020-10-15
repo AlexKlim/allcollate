@@ -1,0 +1,9 @@
+= content_for :stylesheet_link_tag do
+  = stylesheet_link_tag 'search', media: 'all', 'data-turbolinks-track': 'reload'
+
+.main
+  .page-content
+    .container
+      h1.search__title Search For Hotels
+
+      = react_component('Search/SearchProvider', { query: params[:q] }, prerender: true)

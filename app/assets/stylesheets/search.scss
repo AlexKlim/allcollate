@@ -1,0 +1,13 @@
+.search {
+  &__locations-container {
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #B3B3B3;
+    padding: 15px;
+  }
+
+  &__filter-title {
+    font-weight: 500;
+    font-size: 18px;
+  }
+}
