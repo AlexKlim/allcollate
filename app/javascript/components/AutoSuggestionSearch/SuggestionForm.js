@@ -7,7 +7,7 @@ import {
   Grid,
 } from "tabler-react";
 
-import SearchSuggestionAPI from '../../api/SearchSuggestionAPI'
+import SearchAPI from '../../api/SearchAPI'
 import theme from './theme';
 import Input from './Input/index';
 
@@ -16,11 +16,11 @@ class SuggestionForm extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.suggestionAPI = new SearchSuggestionAPI();
+    this.searchAPI = new SearchAPI();
 
     this.fetch = _.debounce(async q => {
       this.setState({ fetched: true });
-      const result = await this.suggestionAPI.fetchQuery(q);
+      const result = await this.searchAPI.fetchSuggestionQuery(q);
       this.setState({ fetched: false, resultItems: result });
     }, 500);
 

@@ -31,5 +31,12 @@ module Allcollate
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    if Rails.env.development?
+      config.assets.enabled = false
+      config.generators do |g|
+        g.assets false
+      end
+    end
   end
 end

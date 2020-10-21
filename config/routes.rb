@@ -28,6 +28,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace 'api' do
+    resources :search, only: [:index]
+  end
+
   get '/directory/companies/:prefix' => 'frontend/directory/hotels#show', constraints: {
     prefix: /[a-z]|more/
   }, as: :hotel_directory

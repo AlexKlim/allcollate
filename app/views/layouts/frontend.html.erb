@@ -12,7 +12,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'frontend', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'frontend', media: 'all' %>
     <%= yield(:stylesheet_link_tag) %>
 
 
@@ -40,7 +40,7 @@
       <script src="https://www.googleoptimize.com/optimize.js?id=OPT-KSNSK8X"></script>
     <% end %>
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
 
     <%= yield(:javascript_pack_tag) %>
     <%= yield(:stylesheet_pack_tag) %>

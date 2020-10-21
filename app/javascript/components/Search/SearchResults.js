@@ -1,21 +1,58 @@
 import React from "react";
-import { Table } from 'tabler-react';
+import { Card } from 'tabler-react';
+import StarRatings from 'react-star-ratings';
+
+import { useSearchContext } from './SearchProvider'
+
 
 function SearchResults() {
+  const { hotels } = useSearchContext();
+  console.log("asdads", hotels[0])
   return(
-    <Table>
-      <Table.Header>
-        <Table.ColHeader></Table.ColHeader>
-        <Table.ColHeader>Hotel</Table.ColHeader>
-        <Table.ColHeader>Location</Table.ColHeader>
-        <Table.ColHeader>Opened/Renovated</Table.ColHeader>
-        <Table.ColHeader>Rate</Table.ColHeader>
-        <Table.ColHeader>Rating</Table.ColHeader>
-      </Table.Header>
-      <Table.Body>
-        {/* <SearchResultItem /> */}
-      </Table.Body>
-    </Table>
+    <div className="row">
+      { hotels.map(hotel => (
+        <Card>
+          <Card.Body>
+            <div className="row">
+              <div className="search__compare-action">
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+              </div>
+              <div className="col-md-2">
+                <img src={hotel.photo} className="search__hotel-photo"/>
+              </div>
+              <div className="col-md-3">
+                <div className="search__hotel-name">
+                  {hotel.name}
+                </div>
+                <StarRatings rating={hotel.starRating} starDimension="20px" starRatedColor="gold" starSpacing="0px" />
+                <div className="search__hotel-overview">
+                  {hotel.overview}
+                </div>
+              </div>
+
+              <div className="col-md-3 search__hotel-location">
+                {hotel.country}, {hotel.city}, {hotel.addressline1}
+              </div>
+
+              <div className="search__hotel-dates text-center">
+                <div className="search__hotel-dates-title">Opened/Renovated</div>
+                <div>
+                  {hotel.yearOpened}/{hotel.yearRenovated}
+                </div>
+              </div>
+
+              <div className="search__hotel-rate text-center ">
+                <div className="search__hotel-rate-title">$/Night</div>
+                <div>{hotel.rate}</div>
+              </div>
+
+              <div className="col-md-1 search__score">
+              </div>
+            </div>
+          </Card.Body>
+        </Card>
+        ))}
+    </div>
   )
 }
 

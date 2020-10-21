@@ -10,4 +10,46 @@
     font-weight: 500;
     font-size: 18px;
   }
+
+  &__hotel-photo {
+    // width: 100px;
+    height: 100px;
+    border-radius: 4px;
+    border: 1px solid #B0B0B0;
+  }
+
+  &__hotel-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    margin-bottom: 5px;
+  }
+
+  &__hotel-overview {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &__hotel-location {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+  }
+
+  &__hotel-dates {
+    margin-right: 20px;
+    &-title {
+      font-style: italic;
+    }
+  }
+
+  &__hotel-rate {
+    &-title {
+      font-style: italic;
+    }
+  }
 }
