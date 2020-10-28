@@ -6,16 +6,21 @@ import { Card, Form } from 'tabler-react';
 function SearchFiltersLocations() {
   const { query } = useSearchContext();
 
+  handleInputChange = (e) => {
+
+  }
+
   return (
     <Card>
       <Card.Body>
         <div className="search__filter-title">
-          { `Locations: ${query}` }
+          Locations
         </div>
         <Form.Group>
           <Form.Input
-            name="example-text-input"
             placeholder="Try San Francisco"
+            autoComplete="off"
+            onChange={this.handleInputChange}
           />
         </Form.Group>
       </Card.Body>

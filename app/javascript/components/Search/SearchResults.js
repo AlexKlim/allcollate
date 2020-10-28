@@ -7,7 +7,14 @@ import { useSearchContext } from './SearchProvider'
 
 function SearchResults() {
   const { hotels } = useSearchContext();
-  console.log("asdads", hotels[0])
+
+
+  const number_or_na = (val) => {
+    return val ? val : (
+      <span className="search__text-grey">NA</span>
+    )
+  }
+
   return(
     <div className="row">
       { hotels.map(hotel => (
@@ -15,7 +22,7 @@ function SearchResults() {
           <Card.Body>
             <div className="row">
               <div className="search__compare-action">
-                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+                <input type="checkbox" className="search__compare-action-checkbox" />
               </div>
               <div className="col-md-2">
                 <img src={hotel.photo} className="search__hotel-photo"/>
@@ -37,7 +44,7 @@ function SearchResults() {
               <div className="search__hotel-dates text-center">
                 <div className="search__hotel-dates-title">Opened/Renovated</div>
                 <div>
-                  {hotel.yearOpened}/{hotel.yearRenovated}
+                  {number_or_na(hotel.yearOpened)} / {number_or_na(hotel.yearRenovated)}
                 </div>
               </div>
 

@@ -69,7 +69,7 @@
                   </a>
                   <span class="allcollate-title allcollate-title-beta"> beta </span>
 
-                  <%= react_component('AutoSuggestionSearch/SuggestionForm', {}, prerender: false, class: 'suggestion-form__container') %>
+                  <%= react_component('AutoSuggestionSearch/SuggestionForm', { query: params[:q] }, prerender: false, class: 'suggestion-form__container') %>
                 </div>
               </div>
             </div>

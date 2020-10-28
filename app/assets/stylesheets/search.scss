@@ -11,8 +11,18 @@
     font-size: 18px;
   }
 
+  &__compare-action {
+    display: flex;
+    align-items: center;
+  }
+
+  &__compare-action-checkbox {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   &__hotel-photo {
-    // width: 100px;
     height: 100px;
     border-radius: 4px;
     border: 1px solid #B0B0B0;
@@ -30,7 +40,7 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 16px;
   }
 
@@ -51,5 +61,9 @@
     &-title {
       font-style: italic;
     }
+  }
+
+  &__text-grey {
+    color: #86898e;
   }
 }

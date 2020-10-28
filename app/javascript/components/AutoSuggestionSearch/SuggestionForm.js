@@ -26,7 +26,7 @@ class SuggestionForm extends React.Component {
 
     this.state = {
       noResults: false,
-      query: '',
+      query: props.query || '',
       resultItems: [],
     };
   }
