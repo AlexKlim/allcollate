@@ -4,7 +4,7 @@ import Autosuggest from 'react-autosuggest';
 import theme from './theme';
 import Input from './Input/index';
 
-const SuggestionForm = ({ doSearch, results, value }) => {
+const SuggestionForm = ({ doSuggestionSelected, doSearch, results, value }) => {
 
   const [localValue, setLocalValue] = useState('');
   useEffect(() => setLocalValue(value), [value]);
@@ -38,8 +38,9 @@ const SuggestionForm = ({ doSearch, results, value }) => {
   const onSuggestionSelected = (event, { suggestion, suggestionValue: value }) => {
     event.preventDefault();
 
+    doSuggestionSelected(suggestion);
     setLocalValue('');
-    return;
+    // return;
     // const { noResults } = this.state;
 
     // if (noResults) {
