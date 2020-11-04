@@ -67,3 +67,36 @@
     color: #86898e;
   }
 }
+
+.search-filters-suggestion {
+  &__results {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 40, 100, 0.12);
+    border-radius: 3px;
+    z-index: 9999;
+    width: 83.33333333%;
+  }
+
+  &__results-item {
+    z-index: 10;
+    display: block;
+    color: #34394c;
+    align-items: center;
+    padding: 8px 24px 8px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+  }
+
+  &__input-group {
+    width: 101%;
+  }
+
+  &__item {
+    &--active {
+      background: #ececec;
+    }
+  }
+}

@@ -13,4 +13,10 @@ export default class SearchAPI {
       .get(`/search/suggestions?q=${query}`)
       .then(res => res && res.data);
   }
+
+  fetchLocations(query) {
+    return axios
+      .get(`api/search/locations?q=${query}`)
+      .then(res => res && res.data);
+  }
 }

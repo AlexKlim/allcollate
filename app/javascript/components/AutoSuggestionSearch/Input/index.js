@@ -1,6 +1,5 @@
 import React from 'react';
 
-import SearchIcon from './image/SearchIcon.svg'
 import {
   Loader,
 } from "tabler-react";

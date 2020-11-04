@@ -29,7 +29,11 @@ Rails.application.routes.draw do
   end
 
   namespace 'api' do
-    resources :search, only: [:index]
+    resources :search, only: [:index] do
+      collection do
+        get :locations
+      end
+    end
   end
 
   get '/directory/companies/:prefix' => 'frontend/directory/hotels#show', constraints: {
