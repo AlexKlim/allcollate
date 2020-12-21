@@ -8,7 +8,7 @@ class Frontend::SearchesController < ApplicationController
                   name: result.name,
                   slug: result.slug,
                   city: result.city,
-                  country: result.country,
+                  country: result.country
                 }
               end
 
@@ -16,6 +16,13 @@ class Frontend::SearchesController < ApplicationController
   end
 
   def show
-    @results = Hotel.active.ransack(name_start: params[:q]).result.first(5)
+    scope = Hotel.active
+    if params[:locations]
+      scope = scope.where('lower(city) = ? and lower(country_iso_code) = ?',
+                          params[:locations][:city],
+                          params[:locations][:iso])
+    end
+
+    @results = scope.ransack(name_start: params[:q]).result.first(5)
   end
 end

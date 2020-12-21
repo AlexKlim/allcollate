@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDebouncedCallback } from 'use-debounce/lib';
 import { useSearchContext } from '../SearchProvider';
 
@@ -10,10 +11,10 @@ import SuggestionForm from './AutoSuggestion/SuggestionForm'
 import SearchAPI from '../../../api/SearchAPI'
 
 function SearchFiltersLocations({ value = '' }) {
-  const { query } = useSearchContext();
+  const { query, tags, setTags } = useSearchContext();
 
   const [results, setResults] = useState([]);
-  const [tags, setTags] = useState([]);
+  // const [tags, setTags] = useState([]);
 
   const doSearch = async (query) => {
     const searchAPI = new SearchAPI();

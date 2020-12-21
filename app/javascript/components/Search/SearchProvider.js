@@ -15,10 +15,15 @@ function SearchProvider({ query }) {
     };
 
     fetchData();
-  }, []);
+  }, [tags]);
+
+  const [tags, setTags] = useState([]);
 
   return(
-    <SearchContext.Provider value={{ query, hotels }} className="search">
+    <SearchContext.Provider value={{
+      query, hotels, tags,
+      setTags: (tags) => setTags(tags),
+    }} className="search">
       <SearchPage />
     </SearchContext.Provider>
   )
