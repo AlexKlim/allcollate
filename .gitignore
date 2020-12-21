@@ -75,3 +75,4 @@ secret.tfvars
 
 .terraform
 /config/credentials/production.key
+.vscode
