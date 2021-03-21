@@ -57,3 +57,10 @@ To compile the JS (React) run the command in a **new terminal window** _(do not 
 ```
 $ bin/webpack-dev-server
 ```
+
+## Rails & React
+For ReactJS in Ruby on Rails we use [react-rails gem](https://github.com/reactjs/react-rails).
+
+Each component should be integrated into a page. We agreed to use server render (_{ prerender: true }_) where it is possibles and useful.
+
+Please, check out the gem if you have not worked with the react-rails gem before.
