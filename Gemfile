@@ -40,12 +40,15 @@ gem 'httparty', '~> 0.18.0'
 gem 'sidekiq', '~> 6.0.7'
 
 gem 'carrierwave', '~> 2.1.1'
-gem 'mini_magick', '~> 4.10.1'
 gem 'fog-aws', '~> 3.6.5'
+gem 'mini_magick', '~> 4.10.1'
 gem 'sitemap_generator', '~> 6.1.1'
 
 gem 'kaminari', '~> 1.2.1'
 gem 'ransack', '~> 2.3.2'
+
+gem 'sentry-rails', '~> 4.3.2'
+gem 'sentry-ruby', '~> 4.3.0'
 
 group :development, :test do
   gem 'pry'
@@ -54,9 +57,9 @@ group :development, :test do
 end
 
 group :development do
+  gem 'listen', '>= 3.0.5', '< 3.2'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
