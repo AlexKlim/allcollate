@@ -27,7 +27,7 @@ class Services::AgodaImporter
   private
 
   def parse_response(response, actual_on)
-    response['results'].each do |hotel_result|
+    (response['results'] || []).each do |hotel_result|
       hotel = Hotel.find_by(agoda_hotel_id: hotel_result['hotelId'])
 
       ActiveRecord::Base.transaction do
