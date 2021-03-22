@@ -1,24 +1,66 @@
-# README
+## Overview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+AllCollate it is place which makes the ability to choose hotels easily.
 
-Things you may want to cover:
+## Technology
 
-* Ruby version
+* Ruby On Rails
+* ReactJS
+* PostgreSQL
+* AWS
 
-* System dependencies
+## Setup
 
-* Configuration
+In your local machine you have to install (you can use rvm if you want):
 
-* Database creation
+* [Ruby 2.7.1](https://www.ruby-lang.org/en/downloads/)
+* [Yarn](https://yarnpkg.com)
+* [PSQL](https://www.postgresql.org)
 
-* Database initialization
+## Restore DB
 
-* How to run the test suite
+Create DB
+```
+$ rake db:create
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Restore DB Dump
+```
+$ psql -d allcollate_development < db_dump/allcollate_development_dump.sql
+```
 
-* Deployment instructions
+Run DB migrations
+```
+$ rake db:migrate
+```
 
-* ...
+## Start
+
+Install gems
+```
+$ bundle install
+```
+
+Install npm packages
+```
+$ yarn install
+```
+
+To start the server run the command in the terminal _(do not stop the server)_
+
+```
+$ rails s
+```
+
+To compile the JS (React) run the command in a **new terminal window** _(do not stop)_
+
+```
+$ bin/webpack-dev-server
+```
+
+## Rails & React
+For ReactJS in Ruby on Rails we use [react-rails gem](https://github.com/reactjs/react-rails).
+
+Each component should be integrated into a page. We agreed to use server render (_{ prerender: true }_) where it is possibles and useful.
+
+Please, check out the gem if you have not worked with the react-rails gem before.

@@ -15,7 +15,8 @@ class Api::SearchController < ApplicationController
         photo: result.photos.order(order: :asc).first&.url,
         rate: result.rates.order(actual_on: :desc).first&.daily_rate,
         yearOpened: result.year_opened,
-        yearRenovated: result.year_renovated
+        yearRenovated: result.year_renovated,
+        rating: result.ratings.order(actual_on: :desc).first&.review_score
       }
     end
 
