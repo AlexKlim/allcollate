@@ -4,6 +4,7 @@ class Api::SearchController < ApplicationController
   def index
     results = Hotel.active.includes(:photos, :rates).ransack(name_start: params[:q]).result.first(5)
     results = results.map do |result|
+      rate = result.rates.order(actual_on: :desc).first
       {
         name: result.name,
         starRating: result.star_rating,
@@ -13,10 +14,10 @@ class Api::SearchController < ApplicationController
         country: result.country,
         addressline1: result.addressline1,
         photo: result.photos.order(order: :asc).first&.url,
-        rate: result.rates.order(actual_on: :desc).first&.daily_rate,
+        rate: rate&.daily_rate,
         yearOpened: result.year_opened,
         yearRenovated: result.year_renovated,
-        rating: result.ratings.order(actual_on: :desc).first&.review_score
+        rating: rate&.review_score
       }
     end
 
