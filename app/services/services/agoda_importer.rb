@@ -29,30 +29,16 @@ class Services::AgodaImporter
 
       ActiveRecord::Base.transaction do
         create_rate!(hotel, actual_on, hotel_result)
-        create_rating!(hotel, actual_on, hotel_result)
       end
     end
   end
 
   def create_rate!(hotel, actual_on, hotel_result)
-    hotel.rates.create(
-      partner_id: partner_id,
-      roomtype_name: hotel_result['roomtypeName'],
-      currency: hotel_result['currency'],
-      daily_rate: hotel_result['dailyRate'],
-      actual_on: actual_on,
-      crossed_out_rate: hotel_result['crossedOutRate'],
-      discount_percentage: hotel_result['discountPercentage']
-    )
-  end
-
-  def create_rating!(hotel, actual_on, hotel_result)
-    hotel.ratings.create(
-      partner_id: partner_id,
-      actual_on: actual_on,
-      star_rating: hotel_result['starRating'],
-      review_count: hotel_result['reviewCount'],
-      review_score: hotel_result['reviewScore']
+    hotel.rates.create(partner_id: partner_id, roomtype_name: hotel_result['roomtypeName'],
+                       currency: hotel_result['currency'], daily_rate: hotel_result['dailyRate'],
+                       actual_on: actual_on, crossed_out_rate: hotel_result['crossedOutRate'],
+                       discount_percentage: hotel_result['discountPercentage'], star_rating: hotel_result['starRating'],
+                       review_count: hotel_result['reviewCount'], review_score: hotel_result['reviewScore']
     )
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_220401) do
+ActiveRecord::Schema.define(version: 2021_03_23_102319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,19 +142,10 @@ ActiveRecord::Schema.define(version: 2021_03_22_220401) do
     t.float "discount_percentage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["hotel_id"], name: "index_rates_on_hotel_id"
-  end
-
-  create_table "ratings", force: :cascade do |t|
-    t.bigint "hotel_id"
-    t.integer "partner_id"
     t.float "star_rating"
     t.integer "review_count"
     t.float "review_score"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.date "actual_on"
-    t.index ["hotel_id"], name: "index_ratings_on_hotel_id"
+    t.index ["hotel_id"], name: "index_rates_on_hotel_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
