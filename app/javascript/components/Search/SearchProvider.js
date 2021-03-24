@@ -8,12 +8,14 @@ function SearchProvider({ query }) {
   const [hotels, setHotels] = useState([]);
   const [tags, setTags] = useState([]);
   const [activePage, setActivePage] = useState(1);
+  const [paging_data, setPagingData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
       const data = await searchAPI.fetchQuery(query);
-      setHotels(data);
+      setHotels(data.results);
+      setPagingData(data.paging_data);
     };
 
     fetchData();
@@ -23,7 +25,8 @@ function SearchProvider({ query }) {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
       const data = await searchAPI.fetchQuery(query, activePage);
-      setHotels(data);
+      setHotels(data.results);
+      setPagingData(data.paging_data);
     };
 
     fetchData();
@@ -40,6 +43,7 @@ function SearchProvider({ query }) {
         handlePageChange: (pageNum) => {
           setActivePage(pageNum);
         },
+        paging_data,
       }}
       className='search'
     >

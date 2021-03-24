@@ -7,9 +7,10 @@ class Api::SearchController < ApplicationController
     else
       @page = 1
     end
-    results = Hotel.active.includes(:photos, :rates).ransack(name_start: params[:q]).result.paginate(page: @page, per_page: 5)
-    results.map do |result|
-    rate    = result.rates.order(actual_on: :desc).first
+    hotels = Hotel.active.includes(:photos, :rates).ransack(name_start: params[:q]).result.paginate(page: @page, per_page: 10)
+
+    results = hotels.map do |result|
+      rate = result.rates.order(actual_on: :desc).first
       {
         name: result.name,
         starRating: result.star_rating,
@@ -25,7 +26,8 @@ class Api::SearchController < ApplicationController
         rating: rate&.review_score
       }
     end
-    render json: {results: results, paging_data: common_paging_data(@page, 5, results)}
+
+    render json: {results: results, paging_data: common_paging_data(@page, 10, hotels)}
   end
 
   def locations
