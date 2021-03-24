@@ -50,6 +50,7 @@ gem 'ransack', '~> 2.3.2'
 
 gem 'sentry-rails', '~> 4.3.2'
 gem 'sentry-ruby', '~> 4.3.0'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'pry'
