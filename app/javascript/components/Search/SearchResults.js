@@ -4,6 +4,7 @@ import StarRatings from 'react-star-ratings';
 
 import { useSearchContext } from './SearchProvider'
 
+import Routes from '../../helpers/routes'
 
 function SearchResults() {
   const { hotels } = useSearchContext();
@@ -25,11 +26,13 @@ function SearchResults() {
                 <input type="checkbox" className="search__compare-action-checkbox" />
               </div>
               <div className="col-md-2">
-                <img src={hotel.photo} className="search__hotel-photo"/>
+                <a href={Routes.hotelPath(hotel.slug)}>
+                  <img src={hotel.photo} className="search__hotel-photo"/>
+                </a>
               </div>
               <div className="col-md-3">
                 <div className="search__hotel-name">
-                  {hotel.name}
+                  <a href={Routes.hotelPath(hotel.slug)}>{hotel.name}</a>
                 </div>
                 <StarRatings rating={hotel.starRating} starDimension="20px" starRatedColor="gold" starSpacing="0px" />
                 <div className="search__hotel-overview">
@@ -54,6 +57,8 @@ function SearchResults() {
               </div>
 
               <div className="col-md-1 search__score">
+                <div></div>
+                <a className="btn btn-light position-absolute fixed-bottom" href={Routes.hotelPath(hotel.slug)}>View</a>
               </div>
             </div>
           </Card.Body>
