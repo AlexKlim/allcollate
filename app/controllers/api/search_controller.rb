@@ -2,7 +2,7 @@ class Api::SearchController < ApplicationController
   layout nil
 
   def index
-    results = Hotel.active.includes(:photos, :rates).ransack(name_start: params[:q]).result.first(5)
+    results = Hotel.active.includes(:photos, :rates).ransack(name_start: params[:q]).result
     results = results.map do |result|
       rate = result.rates.order(actual_on: :desc).first
       {

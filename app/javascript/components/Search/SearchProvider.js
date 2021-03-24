@@ -5,6 +5,7 @@ import SearchAPI from '../../api/SearchAPI'
 export const SearchContext = React.createContext();
 
 function SearchProvider({ query }) {
+  debugger;
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {

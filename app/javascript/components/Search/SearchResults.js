@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from 'tabler-react';
 import StarRatings from 'react-star-ratings';
 
+import Pagination from "reactive-pagination";
 import { useSearchContext } from './SearchProvider'
 
 
 function SearchResults() {
   const { hotels } = useSearchContext();
+  const [activePage, setActivePage] = useState(1);
+  debugger;
 
+  const handlePageChange = (pageNum) => {
+    setActivePage(pageNum);
+  };
 
   const number_or_na = (val) => {
     return val ? val : (
@@ -59,6 +65,14 @@ function SearchResults() {
           </Card.Body>
         </Card>
         ))}
+        <Pagination
+          activePage={activePage}
+          itemsCountPerPage={10}
+          totalItemsCount={400}
+          delimeter={5}
+          onChange={handlePageChange}
+          styling="default"
+        />
     </div>
   )
 }
