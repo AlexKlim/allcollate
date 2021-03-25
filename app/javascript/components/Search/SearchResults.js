@@ -4,6 +4,7 @@ import StarRatings from 'react-star-ratings';
 
 import Pagination from 'reactive-pagination';
 import { useSearchContext } from './SearchProvider';
+import Routes from '../../helpers/routes'
 
 function SearchResults() {
   const {
@@ -17,18 +18,24 @@ function SearchResults() {
     return val ? val : <span className='search__text-grey'>NA</span>;
   };
 
-  return (
+  return(
     <>
-      <div className='row'>
-        {hotels.map((hotel) => (
+      <div className="row">
+        { hotels.map(hotel => (
           <Card>
             <Card.Body>
-              <div className='row'>
-                <div className='search__compare-action'>
-                  <input
-                    type='checkbox'
-                    className='search__compare-action-checkbox'
-                  />
+              <div className="row">
+                <div className="search__compare-action">
+                  <input type="checkbox" className="search__compare-action-checkbox" />
+              </div>
+              <div className="col-md-2">
+                <a href={Routes.hotelPath(hotel.slug)}>
+                  <img src={hotel.photo} className="search__hotel-photo"/>
+                </a>
+              </div>
+              <div className="col-md-3">
+                <div className="search__hotel-name">
+                  <a href={Routes.hotelPath(hotel.slug)}>{hotel.name}</a>
                 </div>
                 <div className='col-md-2'>
                   <img src={hotel.photo} className='search__hotel-photo' />
@@ -63,7 +70,9 @@ function SearchResults() {
                   <div>{hotel.rate}</div>
                 </div>
 
-                <div className='col-md-1 search__score'></div>
+              <div className="col-md-1 search__score">
+                <div></div>
+                <a className="btn btn-light position-absolute fixed-bottom" href={Routes.hotelPath(hotel.slug)}>View</a>
               </div>
             </Card.Body>
           </Card>
