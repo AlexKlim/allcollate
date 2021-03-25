@@ -7,7 +7,7 @@ export default class SearchAPI {
     if (pageNum != undefined) {
       url += `&pageNum=${pageNum}`;
     }
-    return axios.get(`${url}`).then((res) => res && res.data);
+    return axios.get(url).then((res) => res && res.data);
   }
 
   fetchSuggestionQuery(query) {

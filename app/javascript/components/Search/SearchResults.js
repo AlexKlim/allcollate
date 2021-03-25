@@ -11,7 +11,7 @@ function SearchResults() {
     hotels,
     handlePageChange,
     activePage,
-    paging_data,
+    pagingData,
   } = useSearchContext();
 
   const number_or_na = (val) => {
@@ -21,34 +21,40 @@ function SearchResults() {
   return(
     <>
       <div className="row">
-        { hotels.map(hotel => (
-          <Card>
+        { hotels.map((hotel, index) => {
+        	return(
+          	<Card key={index}>
             <Card.Body>
               <div className="row">
                 <div className="search__compare-action">
                   <input type="checkbox" className="search__compare-action-checkbox" />
-              </div>
-              <div className="col-md-2">
-                <a href={Routes.hotelPath(hotel.slug)}>
-                  <img src={hotel.photo} className="search__hotel-photo"/>
-                </a>
-              </div>
-              <div className="col-md-3">
-                <div className="search__hotel-name">
-                  <a href={Routes.hotelPath(hotel.slug)}>{hotel.name}</a>
-                </div>
-                <div className='col-md-2'>
-                  <img src={hotel.photo} className='search__hotel-photo' />
-                </div>
+              	</div>
+								<div className="col-md-2">
+									<a href={Routes.hotelPath(hotel.slug)}>
+										<img src={hotel.photo} className="search__hotel-photo"/>
+									</a>
+								</div>
+              	{/*<div className="col-md-3">*/}
+								{/*	<div className="search__hotel-name">*/}
+								{/*		<a href={Routes.hotelPath(hotel.slug)}>{hotel.name}</a>*/}
+								{/*	</div>*/}
+								{/*	<div className='col-md-2'>*/}
+								{/*		<img src={hotel.photo} className='search__hotel-photo' />*/}
+								{/*	</div>*/}
+								{/*</div>*/}
                 <div className='col-md-3'>
-                  <div className='search__hotel-name'>{hotel.name}</div>
-                  <StarRatings
-                    rating={hotel.starRating}
-                    starDimension='20px'
-                    starRatedColor='gold'
-                    starSpacing='0px'
-                  />
-                  <div className='search__hotel-overview'>{hotel.overview}</div>
+                  <div className='search__hotel-name'>
+										<a href={Routes.hotelPath(hotel.slug)}>{hotel.name}</a>
+                  </div>
+									<StarRatings
+										rating={hotel.starRating}
+										starDimension='20px'
+										starRatedColor='gold'
+										starSpacing='0px'
+									/>
+                  <div className='search__hotel-overview'>
+										{hotel.overview}
+                  </div>
                 </div>
 
                 <div className='col-md-3 search__hotel-location'>
@@ -69,21 +75,21 @@ function SearchResults() {
                   <div className='search__hotel-rate-title'>$/Night</div>
                   <div>{hotel.rate}</div>
                 </div>
-
-              <div className="col-md-1 search__score">
-                <div></div>
-                <a className="btn btn-light position-absolute fixed-bottom" href={Routes.hotelPath(hotel.slug)}>View</a>
-              </div>
+								<div className="col-md-1 search__score float-right">
+									<a className="btn btn-light position-absolute fixed-bottom" href={Routes.hotelPath(hotel.slug)}>View</a>
+								</div>
+							</div>
             </Card.Body>
           </Card>
-        ))}
+					)
+        })}
       </div>
       <div className='row'>
         <div className='col-12 text-center'>
           <Pagination
             activePage={activePage}
-            itemsCountPerPage={paging_data?.per_page || 10}
-            totalItemsCount={paging_data?.total_records || 400}
+            itemsCountPerPage={pagingData?.per_page || 10}
+            totalItemsCount={pagingData?.total_records || 400}
             delimeter={5}
             onChange={handlePageChange}
             styling='rounded'

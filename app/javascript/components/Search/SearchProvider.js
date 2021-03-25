@@ -8,14 +8,14 @@ function SearchProvider({ query }) {
   const [hotels, setHotels] = useState([]);
   const [tags, setTags] = useState([]);
   const [activePage, setActivePage] = useState(1);
-  const [paging_data, setPagingData] = useState({});
+  const [pagingData, setPagingData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
       const data = await searchAPI.fetchQuery(query);
       setHotels(data.results);
-      setPagingData(data.paging_data);
+      setPagingData(data.pagingData);
     };
 
     fetchData();
@@ -26,7 +26,7 @@ function SearchProvider({ query }) {
       const searchAPI = new SearchAPI();
       const data = await searchAPI.fetchQuery(query, activePage);
       setHotels(data.results);
-      setPagingData(data.paging_data);
+      setPagingData(data.pagingData);
     };
 
     fetchData();
@@ -43,7 +43,7 @@ function SearchProvider({ query }) {
         handlePageChange: (pageNum) => {
           setActivePage(pageNum);
         },
-        paging_data,
+        pagingData,
       }}
       className='search'
     >

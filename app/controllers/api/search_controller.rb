@@ -2,13 +2,8 @@ class Api::SearchController < ApplicationController
   layout nil
   
   def index
-    if params[:pageNum].present?
-      @page = params[:pageNum].to_i
-    else
-      @page = 1
-    end
-    hotels = Hotel.active.includes(:photos, :rates).ransack(name_start: params[:q]).result.paginate(page: @page, per_page: 25)
-
+    page   = params[:pageNum].present? ? params[:pageNum].to_i : 1
+    hotels = Hotel.active.includes(:photos, :rates).ransack(name_start: params[:q]).result.paginate(page: page, per_page: AppConstants::PERPAGE)
     results = hotels.map do |result|
       rate = result.rates.order(actual_on: :desc).first
       {
@@ -27,7 +22,7 @@ class Api::SearchController < ApplicationController
       }
     end
 
-    render json: {results: results, paging_data: common_paging_data(@page, 25, hotels)}
+    render json: {results: results, pagingData: common_paging_data(page, AppConstants::PERPAGE, hotels)}
   end
 
   def locations
