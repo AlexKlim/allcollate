@@ -7,11 +7,11 @@ import { Card, Form, Tag } from 'tabler-react';
 
 import Autosuggest from 'react-autosuggest';
 
-import SuggestionForm from './AutoSuggestion/SuggestionForm'
-import SearchAPI from '../../../api/SearchAPI'
+import SuggestionForm from './AutoSuggestion/SuggestionForm';
+import SearchAPI from '../../../api/SearchAPI';
 
 function SearchFiltersLocations({ value = '' }) {
-  const { query, tags, setTags } = useSearchContext();
+  const { query, tags, setTags, setHotels } = useSearchContext();
 
   const [results, setResults] = useState([]);
   // const [tags, setTags] = useState([]);
@@ -20,27 +20,32 @@ function SearchFiltersLocations({ value = '' }) {
     const searchAPI = new SearchAPI();
     const data = await searchAPI.fetchLocations(query);
     setResults(data);
-  }
-
-  const doRemoveClick = (event) => {
-    console.log("remove")
   };
 
-  const doSuggestionSelected = (item) => {
-    setTags(tags => [...tags, item]);
-  }
+  const doRemoveClick = (event) => {
+    console.log('remove');
+  };
+
+  const doSuggestionSelected = async (item) => {
+    setTags((tags) => [...tags, item]);
+  };
 
   return (
     <Card>
       <Card.Body>
-        <div className="search__filter-title">
-          Locations
-        </div>
+        <div className='search__filter-title'>Locations</div>
         <Form.Group>
-          <SuggestionForm doSuggestionSelected={doSuggestionSelected} doSearch={doSearch} results={results} value={value} />
+          <SuggestionForm
+            doSuggestionSelected={doSuggestionSelected}
+            doSearch={doSearch}
+            results={results}
+            value={value}
+          />
           <Tag.List>
             {tags.map((tag) => (
-              <Tag onRemoveClick={doRemoveClick.bind(this, tag)} remove>{tag.country}, {tag.city}</Tag>
+              <Tag onRemoveClick={doRemoveClick.bind(this, tag)} remove>
+                {tag.country}, {tag.city}
+              </Tag>
             ))}
           </Tag.List>
         </Form.Group>

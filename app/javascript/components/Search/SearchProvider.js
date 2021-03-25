@@ -13,7 +13,15 @@ function SearchProvider({ query }) {
   useEffect(() => {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
-      const data = await searchAPI.fetchQuery(query);
+      let data = {};
+      let results = [];
+
+      if (tags.length === 0) {
+        data = await searchAPI.fetchQuery(query);
+      } else {
+        data = await searchAPI.fetchQuery(tags);
+      }
+
       setHotels(data.results);
       setPagingData(data.pagingData);
     };
@@ -43,6 +51,7 @@ function SearchProvider({ query }) {
         handlePageChange: (pageNum) => {
           setActivePage(pageNum);
         },
+        setHotels,
         pagingData,
       }}
       className='search'

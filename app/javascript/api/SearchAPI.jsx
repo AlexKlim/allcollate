@@ -3,7 +3,14 @@ import axios from 'axios';
 
 export default class SearchAPI {
   fetchQuery(query, pageNum) {
-    let url = `api/search?q=${query}`;
+    let url = '';
+
+    if (typeof query === 'string') {
+      url = `api/search?q=${query}`;
+    } else if (typeof query === 'object') {
+      url = `api/search?q=${JSON.stringify(query)}&tags=true`;
+    }
+
     if (pageNum != undefined) {
       url += `&pageNum=${pageNum}`;
     }
