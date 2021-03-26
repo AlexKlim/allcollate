@@ -10,7 +10,8 @@ import Autosuggest from 'react-autosuggest';
 import SuggestionForm from './AutoSuggestion/SuggestionForm';
 import SearchAPI from '../../../api/SearchAPI';
 
-function SearchFiltersLocations({ value = '' }) {
+function SearchFiltersLocations({value = '' }) {
+
   const { query, tags, setTags, setHotels } = useSearchContext();
 
   const [results, setResults] = useState([]);
@@ -23,7 +24,8 @@ function SearchFiltersLocations({ value = '' }) {
   };
 
   const doRemoveClick = (event) => {
-    console.log('remove');
+		let updatedTags = tags.filter((singleItem) => singleItem.city != event.city && singleItem.country != event.country)
+		setTags(updatedTags);
   };
 
   const doSuggestionSelected = async (item) => {

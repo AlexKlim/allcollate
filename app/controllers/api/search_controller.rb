@@ -9,7 +9,6 @@ class Api::SearchController < ApplicationController
     elsif params[:tags].present?
       hotels = []
       tags = JSON.parse(params[:q])
-
       tags.each do |single_item|
         hotels << Hotel.active.includes(:photos, :rates).where(city: single_item["city"], country: single_item["country"])
       end

@@ -21,7 +21,6 @@ function SearchProvider({ query }) {
       } else {
         data = await searchAPI.fetchQuery(tags);
       }
-
       setHotels(data.results);
       setPagingData(data.pagingData);
     };
