@@ -9,8 +9,8 @@ class Api::SearchController < ApplicationController
     elsif params[:tags].present?
       hotels = []
       tags = JSON.parse(params[:q])
-      tags.each do |single_item|
-        hotels << Hotel.active.includes(:photos, :rates).where(city: single_item["city"], country: single_item["country"])
+      tags.each do |singleItem|
+        hotels << Hotel.active.includes(:photos, :rates).where(city: singleItem["city"], country: singleItem["country"])
       end
 
       hotels = Hotel.active.includes(:photos, :rates).where(id: hotels.flatten.map(&:id)).paginate(page: page, per_page: AppConstants::PERPAGE)
@@ -33,7 +33,6 @@ class Api::SearchController < ApplicationController
         rating: rate&.review_score
       }
     end
-
     render json: {results: results, pagingData: common_paging_data(page, AppConstants::PERPAGE, hotels)}
   end
 
