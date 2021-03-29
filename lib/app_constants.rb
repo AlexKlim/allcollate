@@ -1,3 +1,3 @@
 module AppConstants
-  PERPAGE         = 25
+  PERPAGE = 10
 end
