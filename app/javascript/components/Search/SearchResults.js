@@ -33,7 +33,7 @@ function SearchResults() {
     }
 
     return (
-      <Tooltip placement="top" overlay={<div>Based on <b>{reviewCount}</b> review counts</div>}>
+      <Tooltip placement="top" overlay={<div>Review score.<br/>Based on <b>{reviewCount}</b> review counts.</div>}>
         <Tag color={color}>{rating}</Tag>
       </Tooltip>
     )
