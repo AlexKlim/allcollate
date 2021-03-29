@@ -1,9 +1,9 @@
 class Api::SearchController < ApplicationController
   layout nil
-  
+
   def index
     page   = params[:pageNum].present? ? params[:pageNum].to_i : 1
-    hotels = Hotel.active.includes(:photos, :rates).ransack(name_start: params[:q]).result.paginate(page: page, per_page: AppConstants::PERPAGE)
+    hotels = Hotel.active.includes(:photos, :rates).ransack(name_start: params[:q]).result.order(:id).paginate(page: page, per_page: AppConstants::PERPAGE)
     results = hotels.map do |result|
       rate = result.rates.order(actual_on: :desc).first
       {
@@ -18,7 +18,8 @@ class Api::SearchController < ApplicationController
         rate: rate&.daily_rate,
         yearOpened: result.year_opened,
         yearRenovated: result.year_renovated,
-        rating: rate&.review_score
+        rating: rate&.review_score,
+        reviewCount: rate&.review_count
       }
     end
 
