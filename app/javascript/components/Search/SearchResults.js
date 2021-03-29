@@ -88,8 +88,8 @@ function SearchResults() {
         <div className='col-12 text-center'>
           <Pagination
             activePage={activePage}
-            itemsCountPerPage={pagingData?.per_page || 10}
-            totalItemsCount={pagingData?.total_records || 400}
+            itemsCountPerPage={pagingData?.perPage || 10}
+            totalItemsCount={pagingData?.totalRecords || 400}
             delimeter={5}
             onChange={handlePageChange}
             styling='rounded'
