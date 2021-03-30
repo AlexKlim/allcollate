@@ -5,8 +5,8 @@ class Api::SearchController < ApplicationController
     page = params[:pageNum].present? ? params[:pageNum].to_i : 1
 
     if params[:tags].present? == false and params[:q].present?
-      hotels = Hotel.active.includes(:photos, :rates).ransack(name_start: params[:q]).result.paginate(page: page, per_page: AppConstants::PERPAGE)
-    elsif params[:tags].present?
+      hotels = Hotel.active.includes(:photos, :rates).ransack(city_or_country_or_name_start: params[:q]).result.paginate(page: page, per_page: AppConstants::PERPAGE)
+    elsif params[:tags].present? and params[:q].present?
       hotels = []
       tags = JSON.parse(params[:q])
       tags.each do |singleItem|
@@ -14,6 +14,8 @@ class Api::SearchController < ApplicationController
       end
 
       hotels = Hotel.active.includes(:photos, :rates).where(id: hotels.flatten.map(&:id)).paginate(page: page, per_page: AppConstants::PERPAGE)
+    elsif params[:q].present? == false
+      hotels = Hotel.active.includes(:photos, :rates).paginate(page: page, per_page: AppConstants::PERPAGE)
     end
 
     results = hotels.map do |result|
