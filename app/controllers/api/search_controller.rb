@@ -9,11 +9,14 @@ class Api::SearchController < ApplicationController
     elsif params[:tags].present? and params[:q].present?
       hotels = []
       tags = JSON.parse(params[:q])
+
       tags.each do |singleItem|
         hotels << Hotel.active.includes(:photos, :rates).where(city: singleItem["city"], country: singleItem["country"])
       end
 
-      hotels = Hotel.active.includes(:photos, :rates).where(id: hotels.flatten.map(&:id)).paginate(page: page, per_page: AppConstants::PERPAGE)
+      if hotels.present?
+        hotels = Hotel.active.includes(:photos, :rates).where(id: hotels.flatten.map(&:id)).paginate(page: page, per_page: AppConstants::PERPAGE)
+      end
     elsif params[:q].present? == false
       hotels = Hotel.active.includes(:photos, :rates).paginate(page: page, per_page: AppConstants::PERPAGE)
     end
