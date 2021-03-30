@@ -23,11 +23,18 @@ function SearchFiltersLocations({ value = '' }) {
   };
 
   const doRemoveClick = (event) => {
-    let itemIndex = tags.findIndex((singleItem) => {
-      singleItem.city === event.city && singleItem.country === event.country;
-    });
+    let updatedTags = [];
 
-    let updatedTags = tags.splice(itemIndex, 1);
+    tags.forEach((singleItem) => {
+      if (
+        singleItem.city === event.city &&
+        singleItem.country === event.country
+      ) {
+        // Do not push in array
+      } else {
+        updatedTags.push(singleItem);
+      }
+    });
 
     setTags(updatedTags);
   };
