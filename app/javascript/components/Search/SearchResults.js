@@ -89,24 +89,20 @@ function SearchResults() {
 								<div className="col-md-1 search__score float-right">
                 </div>
 
-                <div className='col-md-3 search__hotel-location'>
-                  {hotel.country}, {hotel.city}, {hotel.addressline1}
-                </div>
+                {/*<div className='search__hotel-dates text-center'>*/}
+                {/*  <div className='search__hotel-dates-title'>*/}
+                {/*    Opened/Renovated*/}
+                {/*  </div>*/}
+                {/*  <div>*/}
+                {/*    {number_or_na(hotel.yearOpened)} /{' '}*/}
+                {/*    {number_or_na(hotel.yearRenovated)}*/}
+                {/*  </div>*/}
+                {/*</div>*/}
 
-                <div className='search__hotel-dates text-center'>
-                  <div className='search__hotel-dates-title'>
-                    Opened/Renovated
-                  </div>
-                  <div>
-                    {number_or_na(hotel.yearOpened)} /{' '}
-                    {number_or_na(hotel.yearRenovated)}
-                  </div>
-                </div>
-
-                <div className='search__hotel-rate text-center '>
-                  <div className='search__hotel-rate-title'>$/Night</div>
-                  <div>{hotel.rate}</div>
-                </div>
+                {/*<div className='search__hotel-rate text-center '>*/}
+                {/*  <div className='search__hotel-rate-title'>$/Night</div>*/}
+                {/*  <div>{hotel.rate}</div>*/}
+                {/*</div>*/}
 
                 <div className='col-md-1 search__hotel-rate text-center '>
                   {ratingTag(hotel.rating, hotel.reviewCount)}
