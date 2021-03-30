@@ -10,7 +10,6 @@ export default class SearchAPI {
     } else if (typeof query === 'object') {
       url = `api/search?q=${JSON.stringify(query)}&tags=true`;
     }
-
     if (pageNum != undefined) {
       url += `&pageNum=${pageNum}`;
     }

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Card } from 'tabler-react';
+import { Card, Tag } from 'tabler-react';
 import StarRatings from 'react-star-ratings';
-
+import Tooltip from 'rc-tooltip'
 import Pagination from 'reactive-pagination';
 import { useSearchContext } from './SearchProvider';
-import Routes from '../../helpers/routes'
+import Routes from '../../helpers/routes';
+import _ from 'lodash';
 
 function SearchResults() {
   const {
@@ -18,6 +19,24 @@ function SearchResults() {
     return val ? val : <span className='search__text-grey'>NA</span>;
   };
 
+  const ratingTag = (rating, reviewCount) => {
+    if (!rating || rating < 1 ) {
+      return
+    }
+
+    let color = 'green'
+    if (_.inRange(rating, 1, 5)) {
+      color = 'red'
+    } else if (_.inRange(rating, 5, 8)) {
+      color = 'yellow'
+    }
+
+    return (
+      <Tooltip placement="top" overlay={<div>Review score.<br/>Based on <b>{reviewCount}</b> review counts.</div>}>
+        <Tag color={color}>{rating}</Tag>
+      </Tooltip>
+    )
+  }
   return(
     <>
       <div className="row">
@@ -34,14 +53,6 @@ function SearchResults() {
 										<img src={hotel.photo} className="search__hotel-photo"/>
 									</a>
 								</div>
-              	{/*<div className="col-md-3">*/}
-								{/*	<div className="search__hotel-name">*/}
-								{/*		<a href={Routes.hotelPath(hotel.slug)}>{hotel.name}</a>*/}
-								{/*	</div>*/}
-								{/*	<div className='col-md-2'>*/}
-								{/*		<img src={hotel.photo} className='search__hotel-photo' />*/}
-								{/*	</div>*/}
-								{/*</div>*/}
                 <div className='col-md-3'>
                   <div className='search__hotel-name'>
 										<a href={Routes.hotelPath(hotel.slug)}>{hotel.name}</a>
@@ -76,6 +87,32 @@ function SearchResults() {
                   <div>{hotel.rate}</div>
                 </div>
 								<div className="col-md-1 search__score float-right">
+                </div>
+
+                <div className='col-md-3 search__hotel-location'>
+                  {hotel.country}, {hotel.city}, {hotel.addressline1}
+                </div>
+
+                <div className='search__hotel-dates text-center'>
+                  <div className='search__hotel-dates-title'>
+                    Opened/Renovated
+                  </div>
+                  <div>
+                    {number_or_na(hotel.yearOpened)} /{' '}
+                    {number_or_na(hotel.yearRenovated)}
+                  </div>
+                </div>
+
+                <div className='search__hotel-rate text-center '>
+                  <div className='search__hotel-rate-title'>$/Night</div>
+                  <div>{hotel.rate}</div>
+                </div>
+
+                <div className='col-md-1 search__hotel-rate text-center '>
+                  {ratingTag(hotel.rating, hotel.reviewCount)}
+                </div>
+
+								<div className="col-md-1 search__view">
 									<a className="btn btn-light position-absolute fixed-bottom" href={Routes.hotelPath(hotel.slug)}>View</a>
 								</div>
 							</div>

@@ -1,4 +1,10 @@
 .search {
+  &__view {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+  }
+
   &__locations-container {
     background-color: white;
     border-radius: 4px;
@@ -64,6 +70,11 @@
   &__hotel-rate {
     &-title {
       font-style: italic;
+    }
+    .tag {
+      font-size: 15px;
+      padding-left: 10px;
+      padding-right: 10px;
     }
   }
 
