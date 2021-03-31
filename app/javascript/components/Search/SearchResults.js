@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Card } from 'tabler-react';
+import { Card, Tag } from 'tabler-react';
 import StarRatings from 'react-star-ratings';
-
+import Tooltip from 'rc-tooltip';
 import Pagination from 'reactive-pagination';
 import { useSearchContext } from './SearchProvider';
 import Routes from '../../helpers/routes';
+import _ from 'lodash';
 
 function SearchResults() {
   const {
@@ -18,6 +19,33 @@ function SearchResults() {
     return val ? val : <span className='search__text-grey'>NA</span>;
   };
 
+  const ratingTag = (rating, reviewCount) => {
+    if (!rating || rating < 1) {
+      return;
+    }
+
+    let color = 'green';
+    if (_.inRange(rating, 1, 5)) {
+      color = 'red';
+    } else if (_.inRange(rating, 5, 8)) {
+      color = 'yellow';
+    }
+
+    return (
+      <Tooltip
+        placement='top'
+        overlay={
+          <div>
+            Review score.
+            <br />
+            Based on <b>{reviewCount}</b> review counts.
+          </div>
+        }
+      >
+        <Tag color={color}>{rating}</Tag>
+      </Tooltip>
+    );
+  };
   return (
     <>
       <div className='row'>
@@ -70,7 +98,13 @@ function SearchResults() {
                     <div className='search__hotel-rate-title'>$/Night</div>
                     <div>{hotel.rate}</div>
                   </div>
-                  <div className='col-md-1 search__score float-right'>
+                  <div className='col-md-1 search__score float-right'></div>
+
+                  <div className='col-md-1 search__hotel-rate text-center '>
+                    {ratingTag(hotel.rating, hotel.reviewCount)}
+                  </div>
+
+                  <div className='col-md-1 search__view'>
                     <a
                       className='btn btn-light position-absolute fixed-bottom'
                       href={Routes.hotelPath(hotel.slug)}
@@ -88,8 +122,8 @@ function SearchResults() {
         <div className='col-12 text-center'>
           <Pagination
             activePage={activePage}
-            itemsCountPerPage={pagingData.perPage || 10}
-            totalItemsCount={pagingData.totalRecords || 400}
+            itemsCountPerPage={pagingData?.perPage || 10}
+            totalItemsCount={pagingData?.totalRecords || 400}
             delimeter={5}
             onChange={handlePageChange}
             styling='rounded'

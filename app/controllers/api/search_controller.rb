@@ -24,7 +24,8 @@ class Api::SearchController < ApplicationController
         rate: rate&.daily_rate,
         yearOpened: result.year_opened,
         yearRenovated: result.year_renovated,
-        rating: rate&.review_score
+        rating: rate&.review_score,
+        reviewCount: rate&.review_count
       }
     end
     render json: {results: results, pagingData: common_paging_data(page, AppConstants::PERPAGE, hotels)}
