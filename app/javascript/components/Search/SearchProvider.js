@@ -16,7 +16,7 @@ function SearchProvider({ query }) {
       let data = [];
 
       if (locations.length) {
-        data = await searchAPI.fetchAtLocations(locations);
+        data = await searchAPI.fetchAtLocations(locations, activePage);
       } else {
         data = await searchAPI.fetchQuery(query, activePage);
       }

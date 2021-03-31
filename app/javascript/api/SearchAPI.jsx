@@ -7,8 +7,10 @@ export default class SearchAPI {
     return axios.get(url).then((res) => res && res.data);
   }
 
-  fetchAtLocations(query) {
-    let url = `api/search/locationHotels?q=${JSON.stringify(query)}`;
+  fetchAtLocations(query, pageNum) {
+    let url = `api/search/locationHotels?q=${JSON.stringify(
+      query
+    )}&pageNum=${pageNum}`;
     return axios.get(url).then((res) => res && res.data);
   }
 
