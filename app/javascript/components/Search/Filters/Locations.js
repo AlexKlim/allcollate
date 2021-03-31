@@ -11,7 +11,13 @@ import SuggestionForm from './AutoSuggestion/SuggestionForm';
 import SearchAPI from '../../../api/SearchAPI';
 
 function SearchFiltersLocations({ value = '' }) {
-  const { query, locations, setLocations, setHotels } = useSearchContext();
+  const {
+    query,
+    locations,
+    setActivePage,
+    setLocations,
+    setHotels,
+  } = useSearchContext();
   const [results, setResults] = useState([]);
 
   const doSearch = async (query) => {
@@ -33,11 +39,12 @@ function SearchFiltersLocations({ value = '' }) {
         updatedLocations.push(singleItem);
       }
     });
-
+    setActivePage(1);
     setLocations(updatedLocations);
   };
 
   const doSuggestionSelected = async (item) => {
+    setActivePage(1);
     setLocations((locations) => [...locations, item]);
   };
 

@@ -39,6 +39,7 @@ function SearchProvider({ query }) {
         handlePageChange: (pageNum) => {
           setActivePage(pageNum);
         },
+        setActivePage,
         setHotels,
         pagingData,
       }}
