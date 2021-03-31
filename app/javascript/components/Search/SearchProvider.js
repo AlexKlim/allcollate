@@ -6,27 +6,25 @@ export const SearchContext = React.createContext();
 
 function SearchProvider({ query }) {
   const [hotels, setHotels] = useState([]);
-  const [tags, setTags] = useState([]);
+  const [locations, setLocations] = useState([]);
+  const [locationsRemoved, setLocationsRemoved] = useState(false);
   const [activePage, setActivePage] = useState(1);
   const [pagingData, setPagingData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
-      let data = {};
-      let results = [];
+      let data = [];
 
-      if (tags.length === 0) {
-        data = await searchAPI.fetchQuery(query);
-      } else {
-        data = await searchAPI.fetchQuery(tags);
+      if (locations.length) {
+        data = await searchAPI.fetchAtLocations(locations);
+        setHotels(data.results);
+        setPagingData(data.pagingData);
       }
-      setHotels(data.results);
-      setPagingData(data.pagingData);
     };
 
     fetchData();
-  }, [tags]);
+  }, [locations]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,20 +35,21 @@ function SearchProvider({ query }) {
     };
 
     fetchData();
-  }, [activePage]);
+  }, [activePage, locationsRemoved]);
 
   return (
     <SearchContext.Provider
       value={{
         query,
         hotels,
-        tags,
-        setTags: (tags) => setTags(tags),
+        locations,
+        setLocations: (locations) => setLocations(locations),
         activePage,
         handlePageChange: (pageNum) => {
           setActivePage(pageNum);
         },
         setHotels,
+        setLocationsRemoved,
         pagingData,
       }}
       className='search'
@@ -59,6 +58,6 @@ function SearchProvider({ query }) {
     </SearchContext.Provider>
   );
 }
-export default SearchProvider;
 
+export default SearchProvider;
 export const useSearchContext = () => useContext(SearchContext);

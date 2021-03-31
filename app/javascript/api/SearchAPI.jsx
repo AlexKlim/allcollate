@@ -3,17 +3,12 @@ import axios from 'axios';
 
 export default class SearchAPI {
   fetchQuery(query, pageNum) {
-    let url = '';
+    let url = `api/search?q=${query}&pageNum=${pageNum}`;
+    return axios.get(url).then((res) => res && res.data);
+  }
 
-    if (typeof query === 'string') {
-      url = `api/search?q=${query}`;
-    } else if (typeof query === 'object') {
-      url = `api/search?q=${JSON.stringify(query)}&tags=true`;
-    }
-
-    if (pageNum != undefined) {
-      url += `&pageNum=${pageNum}`;
-    }
+  fetchAtLocations(query) {
+    let url = `api/search/locationHotels?q=${JSON.stringify(query)}`;
     return axios.get(url).then((res) => res && res.data);
   }
 

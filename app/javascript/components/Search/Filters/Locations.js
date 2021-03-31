@@ -11,10 +11,14 @@ import SuggestionForm from './AutoSuggestion/SuggestionForm';
 import SearchAPI from '../../../api/SearchAPI';
 
 function SearchFiltersLocations({ value = '' }) {
-  const { query, tags, setTags, setHotels } = useSearchContext();
-
+  const {
+    query,
+    locations,
+    setLocations,
+    setLocationsRemoved,
+    setHotels,
+  } = useSearchContext();
   const [results, setResults] = useState([]);
-  // const [tags, setTags] = useState([]);
 
   const doSearch = async (query) => {
     const searchAPI = new SearchAPI();
@@ -23,24 +27,28 @@ function SearchFiltersLocations({ value = '' }) {
   };
 
   const doRemoveClick = (event) => {
-    let updatedTags = [];
+    let updatedLocations = [];
 
-    tags.forEach((singleItem) => {
+    locations.forEach((singleItem) => {
       if (
         singleItem.city === event.city &&
         singleItem.country === event.country
       ) {
         // Do not push in array
       } else {
-        updatedTags.push(singleItem);
+        updatedLocations.push(singleItem);
       }
     });
 
-    setTags(updatedTags);
+    if (updatedLocations.length === 0) {
+      setLocationsRemoved(true);
+    }
+    setLocations(updatedLocations);
   };
 
   const doSuggestionSelected = async (item) => {
-    setTags((tags) => [...tags, item]);
+    setLocations((locations) => [...locations, item]);
+    setLocationsRemoved(false);
   };
 
   return (
@@ -55,7 +63,7 @@ function SearchFiltersLocations({ value = '' }) {
             value={value}
           />
           <Tag.List>
-            {tags.map((tag) => (
+            {locations.map((tag) => (
               <Tag onRemoveClick={doRemoveClick.bind(this, tag)} remove>
                 {tag.country}, {tag.city}
               </Tag>
