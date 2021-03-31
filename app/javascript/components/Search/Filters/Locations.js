@@ -11,13 +11,7 @@ import SuggestionForm from './AutoSuggestion/SuggestionForm';
 import SearchAPI from '../../../api/SearchAPI';
 
 function SearchFiltersLocations({ value = '' }) {
-  const {
-    query,
-    locations,
-    setLocations,
-    setLocationsRemoved,
-    setHotels,
-  } = useSearchContext();
+  const { query, locations, setLocations, setHotels } = useSearchContext();
   const [results, setResults] = useState([]);
 
   const doSearch = async (query) => {
@@ -40,15 +34,11 @@ function SearchFiltersLocations({ value = '' }) {
       }
     });
 
-    if (updatedLocations.length === 0) {
-      setLocationsRemoved(true);
-    }
     setLocations(updatedLocations);
   };
 
   const doSuggestionSelected = async (item) => {
     setLocations((locations) => [...locations, item]);
-    setLocationsRemoved(false);
   };
 
   return (
