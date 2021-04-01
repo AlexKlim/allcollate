@@ -118,6 +118,8 @@ function SearchResults() {
           );
         })}
       </div>
+      {hotels.length > 0 ?
+      <>
       <div className='row'>
         <div className='col-12 text-center'>
           <Pagination
@@ -130,6 +132,10 @@ function SearchResults() {
           />
         </div>
       </div>
+      </>:
+      <>
+      </>
+      }
     </>
   );
 }
