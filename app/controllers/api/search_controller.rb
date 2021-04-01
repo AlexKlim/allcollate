@@ -4,9 +4,7 @@ class Api::SearchController < ApplicationController
   def index
     page = params[:pageNum].present? ? params[:pageNum].to_i : 1
     ids = []
-    if params[:q].present?
-      hotels = Hotel.active.includes(:photos, :rates).ransack(city_or_country_or_name_start: params[:q]).result.paginate(page: page, per_page: AppConstants::PERPAGE)
-    end
+    hotels = Hotel.active.includes(:photos, :rates).ransack(city_or_country_or_name_start: params[:q]).result.paginate(page: page, per_page: AppConstants::PERPAGE)
     locations = JSON.parse(params[:locations])
     locations&.each do |location|
       ids << Hotel.active.includes(:photos, :rates).where(city: location["city"], country: location["country"])
