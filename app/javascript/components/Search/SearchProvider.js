@@ -14,13 +14,7 @@ function SearchProvider({ query }) {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
       let data = [];
-
-      if (locations.length) {
-        data = await searchAPI.fetchAtLocations(locations, activePage);
-      } else {
-        data = await searchAPI.fetchQuery(query, activePage);
-      }
-
+			data = await searchAPI.fetchQuery(query, locations,activePage);
       setHotels(data.results);
       setPagingData(data.pagingData);
     };
