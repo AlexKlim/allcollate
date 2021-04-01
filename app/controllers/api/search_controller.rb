@@ -3,14 +3,14 @@ class Api::SearchController < ApplicationController
 
   def index
     page = params[:pageNum].present? ? params[:pageNum].to_i : 1
-    ids = []
+    hotelIds = []
     hotels = Hotel.active.includes(:photos, :rates).ransack(city_or_country_or_name_start: params[:q]).result.paginate(page: page, per_page: AppConstants::PERPAGE)
     locations = JSON.parse(params[:locations])
     locations&.each do |location|
-      ids << Hotel.active.includes(:photos, :rates).where(city: location["city"], country: location["country"])
+      hotelIds << Hotel.active.includes(:photos, :rates).where(city: location["city"], country: location["country"])
     end
-    if ids.present?
-      hotels = Hotel.active.includes(:photos, :rates).where(id: ids.flatten.map(&:id)).paginate(page: page, per_page: AppConstants::PERPAGE)
+    if hotelIds.present?
+      hotels = Hotel.active.includes(:photos, :rates).where(id: hotelIds.flatten.map(&:id)).paginate(page: page, per_page: AppConstants::PERPAGE)
     end
     results = hotels&.map do |result|
       rate = result.rates.order(actual_on: :desc).first
