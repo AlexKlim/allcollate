@@ -98,10 +98,10 @@ function SearchResults() {
                     <div className='search__hotel-rate-title'>$/Night</div>
                     <div>{hotel.rate}</div>
                   </div>
-                  <div className='col-md-1 search__score float-right'></div>
-
-                  <div className='col-md-1 search__hotel-rate text-center '>
-                    {ratingTag(hotel.rating, hotel.reviewCount)}
+                  <div className='col-md-1 search__score float-right'>
+                    <div className='col-md-1 search__hotel-rate text-center '>
+                      {ratingTag(hotel.rating, hotel.reviewCount)}
+                    </div>
                   </div>
 
                   <div className='col-md-1 search__view'>
