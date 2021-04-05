@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDebouncedCallback } from 'use-debounce/lib';
 import { useSearchContext } from '../SearchProvider';
-import { Slider, RangeSlider } from 'rsuite';
 
 import { Card, Form, Tag } from 'tabler-react';
 
@@ -10,6 +9,9 @@ import Autosuggest from 'react-autosuggest';
 
 import SuggestionForm from './AutoSuggestion/SuggestionForm';
 import SearchAPI from '../../../api/SearchAPI';
+
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
 
 function YearRenovated({ value = '' }) {
   const {
@@ -20,6 +22,7 @@ function YearRenovated({ value = '' }) {
     setHotels,
   } = useSearchContext();
   const [results, setResults] = useState([]);
+  const [sliderValues, setSliderValues] = React.useState([20, 37]);
 
   const doSearch = async (query) => {
     const searchAPI = new SearchAPI();
@@ -49,24 +52,21 @@ function YearRenovated({ value = '' }) {
     setLocations((locations) => [...locations, item]);
   };
 
-  const handleChange = (values) => {
-    debugger;
-  }
+  const handleChange = (event, newValue) => {
+    setSliderValues(newValue);
+  };
 
   return (
     <Card>
       <Card.Body>
-        <h6>Year Renovated</h6>
-        <RangeSlider 
-          defaultValue={[2016, 2020]}
-          step={10}
-          graduated
-          progress
-          tooltip
-          renderMark={mark => {
-            return mark;
-          }}
+        <Typography id='range-slider' gutterBottom>
+          Year Renovated
+        </Typography>
+        <Slider
+          value={sliderValues}
           onChange={handleChange}
+          valueLabelDisplay='auto'
+          aria-labelledby='range-slider'
         />
       </Card.Body>
     </Card>
