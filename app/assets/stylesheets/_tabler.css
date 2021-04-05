@@ -14470,6 +14470,7 @@ a.tag-addon:hover {
 }
 
 .tags {
+  margin-top: 15px;
   margin-bottom: -0.5rem;
   font-size: 0;
 }
