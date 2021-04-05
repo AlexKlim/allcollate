@@ -7,15 +7,15 @@ class Api::SearchController < ApplicationController
     search_options = {}
     search_options[:name_start] = params[:q] if params[:q]
     
-    if params[:locations].present? and JSON.parse(params[:locations]).present?
-      locations = JSON.parse(params[:locations])
+    if (locations = params[:locations])
+      locations = JSON.parse(locations)
       search_options[:city_start_any]    = locations.map { |location| location['city'] }
       search_options[:country_start_any] = locations.map { |location| location['country'] }
     end
-    hotels = Hotel.active.includes(:photos, :rates).ransack(search_options).result
-                  .paginate(page: page, per_page: AppConstants::PERPAGE)
+    hotels  = Hotel.active.includes(:photos, :rates).ransack(search_options).result
+            .paginate(page: page, per_page: AppConstants::PERPAGE)
     results = hotels&.map do |result|
-      rate = result.rates.order(actual_on: :desc).first
+      rate  = result.rates.order(actual_on: :desc).first
       {
         name: result.name,
         starRating: result.star_rating,
