@@ -9,18 +9,27 @@ function SearchProvider({ query }) {
   const [locations, setLocations] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [pagingData, setPagingData] = useState({});
+  const [yearRenovationSlider, setYearRenovationSlider] = useState([
+    2017,
+    2020,
+  ]);
 
   useEffect(() => {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
       let data = [];
-			data = await searchAPI.fetchQuery(query, locations,activePage);
+      data = await searchAPI.fetchQuery(
+        query,
+        locations,
+        yearRenovationSlider,
+        activePage
+      );
       setHotels(data.results);
       setPagingData(data.pagingData);
     };
 
     fetchData();
-  }, [locations, activePage]);
+  }, [locations, activePage, yearRenovationSlider]);
 
   return (
     <SearchContext.Provider
@@ -36,6 +45,8 @@ function SearchProvider({ query }) {
         setActivePage,
         setHotels,
         pagingData,
+        yearRenovationSlider,
+        setYearRenovationSlider,
       }}
       className='search'
     >
