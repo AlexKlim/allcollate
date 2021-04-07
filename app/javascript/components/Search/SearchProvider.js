@@ -10,8 +10,8 @@ function SearchProvider({ query }) {
   const [activePage, setActivePage] = useState(1);
   const [pagingData, setPagingData] = useState({});
   const [yearRenovationSlider, setYearRenovationSlider] = useState([
-    2017,
-    2020,
+    2000,
+    2021,
   ]);
 
   useEffect(() => {
