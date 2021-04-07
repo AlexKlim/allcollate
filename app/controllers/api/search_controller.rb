@@ -13,7 +13,8 @@ class Api::SearchController < ApplicationController
       search_options[:country_start_any] = locations.map { |location| location['country'] }
     end
     
-    if params[:yearRenovated].present? and  JSON.parse(params[:yearRenovated]).present?
+    
+    if params[:yearRenovated].present? and  JSON.parse(params[:yearRenovated]).compact.present?
       yearRenovated                            = JSON.parse(params[:yearRenovated])
       search_options[:year_renovated_gteq_any] = yearRenovated[0]
       search_options[:year_renovated_lteq_any] = yearRenovated[1]
