@@ -2,9 +2,21 @@ class Api::SearchController < ApplicationController
   layout nil
 
   def index
-    page   = params[:pageNum].present? ? params[:pageNum].to_i : 1
-    hotels = Hotel.active.includes(:photos, :rates).ransack(name_start: params[:q]).result.order(:id).paginate(page: page, per_page: AppConstants::PERPAGE)
-    results = hotels.map do |result|
+    page = params[:pageNum].present? ? params[:pageNum].to_i : 1
+
+    search_options = {}
+    search_options[:name_start] = params[:q] if params[:q]
+
+    if (locations = params[:locations])
+      locations = JSON.parse(locations)
+      search_options[:city_start_any] = locations.map { |location| location['city'] }
+      search_options[:country_start_any] = locations.map { |location| location['country'] }
+    end
+
+    hotels = Hotel.active.includes(:photos, :rates).ransack(search_options).result
+                  .paginate(page: page, per_page: AppConstants::PERPAGE)
+
+    results = hotels&.map do |result|
       rate = result.rates.order(actual_on: :desc).first
       {
         name: result.name,
@@ -22,7 +34,6 @@ class Api::SearchController < ApplicationController
         reviewCount: rate&.review_count
       }
     end
-
     render json: {results: results, pagingData: common_paging_data(page, AppConstants::PERPAGE, hotels)}
   end
 
@@ -33,7 +44,7 @@ class Api::SearchController < ApplicationController
       {
         city: result.city,
         country: result.country,
-        addressline1: result.addressline1
+        # addressline1: result.addressline1
       }
     end
 

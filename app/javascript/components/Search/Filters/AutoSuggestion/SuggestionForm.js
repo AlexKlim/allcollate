@@ -5,7 +5,6 @@ import theme from './theme';
 import Input from './Input/index';
 
 const SuggestionForm = ({ doSuggestionSelected, doSearch, results, value }) => {
-
   const [localValue, setLocalValue] = useState('');
   useEffect(() => setLocalValue(value), [value]);
 
@@ -19,23 +18,26 @@ const SuggestionForm = ({ doSuggestionSelected, doSearch, results, value }) => {
 
   const onSuggestionsFetchRequested = ({ value }) => {
     doSearch(value.trim());
-  }
+  };
 
   const renderSuggestion = (suggestion, { query }) => {
     // const { noResults } = this.state;
 
     return (
-      <div className="results__item">
-        <ul className="list-unstyled us-results__list">
-          <li className="search-filters-suggestion__results-item">
+      <div className='results__item'>
+        <ul className='list-unstyled us-results__list'>
+          <li className='search-filters-suggestion__results-item'>
             {suggestion.city}, {suggestion.country}
           </li>
         </ul>
       </div>
-      )
-  }
+    );
+  };
 
-  const onSuggestionSelected = (event, { suggestion, suggestionValue: value }) => {
+  const onSuggestionSelected = (
+    event,
+    { suggestion, suggestionValue: value }
+  ) => {
     event.preventDefault();
 
     doSuggestionSelected(suggestion);
@@ -49,7 +51,7 @@ const SuggestionForm = ({ doSuggestionSelected, doSearch, results, value }) => {
     // }
 
     // window.location.href = `/hotel/${suggestion.slug}`
-  }
+  };
 
   const onFocus = () => true;
   const showSuggestionsOptions = { shouldRenderSuggestions: onFocus };
@@ -59,7 +61,7 @@ const SuggestionForm = ({ doSuggestionSelected, doSearch, results, value }) => {
       suggestions={results}
       theme={theme}
       {...showSuggestionsOptions}
-      getSuggestionValue={results => results.city}
+      getSuggestionValue={(results) => results.city}
       inputProps={inputProps}
       onSuggestionsClearRequested={() => null}
       onSuggestionSelected={onSuggestionSelected.bind(this)}
@@ -68,6 +70,6 @@ const SuggestionForm = ({ doSuggestionSelected, doSearch, results, value }) => {
       renderSuggestion={renderSuggestion.bind(this)}
     />
   );
-}
+};
 
 export default SuggestionForm;
