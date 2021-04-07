@@ -66,7 +66,7 @@ function YearRenovated({ value = '' }) {
         <Slider
           value={yearRenovationSlider}
           onChange={handleChange}
-          valueLabelDisplay='auto'
+          valueLabelDisplay='on'
           aria-labelledby='range-slider'
           min={2016}
           max={2021}

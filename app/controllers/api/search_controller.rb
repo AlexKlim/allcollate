@@ -12,6 +12,13 @@ class Api::SearchController < ApplicationController
       search_options[:city_start_any]    = locations.map { |location| location['city'] }
       search_options[:country_start_any] = locations.map { |location| location['country'] }
     end
+    
+    if params[:yearRenovated].present? and  JSON.parse(params[:yearRenovated]).present?
+      yearRenovated                            = JSON.parse(params[:yearRenovated])
+      search_options[:year_renovated_gteq_any] = yearRenovated[0]
+      search_options[:year_renovated_lteq_any] = yearRenovated[1]
+    end
+    
     hotels  = Hotel.active.includes(:photos, :rates).ransack(search_options).result
             .paginate(page: page, per_page: AppConstants::PERPAGE)
     results = hotels&.map do |result|
