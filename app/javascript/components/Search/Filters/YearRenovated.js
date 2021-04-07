@@ -20,9 +20,10 @@ function YearRenovated({ value = '' }) {
     setActivePage,
     setLocations,
     setHotels,
+    yearRenovationSlider,
+    setYearRenovationSlider,
   } = useSearchContext();
   const [results, setResults] = useState([]);
-  const [sliderValues, setSliderValues] = React.useState([20, 37]);
 
   const doSearch = async (query) => {
     const searchAPI = new SearchAPI();
@@ -53,7 +54,7 @@ function YearRenovated({ value = '' }) {
   };
 
   const handleChange = (event, newValue) => {
-    setSliderValues(newValue);
+    setYearRenovationSlider(newValue);
   };
 
   return (
@@ -63,10 +64,12 @@ function YearRenovated({ value = '' }) {
           Year Renovated
         </Typography>
         <Slider
-          value={sliderValues}
+          value={yearRenovationSlider}
           onChange={handleChange}
           valueLabelDisplay='auto'
           aria-labelledby='range-slider'
+          min={2016}
+          max={2021}
         />
       </Card.Body>
     </Card>
