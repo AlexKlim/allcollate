@@ -13,8 +13,7 @@ function SearchProvider({ query }) {
   useEffect(() => {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
-      let data = [];
-			data = await searchAPI.fetchQuery(query, locations,activePage);
+      let data = await searchAPI.fetchQuery(query, locations, activePage);
       setHotels(data.results);
       setPagingData(data.pagingData);
     };
