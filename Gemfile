@@ -14,6 +14,9 @@ gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 gem 'react-rails', '~> 2.6.1'
+gem 'rubocop', '~> 0.88.0', require: false
+
+gem 'jsonapi-serializer', '~> 2.2.0'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'

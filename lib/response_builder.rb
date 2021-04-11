@@ -1,6 +1,6 @@
-module ResponseBuilder
-  require 'will_paginate/array'
+require 'will_paginate/array'
 
+module ResponseBuilder
   def self.get_paging_data(page, per_page, records)
     next_page_exist = page < records.total_pages
     previous_page_exist = page > 1 && page <= records.total_pages
