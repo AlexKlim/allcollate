@@ -6,43 +6,34 @@ export const SearchContext = React.createContext();
 
 function SearchProvider({ query }) {
   const [hotels, setHotels] = useState([]);
-  const [tags, setTags] = useState([]);
+  const [locations, setLocations] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [pagingData, setPagingData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
-      const data = await searchAPI.fetchQuery(query);
+      const data = await searchAPI.fetchQuery(query, locations, activePage);
       setHotels(data.results);
       setPagingData(data.pagingData);
     };
 
     fetchData();
-  }, [tags]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const searchAPI = new SearchAPI();
-      const data = await searchAPI.fetchQuery(query, activePage);
-      setHotels(data.results);
-      setPagingData(data.pagingData);
-    };
-
-    fetchData();
-  }, [activePage]);
+  }, [locations, activePage]);
 
   return (
     <SearchContext.Provider
       value={{
         query,
         hotels,
-        tags,
-        setTags: (tags) => setTags(tags),
+        locations,
+        setLocations: (locations) => setLocations(locations),
         activePage,
         handlePageChange: (pageNum) => {
           setActivePage(pageNum);
         },
+        setActivePage,
+        setHotels,
         pagingData,
       }}
       className='search'
@@ -51,6 +42,6 @@ function SearchProvider({ query }) {
     </SearchContext.Provider>
   );
 }
-export default SearchProvider;
 
+export default SearchProvider;
 export const useSearchContext = () => useContext(SearchContext);
