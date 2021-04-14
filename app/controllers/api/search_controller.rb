@@ -46,6 +46,7 @@ class Api::SearchController < ApplicationController
     search = Services::Search::Hotel.new(params[:q], params[:pageNum])
     search.add_locations!(params[:locations])
     search.yearRenovated!(params[:yearRenovated])
+    search.yearOpened!(params[:yearOpened])
 
     hotels = search.do
 

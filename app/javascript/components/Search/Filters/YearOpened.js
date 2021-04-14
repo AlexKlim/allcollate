@@ -4,25 +4,25 @@ import { Card, Form, Tag } from "tabler-react";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
-function YearRenovated({ value = "" }) {
-  const { yearRenovationSlider, setYearRenovationSlider } = useSearchContext();
+function YearOpened({ value = "" }) {
+  const { yearOpenedSlider, setYearOpenedSlider } = useSearchContext();
 
   const handleChange = (event, newValue) => {
-    setYearRenovationSlider(newValue);
+    setYearOpenedSlider(newValue);
   };
 
   return (
     <Card>
       <Card.Body>
         <Typography id="range-slider" gutterBottom>
-          Year Renovated
+          Year Opened
         </Typography>
         <Slider
-          value={yearRenovationSlider}
+          value={yearOpenedSlider}
           onChange={handleChange}
           valueLabelDisplay="on"
           aria-labelledby="range-slider"
-          min={2016}
+          min={2014}
           max={2021}
         />
       </Card.Body>
@@ -30,4 +30,4 @@ function YearRenovated({ value = "" }) {
   );
 }
 
-export default YearRenovated;
+export default YearOpened;

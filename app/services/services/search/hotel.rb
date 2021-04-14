@@ -24,8 +24,19 @@ class Services::Search::Hotel
   def yearRenovated!(yearRenovated)
     return unless yearRenovated
     yearRenovated = parse_json(yearRenovated)
-    search_options[:year_renovated_gteq_any] = yearRenovated[0]
-    search_options[:year_renovated_lteq_any] = yearRenovated[1]
+    if (yearRenovated[0] != nil && !yearRenovated[1] != nil)
+      options[:year_renovated_gteq_any] = yearRenovated[0]
+      options[:year_renovated_lteq_any] = yearRenovated[1]
+    end
+  end
+
+  def yearOpened!(yearOpened)
+    return unless yearOpened
+    yearOpened = parse_json(yearOpened)
+    if (yearOpened[0] != nil && !yearOpened[1] != nil)
+      options[:year_opened_gteq_any] = yearOpened[0]
+      options[:year_opened_lteq_any] = yearOpened[1]
+    end
   end
   
   private
