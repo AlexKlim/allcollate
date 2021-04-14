@@ -17,19 +17,13 @@ function SearchProvider({ query }) {
   useEffect(() => {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
-      let data = [];
-      data = await searchAPI.fetchQuery(
-        query,
-        locations,
-        yearRenovationSlider,
-        activePage
-      );
+      const data = await searchAPI.fetchQuery(query, locations,yearRenovationSlider, activePage);
       setHotels(data.results);
       setPagingData(data.pagingData);
     };
 
     fetchData();
-  }, [locations, activePage, yearRenovationSlider]);
+  }, [locations, activePage,yearRenovationSlider]);
 
   return (
     <SearchContext.Provider

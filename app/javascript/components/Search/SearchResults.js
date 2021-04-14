@@ -118,22 +118,20 @@ function SearchResults() {
           );
         })}
       </div>
-      { hotels.length > 0 &&
-				<>
-					<div className='row'>
-						<div className='col-12 text-center'>
-							<Pagination
-								activePage={activePage}
-								itemsCountPerPage={pagingData?.perPage || 10}
-								totalItemsCount={pagingData?.totalRecords || 400}
-								delimeter={5}
-								onChange={handlePageChange}
-								styling='rounded'
-							/>
-						</div>
-					</div>
-				</>
-      }
+      {hotels.length > 0 && pagingData?.totalRecords > pagingData?.perPage && (
+        <div className='row'>
+          <div className='col-12 text-center'>
+            <Pagination
+              activePage={activePage}
+              itemsCountPerPage={pagingData?.perPage || 10}
+              totalItemsCount={pagingData?.totalRecords || 400}
+              delimeter={5}
+              onChange={handlePageChange}
+              styling='rounded'
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

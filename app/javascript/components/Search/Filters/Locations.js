@@ -26,21 +26,12 @@ function SearchFiltersLocations({ value = '' }) {
     setResults(data);
   };
 
-  const doRemoveClick = (event) => {
-    let updatedLocations = [];
 
-    locations.forEach((singleItem) => {
-      if (
-        singleItem.city === event.city &&
-        singleItem.country === event.country
-      ) {
-        // Do not push in array
-      } else {
-        updatedLocations.push(singleItem);
-      }
-    });
+  const doRemoveClick = (location) => {
+    const filteredLocations = locations.filter((item) =>
+      item.city !== location.city || item.country !== location.country)
     setActivePage(1);
-    setLocations(updatedLocations);
+    setLocations(filteredLocations);
   };
 
   const doSuggestionSelected = async (item) => {
