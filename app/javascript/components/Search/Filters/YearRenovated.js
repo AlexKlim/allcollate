@@ -18,6 +18,7 @@ function YearRenovated({ value = "" }) {
           Year Renovated
         </Typography>
         <Slider
+          className="mt-5"
           value={yearRenovationSlider}
           onChange={handleChange}
           valueLabelDisplay="on"
