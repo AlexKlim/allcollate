@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSearchContext } from "../SearchProvider";
 import { Card, Form, Tag } from "tabler-react";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
-function YearOpened({ value = "" }) {
-  const { yearOpenedSlider, setYearOpenedSlider } = useSearchContext();
-
-  const [MIN, setMIN] = useState(705);
-  const [MAX, setMAX] = useState(2020);
+function YearOpened() {
+  const { yearOpenedSlider, setYearOpenedSlider, minYearOpened, maxYearOpened } = useSearchContext();
 
   const handleChange = (event, newValue) => {
     setYearOpenedSlider(newValue);
@@ -26,8 +23,8 @@ function YearOpened({ value = "" }) {
           onChange={handleChange}
           valueLabelDisplay="on"
           aria-labelledby="range-slider"
-          min={MIN}
-          max={MAX}
+          min={minYearOpened}
+          max={maxYearOpened}
         />
       </Card.Body>
     </Card>

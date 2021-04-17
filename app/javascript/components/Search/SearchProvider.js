@@ -9,11 +9,17 @@ function SearchProvider({ query }) {
   const [locations, setLocations] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [pagingData, setPagingData] = useState({});
+
+  const [minYearOpened] = useState(705)
+  const [maxYearOpened]= useState(2020)
+  const [yearOpenedSlider, setYearOpenedSlider] = useState([minYearOpened, maxYearOpened]);
+
+  const [minYearRenovated] = useState(1000)
+  const [maxYearRenovated]= useState(2020)
   const [yearRenovationSlider, setYearRenovationSlider] = useState([
-    null,
-    null,
+    minYearRenovated,
+    maxYearRenovated,
   ]);
-  const [yearOpenedSlider, setYearOpenedSlider] = useState([null, null]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +56,10 @@ function SearchProvider({ query }) {
         setYearRenovationSlider,
         yearOpenedSlider,
         setYearOpenedSlider,
+        minYearOpened,
+        maxYearOpened,
+        minYearRenovated,
+        maxYearRenovated,
       }}
       className="search"
     >

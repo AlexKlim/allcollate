@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useDebouncedCallback } from "use-debounce/lib";
+import React, { useState } from "react";
 import { useSearchContext } from "../SearchProvider";
 
 import { Card, Form, Tag } from "tabler-react";
-
-import Autosuggest from "react-autosuggest";
 
 import SuggestionForm from "./AutoSuggestion/SuggestionForm";
 import SearchAPI from "../../../api/SearchAPI";
 
 function SearchFiltersLocations({ value = "" }) {
   const {
-    query,
     locations,
     setActivePage,
     setLocations,
-    setHotels,
   } = useSearchContext();
   const [results, setResults] = useState([]);
 

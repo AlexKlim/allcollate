@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSearchContext } from "../SearchProvider";
-import { Card, Form, Tag } from "tabler-react";
+import { Card } from "tabler-react";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
-function YearRenovated({ value = "" }) {
-  const { yearRenovationSlider, setYearRenovationSlider } = useSearchContext();
+function YearRenovated() {
+  const { yearRenovationSlider, setYearRenovationSlider, minYearRenovated, maxYearRenovated } = useSearchContext();
 
-  const [MIN, setMIN] = useState(1000);
-  const [MAX, setMAX] = useState(2020);
-
-  const handleChange = (event, newValue) => {
+  const handleChange = (_event, newValue) => {
     setYearRenovationSlider(newValue);
   };
 
@@ -26,8 +23,8 @@ function YearRenovated({ value = "" }) {
           onChange={handleChange}
           valueLabelDisplay="on"
           aria-labelledby="range-slider"
-          min={MIN}
-          max={MAX}
+          min={minYearRenovated}
+          max={maxYearRenovated}
         />
       </Card.Body>
     </Card>
