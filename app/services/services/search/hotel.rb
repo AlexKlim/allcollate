@@ -21,18 +21,18 @@ class Services::Search::Hotel
     options[:country_start_any] = locations.map { |location| location['country'] }
   end
 
-  def yearRenovated!(yearRenovated)
+  def add_year_renovated!(yearRenovated)
     return unless yearRenovated
-    yearRenovated = parse_json(yearRenovated).compact
+    yearRenovated = parse_json(yearRenovated)
     if yearRenovated.present?
       options[:year_renovated_gteq_any] = yearRenovated[0]
       options[:year_renovated_lteq_any] = yearRenovated[1]
     end
   end
 
-  def yearOpened!(yearOpened)
+  def add_year_opened!(yearOpened)
     return unless yearOpened
-    yearOpened = parse_json(yearOpened).compact
+    yearOpened = parse_json(yearOpened)
     if yearOpened.present?
       options[:year_opened_gteq_any] = yearOpened[0]
       options[:year_opened_lteq_any] = yearOpened[1]
@@ -42,6 +42,6 @@ class Services::Search::Hotel
   private
 
   def parse_json(object)
-    JSON.parse(object)
+    JSON.parse(object).compact
   end
 end

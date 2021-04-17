@@ -7,6 +7,9 @@ import Slider from "@material-ui/core/Slider";
 function YearOpened({ value = "" }) {
   const { yearOpenedSlider, setYearOpenedSlider } = useSearchContext();
 
+  const [MIN, setMIN] = useState(705);
+  const [MAX, setMAX] = useState(2020);
+
   const handleChange = (event, newValue) => {
     setYearOpenedSlider(newValue);
   };
@@ -23,8 +26,8 @@ function YearOpened({ value = "" }) {
           onChange={handleChange}
           valueLabelDisplay="on"
           aria-labelledby="range-slider"
-          min={2014}
-          max={2021}
+          min={MIN}
+          max={MAX}
         />
       </Card.Body>
     </Card>
