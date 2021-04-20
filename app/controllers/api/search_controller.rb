@@ -2,8 +2,11 @@ class Api::SearchController < ApplicationController
   layout nil
 
   def index
+    
     search = Services::Search::Hotel.new(params[:q], params[:pageNum])
     search.add_locations!(params[:locations])
+    search.add_year_renovated!(params[:yearRenovated])
+    search.add_year_opened!(params[:yearOpened])
 
     hotels = search.do
 

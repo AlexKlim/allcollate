@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
-import SearchPage from './SearchPage';
-import SearchAPI from '../../api/SearchAPI';
+import React, { useContext, useEffect, useState } from "react";
+import SearchPage from "./SearchPage";
+import SearchAPI from "../../api/SearchAPI";
 
 export const SearchContext = React.createContext();
 
@@ -10,16 +10,33 @@ function SearchProvider({ query }) {
   const [activePage, setActivePage] = useState(1);
   const [pagingData, setPagingData] = useState({});
 
+  const [minYearOpened] = useState(705)
+  const [maxYearOpened]= useState(2020)
+  const [yearOpenedSlider, setYearOpenedSlider] = useState([minYearOpened, maxYearOpened]);
+
+  const [minYearRenovated] = useState(1000)
+  const [maxYearRenovated]= useState(2020)
+  const [yearRenovationSlider, setYearRenovationSlider] = useState([
+    minYearRenovated,
+    maxYearRenovated,
+  ]);
+
   useEffect(() => {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
-      const data = await searchAPI.fetchQuery(query, locations, activePage);
+      const data = await searchAPI.fetchQuery(
+        query,
+        locations,
+        yearRenovationSlider,
+        yearOpenedSlider,
+        activePage
+      );
       setHotels(data.results);
       setPagingData(data.pagingData);
     };
 
     fetchData();
-  }, [locations, activePage]);
+  }, [locations, activePage, yearRenovationSlider, yearOpenedSlider]);
 
   return (
     <SearchContext.Provider
@@ -35,8 +52,16 @@ function SearchProvider({ query }) {
         setActivePage,
         setHotels,
         pagingData,
+        yearRenovationSlider,
+        setYearRenovationSlider,
+        yearOpenedSlider,
+        setYearOpenedSlider,
+        minYearOpened,
+        maxYearOpened,
+        minYearRenovated,
+        maxYearRenovated,
       }}
-      className='search'
+      className="search"
     >
       <SearchPage />
     </SearchContext.Provider>

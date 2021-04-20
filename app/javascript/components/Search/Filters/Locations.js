@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDebouncedCallback } from 'use-debounce/lib';
-import { useSearchContext } from '../SearchProvider';
+import React, { useState } from "react";
+import { useSearchContext } from "../SearchProvider";
 
-import { Card, Form, Tag } from 'tabler-react';
+import { Card, Form, Tag } from "tabler-react";
 
-import Autosuggest from 'react-autosuggest';
+import SuggestionForm from "./AutoSuggestion/SuggestionForm";
+import SearchAPI from "../../../api/SearchAPI";
 
-import SuggestionForm from './AutoSuggestion/SuggestionForm';
-import SearchAPI from '../../../api/SearchAPI';
-
-function SearchFiltersLocations({ value = '' }) {
+function SearchFiltersLocations({ value = "" }) {
   const {
-    query,
     locations,
     setActivePage,
     setLocations,
-    setHotels,
   } = useSearchContext();
   const [results, setResults] = useState([]);
 
@@ -27,9 +21,9 @@ function SearchFiltersLocations({ value = '' }) {
   };
 
   const doRemoveClick = (location) => {
-    const filteredLocations = locations.filter((item) =>
-      item.city !== location.city || item.country !== location.country)
-
+    const filteredLocations = locations.filter(
+      (item) => item.city !== location.city || item.country !== location.country
+    );
     setActivePage(1);
     setLocations(filteredLocations);
   };
@@ -42,7 +36,7 @@ function SearchFiltersLocations({ value = '' }) {
   return (
     <Card>
       <Card.Body>
-        <div className='search__filter-title'>Locations</div>
+        <div className="search__filter-title">Locations</div>
         <Form.Group>
           <SuggestionForm
             doSuggestionSelected={doSuggestionSelected}

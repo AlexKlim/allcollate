@@ -21,9 +21,29 @@ class Services::Search::Hotel
     options[:country_start_any] = locations.map { |location| location['country'] }
   end
 
+  def add_year_renovated!(year_renovated)
+    return unless year_renovated
+
+    year_renovated = parse_json(year_renovated)
+    return unless year_renovated.present?
+
+    options[:year_renovated_gteq_any] = year_renovated[0]
+    options[:year_renovated_lteq_any] = year_renovated[1]
+  end
+
+  def add_year_opened!(year_opened)
+    return unless year_opened
+
+    year_opened = parse_json(year_opened)
+    return unless year_opened.present?
+
+    options[:year_opened_gteq_any] = year_opened[0]
+    options[:year_opened_lteq_any] = year_opened[1]
+  end
+
   private
 
   def parse_json(object)
-    JSON.parse(object)
+    JSON.parse(object).compact
   end
 end

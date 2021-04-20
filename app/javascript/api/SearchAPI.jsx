@@ -2,10 +2,15 @@
 import axios from 'axios';
 
 export default class SearchAPI {
-  fetchQuery(query, locations,pageNum) {
+  fetchQuery(query, locations, yearRenovationSlider, yearOpenedSlider, pageNum) {
+    query = query == null ? "" : query;
     let url = `api/search?q=${query}&locations=${JSON.stringify(
-			locations
-		)}&pageNum=${pageNum}`;
+      locations
+    )}&yearRenovated=${JSON.stringify(
+      yearRenovationSlider
+    )}&yearOpened=${JSON.stringify(
+      yearOpenedSlider
+    )}&pageNum=${pageNum}`;
     return axios.get(url).then((res) => res && res.data);
   }
 
