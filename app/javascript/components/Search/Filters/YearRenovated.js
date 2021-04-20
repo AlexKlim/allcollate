@@ -18,7 +18,7 @@ function YearRenovated() {
   );
 
   const debouncedSliderValue = useCallback(
-    _.debounce((newValue) => setYearRenovationSlider(newValue), 5000),
+    _.debounce((newValue) => setYearRenovationSlider(newValue), 500),
     []
   );
 

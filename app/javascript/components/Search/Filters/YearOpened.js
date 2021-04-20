@@ -16,7 +16,7 @@ function YearOpened() {
   const [staticYearOpened, setStaticYearOpened] = useState(yearOpenedSlider);
 
   const debouncedSliderValue = useCallback(
-    _.debounce((newValue) => setYearOpenedSlider(newValue), 5000),
+    _.debounce((newValue) => setYearOpenedSlider(newValue), 500),
     []
   );
 
