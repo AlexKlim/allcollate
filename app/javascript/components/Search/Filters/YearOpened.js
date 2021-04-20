@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { useSearchContext } from "../SearchProvider";
 import { Card, Form, Tag } from "tabler-react";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
+import _ from "lodash";
 
 function YearOpened() {
-  const { yearOpenedSlider, setYearOpenedSlider, minYearOpened, maxYearOpened } = useSearchContext();
+  const {
+    yearOpenedSlider,
+    setYearOpenedSlider,
+    minYearOpened,
+    maxYearOpened,
+  } = useSearchContext();
+
+  const [staticYearOpened, setStaticYearOpened] = useState(yearOpenedSlider);
+
+  const debouncedSliderValue = useCallback(
+    _.debounce((newValue) => setYearOpenedSlider(newValue), 5000),
+    []
+  );
 
   const handleChange = (event, newValue) => {
-    setYearOpenedSlider(newValue);
+    setStaticYearOpened(newValue);
+    debouncedSliderValue(newValue);
   };
 
   return (
@@ -19,7 +33,7 @@ function YearOpened() {
         </Typography>
         <Slider
           className="mt-5"
-          value={yearOpenedSlider}
+          value={staticYearOpened}
           onChange={handleChange}
           valueLabelDisplay="on"
           aria-labelledby="range-slider"
