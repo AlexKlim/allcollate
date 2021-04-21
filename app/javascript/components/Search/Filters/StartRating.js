@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { useSearchContext } from "../SearchProvider";
-import { Card, Form, Tag } from "tabler-react";
+import { Card } from "tabler-react";
 import Typography from "@material-ui/core/Typography";
 import Rating from '@material-ui/lab/Rating';
 
@@ -10,16 +10,13 @@ function StarRating() {
   } = useSearchContext();
 
   const handleChange = (event) => {
-    let value= "";
+    let rating = event.target.value;
     if(event.target.checked){
-      value = event.target.value;
-      setStarRating([...startRating, value]);
+      setStarRating([...startRating, rating]);
     }
     else{
-      value = event.target.value;
-      setStarRating(startRating.filter(item => item !== value));
+      setStarRating(startRating.filter(item => item !== rating));
     }
-    console.log(startRating);
   };
 
   return (
