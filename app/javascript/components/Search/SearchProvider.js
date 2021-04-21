@@ -21,6 +21,8 @@ function SearchProvider({ query }) {
     maxYearRenovated,
   ]);
 
+  const [startRating, setStarRating] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
@@ -29,6 +31,7 @@ function SearchProvider({ query }) {
         locations,
         yearRenovationSlider,
         yearOpenedSlider,
+        startRating,
         activePage
       );
       setHotels(data.results);
@@ -36,7 +39,7 @@ function SearchProvider({ query }) {
     };
 
     fetchData();
-  }, [locations, activePage, yearRenovationSlider, yearOpenedSlider]);
+  }, [locations, activePage, yearRenovationSlider, yearOpenedSlider, startRating]);
 
   return (
     <SearchContext.Provider
@@ -60,6 +63,8 @@ function SearchProvider({ query }) {
         maxYearOpened,
         minYearRenovated,
         maxYearRenovated,
+        startRating,
+        setStarRating
       }}
       className="search"
     >

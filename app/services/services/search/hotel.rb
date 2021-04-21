@@ -41,6 +41,15 @@ class Services::Search::Hotel
     options[:year_opened_lteq_any] = year_opened[1]
   end
 
+  def add_start_rating!(star_rating)
+    return unless star_rating
+
+    star_rating = parse_json(star_rating)
+    return unless star_rating.present?
+
+    options[:star_rating_in] =  star_rating.map { |single_rating| single_rating }
+  end
+
   private
 
   def parse_json(object)
