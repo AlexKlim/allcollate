@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSearchContext } from '../SearchProvider';
 import { Card } from 'tabler-react';
 import Typography from '@material-ui/core/Typography';
-import Rating from '@material-ui/lab/Rating';
+import StarRatings from 'react-star-ratings';
 
 function StarRating() {
   const { starRating, setStarRating } = useSearchContext();
@@ -24,20 +24,16 @@ function StarRating() {
         <Typography id='range-slider' gutterBottom>
           Star Rating
         </Typography>
-        {ratings.map((single_rating) => {
+        {ratings.map((singleRating) => {
           return (
             <>
               <input
                 type='checkbox'
-                value={single_rating}
+                value={singleRating}
                 onClick={handleChange}
+                className='mr-2'
               />
-              <Rating
-                className='pl-2'
-                value={single_rating}
-                max={single_rating}
-                readOnly
-              />{' '}
+              <StarRatings rating={singleRating} starDimension="20px" starRatedColor="gold" numberOfStars={singleRating} starSpacing="0px" />
               <br />
             </>
           );
