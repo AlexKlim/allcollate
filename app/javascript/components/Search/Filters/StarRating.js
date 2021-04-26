@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import StarRatings from 'react-star-ratings';
 
 function StarRating() {
-  const { starRating, setStarRating } = useSearchContext();
+  const { starRating, setStarRating, setActivePage } = useSearchContext();
 
   const [ratings, setRatings] = useState([5, 4, 3, 2, 1]);
 
@@ -16,6 +16,7 @@ function StarRating() {
     } else {
       setStarRating(starRating.filter((item) => item !== rating));
     }
+    setActivePage(1);
   };
 
   return (
