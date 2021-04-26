@@ -9,7 +9,6 @@ class Services::Search::Hotel
   end
 
   def do
-    # binding.pry
     Hotel.active.includes(:photos, :rates).ransack(options).result.order(star_rating: :desc)
          .paginate(page: page, per_page: PER_PAGE)
   end
