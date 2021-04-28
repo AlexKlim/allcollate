@@ -26,20 +26,23 @@ function StarRating() {
         </Typography>
         {ratings.map((single_rating) => {
           return (
-            <>
+            <label
+              htmlFor={`starRating-${single_rating}`}
+              className='singleRating'
+            >
               <input
                 type='checkbox'
                 value={single_rating}
-                onClick={handleChange}
+                onChange={handleChange}
+                id={`starRating-${single_rating}`}
               />
               <Rating
                 className='pl-2'
                 value={single_rating}
                 max={single_rating}
                 readOnly
-              />{' '}
-              <br />
-            </>
+              />
+            </label>
           );
         })}
       </Card.Body>
