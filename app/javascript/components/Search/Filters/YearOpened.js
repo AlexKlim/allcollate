@@ -11,12 +11,16 @@ function YearOpened() {
     setYearOpenedSlider,
     minYearOpened,
     maxYearOpened,
+    setActivePage,
   } = useSearchContext();
 
   const [staticYearOpened, setStaticYearOpened] = useState(yearOpenedSlider);
 
   const debouncedSliderValue = useCallback(
-    _.debounce((newValue) => setYearOpenedSlider(newValue), 500),
+    _.debounce((newValue) => {
+        setYearOpenedSlider(newValue);
+        setActivePage(1);
+      }, 500),
     []
   );
 

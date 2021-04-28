@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useSearchContext } from '../SearchProvider';
 import { Card } from 'tabler-react';
 import Typography from '@material-ui/core/Typography';
-import Rating from '@material-ui/lab/Rating';
+import StarRatings from 'react-star-ratings';
 
 function StarRating() {
-  const { starRating, setStarRating } = useSearchContext();
+  const { starRating, setStarRating, setActivePage } = useSearchContext();
 
   const [ratings, setRatings] = useState([5, 4, 3, 2, 1]);
 
@@ -16,6 +16,7 @@ function StarRating() {
     } else {
       setStarRating(starRating.filter((item) => item !== rating));
     }
+    setActivePage(1);
   };
 
   return (
@@ -24,23 +25,25 @@ function StarRating() {
         <Typography id='range-slider' gutterBottom>
           Star Rating
         </Typography>
-        {ratings.map((single_rating) => {
+        {ratings.map((singleRating) => {
           return (
             <label
-              htmlFor={`starRating-${single_rating}`}
+              htmlFor={`starRating-${singleRating}`}
               className='singleRating'
             >
               <input
                 type='checkbox'
-                value={single_rating}
+                value={singleRating}
                 onChange={handleChange}
-                id={`starRating-${single_rating}`}
+                id={`starRating-${singleRating}`}
+                className='mr-2'
               />
-              <Rating
-                className='pl-2'
-                value={single_rating}
-                max={single_rating}
-                readOnly
+              <StarRatings
+                rating={singleRating}
+                starDimension='20px'
+                starRatedColor='gold'
+                numberOfStars={singleRating}
+                starSpacing='0px'
               />
             </label>
           );
