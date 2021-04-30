@@ -11,6 +11,7 @@ function YearRenovated() {
     setYearRenovationSlider,
     minYearRenovated,
     maxYearRenovated,
+    setActivePage,
   } = useSearchContext();
 
   const [staticYearRenovated, setStaticYearRenovated] = useState(
@@ -18,7 +19,10 @@ function YearRenovated() {
   );
 
   const debouncedSliderValue = useCallback(
-    _.debounce((newValue) => setYearRenovationSlider(newValue), 500),
+    _.debounce((newValue) => {
+      setYearRenovationSlider(newValue);
+      setActivePage(1);
+    }, 500),
     []
   );
 

@@ -1,0 +1,9 @@
+.singleRating {
+  display: flex;
+  align-items: center;
+  cursor: pointer !important;
+}
+
+input[type='checkbox'].cursor-pointer {
+  cursor: pointer;
+}

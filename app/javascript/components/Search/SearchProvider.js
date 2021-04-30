@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
-import SearchPage from "./SearchPage";
-import SearchAPI from "../../api/SearchAPI";
+import React, { useContext, useEffect, useState } from 'react';
+import SearchPage from './SearchPage';
+import SearchAPI from '../../api/SearchAPI';
 
 export const SearchContext = React.createContext();
 
@@ -10,16 +10,21 @@ function SearchProvider({ query }) {
   const [activePage, setActivePage] = useState(1);
   const [pagingData, setPagingData] = useState({});
 
-  const [minYearOpened] = useState(705)
-  const [maxYearOpened]= useState(2020)
-  const [yearOpenedSlider, setYearOpenedSlider] = useState([minYearOpened, maxYearOpened]);
+  const [minYearOpened] = useState(705);
+  const [maxYearOpened] = useState(2020);
+  const [yearOpenedSlider, setYearOpenedSlider] = useState([
+    minYearOpened,
+    maxYearOpened,
+  ]);
 
-  const [minYearRenovated] = useState(1000)
-  const [maxYearRenovated]= useState(2020)
+  const [minYearRenovated] = useState(1000);
+  const [maxYearRenovated] = useState(2020);
   const [yearRenovationSlider, setYearRenovationSlider] = useState([
     minYearRenovated,
     maxYearRenovated,
   ]);
+
+  const [starRating, setStarRating] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,6 +34,7 @@ function SearchProvider({ query }) {
         locations,
         yearRenovationSlider,
         yearOpenedSlider,
+        starRating,
         activePage
       );
       setHotels(data.results);
@@ -36,7 +42,13 @@ function SearchProvider({ query }) {
     };
 
     fetchData();
-  }, [locations, activePage, yearRenovationSlider, yearOpenedSlider]);
+  }, [
+    locations,
+    activePage,
+    yearRenovationSlider,
+    yearOpenedSlider,
+    starRating,
+  ]);
 
   return (
     <SearchContext.Provider
@@ -60,8 +72,10 @@ function SearchProvider({ query }) {
         maxYearOpened,
         minYearRenovated,
         maxYearRenovated,
+        starRating,
+        setStarRating,
       }}
-      className="search"
+      className='search'
     >
       <SearchPage />
     </SearchContext.Provider>

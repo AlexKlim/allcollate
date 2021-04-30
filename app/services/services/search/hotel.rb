@@ -9,7 +9,7 @@ class Services::Search::Hotel
   end
 
   def do
-    Hotel.active.includes(:photos, :rates).ransack(options).result
+    Hotel.active.includes(:photos, :rates).ransack(options).result.order(star_rating: :desc)
          .paginate(page: page, per_page: PER_PAGE)
   end
 
@@ -39,6 +39,15 @@ class Services::Search::Hotel
 
     options[:year_opened_gteq_any] = year_opened[0]
     options[:year_opened_lteq_any] = year_opened[1]
+  end
+
+  def add_start_rating!(star_rating)
+    return unless star_rating
+
+    star_rating = parse_json(star_rating)
+    return unless star_rating.present?
+
+    options[:star_rating_in] =  star_rating.map { |single_rating| single_rating }
   end
 
   private
