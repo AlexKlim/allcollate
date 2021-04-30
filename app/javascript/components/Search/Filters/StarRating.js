@@ -1,22 +1,31 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSearchContext } from '../SearchProvider';
 import { Card } from 'tabler-react';
 import Typography from '@material-ui/core/Typography';
 import StarRatings from 'react-star-ratings';
+import _ from "lodash";
 
 function StarRating() {
   const { starRating, setStarRating, setActivePage } = useSearchContext();
 
-  const [ratings, setRatings] = useState([5, 4, 3, 2, 1]);
+  const [ratings, _setRatings] = useState([5, 4, 3, 2, 1]);
+
+  const debouncedStartRating = useCallback(
+    _.debounce((rating, checked) => {
+      if (checked) {
+        setStarRating([...starRating, rating]);
+      } else {
+        setStarRating(starRating.filter((item) => item !== rating));
+      }
+      setActivePage(1);
+    }, 500),
+    []
+  );
 
   const handleChange = (event) => {
-    let rating = event.target.value;
-    if (event.target.checked) {
-      setStarRating([...starRating, rating]);
-    } else {
-      setStarRating(starRating.filter((item) => item !== rating));
-    }
-    setActivePage(1);
+    const rating = event.target.value;
+    const checked = event.target.checked
+    debouncedStartRating(rating, checked);
   };
 
   return (
