@@ -14,6 +14,7 @@ export default class SearchAPI {
       starRating
     )}&pageNum=${pageNum}`;
     return axios.get(url).then((res) => res && res.data);
+    
   }
 
   fetchSuggestionQuery(query) {
