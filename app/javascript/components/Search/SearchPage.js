@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SearchFiltersLocations from './Filters/Locations';
+import Rates from './Filters/Rates';
 import StarRating from './Filters/StarRating';
 import YearOpened from './Filters/YearOpened';
 import YearRenovated from './Filters/YearRenovated';
@@ -13,6 +14,7 @@ function SearchPage() {
         <SearchFiltersLocations />
         <YearRenovated />
         <YearOpened />
+        <Rates />
         <StarRating />
       </div>
       <div className='col-md-9'>
