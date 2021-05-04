@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from "react";
-import { useSearchContext } from "../SearchProvider";
-import { Card, Form, Tag } from "tabler-react";
-import Typography from "@material-ui/core/Typography";
-import Slider from "@material-ui/core/Slider";
-import _ from "lodash";
+import React, { useCallback, useState } from 'react';
+import { useSearchContext } from '../SearchProvider';
+import { Card, Form, Tag } from 'tabler-react';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import _ from 'lodash';
 
 function Rates() {
   const {
@@ -19,8 +19,8 @@ function Rates() {
   const debouncedSliderValue = useCallback(
     _.debounce((newValue) => {
       setRateSlider(newValue);
-        setActivePage(1);
-      }, 500),
+      setActivePage(1);
+    }, 500),
     []
   );
 
@@ -32,16 +32,16 @@ function Rates() {
   return (
     <Card>
       <Card.Body>
-        <Typography id="range-slider" gutterBottom>
+        <Typography id='range-slider' gutterBottom>
           Rates ($)
         </Typography>
-        <p className="pb-3">average rates for the last 30 days</p>
+        <p className='pb-3'>average rates for the last 30 days</p>
         <Slider
-          className="mt-5"
+          className='mt-5'
           value={staticRate}
           onChange={handleChange}
-          valueLabelDisplay="on"
-          aria-labelledby="range-slider"
+          valueLabelDisplay='on'
+          aria-labelledby='range-slider'
           min={minRate}
           max={maxRate}
         />
