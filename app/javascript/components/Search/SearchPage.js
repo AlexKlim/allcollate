@@ -1,4 +1,5 @@
 import React from 'react';
+import ClearFilters from './Filters/ClearFilters';
 
 import SearchFiltersLocations from './Filters/Locations';
 import Rates from './Filters/Rates';
@@ -11,6 +12,7 @@ function SearchPage() {
   return (
     <div className='row'>
       <div className='col-md-3'>
+        <ClearFilters />
         <SearchFiltersLocations />
         <YearRenovated />
         <YearOpened />

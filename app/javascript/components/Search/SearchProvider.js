@@ -32,6 +32,7 @@ function SearchProvider({ query }) {
   ]);
 
   const [starRating, setStarRating] = useState([]);
+  const [clearButton, setClearButton] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,7 +57,8 @@ function SearchProvider({ query }) {
     yearRenovationSlider,
     yearOpenedSlider,
     starRating,
-    rateSlider
+    rateSlider,
+    clearButton
   ]);
 
   return (
@@ -86,7 +88,9 @@ function SearchProvider({ query }) {
         minRate,
         maxRate,
         rateSlider,
-        setRateSlider
+        setRateSlider,
+        clearButton,
+        setClearButton
       }}
       className='search'
     >
