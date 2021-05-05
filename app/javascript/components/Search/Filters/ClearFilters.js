@@ -21,9 +21,8 @@ function ClearFilters() {
     clearButton,
     setClearButton
   } = useSearchContext();
-  
+
   const checkFilter = () => {
-    debugger;
   }
 
   useEffect(() => {
@@ -37,7 +36,7 @@ function ClearFilters() {
   ]);
  
   const resetFilters = (event) => {
-    debugger;
+    //
   };
 
   return (
