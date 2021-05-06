@@ -11,7 +11,7 @@ class Hotel < ApplicationRecord
   enum hotel_state: { active: 'active', draft: 'draft' }
 
   def self.latest_rates_between(start_rate, end_rate)
-    joins(:rates).where('rates.created_at >= ?', Date.today - 5.months)
+    joins(:rates).where('rates.created_at >= ?', Date.today - 1.months)
                  .group('hotels.id', 'photos.id', 'rates.id')
                  .having('AVG(rates.daily_rate) BETWEEN ? and ?', start_rate, end_rate)
   end
