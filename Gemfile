@@ -49,7 +49,7 @@ gem 'mini_magick', '~> 4.10.1'
 gem 'sitemap_generator', '~> 6.1.1'
 
 gem 'kaminari', '~> 1.2.1'
-gem 'ransack', '~> 2.3.2'
+gem 'ransack', '~> 2.4.2'
 
 gem 'sentry-rails', '~> 4.3.2'
 gem 'sentry-ruby', '~> 4.3.0'

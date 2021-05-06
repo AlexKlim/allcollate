@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSearchContext } from "../SearchProvider";
 
 import { Card, Form, Tag } from "tabler-react";
+import Typography from "@material-ui/core/Typography";
 
 import SuggestionForm from "./AutoSuggestion/SuggestionForm";
 import SearchAPI from "../../../api/SearchAPI";
@@ -36,7 +37,9 @@ function SearchFiltersLocations({ value = "" }) {
   return (
     <Card>
       <Card.Body>
-        <div className="search__filter-title">Locations</div>
+      <Typography id='location' gutterBottom variant="h6">
+          Locations
+        </Typography>
         <Form.Group>
           <SuggestionForm
             doSuggestionSelected={doSuggestionSelected}

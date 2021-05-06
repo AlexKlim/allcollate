@@ -24,7 +24,15 @@ function SearchProvider({ query }) {
     maxYearRenovated,
   ]);
 
+  const [minRate] = useState(10);
+  const [maxRate] = useState(1000);
+  const [rateSlider, setRateSlider] = useState([
+    minRate,
+    maxRate,
+  ]);
+
   const [starRating, setStarRating] = useState([]);
+  const [clearButton, setClearButton] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +43,7 @@ function SearchProvider({ query }) {
         yearRenovationSlider,
         yearOpenedSlider,
         starRating,
+        rateSlider,
         activePage
       );
       setHotels(data.results);
@@ -48,6 +57,8 @@ function SearchProvider({ query }) {
     yearRenovationSlider,
     yearOpenedSlider,
     starRating,
+    rateSlider,
+    clearButton
   ]);
 
   return (
@@ -74,6 +85,12 @@ function SearchProvider({ query }) {
         maxYearRenovated,
         starRating,
         setStarRating,
+        minRate,
+        maxRate,
+        rateSlider,
+        setRateSlider,
+        clearButton,
+        setClearButton
       }}
       className='search'
     >
