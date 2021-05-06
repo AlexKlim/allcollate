@@ -7,13 +7,13 @@ class Api::SearchController < ApplicationController
     search.add_year_renovated!(params[:yearRenovated])
     search.add_year_opened!(params[:yearOpened])
     search.add_start_rating!(params[:starRating])
+    search.add_rates!(params[:rates])
 
     hotels = search.do
 
-    hotels = search.add_rates(hotels, params[:rates])
-
     hotels_json = HotelSearchSerializer.new(hotels, is_collection: true).serializable_hash[:data]
                                        .map { |item| item[:attributes] }
+
     render json: { results: hotels_json,
                    pagingData: common_paging_data(search.page, Services::Search::Hotel::PER_PAGE, hotels) }
   end

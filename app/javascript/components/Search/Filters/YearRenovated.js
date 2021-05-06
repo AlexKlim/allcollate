@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useSearchContext } from "../SearchProvider";
-import { Card, Form, Tag } from "tabler-react";
+import { Card } from "tabler-react";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import _ from "lodash";
@@ -34,7 +34,7 @@ function YearRenovated() {
   return (
     <Card>
       <Card.Body>
-        <Typography id="range-slider" gutterBottom>
+        <Typography id="range-slider" gutterBottom variant="h6">
           Year Renovated
         </Typography>
         <Slider

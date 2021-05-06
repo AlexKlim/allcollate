@@ -24,8 +24,8 @@ function SearchProvider({ query }) {
     maxYearRenovated,
   ]);
 
-  const [minRate] = useState(90);
-  const [maxRate] = useState(500);
+  const [minRate] = useState(10);
+  const [maxRate] = useState(1000);
   const [rateSlider, setRateSlider] = useState([
     minRate,
     maxRate,

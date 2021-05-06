@@ -47,24 +47,16 @@ class Services::Search::Hotel
     star_rating = parse_json(star_rating)
     return unless star_rating.present?
 
-    options[:star_rating_in] =  star_rating.map { |single_rating| single_rating }
+    options[:star_rating_in] = star_rating.map { |single_rating| single_rating }
   end
 
-  def add_rates(hotels, rates)
+  def add_rates!(rates)
     return unless rates
 
     rates = parse_json(rates)
-    return_hotel_ids = []
+    return unless rates.present?
 
-    hotels.each do |single_hotel|
-      avg_hotel_rate = single_hotel.rates.where('created_at >= ?', Date.today - 1.month).average(:daily_rate).to_i
-      if avg_hotel_rate.between?(rates[0],rates[1])
-        return_hotel_ids << single_hotel.id
-      end
-    end
-
-    Hotel.active.includes(:photos, :rates).where(id: return_hotel_ids).order(star_rating: :desc)
-      .paginate(page: page, per_page: PER_PAGE)
+    options[:latest_rates_between] = rates
   end
 
   private
