@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSearchContext } from "../SearchProvider";
+import React, { useState, useEffect } from 'react';
+import { useSearchContext } from '../SearchProvider';
 
 function ClearFilters() {
   const {
@@ -19,29 +19,39 @@ function ClearFilters() {
     rateSlider,
     setRateSlider,
     clearButton,
-    setClearButton
+    setClearButton,
+    setLocations,
   } = useSearchContext();
 
-  const checkFilter = () => {
-  }
+  const checkFilter = () => {};
 
-  useEffect(() => {
-    checkFilter
-  }, [
+  useEffect(() => {}, [
     locations,
     yearRenovationSlider,
     yearOpenedSlider,
     starRating,
-    rateSlider
+    rateSlider,
   ]);
- 
-  const resetFilters = (event) => {
-    //
+
+  const resetFilters = () => {
+    setStarRating([]);
+    setRateSlider([minRate, maxRate]);
+    setYearOpenedSlider([minYearOpened, maxYearOpened]);
+    setYearRenovationSlider([minYearRenovated, maxYearRenovated]);
+    setLocations([]);
+    let starRatingCheckBoxes = document.getElementsByClassName('singleRating');
+    for (let item of starRatingCheckBoxes) {
+      if (item.children[0].checked) {
+        item.click();
+      }
+    }
   };
 
   return (
-    <div className="text-right mt-3 mb-3">
-        <button onClick={resetFilters} disabled={false}>Clear All</button>
+    <div className='text-right mt-3 mb-3'>
+      <button onClick={resetFilters} disabled={false}>
+        Clear All
+      </button>
     </div>
   );
 }

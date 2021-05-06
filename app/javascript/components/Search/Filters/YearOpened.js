@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from "react";
-import { useSearchContext } from "../SearchProvider";
-import { Card, Form, Tag } from "tabler-react";
-import Typography from "@material-ui/core/Typography";
-import Slider from "@material-ui/core/Slider";
-import _ from "lodash";
+import React, { useCallback, useState } from 'react';
+import { useSearchContext } from '../SearchProvider';
+import { Card, Form, Tag } from 'tabler-react';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import _ from 'lodash';
 
 function YearOpened() {
   const {
@@ -18,29 +18,29 @@ function YearOpened() {
 
   const debouncedSliderValue = useCallback(
     _.debounce((newValue) => {
-        setYearOpenedSlider(newValue);
-        setActivePage(1);
-      }, 500),
+      setYearOpenedSlider(newValue);
+      setActivePage(1);
+    }, 500),
     []
   );
 
   const handleChange = (event, newValue) => {
-    setStaticYearOpened(newValue);
+    setYearOpenedSlider(newValue);
     debouncedSliderValue(newValue);
   };
 
   return (
     <Card>
       <Card.Body>
-        <Typography id="range-slider" gutterBottom>
+        <Typography id='range-slider' gutterBottom>
           Year Opened
         </Typography>
         <Slider
-          className="mt-5"
-          value={staticYearOpened}
+          className='mt-5'
+          value={yearOpenedSlider}
           onChange={handleChange}
-          valueLabelDisplay="on"
-          aria-labelledby="range-slider"
+          valueLabelDisplay='on'
+          aria-labelledby='range-slider'
           min={minYearOpened}
           max={maxYearOpened}
         />

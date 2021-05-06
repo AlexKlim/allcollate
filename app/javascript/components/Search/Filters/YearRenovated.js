@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from "react";
-import { useSearchContext } from "../SearchProvider";
-import { Card, Form, Tag } from "tabler-react";
-import Typography from "@material-ui/core/Typography";
-import Slider from "@material-ui/core/Slider";
-import _ from "lodash";
+import React, { useCallback, useState } from 'react';
+import { useSearchContext } from '../SearchProvider';
+import { Card, Form, Tag } from 'tabler-react';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import _ from 'lodash';
 
 function YearRenovated() {
   const {
@@ -27,22 +27,23 @@ function YearRenovated() {
   );
 
   const handleChange = (event, newValue) => {
-    setStaticYearRenovated(newValue);
+    // setStaticYearRenovated(newValue);
+    setYearRenovationSlider(newValue);
     debouncedSliderValue(newValue);
   };
 
   return (
     <Card>
       <Card.Body>
-        <Typography id="range-slider" gutterBottom>
+        <Typography id='range-slider' gutterBottom>
           Year Renovated
         </Typography>
         <Slider
-          className="mt-5"
-          value={staticYearRenovated}
+          className='mt-5'
+          value={yearRenovationSlider}
           onChange={handleChange}
-          valueLabelDisplay="on"
-          aria-labelledby="range-slider"
+          valueLabelDisplay='on'
+          aria-labelledby='range-slider'
           min={minYearRenovated}
           max={maxYearRenovated}
         />

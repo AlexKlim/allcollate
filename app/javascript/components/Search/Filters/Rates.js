@@ -25,7 +25,7 @@ function Rates() {
   );
 
   const handleChange = (event, newValue) => {
-    setStaticRate(newValue);
+    setRateSlider(newValue);
     debouncedSliderValue(newValue);
   };
 
@@ -38,7 +38,7 @@ function Rates() {
         <p className='pb-3'>average rates for the last 30 days</p>
         <Slider
           className='mt-5'
-          value={staticRate}
+          value={rateSlider}
           onChange={handleChange}
           valueLabelDisplay='on'
           aria-labelledby='range-slider'
