@@ -23,9 +23,24 @@ function ClearFilters() {
     setLocations,
   } = useSearchContext();
 
-  const checkFilter = () => {};
+  const [is_clear_disabled, setClearDisabled] = useState(false);
 
-  useEffect(() => {}, [
+  useEffect(() => {
+    if (
+      locations.length === 0 &&
+      starRating.length === 0 &&
+      yearRenovationSlider[0] === minYearRenovated &&
+      yearRenovationSlider[1] === maxYearRenovated &&
+      yearOpenedSlider[0] === minYearOpened &&
+      yearOpenedSlider[1] === maxYearOpened &&
+      rateSlider[0] === minRate &&
+      rateSlider[1] === maxRate
+    ) {
+      setClearDisabled(true);
+    } else {
+      setClearDisabled(false);
+    }
+  }, [
     locations,
     yearRenovationSlider,
     yearOpenedSlider,
@@ -49,7 +64,7 @@ function ClearFilters() {
 
   return (
     <div className='text-right mt-3 mb-3'>
-      <button onClick={resetFilters} disabled={false}>
+      <button onClick={resetFilters} disabled={is_clear_disabled}>
         Clear All
       </button>
     </div>
