@@ -24,15 +24,13 @@ function SearchProvider({ query }) {
     maxYearRenovated,
   ]);
 
-  const [minRate] = useState(90);
-  const [maxRate] = useState(500);
-  const [rateSlider, setRateSlider] = useState([
-    minRate,
-    maxRate,
-  ]);
+  const [minRate] = useState(10);
+  const [maxRate] = useState(1000);
+
+  const [rateSlider, setRateSlider] = useState([minRate, maxRate]);
 
   const [starRating, setStarRating] = useState([]);
-  const [clearButton, setClearButton] = useState(false)
+  const [clearButton, setClearButton] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,7 +56,7 @@ function SearchProvider({ query }) {
     yearOpenedSlider,
     starRating,
     rateSlider,
-    clearButton
+    clearButton,
   ]);
 
   return (
@@ -90,7 +88,7 @@ function SearchProvider({ query }) {
         rateSlider,
         setRateSlider,
         clearButton,
-        setClearButton
+        setClearButton,
       }}
       className='search'
     >

@@ -31,7 +31,7 @@ function StarRating() {
   return (
     <Card>
       <Card.Body>
-        <Typography id='range-slider' gutterBottom>
+        <Typography id='range-slider' gutterBottom variant="h6">
           Star Rating
         </Typography>
         {ratings.map((singleRating) => {
