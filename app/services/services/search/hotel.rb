@@ -9,7 +9,7 @@ class Services::Search::Hotel
   end
 
   def do
-    Hotel.active.includes(:photos, :rates).ransack(options).result.order(star_rating: :desc)
+    Hotel.active.includes(:photos, :rates).ransack(options).result.order(star_rating: :desc, id: :asc)
          .paginate(page: page, per_page: PER_PAGE)
   end
 
@@ -58,7 +58,7 @@ class Services::Search::Hotel
 
     options[:latest_rates_between] = rates
   end
-  
+
   private
 
   def parse_json(object)

@@ -1,29 +1,36 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchContext } from '../SearchProvider';
 import { Card } from 'tabler-react';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import _ from 'lodash';
+import { useDebouncedCallback } from 'use-debounce';
 
 function YearRenovated() {
   const {
-    yearRenovationSlider,
-    setYearRenovationSlider,
     minYearRenovated,
     maxYearRenovated,
-    setActivePage,
+    filterValue,
+    updateFilterValues,
   } = useSearchContext();
 
-  const debouncedSliderValue = useCallback(
-    _.debounce((newValue) => {
-      setYearRenovationSlider(newValue);
-      setActivePage(1);
-    }, 500),
-    []
+
+  const [staticYearRenovated, setStaticYearRenovated] = useState(
+    filterValue.yearRenovation
+  );
+  useEffect(() => {
+    setStaticYearRenovated(filterValue.yearRenovation)
+  }, [
+    filterValue.yearRenovation,
+  ])
+
+  const debouncedSliderValue = useDebouncedCallback(
+    (newValue) => {
+      updateFilterValues('yearRenovation', newValue)
+    }, 500,
   );
 
-  const handleChange = (event, newValue) => {
-    setYearRenovationSlider(newValue);
+  const handleChange = (_event, newValue) => {
+    setStaticYearRenovated(newValue);
     debouncedSliderValue(newValue);
   };
 
@@ -35,7 +42,7 @@ function YearRenovated() {
         </Typography>
         <Slider
           className='mt-5'
-          value={yearRenovationSlider}
+          value={staticYearRenovated}
           onChange={handleChange}
           valueLabelDisplay='on'
           aria-labelledby='range-slider'

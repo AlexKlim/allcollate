@@ -4,7 +4,7 @@ import SearchAPI from '../../api/SearchAPI';
 
 export const SearchContext = React.createContext();
 
-function SearchProvider({ query }) {
+const SearchProvider = ({ query }) => {
   const [hotels, setHotels] = useState([]);
   const [locations, setLocations] = useState([]);
   const [activePage, setActivePage] = useState(1);
@@ -12,17 +12,9 @@ function SearchProvider({ query }) {
 
   const [minYearOpened] = useState(705);
   const [maxYearOpened] = useState(2020);
-  const [yearOpenedSlider, setYearOpenedSlider] = useState([
-    minYearOpened,
-    maxYearOpened,
-  ]);
 
   const [minYearRenovated] = useState(1000);
   const [maxYearRenovated] = useState(2020);
-  const [yearRenovationSlider, setYearRenovationSlider] = useState([
-    minYearRenovated,
-    maxYearRenovated,
-  ]);
 
   const [minRate] = useState(10);
   const [maxRate] = useState(1000);
@@ -30,7 +22,19 @@ function SearchProvider({ query }) {
   const [rateSlider, setRateSlider] = useState([minRate, maxRate]);
 
   const [starRating, setStarRating] = useState([]);
-  const [clearButton, setClearButton] = useState(false);
+  const [clearButton, setClearButton] = useState(true);
+
+  const initFilterValues = {
+    yearOpened: [minYearOpened, maxYearOpened],
+    yearRenovation: [minYearRenovated, maxYearRenovated],
+    rating: [],
+    rate: [minRate, maxRate],
+  }
+  const [filterValue, setFilterValues] = useState(initFilterValues);
+
+  const updateFilterValues = (key, value) => {
+    setFilterValues({ ...filterValue, [key]: value });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,25 +42,19 @@ function SearchProvider({ query }) {
       const data = await searchAPI.fetchQuery(
         query,
         locations,
-        yearRenovationSlider,
-        yearOpenedSlider,
-        starRating,
-        rateSlider,
+        filterValue,
         activePage
       );
       setHotels(data.results);
       setPagingData(data.pagingData);
+      setClearButton(_.isMatch(filterValue, initFilterValues))
     };
 
     fetchData();
   }, [
     locations,
     activePage,
-    yearRenovationSlider,
-    yearOpenedSlider,
-    starRating,
-    rateSlider,
-    clearButton,
+    filterValue,
   ]);
 
   return (
@@ -73,10 +71,6 @@ function SearchProvider({ query }) {
         setActivePage,
         setHotels,
         pagingData,
-        yearRenovationSlider,
-        setYearRenovationSlider,
-        yearOpenedSlider,
-        setYearOpenedSlider,
         minYearOpened,
         maxYearOpened,
         minYearRenovated,
@@ -88,7 +82,10 @@ function SearchProvider({ query }) {
         rateSlider,
         setRateSlider,
         clearButton,
-        setClearButton,
+        initFilterValues,
+        setFilterValues,
+        filterValue,
+        updateFilterValues,
       }}
       className='search'
     >
