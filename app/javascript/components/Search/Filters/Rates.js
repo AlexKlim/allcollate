@@ -1,30 +1,33 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchContext } from '../SearchProvider';
 import { Card } from 'tabler-react';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import _ from 'lodash';
+import { useDebouncedCallback } from 'use-debounce';
 
 function Rates() {
   const {
-    rateSlider,
-    setRateSlider,
     minRate,
     maxRate,
-    setActivePage,
+    filterValue,
+    updateFilterValues,
   } = useSearchContext();
 
-  const debouncedSliderValue = useCallback(
-    _.debounce((newValue) => {
-      setRateSlider(newValue);
-      setActivePage(1);
-    }, 500),
-    []
+  const [rateSlider, setRateSlider] = useState(filterValue.rate);
+  useEffect(() => {
+    setRateSlider(filterValue.rate)
+  }, [
+    filterValue.rate,
+  ])
+
+  const debouncedSliderValue = useDebouncedCallback(
+    (value) => {
+      updateFilterValues('rate', value)
+    }, 500,
   );
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (_event, newValue) => {
     setRateSlider(newValue);
-
     debouncedSliderValue(newValue);
   };
 

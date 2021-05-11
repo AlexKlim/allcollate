@@ -19,21 +19,19 @@ const SearchProvider = ({ query }) => {
   const [minRate] = useState(10);
   const [maxRate] = useState(1000);
 
-  const [rateSlider, setRateSlider] = useState([minRate, maxRate]);
-
-  const [starRating, setStarRating] = useState([]);
   const [clearButton, setClearButton] = useState(true);
 
   const initFilterValues = {
     yearOpened: [minYearOpened, maxYearOpened],
     yearRenovation: [minYearRenovated, maxYearRenovated],
-    rating: [],
     rate: [minRate, maxRate],
+    rating: [],
   }
   const [filterValue, setFilterValues] = useState(initFilterValues);
 
   const updateFilterValues = (key, value) => {
     setFilterValues({ ...filterValue, [key]: value });
+    setActivePage(1);
   };
 
   useEffect(() => {
@@ -47,7 +45,7 @@ const SearchProvider = ({ query }) => {
       );
       setHotels(data.results);
       setPagingData(data.pagingData);
-      setClearButton(_.isMatch(filterValue, initFilterValues))
+      setClearButton(_.isEqual(filterValue, initFilterValues))
     };
 
     fetchData();
@@ -75,12 +73,8 @@ const SearchProvider = ({ query }) => {
         maxYearOpened,
         minYearRenovated,
         maxYearRenovated,
-        starRating,
-        setStarRating,
         minRate,
         maxRate,
-        rateSlider,
-        setRateSlider,
         clearButton,
         initFilterValues,
         setFilterValues,

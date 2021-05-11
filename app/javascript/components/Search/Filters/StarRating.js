@@ -1,31 +1,40 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchContext } from '../SearchProvider';
 import { Card } from 'tabler-react';
 import Typography from '@material-ui/core/Typography';
 import StarRatings from 'react-star-ratings';
-import _ from "lodash";
+import { useDebouncedCallback } from 'use-debounce';
 
 function StarRating() {
-  const { starRating, setStarRating, setActivePage } = useSearchContext();
+  const {
+    filterValue,
+    updateFilterValues,
+  } = useSearchContext();
 
-  const [ratings, _setRatings] = useState([5, 4, 3, 2, 1]);
+  const [ratings, setStarRating] = useState(filterValue.rating);
+  useEffect(() => {
+    setStarRating(filterValue.rating)
+  }, [
+    filterValue.rating,
+  ])
 
-  const debouncedStartRating = useCallback(
-    _.debounce((rating, checked) => {
-      if (checked) {
-        setStarRating([...starRating, rating]);
-      } else {
-        setStarRating(starRating.filter((item) => item !== rating));
-      }
-      setActivePage(1);
-    }, 500),
-    []
+  const debouncedStartRating = useDebouncedCallback(
+    (currentRatings) => {
+      updateFilterValues('rating', currentRatings)
+    }, 500,
   );
 
   const handleChange = (event) => {
-    const rating = event.target.value;
+    const rating = parseInt(event.target.value);
     const checked = event.target.checked
-    debouncedStartRating(rating, checked);
+    let currentRatings;
+    if (checked) {
+      currentRatings = [...ratings, rating]
+    } else {
+      currentRatings = ratings.filter((item) => item !== rating)
+    }
+    setStarRating(currentRatings)
+    debouncedStartRating(currentRatings);
   };
 
   return (
@@ -34,7 +43,7 @@ function StarRating() {
         <Typography id='range-slider' gutterBottom variant="h6">
           Star Rating
         </Typography>
-        {ratings.map((singleRating) => {
+        {[5,4,3,2,1].map((singleRating) => {
           return (
             <label
               htmlFor={`starRating-${singleRating}`}

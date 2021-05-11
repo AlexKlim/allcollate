@@ -3,7 +3,6 @@ import { useSearchContext } from '../SearchProvider';
 import { Card } from 'tabler-react';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-
 import { useDebouncedCallback } from 'use-debounce';
 
 function YearOpened() {
