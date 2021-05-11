@@ -11,7 +11,7 @@ class Api::SearchController < ApplicationController
 
     hotels = search.do
 
-    hotels = search.add_rates(hotels, params[:rates])
+    # hotels = search.add_rates(hotels, params[:rates])
 
     hotels_json = HotelSearchSerializer.new(hotels, is_collection: true).serializable_hash[:data]
                                        .map { |item| item[:attributes] }
