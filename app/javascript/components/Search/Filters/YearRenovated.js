@@ -6,6 +6,7 @@ import Slider from '@material-ui/core/Slider';
 import { useDebouncedCallback } from 'use-debounce';
 
 function YearRenovated() {
+	
   const {
     minYearRenovated,
     maxYearRenovated,
