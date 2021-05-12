@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     resource :search, only: :show do
       get :suggestions
     end
-    resource :comparison, only: :show
+    resource :comparison, only: :show do
+      get :hotels
+    end
   end
 
   namespace 'api' do

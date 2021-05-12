@@ -1,7 +1,7 @@
 class Frontend::ComparisonsController < ApplicationController
   layout 'frontend'
 
-  def suggestions
+  def hotels
     results = Hotel.active.ransack(name_start: params[:q]).result.first(5)
     results = results.map do |result|
                 {
@@ -17,11 +17,11 @@ class Frontend::ComparisonsController < ApplicationController
 
   def show
     scope = Hotel.active
-    if params[:locations]
-      scope = scope.where('lower(city) = ? and lower(country_iso_code) = ?',
-                          params[:locations][:city],
-                          params[:locations][:iso])
-    end
+    # if params[:hotels]
+    #   scope = scope.where('lower(city) = ? and lower(country_iso_code) = ?',
+    #                       params[:locations][:city],
+    #                       params[:locations][:iso])
+    # end
 
     @results = scope.ransack(name_start: params[:q]).result.first(5)
   end

@@ -20,7 +20,7 @@ export default class SearchAPI {
 
   fetchSuggestionQuery(query) {
     return axios
-      .get(`/search/suggestions?q=${query}`)
+      .get(`/comparison/hotels?q=${query}`)
       .then((res) => res && res.data);
   }
 
