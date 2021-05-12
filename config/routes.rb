@@ -26,12 +26,21 @@ Rails.application.routes.draw do
     resource :search, only: :show do
       get :suggestions
     end
+    resource :comparison, only: :show
   end
 
   namespace 'api' do
     resources :search, only: [:index] do
       collection do
         get :locations
+      end
+    end
+  end
+
+  namespace 'api' do
+    resources :comparison, only: [:index] do
+      collection do
+        get :hotels
       end
     end
   end
