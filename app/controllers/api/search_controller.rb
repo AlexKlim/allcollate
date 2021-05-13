@@ -1,5 +1,4 @@
-class Api::SearchController < ApplicationController
-  layout nil
+class Api::SearchController < Api::BaseController
 
   def index
     search = Services::Search::Hotel.new(params[:q], params[:pageNum])

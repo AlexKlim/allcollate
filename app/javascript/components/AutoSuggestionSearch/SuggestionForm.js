@@ -50,6 +50,11 @@ class SuggestionForm extends React.Component {
   onSuggestionSelected(event, { suggestion, suggestionValue: value }) {
     event.preventDefault();
 
+    if (this.props.onSuggestionSelected) {
+      this.props.onSuggestionSelected(this, suggestion, value )
+      return
+    }
+
     const { noResults } = this.state;
 
     if (noResults) {
@@ -97,20 +102,25 @@ class SuggestionForm extends React.Component {
   }
 
   onSubmit(e) {
-      const { value } = this.input
-      console.log(value)
-      if (_.isEmpty(value)) {
-        e.preventDefault()
-        Router.pushRoute("/search")
-        return
-      }
-
-      // const query = qs.stringify({ q: value });
-      // const { action } = e.target;
-      // const url = `${action}?${query}`;
-
-      // this.actions.addRecentSearch({ name: value, payload: { url } });
+    if (this.props.onSubmit) {
+      this.props.onSubmit(e)
+      return
     }
+
+    const { value } = this.input
+
+    if (_.isEmpty(value)) {
+      e.preventDefault()
+      Router.pushRoute("/search")
+      return
+    }
+
+    // const query = qs.stringify({ q: value });
+    // const { action } = e.target;
+    // const url = `${action}?${query}`;
+
+    // this.actions.addRecentSearch({ name: value, payload: { url } });
+  }
 
   render() {
     const onFocus = () => true;

@@ -6,4 +6,4 @@
     .container
       h1.search__title Comparison For Hotels
 
-      = react_component('Comparison/ComparisonProvider', { query: params[:q] }, prerender: true)
+      = react_component('Comparison/ComparisonProvider', { initHotels: @hotels_json }, prerender: true)

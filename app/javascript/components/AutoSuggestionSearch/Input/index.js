@@ -1,12 +1,9 @@
 import React from 'react';
-
-import {
-  Loader,
-} from "tabler-react";
+import { Loader } from "tabler-react";
 
 export default props => {
   const { fetched, ...rest } = props;
-  console.log(fetched)
+
   return (
     <div className="suggestion-input__input-group input-group input-group-lg">
       <input {...rest} />

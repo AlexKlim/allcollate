@@ -1,92 +1,39 @@
 import React, { useContext, useEffect, useState } from 'react';
-import SearchPage from './ComparisonPage';
-import SearchAPI from '../../api/SearchAPI';
+import ComparisonPage from './ComparisonPage';
+import ComparisonAPI from '../../api/ComparisonAPI';
 
-export const SearchContext = React.createContext();
+export const ComparisonContext = React.createContext();
 
-const SearchProvider = ({ query }) => {
-  const [hotels, setHotels] = useState([]);
-  const [locations, setLocations] = useState([]);
-  const [activePage, setActivePage] = useState(1);
-  const [pagingData, setPagingData] = useState({});
-
-  const [minYearOpened] = useState(705);
-  const [maxYearOpened] = useState(2020);
-
-  const [minYearRenovated] = useState(1000);
-  const [maxYearRenovated] = useState(2020);
-
-  const [minRate] = useState(10);
-  const [maxRate] = useState(1000);
-
-  const [clearButton, setClearButton] = useState(true);
-
-  const initFilterValues = {
-    yearOpened: [minYearOpened, maxYearOpened],
-    yearRenovation: [minYearRenovated, maxYearRenovated],
-    rate: [minRate, maxRate],
-    rating: [],
-  }
-  const [filterValue, setFilterValues] = useState(initFilterValues);
-
-  const updateFilterValues = (key, value) => {
-    setFilterValues({ ...filterValue, [key]: value });
-    setActivePage(1);
-  };
+const ComparisonProvider = ({ initHotels }) => {
+  const [hotels, setHotels] = useState(initHotels);
+  const [slug, setSlug] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
-      const searchAPI = new SearchAPI();
-      const data = await searchAPI.fetchQuery(
-        query,
-        locations,
-        filterValue,
-        activePage
-      );
-      setHotels(data.results);
-      setPagingData(data.pagingData);
-      setClearButton(_.isEqual(filterValue, initFilterValues))
+      // if (!slug) { return }
+
+      const comparisonAPI = new ComparisonAPI();
+      const data = await comparisonAPI.fetchHotels(slug);
+      setHotels([...hotels, data.results]);
     };
 
     fetchData();
   }, [
-    locations,
-    activePage,
-    filterValue,
+    slug,
   ]);
 
   return (
-    <SearchContext.Provider
+    <ComparisonContext.Provider
       value={{
-        query,
         hotels,
-        locations,
-        setLocations: (locations) => setLocations(locations),
-        activePage,
-        handlePageChange: (pageNum) => {
-          setActivePage(pageNum);
-        },
-        setActivePage,
-        setHotels,
-        pagingData,
-        minYearOpened,
-        maxYearOpened,
-        minYearRenovated,
-        maxYearRenovated,
-        minRate,
-        maxRate,
-        clearButton,
-        initFilterValues,
-        setFilterValues,
-        filterValue,
-        updateFilterValues,
+        setSlug,
       }}
-      className='search'
+      className='hotel'
     >
-      <SearchPage />
-    </SearchContext.Provider>
+      <ComparisonPage />
+    </ComparisonContext.Provider>
   );
 }
 
-export default SearchProvider;
-export const useSearchContext = () => useContext(SearchContext);
+export default ComparisonProvider;
+export const useComparisonContext = () => useContext(ComparisonContext);

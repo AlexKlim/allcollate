@@ -26,9 +26,7 @@ Rails.application.routes.draw do
     resource :search, only: :show do
       get :suggestions
     end
-    resource :comparison, only: :show do
-      get :hotels
-    end
+    resources :comparisons, only: [:index]
   end
 
   namespace 'api' do
@@ -37,14 +35,8 @@ Rails.application.routes.draw do
         get :locations
       end
     end
-  end
 
-  namespace 'api' do
-    resources :comparison, only: [:index] do
-      collection do
-        get :hotels
-      end
-    end
+    resources :comparisons, only: [:index]
   end
 
   get '/directory/companies/:prefix' => 'frontend/directory/hotels#show', constraints: {

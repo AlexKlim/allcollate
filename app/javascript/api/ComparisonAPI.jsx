@@ -1,32 +1,10 @@
 // import BaseApi from './BaseApi';
 import axios from 'axios';
 
-export default class SearchAPI {
-  fetchQuery(query, locations, filterValue,  pageNum) {
-    query = query == null ? "" : query;
-    let url = `api/search?q=${query}&locations=${JSON.stringify(
-      locations
-    )}&yearRenovated=${JSON.stringify(
-      filterValue.yearRenovation
-    )}&yearOpened=${JSON.stringify(
-      filterValue.yearOpened
-    )}&rates=${JSON.stringify(
-      filterValue.rate
-    )}&starRating=${JSON.stringify(
-      filterValue.rating
-    )}&pageNum=${pageNum}`;
-    return axios.get(url).then((res) => res && res.data);
-  }
-
-  fetchSuggestionQuery(query) {
+export default class ComparisonAPI {
+  fetchHotels(slug) {
     return axios
-      .get(`/comparison/hotels?q=${query}`)
-      .then((res) => res && res.data);
-  }
-
-  fetchHotels(query) {
-    return axios
-      .get(`api/comparison/hotels?q=${query}`)
+      .get(`api/comparisons?slug=${slug}`)
       .then((res) => res && res.data);
   }
 }

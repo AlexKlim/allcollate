@@ -1,22 +1,34 @@
 import React from 'react';
-import ClearFilters from './Filters/ClearFilters';
-
-import SearchFiltersLocations from './Filters/Locations';
+import SuggestionForm from '../AutoSuggestionSearch/SuggestionForm'
 import ComparisonResults from './ComparisonResults';
 
+import { useComparisonContext } from './ComparisonProvider';
+
 function SearchPage() {
+
+  const { setSlug } = useComparisonContext();
+
+  const onSuggestionSelected = (that, suggestion, value) => {
+    setSlug(suggestion.slug);
+    that.setState({ query: '' });
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <>
     <div className='row'>
-      <div className='col-md-12'>
-        <ClearFilters />
-        <SearchFiltersLocations />
-      </div>
+        <SuggestionForm
+          onSuggestionSelected={onSuggestionSelected}
+          onSubmit={onSubmit}
+        />
       </div>
       <div className='row'>
-      <div className='col-md-12'>
-        <ComparisonResults />
-      </div>
+        <div className='col-md-12'>
+          <ComparisonResults />
+        </div>
     </div>
     </>
   );
