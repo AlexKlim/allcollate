@@ -1,3 +1,45 @@
 .comparison {
+    &__header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        align-items: center;
 
+        width: 80%;
+
+        &_title {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: space-evenly;
+            align-self: flex-end;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 34px;
+            line-height: 40px;
+            color: #000000;
+        }
+
+        &_inputblock {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-self: flex-end;
+
+            width: auto;
+
+            &_input {
+                background: #FFFFFF;
+                border: 1px solid #B2B2B2;
+                box-sizing: border-box;
+                border-radius: 4px;
+            }
+        }
+
+        &_clearbutton {
+
+        }
+    }
 }

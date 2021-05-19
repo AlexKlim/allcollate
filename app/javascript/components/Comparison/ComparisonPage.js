@@ -1,6 +1,7 @@
 import React from 'react';
 import SuggestionForm from '../AutoSuggestionSearch/SuggestionForm'
 import ComparisonResults from './ComparisonResults';
+import Typography from '@material-ui/core/Typography';
 
 import { useComparisonContext } from './ComparisonProvider';
 
@@ -19,17 +20,26 @@ function SearchPage() {
 
   return (
     <>
-    <div className='row'>
-        <SuggestionForm
-          onSuggestionSelected={onSuggestionSelected}
-          onSubmit={onSubmit}
-        />
-      </div>
       <div className='row'>
-        <div className='col-md-12'>
-          <ComparisonResults />
+        <div className='comparison__header'>
+          <div className='comparison__header_title'>
+            <p>
+              Compare Hotels
+        </p>
+          </div>
+          <div className='comparison__header_inputblock'>
+            <SuggestionForm
+              onSuggestionSelected={onSuggestionSelected}
+              onSubmit={onSubmit}
+            />
+          </div>
         </div>
-    </div>
+        <div className='row'>
+          <div className='col-md-12'>
+            <ComparisonResults />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
