@@ -35,10 +35,10 @@ function SearchPage() {
     <>
       <Grid container spacing={2}>
         <Grid item xs={4}>
-          <Grid className={classes.title}>
-            <p>
+          <Grid>
+            <Typography className={classes.title}>
               Compare Hotels
-            </p>
+            </Typography>
           </Grid>
         </Grid>
         <Grid item xs={7}>
