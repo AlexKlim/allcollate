@@ -42,7 +42,7 @@ export default function ComparisonResultHeaderCard(props) {
       />
       <CardMedia
         className={classes.media}
-        image='#'
+        image={props.photo}
         title="Paella dish"
       />
       <CardContent>

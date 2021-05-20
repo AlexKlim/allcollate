@@ -16,10 +16,10 @@ const useStyles = makeStyles({
     marginTop: '50px'
   },
   row: {
-    borderWidth: 1,
+    borderWidth: '1px',
     borderColor: 'grey',
     borderStyle: 'solid',
-    borderRadius: 4
+    borderRadius: '4px'
   }
 })
 
@@ -41,6 +41,7 @@ function ComparisonResults() {
 
   return (
     <TableContainer>
+      {console.log(hotels)}
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -48,7 +49,7 @@ function ComparisonResults() {
               {hotels.map((hotel, i) => {
                 return (
                   <TableCell>
-                    <ComparisonResultHeaderCard name={hotel.name}/>
+                    <ComparisonResultHeaderCard name={hotel.name} photo={hotel.photo}/>
                   </TableCell>
                 )
               })

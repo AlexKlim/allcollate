@@ -8,7 +8,7 @@ import { useComparisonContext } from './ComparisonProvider';
 
 const useStyles = makeStyles({
   top: {
-    marginTop: '100px'
+    marginTop: '70px'
   },
   title: {
     fontStyle: 'normal',
