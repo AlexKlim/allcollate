@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 })
 
   const comparisonOptions = [
-    'Start Rating',
+    'Star Rating',
     'Year Opened',
     'Year Renovated',
     'Checkin',
@@ -32,7 +32,6 @@ const useStyles = makeStyles({
     'Number Rooms',
     'Number Floors'
   ]
-
 
 function ComparisonResults() {
   const { hotels } = useComparisonContext();
@@ -49,7 +48,7 @@ function ComparisonResults() {
               {hotels.map((hotel, i) => {
                 return (
                   <TableCell>
-                    <ComparisonResultHeaderCard name={hotel.name} photo={hotel.photo}/>
+                    <ComparisonResultHeaderCard name={hotel.name} photo={hotel.photo} starRating={hotel.starRating} slug={hotel.slug}/>
                   </TableCell>
                 )
               })

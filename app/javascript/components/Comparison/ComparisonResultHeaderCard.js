@@ -38,7 +38,7 @@ export default function ComparisonResultHeaderCard(props) {
           </Avatar>
         }
         title={props.name}
-        subheader="September 14, 2016"
+        subheader={props.starRating}
       />
       <CardMedia
         className={classes.media}
@@ -47,7 +47,7 @@ export default function ComparisonResultHeaderCard(props) {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-            Hotel info
+            {props.slug}
         </Typography>
       </CardContent>
     </Card>
