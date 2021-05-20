@@ -8,12 +8,12 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import { red } from '@material-ui/core/colors';
+import ComparisonResultHeaderCard from './ComparisonResultHeaderCard'
   
 const useStyles = makeStyles({
   table: {
-    borderTopWidth: 1
+    borderTopWidth: 1,
+    marginTop: '50px'
   },
   row: {
     borderWidth: 1,
@@ -40,15 +40,16 @@ function ComparisonResults() {
   const classes = useStyles()
 
   return (
-    <>
-      <TableContainer>
-        <Table aria-label="customized table">
+    <TableContainer>
+        <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
               <TableCell />
               {hotels.map((hotel, i) => {
                 return (
-                  <TableCell>{hotel.name}</TableCell>
+                  <TableCell>
+                    <ComparisonResultHeaderCard name={hotel.name}/>
+                  </TableCell>
                 )
               })
               }
@@ -78,7 +79,6 @@ function ComparisonResults() {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
   );
 }
 

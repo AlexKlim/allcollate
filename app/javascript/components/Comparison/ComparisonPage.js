@@ -7,6 +7,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useComparisonContext } from './ComparisonProvider';
 
 const useStyles = makeStyles({
+  top: {
+    marginTop: '100px'
+  },
   title: {
     fontStyle: 'normal',
     fontWeight: 'normal',
@@ -33,7 +36,7 @@ function SearchPage() {
 
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} className={classes.top}>
         <Grid item xs={4}>
           <Grid>
             <Typography className={classes.title}>
