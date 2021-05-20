@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { makeStyles } from '@material-ui/core/styles';
 import { useComparisonContext } from './ComparisonProvider';
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
@@ -9,9 +9,19 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
-function ComparisonResults() {
-  const { hotels } = useComparisonContext();
+import { red } from '@material-ui/core/colors';
+  
+const useStyles = makeStyles({
+  table: {
+    borderTopWidth: 1
+  },
+  row: {
+    borderWidth: 1,
+    borderColor: 'grey',
+    borderStyle: 'solid',
+    borderRadius: 4
+  }
+})
 
   const comparisonOptions = [
     'Start Rating',
@@ -22,6 +32,12 @@ function ComparisonResults() {
     'Number Rooms',
     'Number Floors'
   ]
+
+
+function ComparisonResults() {
+  const { hotels } = useComparisonContext();
+
+  const classes = useStyles()
 
   return (
     <>
@@ -42,7 +58,8 @@ function ComparisonResults() {
             {
               comparisonOptions.map(option => {
                 return(
-                <TableRow>
+                  <>
+                <TableRow className={classes.row}>
                   <TableCell>
                     {option}
                   </TableCell>
@@ -53,6 +70,8 @@ function ComparisonResults() {
                   })
                   }
                 </TableRow>
+                <br />
+                </>
                 )
               })
             }

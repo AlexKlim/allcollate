@@ -3,10 +3,22 @@ import SuggestionForm from '../AutoSuggestionSearch/SuggestionForm'
 import ComparisonResults from './ComparisonResults';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
-
+import { makeStyles } from '@material-ui/core/styles';
 import { useComparisonContext } from './ComparisonProvider';
 
+const useStyles = makeStyles({
+  title: {
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '34px',
+    lineHeight: '40px',
+    color: 'black'
+  }
+})
+
 function SearchPage() {
+
+  const classes = useStyles()
 
   const { setSlug } = useComparisonContext();
 
@@ -23,7 +35,7 @@ function SearchPage() {
     <>
       <Grid container spacing={2}>
         <Grid item xs={4}>
-          <Grid className='comparison__title'>
+          <Grid className={classes.title}>
             <p>
               Compare Hotels
             </p>
