@@ -23,15 +23,15 @@ const useStyles = makeStyles({
   }
 })
 
-  const comparisonOptions = [
-    'Star Rating',
-    'Year Opened',
-    'Year Renovated',
-    'Checkin',
-    'Checkout',
-    'Number Rooms',
-    'Number Floors'
-  ]
+  const comparisonOptions = {
+    starRating: 'Star Rating',
+    yearOpened: 'Year Opened',
+    yearRenovated: 'Year Renovated',
+    checkin: 'Checkin',
+    checkout: 'Checkout',
+    numberRooms: 'Number Rooms',
+    numberFloors: 'Number Floors'
+  }
 
 function ComparisonResults() {
   const { hotels } = useComparisonContext();
@@ -56,26 +56,54 @@ function ComparisonResults() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {
-              comparisonOptions.map(option => {
-                return(
-                  <>
                 <TableRow className={classes.row}>
                   <TableCell>
-                    {option}
+                    {comparisonOptions.starRating}
                   </TableCell>
                   {hotels.map((hotel, i) => {
                     return (
-                      <TableCell>{hotel.name}</TableCell>
+                      <TableCell>{hotel.starRating}</TableCell>
                     )
                   })
                   }
                 </TableRow>
                 <br />
-                </>
-                )
-              })
-            }
+                <TableRow className={classes.row}>
+                  <TableCell>
+                    {comparisonOptions.yearOpened}
+                  </TableCell>
+                  {hotels.map((hotel, i) => {
+                    return (
+                      <TableCell>{hotel.yearOpened}</TableCell>
+                    )
+                  })
+                  }
+                </TableRow>
+                <br />
+                <TableRow className={classes.row}>
+                  <TableCell>
+                    {comparisonOptions.checkin}
+                  </TableCell>
+                  {hotels.map((hotel, i) => {
+                    return (
+                      <TableCell>{hotel.checkin}</TableCell>
+                    )
+                  })
+                  }
+                </TableRow>
+                <br />
+                <TableRow className={classes.row}>
+                  <TableCell>
+                    {comparisonOptions.checkin}
+                  </TableCell>
+                  {hotels.map((hotel, i) => {
+                    return (
+                      <TableCell>{hotel.checkin}</TableCell>
+                    )
+                  })
+                  }
+                </TableRow>
+                <br />
           </TableBody>
         </Table>
       </TableContainer>
