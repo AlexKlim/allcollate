@@ -136,7 +136,7 @@ class SuggestionForm extends React.Component {
 
     return (
       <Form action="/search" className="suggestion-form--group col-md-4" onSubmit={this.onSubmit.bind(this)} >
-        <Grid.Row gutters="xs">
+        <Grid.Row>
           <Grid.Col>
             <Autosuggest
               suggestions={this.currentSuggestions}

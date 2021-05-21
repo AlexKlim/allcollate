@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
   },
   media: {
     height: '0px',
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%',
   },
   expandOpen: {
     transform: 'rotate(180deg)',
@@ -43,7 +43,7 @@ export default function ComparisonResultHeaderCard(props) {
       <CardMedia
         className={classes.media}
         image={props.photo}
-        title="Paella dish"
+        title={props.slug}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">

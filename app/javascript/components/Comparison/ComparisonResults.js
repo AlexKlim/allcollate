@@ -9,6 +9,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import ComparisonResultHeaderCard from './ComparisonResultHeaderCard'
+import ComparisonResultTableRow from './ComparisonResultTableRow'
+import {comparisonOptions} from './constants'
   
 const useStyles = makeStyles({
   table: {
@@ -16,22 +18,13 @@ const useStyles = makeStyles({
     marginTop: '50px'
   },
   row: {
+    border: '1px',
     borderWidth: '1px',
     borderColor: 'grey',
     borderStyle: 'solid',
     borderRadius: '4px'
   }
 })
-
-  const comparisonOptions = {
-    starRating: 'Star Rating',
-    yearOpened: 'Year Opened',
-    yearRenovated: 'Year Renovated',
-    checkin: 'Checkin',
-    checkout: 'Checkout',
-    numberRooms: 'Number Rooms',
-    numberFloors: 'Number Floors'
-  }
 
 function ComparisonResults() {
   const { hotels } = useComparisonContext();
@@ -40,7 +33,6 @@ function ComparisonResults() {
 
   return (
     <TableContainer>
-      {console.log(hotels)}
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -56,54 +48,14 @@ function ComparisonResults() {
             </TableRow>
           </TableHead>
           <TableBody>
-                <TableRow className={classes.row}>
-                  <TableCell>
-                    {comparisonOptions.starRating}
-                  </TableCell>
-                  {hotels.map((hotel, i) => {
-                    return (
-                      <TableCell>{hotel.starRating}</TableCell>
-                    )
-                  })
-                  }
-                </TableRow>
-                <br />
-                <TableRow className={classes.row}>
-                  <TableCell>
-                    {comparisonOptions.yearOpened}
-                  </TableCell>
-                  {hotels.map((hotel, i) => {
-                    return (
-                      <TableCell>{hotel.yearOpened}</TableCell>
-                    )
-                  })
-                  }
-                </TableRow>
-                <br />
-                <TableRow className={classes.row}>
-                  <TableCell>
-                    {comparisonOptions.checkin}
-                  </TableCell>
-                  {hotels.map((hotel, i) => {
-                    return (
-                      <TableCell>{hotel.checkin}</TableCell>
-                    )
-                  })
-                  }
-                </TableRow>
-                <br />
-                <TableRow className={classes.row}>
-                  <TableCell>
-                    {comparisonOptions.checkin}
-                  </TableCell>
-                  {hotels.map((hotel, i) => {
-                    return (
-                      <TableCell>{hotel.checkin}</TableCell>
-                    )
-                  })
-                  }
-                </TableRow>
-                <br />
+            {
+              comparisonOptions.map((option => {
+                return (
+                  <ComparisonResultTableRow hotels={hotels} comparisonOption={option.title} data={option.key}/>
+                )
+              })
+              )
+            }
           </TableBody>
         </Table>
       </TableContainer>
