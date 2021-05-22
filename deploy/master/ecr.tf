@@ -38,7 +38,7 @@ data "aws_iam_policy_document" "iam_policy_document_access" {
       "ecr:BatchCheckLayerAvailability",
     ]
 
-    principals = {
+    principals {
       type = "AWS"
 
       identifiers = [

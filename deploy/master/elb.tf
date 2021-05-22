@@ -1,7 +1,7 @@
 resource "aws_lb" "lb" {
   name                       = "${terraform.workspace}-lb"
   security_groups            = ["${aws_security_group.lb_container_instance.id}"]
-  subnets                    = ["${module.vpc.public_subnets}"]
+  subnets                    = module.vpc.public_subnets
   enable_deletion_protection = false
 }
 
