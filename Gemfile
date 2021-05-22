@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'mimemagic', '0.3.9'
+
 gem 'slim', '~> 4.0.1'
 
 gem 'friendly_id', '~> 5.3.0'
