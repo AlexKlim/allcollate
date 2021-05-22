@@ -41,7 +41,7 @@ gem 'simple-line-icons-rails', '~> 0.1.6'
 gem 'httparty', '~> 0.18.0'
 gem 'sidekiq', '~> 6.0.7'
 
-gem 'carrierwave', '~> 2.1.1'
+gem 'carrierwave', '~> 2.2.1'
 gem 'fog-aws', '~> 3.6.5'
 gem 'mini_magick', '~> 4.10.1'
 gem 'sitemap_generator', '~> 6.1.1'
