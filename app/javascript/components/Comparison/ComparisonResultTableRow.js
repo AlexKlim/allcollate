@@ -2,7 +2,8 @@ import React from 'react'
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import { makeStyles } from '@material-ui/core/styles';
-import { spacing } from '@material-ui/system';
+import StarRatings from 'react-star-ratings';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
   row: {
@@ -12,8 +13,10 @@ const useStyles = makeStyles({
     borderStyle: 'solid',
     borderRadius: '4px',
     marginTop: '10px'
-  }  
+  }
 })
+
+
 
 export default function ComparisonResultTableRow(props) {
 
@@ -24,11 +27,19 @@ export default function ComparisonResultTableRow(props) {
       <TableCell>
         {`${props.comparisonOption}`}
       </TableCell>
-      {props.hotels.map((hotel, i) => {
+      {props.hotels ? props.hotels.map((hotel, i) => {
         return (
-          <TableCell>{hotel[`${props.data}`]}</TableCell>
+          <TableCell>{ props.data !== 'starRating' ? hotel[`${props.data}`] : 
+          <StarRatings
+            rating={hotel[`${props.data}`]}
+            starDimension='20px'
+            starRatedColor='gold'
+            numberOfStars={hotel[`${props.data}`]}
+            starSpacing='0px'
+          />}</TableCell>
         )
-      })
+      }) :
+      <CircularProgress />
       }
     </TableRow>
   )
