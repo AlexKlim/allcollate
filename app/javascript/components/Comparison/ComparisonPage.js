@@ -7,10 +7,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useComparisonContext } from './ComparisonProvider';
 import Link from '@material-ui/core/Link';
 import RatesComparisonChart from './RatesComparisonChart';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
-  top: {
+  pageHeader: {
+    display: 'flex',
     marginTop: '70px'
+  },
+  titleBox: {
+    width: '120%'
   },
   title: {
     fontStyle: 'normal',
@@ -19,14 +24,15 @@ const useStyles = makeStyles({
     lineHeight: '40px',
     color: 'black'
   },
-  ratesChart: {
-    minWidth: '100%'
+  searchBox: {
+    width: '300%',
+    display: 'flex'
   }
 })
 
 function SearchPage() {
 
-  const {hotels, setHotels, setSlug} = useComparisonContext()
+  const { hotels, setHotels, setSlug } = useComparisonContext()
 
   const classes = useStyles()
 
@@ -45,40 +51,29 @@ function SearchPage() {
 
   return (
     <>
-      <Grid container spacing={2} className={classes.top}>
-        <Grid item xs={4}>
-          <Grid>
-            <Typography className={classes.title}>
-              Compare Hotels
+      <Box className={classes.pageHeader}>
+        <Box className={classes.titleBox}>
+          <Typography className={classes.title}>
+            Compare Hotels
             </Typography>
-          </Grid>
-        </Grid>
-        <Grid item xs={7}>
-          <Grid
-            container
-            direction="row"
-            justify="flex-start"
-            alignItems="center">
-            <SuggestionForm
-              onSuggestionSelected={onSuggestionSelected}
-              onSubmit={onSubmit}
-            />
-            <Grid item>
-    <Link
-      component="button"
-      variant="body2"
-      onClick={() => onClearAll()}
-    >
-      Clear all
-    </Link>
-
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
+        </Box>
+        <Box className={classes.searchBox}>
+          <SuggestionForm
+            onSuggestionSelected={onSuggestionSelected}
+            onSubmit={onSubmit}
+          />
+          <Link
+            component="button"
+            variant="body2"
+            onClick={() => onClearAll()}
+          >
+            Clear all
+              </Link>
+        </Box>
+      </Box>
       <Grid>
         <ComparisonResults />
-        <RatesComparisonChart hotelName={hotels[0].name} rates={hotels[0].rates}className={classes.ratesChart} />
+        <RatesComparisonChart hotelName={hotels[0].name} rates={hotels[0].rates} />
       </Grid>
     </>
   );

@@ -1,11 +1,16 @@
 import * as React from "react";
 import echarts from 'echarts';
 import ReactEcharts from 'echarts-for-react';
+import { useComparisonContext } from "./ComparisonProvider";
 
 export default function RatesComparisonChart(props) {
 
+    const {hotels} = useComparisonContext()
+
+    const {rates, name} = props
+
   const getOption = () => {
-    const sortedRates = props.rates
+    const sortedRates = rates
     const date = sortedRates.map(r => r.actual_on)
     const data = sortedRates.map(r => r.daily_rate)
 
@@ -20,7 +25,7 @@ export default function RatesComparisonChart(props) {
           feature: {
               saveAsImage: {
                 title: 'Download',
-                name: `${props.hotelName} Rates`
+                name: `${name} Rates`
               }
           }
       },
