@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles';
 import { useComparisonContext } from './ComparisonProvider';
 import Link from '@material-ui/core/Link';
+import RatesComparisonChart from './RatesComparisonChart';
 
 const useStyles = makeStyles({
   top: {
@@ -17,16 +18,17 @@ const useStyles = makeStyles({
     fontSize: '34px',
     lineHeight: '40px',
     color: 'black'
+  },
+  ratesChart: {
+    minWidth: '100%'
   }
 })
 
 function SearchPage() {
 
-  const {setHotels} = useComparisonContext()
+  const {hotels, setHotels, setSlug} = useComparisonContext()
 
   const classes = useStyles()
-
-  const { setSlug } = useComparisonContext();
 
   const onSuggestionSelected = (that, suggestion, value) => {
     setSlug(suggestion.slug);
@@ -76,6 +78,7 @@ function SearchPage() {
       </Grid>
       <Grid>
         <ComparisonResults />
+        <RatesComparisonChart hotelName={hotels[0].name} rates={hotels[0].rates}className={classes.ratesChart} />
       </Grid>
     </>
   );

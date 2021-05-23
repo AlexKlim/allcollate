@@ -42,25 +42,27 @@ const removeHotelFromList = (name) => {
   setHotels(hotels.filter((hotel) => hotel.name !== name))
 }
 
+const {hotel} = props
+
   return (
     <Card className={classes.card}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            {props.name[0]}
+            {hotel.name[0]}
           </Avatar>
         }
-        title={props.name}
+        title={hotel.name}
         subheader={
           <StarRatings
-            rating={props.starRating}
+            rating={hotel.starRating}
             starDimension='20px'
             starRatedColor='gold'
-            numberOfStars={props.starRating}
+            numberOfStars={hotel.starRating}
             starSpacing='0px'
           />}
         action={
-          <Box onClick={() => removeHotelFromList(props.name)} className={classes.removeButton}>
+          <Box onClick={() => removeHotelFromList(hotel.name)} className={classes.removeButton}>
             <Typography>
               &#10006;
         </Typography>
@@ -70,12 +72,12 @@ const removeHotelFromList = (name) => {
       </CardHeader>
       <CardMedia
         className={classes.media}
-        image={props.photo}
-        title={props.slug}
+        image={hotel.photo}
+        title={hotel.name}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {props.slug}
+          {hotel.country + ', ' + hotel.city}
         </Typography>
       </CardContent>
     </Card>

@@ -56,7 +56,7 @@ function ComparisonResults() {
             {hotels.map((hotel, i) => {
               return (
                 <TableCell className={classes.cell} key={i}>
-                  <ComparisonResultHeaderCard name={hotel.name} photo={hotel.photo} starRating={hotel.starRating} slug={hotel.slug} />
+                  <ComparisonResultHeaderCard hotel={hotel} />
                 </TableCell>
               )
             })
