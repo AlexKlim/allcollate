@@ -18,11 +18,14 @@ const useStyles = makeStyles({
     marginTop: '50px'
   },
   row: {
-    border: '1px',
-    borderWidth: '1px',
-    borderColor: 'grey',
-    borderStyle: 'solid',
-    borderRadius: '4px'
+    border: '1px;',
+    borderWidth: '1px;',
+    borderColor: 'grey;',
+    borderStyle: 'solid;',
+    borderRadius: '4px;'
+  },
+  cell: {
+    minWidth: '370px;'
   }
 })
 
@@ -39,7 +42,7 @@ function ComparisonResults() {
               <TableCell />
               {hotels.map((hotel, i) => {
                 return (
-                  <TableCell>
+                  <TableCell className={classes.cell}>
                     <ComparisonResultHeaderCard name={hotel.name} photo={hotel.photo} starRating={hotel.starRating} slug={hotel.slug}/>
                   </TableCell>
                 )
