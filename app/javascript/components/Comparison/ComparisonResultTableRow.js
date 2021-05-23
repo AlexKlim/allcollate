@@ -6,20 +6,14 @@ import StarRatings from 'react-star-ratings';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
-  row: {
-    border: '1px',
-    borderWidth: '1px',
-    borderColor: 'grey',
-    borderStyle: 'solid',
-    borderRadius: '4px',
-    marginTop: '10px'
-  },
   leftColumn: {
     position: 'sticky',
     left: '0px',
     color: 'black',
     backgroundColor: 'white',
-    zIndex: '9999999'
+    zIndex: '9999999',
+    width: 'fit-content',
+    minWidth: '150px'
   }
 })
 
@@ -30,7 +24,7 @@ export default function ComparisonResultTableRow(props) {
   const classes = useStyles()
 
   return (
-    <TableRow className={classes.row}>
+    <TableRow>
       <TableCell className={classes.leftColumn} >
         {`${props.comparisonOption}`}
       </TableCell>
