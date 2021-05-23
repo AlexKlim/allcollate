@@ -8,6 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
+import { useComparisonContext } from './ComparisonProvider';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -25,9 +26,15 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+
 export default function ComparisonResultHeaderCard(props) {
   const classes = useStyles();
 
+let { hotels, setHotels } = useComparisonContext()
+
+const removeHotelFromList = (name) => {
+  setHotels(hotels.filter((hotel) => hotel.name !== name))
+}
 
   return (
     <Card className={classes.card}>
@@ -39,7 +46,15 @@ export default function ComparisonResultHeaderCard(props) {
         }
         title={props.name}
         subheader={props.starRating}
-      />
+        action={
+          <div onClick={() => removeHotelFromList(props.name)}>
+            <Typography>
+              &#10006;
+        </Typography>
+          </div>
+        }
+      >
+      </CardHeader>
       <CardMedia
         className={classes.media}
         image={props.photo}
@@ -47,7 +62,7 @@ export default function ComparisonResultHeaderCard(props) {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-            {props.slug}
+          {props.slug}
         </Typography>
       </CardContent>
     </Card>

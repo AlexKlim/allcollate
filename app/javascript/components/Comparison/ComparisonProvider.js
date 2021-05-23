@@ -19,14 +19,16 @@ const ComparisonProvider = ({ initHotels }) => {
 
     fetchData();
   }, [
-    slug,
+    slug
   ]);
+
 
   return (
     <ComparisonContext.Provider
       value={{
         hotels,
         setSlug,
+        setHotels
       }}
       className='hotel'
     >
