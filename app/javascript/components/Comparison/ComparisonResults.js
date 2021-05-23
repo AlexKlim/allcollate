@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     borderRadius: '4px;'
   },
   cell: {
-    minWidth: '370px;'
+    minWidth: '365px;'
   }
 })
 
