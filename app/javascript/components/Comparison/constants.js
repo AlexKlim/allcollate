@@ -5,6 +5,10 @@ const comparisonOptions = [
     key: 'starRating' 
   },
   {
+    title:'Name',
+    key: 'name' 
+  },
+  {
     title:'Address',
     key: 'addressline1' 
   },
@@ -17,8 +21,12 @@ const comparisonOptions = [
     key: 'country' 
   },
   {
-    title:'Name',
-    key: 'name' 
+    title:'Number of floors',
+    key: 'numberFloors' 
+  },
+  {
+    title:'Number of rooms',
+    key: 'numberRooms' 
   },
   {
     title:'Rate',

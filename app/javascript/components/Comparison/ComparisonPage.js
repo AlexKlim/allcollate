@@ -51,6 +51,7 @@ function SearchPage() {
 
   return (
     <>
+    {console.log(hotels)}
       <Box className={classes.pageHeader}>
         <Box className={classes.titleBox}>
           <Typography className={classes.title}>
