@@ -25,6 +25,11 @@ const useStyles = makeStyles(() => ({
   avatar: {
     backgroundColor: red[500],
   },
+  removeButton: {
+    '&:hover': {
+      cursor: 'pointer'
+    }
+  }
 }));
 
 
@@ -55,7 +60,7 @@ const removeHotelFromList = (name) => {
             starSpacing='0px'
           />}
         action={
-          <Box onClick={() => removeHotelFromList(props.name)}>
+          <Box onClick={() => removeHotelFromList(props.name)} className={classes.removeButton}>
             <Typography>
               &#10006;
         </Typography>
