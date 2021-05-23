@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import { useComparisonContext } from './ComparisonProvider';
 import Box from '@material-ui/core/Box';
+import StarRatings from 'react-star-ratings';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -46,7 +47,14 @@ const removeHotelFromList = (name) => {
           </Avatar>
         }
         title={props.name}
-        subheader={props.starRating}
+        subheader={
+          <StarRatings
+            rating={props.starRating}
+            starDimension='20px'
+            starRatedColor='gold'
+            numberOfStars={props.starRating}
+            starSpacing='0px'
+          />}
         action={
           <Box onClick={() => removeHotelFromList(props.name)}>
             <Typography>
