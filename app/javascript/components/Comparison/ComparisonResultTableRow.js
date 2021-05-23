@@ -13,6 +13,13 @@ const useStyles = makeStyles({
     borderStyle: 'solid',
     borderRadius: '4px',
     marginTop: '10px'
+  },
+  leftColumn: {
+    position: 'sticky',
+    left: '0px',
+    color: 'black',
+    backgroundColor: 'white',
+    zIndex: '9999999'
   }
 })
 
@@ -24,7 +31,7 @@ export default function ComparisonResultTableRow(props) {
 
   return (
     <TableRow className={classes.row}>
-      <TableCell>
+      <TableCell className={classes.leftColumn} >
         {`${props.comparisonOption}`}
       </TableCell>
       {props.hotels ? props.hotels.map((hotel, i) => {

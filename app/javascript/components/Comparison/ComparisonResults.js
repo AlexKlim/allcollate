@@ -28,6 +28,12 @@ const useStyles = makeStyles({
   cell: {
     minWidth: '365px;'
   },
+  leftColumn: {
+    position: 'sticky',
+    left: '0px',
+    backgroundColor: 'white',
+    zIndex: '9999999'
+  },
   noHotelsBox: {
     minWidth: '100%;'
   }
@@ -52,7 +58,7 @@ function ComparisonResults() {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <TableCell />
+            <TableCell className={classes.leftColumn} />
             {hotels.map((hotel, i) => {
               return (
                 <TableCell className={classes.cell} key={i}>

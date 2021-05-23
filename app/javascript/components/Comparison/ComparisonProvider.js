@@ -14,6 +14,10 @@ const ComparisonProvider = ({ initHotels }) => {
 
       const comparisonAPI = new ComparisonAPI();
       const data = await comparisonAPI.fetchHotels(slug);
+      if (!data) {
+        setHotels([])
+        return
+      }
       setHotels([...hotels, data.results]);
     };
 

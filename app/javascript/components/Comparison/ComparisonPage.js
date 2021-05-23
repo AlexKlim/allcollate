@@ -68,12 +68,12 @@ function SearchPage() {
             onClick={() => onClearAll()}
           >
             Clear all
-              </Link>
+          </Link>
         </Box>
       </Box>
       <Grid>
         <ComparisonResults />
-        <RatesComparisonChart hotelName={hotels[0].name} rates={hotels[0].rates} />
+        { hotels.length !== 0 ? <RatesComparisonChart hotelName={hotels[0].name} rates={hotels[0].rates} /> : null}
       </Grid>
     </>
   );
