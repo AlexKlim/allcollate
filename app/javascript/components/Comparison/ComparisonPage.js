@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles';
 import { useComparisonContext } from './ComparisonProvider';
-import { Input } from '@material-ui/core';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles({
   top: {
@@ -22,6 +22,8 @@ const useStyles = makeStyles({
 
 function SearchPage() {
 
+  const {setHotels} = useComparisonContext()
+
   const classes = useStyles()
 
   const { setSlug } = useComparisonContext();
@@ -29,6 +31,10 @@ function SearchPage() {
   const onSuggestionSelected = (that, suggestion, value) => {
     setSlug(suggestion.slug);
     that.setState({ query: '' });
+  }
+
+  const onClearAll = () => {
+    setHotels([])
   }
 
   const onSubmit = (e) => {
@@ -56,7 +62,14 @@ function SearchPage() {
               onSubmit={onSubmit}
             />
             <Grid item>
-              <a href='#'>Clear all</a>
+    <Link
+      component="button"
+      variant="body2"
+      onClick={() => onClearAll()}
+    >
+      Clear all
+    </Link>
+
             </Grid>
           </Grid>
         </Grid>
