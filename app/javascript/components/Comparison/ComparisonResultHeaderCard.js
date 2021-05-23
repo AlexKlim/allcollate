@@ -43,7 +43,7 @@ const removeHotelFromList = (name) => {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+            {props.name[0]}
           </Avatar>
         }
         title={props.name}

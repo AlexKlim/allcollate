@@ -42,7 +42,7 @@ function ComparisonResults() {
               <TableCell />
               {hotels.map((hotel, i) => {
                 return (
-                  <TableCell className={classes.cell}>
+                  <TableCell className={classes.cell} key={i}>
                     <ComparisonResultHeaderCard name={hotel.name} photo={hotel.photo} starRating={hotel.starRating} slug={hotel.slug}/>
                   </TableCell>
                 )
@@ -52,11 +52,11 @@ function ComparisonResults() {
           </TableHead>
           <TableBody>
             {
-              comparisonOptions.map((option => {
+              comparisonOptions.map((option, i) => {
                 return (
-                  <ComparisonResultTableRow hotels={hotels} comparisonOption={option.title} data={option.key}/>
+                  <ComparisonResultTableRow hotels={hotels} comparisonOption={option.title} data={option.key} key={i}/>
                 )
-              })
+              }
               )
             }
           </TableBody>
