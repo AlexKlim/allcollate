@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import { useComparisonContext } from './ComparisonProvider';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -47,11 +48,11 @@ const removeHotelFromList = (name) => {
         title={props.name}
         subheader={props.starRating}
         action={
-          <div onClick={() => removeHotelFromList(props.name)}>
+          <Box onClick={() => removeHotelFromList(props.name)}>
             <Typography>
               &#10006;
         </Typography>
-          </div>
+          </Box>
         }
       >
       </CardHeader>
