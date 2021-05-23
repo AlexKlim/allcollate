@@ -33,10 +33,6 @@ const comparisonOptions = [
     key: 'reviewCount' 
   },
   {
-    title:'Slug',
-    key: 'slug' 
-  },
-  {
     title:'Year Opened',
     key: 'yearOpened' 
   },
