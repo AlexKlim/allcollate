@@ -15,11 +15,26 @@ const ComparisonProvider = ({ initHotels }) => {
 
       const comparisonAPI = new ComparisonAPI();
       const data = await comparisonAPI.fetchHotels(slug);
+
+      function unique(hotels) {
+        let uniqueHotelsNames = []
+        let uniqueHotels = []
+        for (let hotel of hotels) {
+          if (uniqueHotelsNames.indexOf(hotel.name) === -1) {
+            uniqueHotelsNames.push(hotel.name)
+            uniqueHotels.push(hotel)
+          }
+        }
+        return uniqueHotels
+      }
+      
+      unique(hotels)
+
       if (!data) {
         setHotels([...hotels])
         return
       }
-      setHotels([...hotels, data.results]);
+      setHotels(unique([...hotels, data.results]));
     };
 
     fetchData();

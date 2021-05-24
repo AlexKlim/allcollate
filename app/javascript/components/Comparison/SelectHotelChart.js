@@ -27,7 +27,7 @@ export default function SelectHotelChart() {
     return (
         <Box>
             <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                {currentHotel ? currentHotel.name : 'Select Hotel'}
+                {currentHotel ? currentHotel.name : 'Select Hotel'} &#9660;
           </Button>
             <Menu
                 id="simple-menu"
