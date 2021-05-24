@@ -27,7 +27,7 @@ const ComparisonProvider = ({ initHotels }) => {
         }
         return uniqueHotels
       }
-      
+
       unique(hotels)
 
       if (!data) {
@@ -44,11 +44,11 @@ const ComparisonProvider = ({ initHotels }) => {
   ]);
 
   useEffect(() => {
-      setCurrentHotel(hotels[0])
+    setCurrentHotel(hotels[0])
   }, [
     hotels
   ])
-      
+
 
   return (
     <ComparisonContext.Provider

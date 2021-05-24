@@ -74,8 +74,12 @@ function SearchPage() {
       </Box>
       <Grid>
         <ComparisonResults />
+        { currentHotel ?
+        <>
         <SelectHotelChart />
-        { currentHotel ? <RatesComparisonChart currentHotel={currentHotel} /> : null}
+        <RatesComparisonChart currentHotel={currentHotel} />
+        </> :
+         null}
       </Grid>
     </>
   );

@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     borderRadius: '4px;'
   },
   cell: {
-    minWidth: '365px;'
+    minWidth: '340px;'
   },
   leftColumn: {
     position: 'sticky',
@@ -35,7 +35,8 @@ const useStyles = makeStyles({
     zIndex: '9999999'
   },
   noHotelsBox: {
-    minWidth: '100%;'
+    minWidth: '100%;',
+    marginTop: '25%'
   }
 })
 
@@ -50,7 +51,7 @@ function ComparisonResults() {
     content =
       <Box className={classes.noHotelsBox}>
         <Typography variant="h2" gutterBottom>
-          Please start typing the hotel name...
+          Please add at least one hotel to the list...
         </Typography>
       </Box>
   } else {
