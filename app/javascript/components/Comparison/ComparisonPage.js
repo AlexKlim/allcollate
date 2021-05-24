@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SuggestionForm from '../AutoSuggestionSearch/SuggestionForm'
 import ComparisonResults from './ComparisonResults';
 import Typography from '@material-ui/core/Typography';
@@ -9,6 +9,7 @@ import Link from '@material-ui/core/Link';
 import RatesComparisonChart from './RatesComparisonChart';
 import Box from '@material-ui/core/Box';
 import SelectHotelChart from './SelectHotelChart';
+import Notification from './Notification'
 
 const useStyles = makeStyles({
   pageHeader: {
@@ -33,7 +34,7 @@ const useStyles = makeStyles({
 
 function SearchPage() {
 
-  const { setHotels, setSlug, currentHotel } = useComparisonContext()
+  const { setHotels, setSlug, currentHotel, notificationOn } = useComparisonContext()
 
   const classes = useStyles()
 
@@ -81,6 +82,7 @@ function SearchPage() {
         </> :
          null}
       </Grid>
+      <Notification />
     </>
   );
 }

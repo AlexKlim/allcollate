@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ComparisonPage from './ComparisonPage';
 import ComparisonAPI from '../../api/ComparisonAPI';
+import { uniqueHotels } from './helpers'
 
 export const ComparisonContext = React.createContext();
 
@@ -8,6 +9,12 @@ const ComparisonProvider = ({ initHotels }) => {
   const [hotels, setHotels] = useState(initHotels);
   const [slug, setSlug] = useState();
   const [currentHotel, setCurrentHotel] = useState(null)
+  const [notificationOn, setNotificationOn] = useState(false)
+
+
+  function toggleNotification() {
+    setNotificationOn(true)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,25 +23,13 @@ const ComparisonProvider = ({ initHotels }) => {
       const comparisonAPI = new ComparisonAPI();
       const data = await comparisonAPI.fetchHotels(slug);
 
-      function unique(hotels) {
-        let uniqueHotelsNames = []
-        let uniqueHotels = []
-        for (let hotel of hotels) {
-          if (uniqueHotelsNames.indexOf(hotel.name) === -1) {
-            uniqueHotelsNames.push(hotel.name)
-            uniqueHotels.push(hotel)
-          }
-        }
-        return uniqueHotels
-      }
-
-      unique(hotels)
+      uniqueHotels(hotels, toggleNotification)
 
       if (!data) {
         setHotels([...hotels])
         return
       }
-      setHotels(unique([...hotels, data.results]));
+      setHotels(uniqueHotels([...hotels, data.results], toggleNotification));
     };
 
     fetchData();
@@ -57,7 +52,9 @@ const ComparisonProvider = ({ initHotels }) => {
         setSlug,
         setHotels,
         currentHotel,
-        setCurrentHotel
+        setCurrentHotel,
+        notificationOn,
+        setNotificationOn
       }}
       className='hotel'
     >
