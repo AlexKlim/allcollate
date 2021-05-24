@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 
 function SearchPage() {
 
-  const { setHotels, setSlug, currentHotel, notificationOn } = useComparisonContext()
+  const { setHotels, setSlug, currentHotel } = useComparisonContext()
 
   const classes = useStyles()
 

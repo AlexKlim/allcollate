@@ -21,6 +21,14 @@ const comparisonOptions = [
     key: 'country' 
   },
   {
+    title:'Check-in',
+    key: 'checkin' 
+  },
+  {
+    title:'Check-out',
+    key: 'checkout' 
+  },
+  {
     title:'Number of floors',
     key: 'numberFloors' 
   },
