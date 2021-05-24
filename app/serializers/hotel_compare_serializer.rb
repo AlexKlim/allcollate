@@ -4,7 +4,7 @@ class HotelCompareSerializer
   set_key_transform :camel_lower
 
   set_type :hotel
-  attributes :name, :star_rating, :slug, :city, :country, :addressline1, :year_opened,
+  attributes :id, :name, :star_rating, :slug, :city, :country, :addressline1, :year_opened,
              :year_renovated, :checkin, :checkout, :number_rooms, :number_floors
 
   attribute :photo do |hotel|
