@@ -8,6 +8,7 @@ import { useComparisonContext } from './ComparisonProvider';
 import Link from '@material-ui/core/Link';
 import RatesComparisonChart from './RatesComparisonChart';
 import Box from '@material-ui/core/Box';
+import SelectHotelChart from './SelectHotelChart';
 
 const useStyles = makeStyles({
   pageHeader: {
@@ -32,7 +33,7 @@ const useStyles = makeStyles({
 
 function SearchPage() {
 
-  const { hotels, setHotels, setSlug } = useComparisonContext()
+  const { setHotels, setSlug, currentHotel } = useComparisonContext()
 
   const classes = useStyles()
 
@@ -73,7 +74,8 @@ function SearchPage() {
       </Box>
       <Grid>
         <ComparisonResults />
-        { hotels.length !== 0 ? <RatesComparisonChart hotelName={hotels[0].name} rates={hotels[0].rates} /> : null}
+        <SelectHotelChart />
+        { currentHotel ? <RatesComparisonChart currentHotel={currentHotel} /> : null}
       </Grid>
     </>
   );

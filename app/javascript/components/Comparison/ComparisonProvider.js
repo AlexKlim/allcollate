@@ -7,6 +7,7 @@ export const ComparisonContext = React.createContext();
 const ComparisonProvider = ({ initHotels }) => {
   const [hotels, setHotels] = useState(initHotels);
   const [slug, setSlug] = useState();
+  const [currentHotel, setCurrentHotel] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,17 +23,26 @@ const ComparisonProvider = ({ initHotels }) => {
     };
 
     fetchData();
+
   }, [
     slug
   ]);
 
+  useEffect(() => {
+      setCurrentHotel(hotels[0])
+  }, [
+    hotels
+  ])
+      
 
   return (
     <ComparisonContext.Provider
       value={{
         hotels,
         setSlug,
-        setHotels
+        setHotels,
+        currentHotel,
+        setCurrentHotel
       }}
       className='hotel'
     >

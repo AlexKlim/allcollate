@@ -5,9 +5,9 @@ import { useComparisonContext } from "./ComparisonProvider";
 
 export default function RatesComparisonChart(props) {
 
-    const {hotels} = useComparisonContext()
+    const {currentHotel} = props
 
-    const {rates, name} = props
+    const {rates, name} = currentHotel
 
   const getOption = () => {
     const sortedRates = rates

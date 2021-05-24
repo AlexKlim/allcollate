@@ -19,9 +19,6 @@ const useStyles = makeStyles(() => ({
     height: '0px',
     paddingTop: '56.25%',
   },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
   avatar: {
     backgroundColor: red[500],
   },
