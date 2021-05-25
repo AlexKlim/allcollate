@@ -13,7 +13,12 @@ const useStyles = makeStyles({
     backgroundColor: '#F5F7FB',
     zIndex: '9999999',
     width: 'fit-content',
-    minWidth: '150px'
+    minWidth: '150px',
+    borderRight: '1px solid #ececec',
+    borderLeft: '1px solid #ececec'
+  },
+  dataCell : {
+    borderRight: '1px solid #ececec'
   }
 })
 
@@ -30,14 +35,15 @@ export default function ComparisonResultTableRow(props) {
       </TableCell>
       {props.hotels ? props.hotels.map((hotel, i) => {
         return (
-          <TableCell key={i}>{props.data !== 'starRating' ? hotel[`${props.data}`] : 
+          <TableCell key={i} className={classes.dataCell}>{props.data !== 'starRating' ? hotel[`${props.data}`] : 
           <StarRatings
             rating={hotel[`${props.data}`]}
             starDimension='20px'
             starRatedColor='gold'
             numberOfStars={hotel[`${props.data}`]}
             starSpacing='0px'
-          />}</TableCell>
+          />}
+          </TableCell>
         )
       }) :
       <CircularProgress />
