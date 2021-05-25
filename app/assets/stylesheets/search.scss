@@ -1,4 +1,17 @@
 .search {
+  &__title {
+    padding-bottom: 11px;
+    font-size: 27px;
+  }
+
+  &__results {
+    margin-top: 48px;
+  }
+
+  &__clear-btn {
+    font-size: 16px;
+  }
+
   &__view {
     position: absolute;
     bottom: 15px;

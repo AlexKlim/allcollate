@@ -21,7 +21,7 @@ function ClearFilters() {
   };
 
   return (
-    <div className='text-right mt-3 mb-3'>
+    <div className='text-right mt-3 mb-3 search__clear-btn'>
       <button onClick={resetFilters} disabled={clearButton}>
         Clear All
       </button>

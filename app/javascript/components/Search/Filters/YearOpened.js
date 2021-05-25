@@ -31,17 +31,30 @@ function YearOpened() {
     debouncedSliderValue(newValue);
   };
 
+  const helpText = () => {
+    const leftSlider = staticYearOpened[0];
+    const rightSlider = staticYearOpened[1];
+
+    const minText = leftSlider == minYearOpened ? `+${leftSlider}` : leftSlider
+    const maxText = rightSlider == maxYearOpened ? `${rightSlider}+` : rightSlider
+
+    return `from ${minText} to ${maxText}`;
+  }
+
   return (
     <Card>
       <Card.Body>
-        <Typography id='range-slider' gutterBottom variant='h6'>
+        <Typography id='range-slider' variant='h6'>
           Year Opened
         </Typography>
+        <p className='pb-3'>
+          <i>{helpText()}</i>
+        </p>
         <Slider
           className='mt-5'
           value={staticYearOpened}
           onChange={handleChange}
-          valueLabelDisplay='on'
+          valueLabelDisplay='auto'
           aria-labelledby='range-slider'
           min={minYearOpened}
           max={maxYearOpened}

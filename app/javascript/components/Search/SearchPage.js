@@ -19,7 +19,7 @@ function SearchPage() {
         <Rates />
         <StarRating />
       </div>
-      <div className='col-md-9'>
+      <div className='col-md-9 search__results'>
         <SearchResults />
       </div>
     </div>
