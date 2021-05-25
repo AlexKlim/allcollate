@@ -9,18 +9,18 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import { useComparisonContext } from './ComparisonProvider';
 import Box from '@material-ui/core/Box';
-import StarRatings from 'react-star-ratings';
 
 const useStyles = makeStyles(() => ({
   card: {
-    maxWidth: '345px',
+    width: '245px',
+    height: '245px',
+  },
+  cardHeader: {
+    align: 'center'
   },
   media: {
     height: '0px',
     paddingTop: '56.25%',
-  },
-  avatar: {
-    backgroundColor: red[500],
   },
   removeButton: {
     '&:hover': {
@@ -43,25 +43,18 @@ const {hotel} = props
 
   return (
     <Card className={classes.card}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            {hotel.name[0]}
-          </Avatar>
-        }
-        title={hotel.name}
-        subheader={
-          <StarRatings
-            rating={hotel.starRating}
-            starDimension='20px'
-            starRatedColor='gold'
-            numberOfStars={hotel.starRating}
-            starSpacing='0px'
-          />}
+      <CardHeader 
+      title={
+        // <Typography>
+        <Box textAlign="center" fontSize={18}>
+          {hotel.name}
+          </Box>
+          // </Typography>
+      }
         action={
           <Box onClick={() => removeHotelFromList(hotel.name)} className={classes.removeButton}>
             <Typography>
-              &#10006;
+            &times;
         </Typography>
           </Box>
         }

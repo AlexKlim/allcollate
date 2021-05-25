@@ -12,6 +12,9 @@ import SelectHotelChart from './SelectHotelChart';
 import Notification from './Notification'
 
 const useStyles = makeStyles({
+  page: {
+    backgroundColor: '#F5F7FB'
+  },
   pageHeader: {
     display: 'flex',
     marginTop: '70px'
