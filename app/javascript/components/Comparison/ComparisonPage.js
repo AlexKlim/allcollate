@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     left: 0,
     backgroundColor: '#F5F7FB',
     width: '100vw',
-    height: '100vh'
+    height: 'fit-content'
   },
   content: {
     width: '70%',
