@@ -27,9 +27,11 @@ const useStyles = makeStyles({
   pageHeader: {
     display: 'flex',
     marginTop: '70px',
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   titleBox: {
-    width: '120%'
+    width: 'fit-content'
   },
   title: {
     fontStyle: 'normal',
@@ -39,8 +41,7 @@ const useStyles = makeStyles({
     color: 'black'
   },
   searchBox: {
-    width: '300%',
-    display: 'flex'
+    width: '6000px',
   }
 })
 
@@ -72,11 +73,11 @@ function SearchPage() {
             Compare Hotels
             </Typography>
         </Box>
-        <Box className={classes.searchBox}>
           <SuggestionForm
             onSuggestionSelected={onSuggestionSelected}
             onSubmit={onSubmit}
           />
+        <Box>
           <Link
             component="button"
             variant="body2"
