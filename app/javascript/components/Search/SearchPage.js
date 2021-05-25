@@ -14,10 +14,10 @@ function SearchPage() {
       <div className='col-md-3'>
         <ClearFilters />
         <SearchFiltersLocations />
+        <StarRating />
+        <Rates />
         <YearRenovated />
         <YearOpened />
-        <Rates />
-        <StarRating />
       </div>
       <div className='col-md-9 search__results'>
         <SearchResults />

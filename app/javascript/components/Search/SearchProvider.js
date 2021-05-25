@@ -20,6 +20,7 @@ const SearchProvider = ({ query }) => {
   const [maxRate] = useState(1000);
 
   const [clearButton, setClearButton] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   const initFilterValues = {
     yearOpened: [minYearOpened, maxYearOpened],
@@ -37,6 +38,7 @@ const SearchProvider = ({ query }) => {
   useEffect(() => {
     const fetchData = async () => {
       const searchAPI = new SearchAPI();
+      setLoading(true);
       const data = await searchAPI.fetchQuery(
         query,
         locations,
@@ -45,7 +47,8 @@ const SearchProvider = ({ query }) => {
       );
       setHotels(data.results);
       setPagingData(data.pagingData);
-      setClearButton(_.isEqual(filterValue, initFilterValues))
+      setClearButton(_.isEqual(filterValue, initFilterValues));
+      setLoading(false);
     };
 
     fetchData();
@@ -80,6 +83,7 @@ const SearchProvider = ({ query }) => {
         setFilterValues,
         filterValue,
         updateFilterValues,
+        isLoading,
       }}
       className='search'
     >

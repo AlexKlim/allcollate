@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Tag } from 'tabler-react';
 import StarRatings from 'react-star-ratings';
 import Tooltip from 'rc-tooltip';
 import Pagination from 'reactive-pagination';
 import { useSearchContext } from './SearchProvider';
 import Routes from '../../helpers/routes';
+import Typography from "@material-ui/core/Typography";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import _ from 'lodash';
 
+import useStyles from './Styles';
+
 function SearchResults() {
+  const classes = useStyles();
+
   const {
     hotels,
     handlePageChange,
     activePage,
     pagingData,
+    isLoading,
   } = useSearchContext();
 
   const number_or_na = (val) => {
@@ -48,7 +55,21 @@ function SearchResults() {
   };
   return (
     <>
-      <div className='row'>
+      {isLoading && hotels.length == 0 && (
+        <div className={`row ${classes.centerContent}`}>
+          <CircularProgress />
+        </div>
+      )}
+
+      {!isLoading && hotels.length == 0 && (
+        <div className={`row ${classes.centerContent}`}>
+          <Typography variant="h6" component="div" align='center'>
+            No results. Please adjust your search and try again.
+          </Typography>
+        </div>
+      )}
+
+      <div className={`row ${isLoading && classes.loading}`}>
         {hotels.map((hotel, index) => {
           return (
             <Card key={index}>
