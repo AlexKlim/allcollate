@@ -28,7 +28,8 @@ const useStyles = makeStyles({
     display: 'flex',
     marginTop: '70px',
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    alignItems: 'center'
   },
   titleBox: {
     width: 'fit-content'
