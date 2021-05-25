@@ -29,7 +29,7 @@ const ComparisonProvider = ({ initHotels }) => {
         setHotels([...hotels])
         return
       }
-      setHotels(uniqueHotels([...hotels, data.results], toggleNotification));
+      setHotels(uniqueHotels([...hotels, data.results].reverse(), toggleNotification));
     };
 
     fetchData();

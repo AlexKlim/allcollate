@@ -43,6 +43,7 @@ const useStyles = makeStyles({
 function ComparisonResults() {
   const { hotels } = useComparisonContext();
 
+
   const classes = useStyles()
 
   let content
