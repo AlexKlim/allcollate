@@ -31,7 +31,7 @@ const useStyles = makeStyles({
   leftColumn: {
     position: 'sticky',
     left: '0px',
-    backgroundColor: 'white',
+    backgroundColor: '#F5F7FB',
     zIndex: '9999999'
   },
   noHotelsBox: {

@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     position: 'sticky',
     left: '0px',
     color: 'black',
-    backgroundColor: 'white',
+    backgroundColor: '#F5F7FB',
     zIndex: '9999999',
     width: 'fit-content',
     minWidth: '150px'

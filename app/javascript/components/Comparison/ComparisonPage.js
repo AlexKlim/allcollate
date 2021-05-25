@@ -13,11 +13,20 @@ import Notification from './Notification'
 
 const useStyles = makeStyles({
   page: {
-    backgroundColor: '#F5F7FB'
+    position: 'absolute',
+    marginTop: '-22px',
+    left: 0,
+    backgroundColor: '#F5F7FB',
+    width: '100vw',
+    height: '100vh'
+  },
+  content: {
+    width: '70%',
+    marginLeft: '15%'
   },
   pageHeader: {
     display: 'flex',
-    marginTop: '70px'
+    marginTop: '70px',
   },
   titleBox: {
     width: '120%'
@@ -55,7 +64,8 @@ function SearchPage() {
   }
 
   return (
-    <>
+    <Box className={classes.page}>
+      <Box className={classes.content}>
       <Box className={classes.pageHeader}>
         <Box className={classes.titleBox}>
           <Typography className={classes.title}>
@@ -86,7 +96,8 @@ function SearchPage() {
          null}
       </Grid>
       <Notification />
-    </>
+      </Box>
+    </Box>
   );
 }
 
