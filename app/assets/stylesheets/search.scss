@@ -1,0 +1,124 @@
+.search {
+  &__title {
+    font-size: 27px;
+  }
+
+  &__results {
+    margin-top: 48px;
+  }
+
+  &__clear-btn {
+    font-size: 16px;
+  }
+
+  &__view {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  &__locations-container {
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #B3B3B3;
+    padding: 15px;
+  }
+
+  &__compare-action {
+    display: flex;
+    align-items: center;
+  }
+
+  &__compare-action-checkbox {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__hotel-photo {
+    height: 100px;
+    border-radius: 4px;
+    border: 1px solid #B0B0B0;
+  }
+
+  &__hotel-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    margin-bottom: 5px;
+
+    a {
+      color: #495057;
+    }
+  }
+
+  &__hotel-overview {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &__hotel-location {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+  }
+
+  &__hotel-dates {
+    margin-right: 20px;
+    &-title {
+      font-style: italic;
+    }
+  }
+
+  &__hotel-rate {
+    &-title {
+      font-style: italic;
+    }
+    .tag {
+      font-size: 15px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  &__text-grey {
+    color: #86898e;
+  }
+}
+
+.search-filters-suggestion {
+  &__results {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 40, 100, 0.12);
+    border-radius: 3px;
+    z-index: 9999;
+    width: 83.33333333%;
+  }
+
+  &__results-item {
+    z-index: 10;
+    display: block;
+    color: #34394c;
+    align-items: center;
+    padding: 8px 24px 8px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+  }
+
+  &__input-group {
+    width: 101%;
+  }
+
+  &__item {
+    &--active {
+      background: #ececec;
+    }
+  }
+}

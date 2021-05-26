@@ -20,7 +20,7 @@
   max-height: calc(100vh - 60px);
   overflow: auto;
   margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 76px;
 
   &__help-text {
     margin-left: 5px;
@@ -40,4 +40,42 @@
       background: #ececec;
     }
   }
+}
+
+.suggestion-input {
+  &__loader_container {
+    position: absolute;
+    right: 75px;
+    top: calc(50% - 10px);
+    z-index: 99999;
+  }
+
+  &__loader {
+    height: 30px;
+    width: 30px;
+
+    &::before, &::after {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &__btn-search-input {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 17px;
+    margin-left: 6px;
+    font-size: 17px;
+
+    &:focus, &:hover {
+      text-decoration: underline;
+      outline: none;
+    }
+  }
+}
+
+.suggestion__input {
+  border-radius: 4px !important;
 }

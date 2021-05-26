@@ -14,9 +14,12 @@ gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 gem 'react-rails', '~> 2.6.1'
+gem 'rubocop', '~> 0.88.0', require: false
+
+gem 'jsonapi-serializer', '~> 2.2.0'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -37,6 +40,7 @@ gem 'friendly_id', '~> 5.3.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
 gem 'simple-line-icons-rails', '~> 0.1.6'
+gem 'mini_racer', '~> 0.3.1'
 
 gem 'httparty', '~> 0.18.0'
 gem 'sidekiq', '~> 6.0.7'
@@ -47,10 +51,11 @@ gem 'mini_magick', '~> 4.10.1'
 gem 'sitemap_generator', '~> 6.1.1'
 
 gem 'kaminari', '~> 1.2.1'
-gem 'ransack', '~> 2.3.2'
+gem 'ransack', '~> 2.4.2'
 
 gem 'sentry-rails', '~> 4.3.2'
 gem 'sentry-ruby', '~> 4.3.0'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'pry'
@@ -68,4 +73,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

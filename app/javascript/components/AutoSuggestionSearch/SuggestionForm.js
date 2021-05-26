@@ -7,24 +7,26 @@ import {
   Grid,
 } from "tabler-react";
 
-import SearchSuggestionAPI from '../../api/SearchSuggestionAPI'
+import SearchAPI from '../../api/SearchAPI'
 import theme from './theme';
+import Input from './Input/index';
 
 class SuggestionForm extends React.Component {
 
   constructor(props, context) {
     super(props, context);
 
-    this.suggestionAPI = new SearchSuggestionAPI();
+    this.searchAPI = new SearchAPI();
 
     this.fetch = _.debounce(async q => {
-      const result = await this.suggestionAPI.fetchQuery(q);
-      this.setState({ fetched: true, resultItems: result });
+      this.setState({ fetched: true });
+      const result = await this.searchAPI.fetchSuggestionQuery(q);
+      this.setState({ fetched: false, resultItems: result });
     }, 500);
 
     this.state = {
       noResults: false,
-      query: '',
+      query: props.query || '',
       resultItems: [],
     };
   }
@@ -94,18 +96,36 @@ class SuggestionForm extends React.Component {
       )
   }
 
+  onSubmit(e) {
+      const { value } = this.input
+      console.log(value)
+      if (_.isEmpty(value)) {
+        e.preventDefault()
+        Router.pushRoute("/search")
+        return
+      }
+
+      // const query = qs.stringify({ q: value });
+      // const { action } = e.target;
+      // const url = `${action}?${query}`;
+
+      // this.actions.addRecentSearch({ name: value, payload: { url } });
+    }
+
   render() {
     const onFocus = () => true;
     const showSuggestionsOptions = { shouldRenderSuggestions: onFocus };
 
     const inputProps = {
       placeholder: 'Type a hotel name',
+      name: 'q',
+      onChange: this.onChange,
       value: this.state.query || '',
-      onChange: this.onChange
+      fetched: this.state.fetched
     };
 
     return (
-      <Form.Group className="suggestion-form--group col-md-4">
+      <Form action="/search" className="suggestion-form--group col-md-4" onSubmit={this.onSubmit.bind(this)} >
         <Grid.Row gutters="xs">
           <Grid.Col>
             <Autosuggest
@@ -117,7 +137,7 @@ class SuggestionForm extends React.Component {
               onSuggestionsClearRequested={() => null}
               onSuggestionSelected={this.onSuggestionSelected.bind(this)}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
-              // renderInputComponent={Input}
+              renderInputComponent={Input}
               renderSuggestion={this.renderSuggestion.bind(this)}
               renderSuggestionsContainer={this.renderSuggestionsContainer.bind(this)}
             />
@@ -129,7 +149,7 @@ class SuggestionForm extends React.Component {
             />
           </Grid.Col> */}
         </Grid.Row>
-      </Form.Group>
+      </Form>
     );
   }
 }
