@@ -16,10 +16,23 @@ export default function RatesComparisonChart(props) {
     const date = sortedRates.map(hotel => {
         return hotel.map(item => item.actual_on)
     })
+
+    let correctDate = []
+
+    date.map(i => {
+        i.map(r => {
+            correctDate.push(r)
+        })
+    })
+
+    const uniqueDate = Array.from(new Set(correctDate))
     
     const data = sortedRates.map(r => {
         return r.map(item => item.daily_rate)
     })
+
+    console.log(hotels, uniqueDate)
+
     return ({
       tooltip: {
           trigger: 'axis',
@@ -38,7 +51,7 @@ export default function RatesComparisonChart(props) {
       xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: date[0]
+          data: uniqueDate
       },
       yAxis: {
           type: 'value',
