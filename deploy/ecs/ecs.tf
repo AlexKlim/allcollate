@@ -43,7 +43,7 @@ resource "aws_lb_target_group" "allcollate_lb_target" {
 
 resource "aws_lb_listener_rule" "default" {
   listener_arn = "${data.terraform_remote_state.master.lb_listener_arn}"
-  priority     = 1
+  priority     = 2
 
   action {
     type             = "forward"
