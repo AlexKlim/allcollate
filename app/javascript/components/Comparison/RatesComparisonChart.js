@@ -20,7 +20,6 @@ export default function RatesComparisonChart(props) {
     const data = sortedRates.map(r => {
         return r.map(item => item.daily_rate)
     })
-console.log(sortedRates, date)
     return ({
       tooltip: {
           trigger: 'axis',
@@ -39,7 +38,7 @@ console.log(sortedRates, date)
       xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: date
+          data: date[0]
       },
       yAxis: {
           type: 'value',
