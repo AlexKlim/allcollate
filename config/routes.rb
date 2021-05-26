@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web, at: "/sidekiq"
 
-  get '/sitemap.xml' => redirect('https://allcollate-production.s3.amazonaws.com/sitemaps/sitemap.xml', status: 301)
+  get '/sitemap.xml' => redirect('https://et-allcollate-production.s3.amazonaws.com/sitemaps/sitemap.xml', status: 301)
 
   scope module: 'frontend' do
     resource :search, only: :show do

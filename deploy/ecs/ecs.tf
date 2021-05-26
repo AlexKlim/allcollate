@@ -57,6 +57,22 @@ resource "aws_lb_listener_rule" "default" {
   }
 }
 
+resource "aws_lb_listener_rule" "https" {
+  listener_arn = "${data.terraform_remote_state.master.aws_lb_listener_https_arn}"
+  priority     = 1
+
+  action {
+    type             = "forward"
+    target_group_arn = "${aws_lb_target_group.allcollate_lb_target.arn}"
+  }
+
+  condition {
+    path_pattern {
+      values = ["/*"]
+    }
+  }
+}
+
 data "aws_iam_policy_document" "iam_policy_document_for_assume_role" {
   statement {
     effect = "Allow"

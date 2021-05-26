@@ -14,6 +14,7 @@ AllCollate it is place which makes the ability to choose hotels easily.
 In your local machine you have to install (you can use rvm if you want):
 
 * [Ruby 2.7.1](https://www.ruby-lang.org/en/downloads/)
+* [Nodejs 12.16.1](https://nodejs.org/en/)
 * [Yarn](https://yarnpkg.com)
 * [PSQL](https://www.postgresql.org)
 
