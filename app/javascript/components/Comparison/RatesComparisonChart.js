@@ -5,15 +5,22 @@ import { useComparisonContext } from "./ComparisonProvider";
 
 export default function RatesComparisonChart(props) {
 
+    const {hotels} = useComparisonContext()
+
     const {currentHotel} = props
 
     const {rates, name} = currentHotel
 
   const getOption = () => {
-    const sortedRates = rates
-    const date = sortedRates.map(r => r.actual_on)
-    const data = sortedRates.map(r => r.daily_rate)
-
+    const sortedRates = hotels.map(hotel => hotel.rates)
+    const date = sortedRates.map(hotel => {
+        return hotel.map(item => item.actual_on)
+    })
+    
+    const data = sortedRates.map(r => {
+        return r.map(item => item.daily_rate)
+    })
+console.log(sortedRates, date)
     return ({
       tooltip: {
           trigger: 'axis',
@@ -54,28 +61,50 @@ export default function RatesComparisonChart(props) {
               shadowOffsetY: 2
           }
       }],
-      series: [
-          {
-              name: 'Currency ($)',
-              type: 'line',
-              smooth: true,
-              symbol: 'none',
-              sampling: 'average',
-              itemStyle: {
-                  color: 'rgb(255, 70, 131)'
-              },
-              areaStyle: {
-                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                      offset: 0,
-                      color: 'rgb(255, 158, 68)'
-                  }, {
-                      offset: 1,
-                      color: 'rgb(255, 70, 131)'
-                  }])
-              },
-              data: data
-          }
-      ]
+      series: data.map(i => {
+          return (          {
+            name: 'Currency ($)',
+            type: 'line',
+            smooth: true,
+            symbol: 'none',
+            sampling: 'average',
+            itemStyle: {
+                color: 'rgb(255, 70, 131)'
+            },
+            areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: 'rgb(255, 158, 68)'
+                }, {
+                    offset: 1,
+                    color: 'rgb(255, 70, 131)'
+                }])
+            },
+            data: i
+        })
+      })
+    //   [
+        //   {
+        //       name: 'Currency ($)',
+        //       type: 'line',
+        //       smooth: true,
+        //       symbol: 'none',
+        //       sampling: 'average',
+        //       itemStyle: {
+        //           color: 'rgb(255, 70, 131)'
+        //       },
+        //       areaStyle: {
+        //           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+        //               offset: 0,
+        //               color: 'rgb(255, 158, 68)'
+        //           }, {
+        //               offset: 1,
+        //               color: 'rgb(255, 70, 131)'
+        //           }])
+        //       },
+        //       data: data
+        //   }
+    //   ]
   });
   }
 
