@@ -15,14 +15,5 @@ class Frontend::SearchesController < ApplicationController
     render json: results
   end
 
-  def show
-    scope = Hotel.active
-    if params[:locations]
-      scope = scope.where('lower(city) = ? and lower(country_iso_code) = ?',
-                          params[:locations][:city],
-                          params[:locations][:iso])
-    end
-
-    @results = scope.ransack(name_start: params[:q]).result.first(5)
-  end
+  def show; end
 end
