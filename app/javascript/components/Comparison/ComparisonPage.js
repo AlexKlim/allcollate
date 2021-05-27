@@ -90,7 +90,6 @@ function SearchPage() {
         </Box>
         <Grid>
           <ComparisonResults />
-          <SelectHotelChart />
           <RatesComparisonChart />
         </Grid>
         <Notification />

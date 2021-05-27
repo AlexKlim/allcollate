@@ -9,8 +9,6 @@ export default function RatesComparisonChart(props) {
 
     const {currentHotel} = props
 
-    const {rates, name} = currentHotel
-
   const getOption = () => {
     const sortedRates = hotels.map(hotel => hotel.rates)
     const date = sortedRates.map(hotel => {
@@ -44,7 +42,7 @@ export default function RatesComparisonChart(props) {
           feature: {
               saveAsImage: {
                 title: 'Download',
-                name: `${name} Rates`
+                name: `Rates`
               }
           }
       },
