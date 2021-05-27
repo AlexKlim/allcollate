@@ -13,19 +13,14 @@ import Notification from './Notification'
 
 const useStyles = makeStyles({
   page: {
-    position: 'absolute',
-    marginTop: '-22px',
-    left: 0,
-    backgroundColor: '#F5F7FB',
-    width: '100vw'
+    minWidth: '100%'
   },
   content: {
-    width: '70%',
-    marginLeft: '15%'
+    width: '100%'
   },
   pageHeader: {
     display: 'flex',
-    marginTop: '70px',
+    marginTop: '50px',
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center'
@@ -48,8 +43,10 @@ const useStyles = makeStyles({
     minWidth: '100%;',
     left: 0,
     textAlign: 'center',
-    backgroundColor: '#F5F7FB',
-    height: '100%'
+    backgroundColor: '#F5F7FB'
+  },
+  noHotelsTitle: {
+    marginTop: '15%'
   }
 })
 
@@ -78,9 +75,11 @@ function SearchPage() {
     console.log(hotels)
     content =
       <Box className={classes.noHotelsBox}>
+        <Box className={classes.noHotelsTitle}>
         <Typography variant="h2" gutterBottom>
           Please add at least one hotel to the list...
         </Typography>
+        </Box>
       </Box>
   } else {
     content =
