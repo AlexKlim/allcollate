@@ -11,6 +11,15 @@ import { useComparisonContext } from './ComparisonProvider';
 import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(() => ({
+  contentBox: {
+    alignSelf: 'flex-center',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
   card: {
     width: '245px',
     height: '245px',
@@ -42,6 +51,7 @@ const removeHotelFromList = (name) => {
 const {hotel} = props
 
   return (
+    <Box className={classes.contentBox}>
     <Card className={classes.card}>
       <CardHeader 
       title={
@@ -71,5 +81,6 @@ const {hotel} = props
         </Typography>
       </CardContent>
     </Card>
+    </Box>
   );
 }

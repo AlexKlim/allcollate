@@ -37,6 +37,12 @@ const useStyles = makeStyles({
   noHotelsBox: {
     minWidth: '100%;',
     marginTop: '25%'
+  },
+  headerCardBox: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    alignItems: 'center'
   }
 })
 
@@ -55,7 +61,9 @@ function ComparisonResults() {
             {hotels.map((hotel, i) => {
               return (
                 <TableCell className={classes.cell} key={i}>
+                  <Box className={classes.headerCardBox}>
                   <ComparisonResultHeaderCard hotel={hotel} />
+                  </Box>
                 </TableCell>
               )
             })
