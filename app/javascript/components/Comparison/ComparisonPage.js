@@ -68,36 +68,32 @@ function SearchPage() {
   return (
     <Box className={classes.page}>
       <Box className={classes.content}>
-      <Box className={classes.pageHeader}>
-        <Box className={classes.titleBox}>
-          <Typography className={classes.title}>
-            Compare Hotels
+        <Box className={classes.pageHeader}>
+          <Box className={classes.titleBox}>
+            <Typography className={classes.title}>
+              Compare Hotels
             </Typography>
-        </Box>
+          </Box>
           <SuggestionForm
             onSuggestionSelected={onSuggestionSelected}
             onSubmit={onSubmit}
           />
-        <Box>
-          <Link
-            component="button"
-            variant="body2"
-            onClick={() => onClearAll()}
-          >
-            Clear all
+          <Box>
+            <Link
+              component="button"
+              variant="body2"
+              onClick={() => onClearAll()}
+            >
+              Clear all
           </Link>
+          </Box>
         </Box>
-      </Box>
-      <Grid>
-        <ComparisonResults />
-        { currentHotel ?
-        <>
-        <SelectHotelChart />
-        <RatesComparisonChart currentHotel={currentHotel} />
-        </> :
-         null}
-      </Grid>
-      <Notification />
+        <Grid>
+          <ComparisonResults />
+          <SelectHotelChart />
+          <RatesComparisonChart />
+        </Grid>
+        <Notification />
       </Box>
     </Box>
   );

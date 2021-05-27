@@ -19,9 +19,9 @@ export default function RatesComparisonChart(props) {
 
     let correctDate = []
 
-    date.map(i => {
-        i.map(r => {
-            correctDate.push(r)
+    date.map(hotelDateRates => {
+        hotelDateRates.map(hotelDateRate => {
+            correctDate.push(hotelDateRate)
         })
     })
 
@@ -95,28 +95,6 @@ export default function RatesComparisonChart(props) {
             data: i
         })
       })
-    //   [
-        //   {
-        //       name: 'Currency ($)',
-        //       type: 'line',
-        //       smooth: true,
-        //       symbol: 'none',
-        //       sampling: 'average',
-        //       itemStyle: {
-        //           color: 'rgb(255, 70, 131)'
-        //       },
-        //       areaStyle: {
-        //           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-        //               offset: 0,
-        //               color: 'rgb(255, 158, 68)'
-        //           }, {
-        //               offset: 1,
-        //               color: 'rgb(255, 70, 131)'
-        //           }])
-        //       },
-        //       data: data
-        //   }
-    //   ]
   });
   }
 
