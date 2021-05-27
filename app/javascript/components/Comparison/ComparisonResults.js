@@ -46,21 +46,12 @@ function ComparisonResults() {
 
   const classes = useStyles()
 
-  let content
-
-  if (hotels.length === 0) {
-    content =
-      <Box className={classes.noHotelsBox}>
-        <Typography variant="h2" gutterBottom>
-          Please add at least one hotel to the list...
-        </Typography>
-      </Box>
-  } else {
-    content =
+  return (
+    <TableContainer>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <TableCell className={classes.leftColumn} />
+            <TableCell />
             {hotels.map((hotel, i) => {
               return (
                 <TableCell className={classes.cell} key={i}>
@@ -82,11 +73,6 @@ function ComparisonResults() {
           }
         </TableBody>
       </Table>
-  }
-
-  return (
-    <TableContainer>
-      {content}
     </TableContainer>
   );
 }

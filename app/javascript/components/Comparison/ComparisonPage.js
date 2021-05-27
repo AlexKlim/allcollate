@@ -17,8 +17,7 @@ const useStyles = makeStyles({
     marginTop: '-22px',
     left: 0,
     backgroundColor: '#F5F7FB',
-    width: '100vw',
-    height: 'fit-content'
+    width: '100vw'
   },
   content: {
     width: '70%',
@@ -43,12 +42,20 @@ const useStyles = makeStyles({
   },
   searchBox: {
     width: '6000px',
+  },
+  noHotelsBox: {
+    position: 'absolute',
+    minWidth: '100%;',
+    left: 0,
+    textAlign: 'center',
+    backgroundColor: '#F5F7FB',
+    height: '100%'
   }
 })
 
 function SearchPage() {
 
-  const { setHotels, setSlug, currentHotel } = useComparisonContext()
+  const { setHotels, setSlug, hotels } = useComparisonContext()
 
   const classes = useStyles()
 
@@ -63,6 +70,27 @@ function SearchPage() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+  }
+
+  let content
+
+  if (hotels.length === 0) {
+    console.log(hotels)
+    content =
+      <Box className={classes.noHotelsBox}>
+        <Typography variant="h2" gutterBottom>
+          Please add at least one hotel to the list...
+        </Typography>
+      </Box>
+  } else {
+    content =
+      <>
+        <Box>
+          <ComparisonResults />
+          {hotels.length !== 0 ? <RatesComparisonChart /> : null}
+        <Notification />
+        </Box>
+      </>
   }
 
   return (
@@ -88,11 +116,7 @@ function SearchPage() {
           </Link>
           </Box>
         </Box>
-        <Grid>
-          <ComparisonResults />
-          <RatesComparisonChart />
-        </Grid>
-        <Notification />
+        {content}
       </Box>
     </Box>
   );
