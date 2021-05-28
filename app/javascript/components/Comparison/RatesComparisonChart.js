@@ -44,11 +44,13 @@ export default function RatesComparisonChart(props) {
       },
       xAxis: {
           type: 'category',
+          nameLocation: 'middle',
           boundaryGap: false,
           data: uniqueDate
       },
       yAxis: {
           type: 'value',
+          name: 'Rate',
           boundaryGap: [0, '100%']
       },
       dataZoom: [{
@@ -75,7 +77,8 @@ export default function RatesComparisonChart(props) {
             data: i
         })
       })
-  });
+  }
+  );
   }
 
     return (
