@@ -7,8 +7,6 @@ export default function RatesComparisonChart(props) {
 
     const {hotels} = useComparisonContext()
 
-    const {currentHotel} = props
-
   const getOption = () => {
     const sortedRates = hotels.map(hotel => hotel.rates)
     const date = sortedRates.map(hotel => {
@@ -24,12 +22,10 @@ export default function RatesComparisonChart(props) {
     })
 
     const uniqueDate = Array.from(new Set(correctDate))
-    
+
     const data = sortedRates.map(r => {
         return r.map(item => item.daily_rate)
     })
-
-    console.log(hotels, uniqueDate)
 
     return ({
       tooltip: {
@@ -66,7 +62,6 @@ export default function RatesComparisonChart(props) {
           handleStyle: {
               color: '#fff',
               shadowBlur: 3,
-              shadowColor: 'rgba(0, 0, 0, 0.6)',
               shadowOffsetX: 2,
               shadowOffsetY: 2
           }
@@ -75,21 +70,8 @@ export default function RatesComparisonChart(props) {
           return (          {
             name: 'Currency ($)',
             type: 'line',
-            smooth: true,
-            symbol: 'none',
-            sampling: 'average',
-            itemStyle: {
-                color: 'rgb(255, 70, 131)'
-            },
-            areaStyle: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: 'rgb(255, 158, 68)'
-                }, {
-                    offset: 1,
-                    color: 'rgb(255, 70, 131)'
-                }])
-            },
+            smooth: false,
+            showSymbol: false,
             data: i
         })
       })
@@ -100,4 +82,3 @@ export default function RatesComparisonChart(props) {
       <ReactEcharts option={getOption()} />
     );
 }
-
