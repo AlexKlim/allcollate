@@ -51,7 +51,7 @@ export default function RatesComparisonChart(props) {
       yAxis: {
           type: 'value',
           name: 'Rate',
-          boundaryGap: [0, '100%']
+          boundaryGap: [0, '10%']
       },
       dataZoom: [{
           type: 'inside',
