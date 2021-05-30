@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchContext } from "../SearchProvider";
 
 import { Card, Form, Tag } from "tabler-react";
@@ -6,32 +6,43 @@ import Typography from "@material-ui/core/Typography";
 
 import SuggestionForm from "./AutoSuggestion/SuggestionForm";
 import SearchAPI from "../../../api/SearchAPI";
+import { useDebouncedCallback } from 'use-debounce';
 
 function SearchFiltersLocations({ value = "" }) {
   const {
-    locations,
-    setActivePage,
-    setLocations,
+    filterValue,
+    updateFilterValues,
   } = useSearchContext();
   const [results, setResults] = useState([]);
 
+  const [locations, setLocations] = useState(filterValue.locations);
+  useEffect(() => {
+    setLocations(filterValue.locations)
+  }, [
+    filterValue.locations,
+  ])
+
+  const debouncedSearch = useDebouncedCallback(
+    async (query) => {
+      const searchAPI = new SearchAPI();
+      const data = await searchAPI.fetchLocations(query);
+      setResults(data);
+    }, 100,
+  );
+
   const doSearch = async (query) => {
-    const searchAPI = new SearchAPI();
-    const data = await searchAPI.fetchLocations(query);
-    setResults(data);
+    debouncedSearch(query)
   };
 
   const doRemoveClick = (location) => {
     const filteredLocations = locations.filter(
       (item) => item.city !== location.city || item.country !== location.country
     );
-    setActivePage(1);
-    setLocations(filteredLocations);
+    updateFilterValues('locations', filteredLocations)
   };
 
   const doSuggestionSelected = async (item) => {
-    setActivePage(1);
-    setLocations((locations) => [...locations, item]);
+    updateFilterValues('locations', [...locations, item])
   };
 
   return (
