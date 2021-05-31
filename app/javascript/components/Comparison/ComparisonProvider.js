@@ -8,7 +8,6 @@ export const ComparisonContext = React.createContext();
 const ComparisonProvider = ({ initHotels }) => {
   const [hotels, setHotels] = useState(initHotels);
   const [slug, setSlug] = useState();
-  const [currentHotel, setCurrentHotel] = useState(null)
   const [notificationOn, setNotificationOn] = useState(false)
 
 
@@ -38,11 +37,6 @@ const ComparisonProvider = ({ initHotels }) => {
     slug
   ]);
 
-  useEffect(() => {
-    setCurrentHotel(hotels[0])
-  }, [
-    hotels
-  ])
 
 
   return (
@@ -51,8 +45,6 @@ const ComparisonProvider = ({ initHotels }) => {
         hotels,
         setSlug,
         setHotels,
-        currentHotel,
-        setCurrentHotel,
         notificationOn,
         setNotificationOn
       }}
