@@ -114,12 +114,6 @@ class SuggestionForm extends React.Component {
       Router.pushRoute("/search")
       return
     }
-
-    // const query = qs.stringify({ q: value });
-    // const { action } = e.target;
-    // const url = `${action}?${query}`;
-
-    // this.actions.addRecentSearch({ name: value, payload: { url } });
   }
 
   render() {
@@ -152,12 +146,6 @@ class SuggestionForm extends React.Component {
               renderSuggestionsContainer={this.renderSuggestionsContainer.bind(this)}
             />
           </Grid.Col>
-          {/* <Grid.Col auto>
-            <Button
-              color="secondary"
-              icon="search"
-            />
-          </Grid.Col> */}
         </Grid.Row>
       </Form>
     );

@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     resource :search, only: :show do
       get :suggestions
     end
+
+    resources :comparisons, only: [:index]
   end
 
   namespace 'api' do
