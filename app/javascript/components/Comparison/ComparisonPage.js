@@ -69,28 +69,7 @@ function SearchPage() {
     e.preventDefault();
   }
 
-  let content
 
-  if (hotels.length === 0) {
-    console.log(hotels)
-    content =
-      <Box className={classes.noHotelsBox}>
-        <Box className={classes.noHotelsTitle}>
-        <Typography variant="h2" gutterBottom>
-          Please add at least one hotel to the list...
-        </Typography>
-        </Box>
-      </Box>
-  } else {
-    content =
-      <>
-        <Box>
-          <ComparisonResults />
-          {hotels.length !== 0 ? <RatesComparisonChart /> : null}
-        <Notification />
-        </Box>
-      </>
-  }
 
   return (
     <Box className={classes.page}>
@@ -115,7 +94,23 @@ function SearchPage() {
           </Link>
           </Box>
         </Box>
-        {content}
+        {
+          hotels.length === 0 ?
+            <Box className={classes.noHotelsBox}>
+              <Box className={classes.noHotelsTitle}>
+                <Typography variant="h2" gutterBottom>
+                  Please add at least one hotel to the list...
+        </Typography>
+              </Box>
+            </Box> :
+            <>
+              <Box>
+                <ComparisonResults />
+                {hotels.length !== 0 ? <RatesComparisonChart /> : null}
+                <Notification />
+              </Box>
+            </>
+        }
       </Box>
     </Box>
   );
