@@ -4,23 +4,7 @@ import TableCell from '@material-ui/core/TableCell';
 import { makeStyles } from '@material-ui/core/styles';
 import StarRatings from 'react-star-ratings';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
-const useStyles = makeStyles({
-  leftColumn: {
-    position: 'sticky',
-    left: '0px',
-    color: 'black',
-    backgroundColor: '#F5F7FB',
-    zIndex: '9999999',
-    width: 'fit-content',
-    minWidth: '150px',
-    borderRight: '1px solid #ececec',
-    borderLeft: '1px solid #ececec'
-  },
-  dataCell : {
-    borderRight: '1px solid #ececec'
-  }
-})
+import {useStyles} from './styles'
 
 
 

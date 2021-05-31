@@ -18,7 +18,6 @@ const ComparisonProvider = ({ initHotels }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // if (!slug) { return }
 
       const comparisonAPI = new ComparisonAPI();
       const data = await comparisonAPI.fetchHotels(slug);

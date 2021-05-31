@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { useComparisonContext } from './ComparisonProvider';
-import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -12,39 +10,7 @@ import ComparisonResultHeaderCard from './ComparisonResultHeaderCard'
 import ComparisonResultTableRow from './ComparisonResultTableRow'
 import Box from '@material-ui/core/Box';
 import { comparisonOptions } from './constants'
-
-const useStyles = makeStyles({
-  table: {
-    borderTopWidth: 1,
-    marginTop: '50px'
-  },
-  row: {
-    border: '1px;',
-    borderWidth: '1px;',
-    borderColor: 'grey;',
-    borderStyle: 'solid;',
-    borderRadius: '4px;'
-  },
-  cell: {
-    minWidth: '340px;'
-  },
-  leftColumn: {
-    position: 'sticky',
-    left: '0px',
-    backgroundColor: '#F5F7FB',
-    zIndex: '9999999'
-  },
-  noHotelsBox: {
-    minWidth: '100%;',
-    marginTop: '25%'
-  },
-  headerCardBox: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  }
-})
+import {useStyles} from './styles'
 
 function ComparisonResults() {
   const { hotels } = useComparisonContext();

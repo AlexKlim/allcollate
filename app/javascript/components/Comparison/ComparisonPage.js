@@ -3,52 +3,14 @@ import SuggestionForm from '../AutoSuggestionSearch/SuggestionForm'
 import ComparisonResults from './ComparisonResults';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
-import { makeStyles } from '@material-ui/core/styles';
 import { useComparisonContext } from './ComparisonProvider';
 import Link from '@material-ui/core/Link';
 import RatesComparisonChart from './RatesComparisonChart';
 import Box from '@material-ui/core/Box';
 import SelectHotelChart from './SelectHotelChart';
 import Notification from './Notification'
+import {useStyles} from './styles'
 
-const useStyles = makeStyles({
-  page: {
-    minWidth: '100%'
-  },
-  content: {
-    width: '100%'
-  },
-  pageHeader: {
-    display: 'flex',
-    marginTop: '50px',
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center'
-  },
-  titleBox: {
-    width: 'fit-content'
-  },
-  title: {
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: '34px',
-    lineHeight: '40px',
-    color: 'black'
-  },
-  searchBox: {
-    width: '6000px',
-  },
-  noHotelsBox: {
-    position: 'absolute',
-    minWidth: '100%;',
-    left: 0,
-    textAlign: 'center',
-    backgroundColor: '#F5F7FB'
-  },
-  noHotelsTitle: {
-    marginTop: '15%'
-  }
-})
 
 function SearchPage() {
 

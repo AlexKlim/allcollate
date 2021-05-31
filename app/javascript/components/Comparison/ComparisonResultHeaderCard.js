@@ -1,44 +1,14 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import { useComparisonContext } from './ComparisonProvider';
 import Box from '@material-ui/core/Box';
 import { hotelNameTrancate } from './helpers'
 import Tooltip from '@material-ui/core/Tooltip';
-
-const useStyles = makeStyles(() => ({
-  contentBox: {
-    alignSelf: 'flex-center',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
-  card: {
-    width: '245px',
-    height: '245px',
-  },
-  cardHeader: {
-    align: 'center'
-  },
-  media: {
-    height: '0px',
-    paddingTop: '56.25%',
-  },
-  removeButton: {
-    '&:hover': {
-      cursor: 'pointer'
-    }
-  }
-}));
+import {useStyles} from './styles'
 
 
 export default function ComparisonResultHeaderCard(props) {
