@@ -76,12 +76,11 @@ export const useStyles = makeStyles({
     cell: {
       minWidth: '340px;'
     },
-    // leftColumn: {
-    //   position: 'sticky',
-    //   left: '0px',
-    //   backgroundColor: '#F5F7FB',
-    //   zIndex: '9999999'
-    // },
+    leftColumnHeader: {
+      position: 'sticky',
+      left: '0px',
+      backgroundColor: '#F5F7FB'
+    },
     noHotelsBox: {
       minWidth: '100%;',
       marginTop: '25%'
