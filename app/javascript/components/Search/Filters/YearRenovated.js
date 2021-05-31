@@ -6,7 +6,6 @@ import Slider from '@material-ui/core/Slider';
 import { useDebouncedCallback } from 'use-debounce';
 
 function YearRenovated() {
-	
   const {
     minYearRenovated,
     maxYearRenovated,
@@ -35,17 +34,30 @@ function YearRenovated() {
     debouncedSliderValue(newValue);
   };
 
+  const helpText = () => {
+    const leftSlider = staticYearRenovated[0];
+    const rightSlider = staticYearRenovated[1];
+
+    const minText = leftSlider == minYearRenovated ? `+${leftSlider}` : leftSlider
+    const maxText = rightSlider == maxYearRenovated ? `${rightSlider}+` : rightSlider
+
+    return `from ${minText} to ${maxText}`;
+  }
+
   return (
     <Card>
       <Card.Body>
-        <Typography id='range-slider' gutterBottom variant='h6'>
+        <Typography id='range-slider' variant='h6'>
           Year Renovated
         </Typography>
+        <p className='pb-3'>
+          <i>{helpText()}</i>
+        </p>
         <Slider
           className='mt-5'
           value={staticYearRenovated}
           onChange={handleChange}
-          valueLabelDisplay='on'
+          valueLabelDisplay='auto'
           aria-labelledby='range-slider'
           min={minYearRenovated}
           max={maxYearRenovated}

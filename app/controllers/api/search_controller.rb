@@ -1,4 +1,5 @@
-class Api::SearchController < Api::BaseController
+class Api::SearchController < ApplicationController
+  layout nil
 
   def index
     search = Services::Search::Hotel.new(params[:q], params[:pageNum])
@@ -18,13 +19,11 @@ class Api::SearchController < Api::BaseController
   end
 
   def locations
-    results = Hotel.active.ransack(city_or_country_or_addressline1_start: params[:q]).result(distinct: true).first(5)
-
+    results = Location.ransack(city_or_country_start: params[:q]).result(distinct: true).first(5)
     results = results.map do |result|
       {
         city: result.city,
-        country: result.country,
-        # addressline1: result.addressline1
+        country: result.country
       }
     end
 

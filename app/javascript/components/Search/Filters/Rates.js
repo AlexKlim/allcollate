@@ -31,20 +31,35 @@ function Rates() {
     debouncedSliderValue(newValue);
   };
 
+  const helpText = () => {
+    const leftSlider = rateSlider[0];
+    const rightSlider = rateSlider[1];
+
+    const minText = leftSlider == minRate ? `+${leftSlider}` : leftSlider
+    const maxText = rightSlider == maxRate ? `${rightSlider}+` : rightSlider
+
+    return `from ${minText} to ${maxText}`;
+  }
+
   return (
     <Card>
       <Card.Body>
-        <Typography id='range-slider' gutterBottom variant='h6'>
+        <Typography id='range-slider' variant='h6'>
           Rates ($)
         </Typography>
         <p className='pb-3'>
-          <i>average rates for the last 30 days</i>
+          <i>
+            (average rates for the last 30 days)
+            <br/>
+            {helpText()}
+          </i>
+
         </p>
         <Slider
           className='mt-5'
           value={rateSlider}
           onChange={handleChange}
-          valueLabelDisplay='on'
+          valueLabelDisplay='auto'
           aria-labelledby='range-slider'
           min={minRate}
           max={maxRate}

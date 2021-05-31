@@ -1,4 +1,3 @@
-// import BaseApi from './BaseApi';
 import axios from 'axios';
 
 export default class SearchAPI {

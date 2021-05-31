@@ -9721,6 +9721,7 @@ img {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
+  background-color: #F5F7FB;
 }
 
 body.fixed-header .page {

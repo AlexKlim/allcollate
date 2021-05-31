@@ -27,8 +27,8 @@ class Services::Search::Hotel
     year_renovated = parse_json(year_renovated)
     return unless year_renovated.present?
 
-    options[:year_renovated_gteq_any] = year_renovated[0]
-    options[:year_renovated_lteq_any] = year_renovated[1]
+    options[:year_renovated_gteq_any] = year_renovated[0] if year_renovated[0] != 1000
+    options[:year_renovated_lteq_any] = year_renovated[1] if year_renovated[1] != 2020
   end
 
   def add_year_opened!(year_opened)
@@ -37,8 +37,8 @@ class Services::Search::Hotel
     year_opened = parse_json(year_opened)
     return unless year_opened.present?
 
-    options[:year_opened_gteq_any] = year_opened[0]
-    options[:year_opened_lteq_any] = year_opened[1]
+    options[:year_opened_gteq_any] = year_opened[0] if year_opened[0] != 705
+    options[:year_opened_lteq_any] = year_opened[1] if year_opened[1] != 2020
   end
 
   def add_start_rating!(star_rating)
@@ -56,7 +56,13 @@ class Services::Search::Hotel
     rates = parse_json(rates)
     return unless rates.present?
 
-    options[:latest_rates_between] = rates
+    if rates[0] != 10 && rates[1] != 1000
+      options[:latest_rates_between] = rates
+    elsif rates[0] == 10 && rates[1] != 1000
+      options[:latest_rates_less_than] = rates[1]
+    elsif rates[0] != 10 && rates[1] == 1000
+      options[:latest_rates_more_than] = rates[0]
+    end
   end
 
   private
