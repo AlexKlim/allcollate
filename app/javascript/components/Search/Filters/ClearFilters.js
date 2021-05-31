@@ -4,13 +4,11 @@ import { useSearchContext } from '../SearchProvider';
 function ClearFilters() {
   const {
     clearButton,
-    setLocations,
     initFilterValues,
     setFilterValues,
   } = useSearchContext();
 
   const resetFilters = () => {
-    setLocations([]);
     setFilterValues(initFilterValues);
     let starRatingCheckBoxes = document.getElementsByClassName('singleRating');
     for (let item of starRatingCheckBoxes) {

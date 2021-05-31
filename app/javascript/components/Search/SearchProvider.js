@@ -6,7 +6,6 @@ export const SearchContext = React.createContext();
 
 const SearchProvider = ({ query }) => {
   const [hotels, setHotels] = useState([]);
-  const [locations, setLocations] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [pagingData, setPagingData] = useState({});
 
@@ -23,6 +22,7 @@ const SearchProvider = ({ query }) => {
   const [isLoading, setLoading] = useState(false);
 
   const initFilterValues = {
+    locations: [],
     yearOpened: [minYearOpened, maxYearOpened],
     yearRenovation: [minYearRenovated, maxYearRenovated],
     rate: [minRate, maxRate],
@@ -41,7 +41,6 @@ const SearchProvider = ({ query }) => {
       setLoading(true);
       const data = await searchAPI.fetchQuery(
         query,
-        locations,
         filterValue,
         activePage
       );
@@ -53,7 +52,6 @@ const SearchProvider = ({ query }) => {
 
     fetchData();
   }, [
-    locations,
     activePage,
     filterValue,
   ]);
@@ -63,8 +61,6 @@ const SearchProvider = ({ query }) => {
       value={{
         query,
         hotels,
-        locations,
-        setLocations: (locations) => setLocations(locations),
         activePage,
         handlePageChange: (pageNum) => {
           setActivePage(pageNum);
