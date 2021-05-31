@@ -2,7 +2,7 @@ Chewy.settings = if Rails.env.development? || Rails.env.test?
   { host: 'localhost:9200', prefix: 'allcollacte_' }
 else
   {
-    host: 'http://my-es-instance-on-aws.us-east-1.es.amazonaws.com:80',
+    host: "#{Rails.application.credentials.elastic_search[:user][:host]}:443",
     port: 443,
     transport_options: {
       headers: { content_type: 'application/json' },
@@ -10,8 +10,8 @@ else
           f.request :aws_sigv4,
                     service: 'es',
                     region: 'us-east-1',
-                    access_key_id: ENV['AWS_ACCESS_KEY'],
-                    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+                    access_key_id: Rails.application.credentials.elastic_search[:user][:key_id],
+                    secret_access_key: Rails.application.credentials.elastic_search[:user][:secret_key]
       end
     }
   }
