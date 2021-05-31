@@ -36,6 +36,8 @@ Rails.application.routes.draw do
         get :locations
       end
     end
+
+    resources :comparisons, only: [:index]
   end
 
   get '/directory/companies/:prefix' => 'frontend/directory/hotels#show', constraints: {
