@@ -7,7 +7,6 @@ import { useComparisonContext } from './ComparisonProvider';
 import Link from '@material-ui/core/Link';
 import RatesComparisonChart from './RatesComparisonChart';
 import Box from '@material-ui/core/Box';
-import SelectHotelChart from './SelectHotelChart';
 import Notification from './Notification'
 import {useStyles} from './styles'
 
