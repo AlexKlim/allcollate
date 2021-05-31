@@ -2,7 +2,7 @@ Chewy.settings = if Rails.env.development? || Rails.env.test?
   { host: 'localhost:9200', prefix: 'allcollacte_' }
 else
   {
-    host: "#{Rails.application.credentials.elastic_search[:user][:host]}:443",
+    host: "#{Rails.application.credentials.elastic_search[:host]}:443",
     port: 443,
     transport_options: {
       headers: { content_type: 'application/json' },
