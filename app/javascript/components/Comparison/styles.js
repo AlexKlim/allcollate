@@ -40,6 +40,7 @@ export const useStyles = makeStyles({
     contentBox: {
       alignSelf: 'flex-center',
       width: '100%',
+      padding: '0px',
       height: '105%',
       display: 'flex',
       flexWrap: 'wrap',
@@ -50,8 +51,10 @@ export const useStyles = makeStyles({
       backgroundColor: '#FFFFFF'
     },
     card: {
-      width: '245px',
-      height: '245px',
+      width: '100%',
+      height: '100%',
+      maxWidth: '345px',
+      maxHeight: '345px',
     },
     cardHeader: {
       align: 'center'
@@ -103,14 +106,21 @@ export const useStyles = makeStyles({
       position: 'sticky',
       left: '0px',
       color: 'black',
-      backgroundColor: '#F5F7FB',
+      background: '#FFFFFF',
       zIndex: '9999999',
       width: 'fit-content',
       minWidth: '150px',
-      borderRight: '1px solid #ececec',
-      borderLeft: '1px solid #ececec'
+      border: '1px solid #B2B2B2',
+      boxSizing: 'border-box',
+      borderRadius: '4px'
     },
     dataCell: {
       borderRight: '1px solid #ececec'
+    },
+    resultTableRow: {
+      background: '#FFFFFF',
+      border: '1px solid #B2B2B2',
+      boxSizing: 'border-box',
+      borderRadius: '4px'
     }
   })

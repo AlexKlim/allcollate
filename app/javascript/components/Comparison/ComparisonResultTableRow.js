@@ -19,7 +19,7 @@ export default function ComparisonResultTableRow(props) {
       </TableCell>
       {props.hotels ? props.hotels.map((hotel, i) => {
         return (
-          <TableCell key={i} className={classes.dataCell}  align='center'>{props.data !== 'starRating' ? hotel[`${props.data}`] : 
+          <TableCell key={i} className={classes.resultTableRow}  align='center'>{props.data !== 'starRating' ? hotel[`${props.data}`] : 
           <StarRatings
             rating={hotel[`${props.data}`]}
             starDimension='20px'
