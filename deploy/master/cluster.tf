@@ -134,7 +134,7 @@ locals {
 data "template_file" "container_instance_cloud_config" {
   template = "${file("templates/container-instance.yml.tpl")}"
 
-  vars {
+  vars = {
     ecs_cluster_name = "${aws_ecs_cluster.ecs_cluster.name}"
   }
 }
@@ -204,8 +204,8 @@ resource "aws_autoscaling_group" "container_instance" {
   termination_policies      = ["OldestLaunchConfiguration", "Default"]
   min_size                  = "${local.ecs_cluster_instance_count}"
   max_size                  = "${local.ecs_cluster_instance_count}"
-  enabled_metrics           = ["${var.enabled_metrics}"]
-  vpc_zone_identifier       = ["${module.vpc.public_subnets}"]
+  enabled_metrics           = var.enabled_metrics
+  vpc_zone_identifier       = module.vpc.public_subnets
 
   tag {
     key                 = "Name"

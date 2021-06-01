@@ -10,6 +10,6 @@ class Frontend::Directory::HotelsController < ApplicationController
                 Hotel.active.ransack(name_not_start_all: ('a'..'z'))
               else
                 Hotel.active.ransack(name_start: params[:prefix])
-              end.result.page(params[:page]).per(PER_PAGE)
+              end.result.page(params[:page]).per_page(PER_PAGE)
   end
 end

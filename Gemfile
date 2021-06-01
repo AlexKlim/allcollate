@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.1.3'
+gem 'rails', '~> 6.1.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -19,7 +19,6 @@ gem 'rubocop', '~> 0.88.0', require: false
 gem 'jsonapi-serializer', '~> 2.2.0'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -30,6 +29,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# gem 'mimemagic', '0.4.3'
+
 gem 'slim', '~> 4.0.1'
 
 gem 'friendly_id', '~> 5.3.0'
@@ -38,12 +39,11 @@ gem 'friendly_id', '~> 5.3.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
 gem 'simple-line-icons-rails', '~> 0.1.6'
-gem 'mini_racer', '~> 0.3.1'
 
 gem 'httparty', '~> 0.18.0'
 gem 'sidekiq', '~> 6.0.7'
 
-gem 'carrierwave', '~> 2.1.1'
+gem 'carrierwave', '~> 2.2.1'
 gem 'fog-aws', '~> 3.6.5'
 gem 'mini_magick', '~> 4.10.1'
 gem 'sitemap_generator', '~> 6.1.1'
@@ -71,4 +71,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -36,5 +36,10 @@ resource "aws_db_instance" "allcollate" {
 
 resource "aws_db_subnet_group" "default" {
   name       = "main"
-  subnet_ids = ["${module.vpc.private_subnets}"]
+  subnet_ids = module.vpc.private_subnets
+}
+
+resource "aws_db_subnet_group" "public" {
+  name       = "public"
+  subnet_ids = module.vpc.public_subnets
 }

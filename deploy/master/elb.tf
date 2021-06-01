@@ -1,7 +1,7 @@
 resource "aws_lb" "lb" {
   name                       = "${terraform.workspace}-lb"
   security_groups            = ["${aws_security_group.lb_container_instance.id}"]
-  subnets                    = ["${module.vpc.public_subnets}"]
+  subnets                    = module.vpc.public_subnets
   enable_deletion_protection = false
 }
 
@@ -46,6 +46,27 @@ resource "aws_lb_listener" "lb_listener" {
     target_group_arn = "${aws_lb_target_group.lb_target.arn}"
     type             = "forward"
   }
+}
+
+data "aws_acm_certificate" "domain_certificate" {
+  domain = "allcollate.com"
+}
+
+resource "aws_lb_listener" "lb_listener_https" {
+  load_balancer_arn = aws_lb.lb.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2015-05"
+  certificate_arn   = data.aws_acm_certificate.domain_certificate.arn
+
+  default_action {
+    target_group_arn = aws_lb_target_group.lb_target.arn
+    type             = "forward"
+  }
+}
+
+output "aws_lb_listener_https_arn" {
+  value = aws_lb_listener.lb_listener_https.arn
 }
 
 output "lb_listener_arn" {

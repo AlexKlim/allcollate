@@ -43,6 +43,22 @@ resource "aws_lb_target_group" "allcollate_lb_target" {
 
 resource "aws_lb_listener_rule" "default" {
   listener_arn = "${data.terraform_remote_state.master.lb_listener_arn}"
+  priority     = 2
+
+  action {
+    type             = "forward"
+    target_group_arn = "${aws_lb_target_group.allcollate_lb_target.arn}"
+  }
+
+  condition {
+    path_pattern {
+      values = ["/*"]
+    }
+  }
+}
+
+resource "aws_lb_listener_rule" "https" {
+  listener_arn = "${data.terraform_remote_state.master.aws_lb_listener_https_arn}"
   priority     = 1
 
   action {
