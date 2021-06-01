@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ComparisonPage from './ComparisonPage';
 import ComparisonAPI from '../../api/ComparisonAPI';
 import { uniqueHotels } from './helpers'
+import _ from 'lodash'
 
 export const ComparisonContext = React.createContext();
 
@@ -21,14 +22,12 @@ const ComparisonProvider = ({ initHotels }) => {
       const comparisonAPI = new ComparisonAPI();
       const data = await comparisonAPI.fetchHotels(slug);
 
-      uniqueHotels(hotels, toggleNotification)
-
       if (!data) {
-        setHotels([...hotels])
+        setHotels([..._.uniqWith(hotels, _.isEqual)])
         return
       }
       hotels.unshift(data.results)
-      setHotels(uniqueHotels(hotels, toggleNotification));
+      setHotels(_.uniqWith(hotels, _.isEqual));
     };
 
     fetchData();
