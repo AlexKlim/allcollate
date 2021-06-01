@@ -29,7 +29,7 @@ export default function ComparisonResultHeaderCard(props) {
           title={
             <Tooltip title={hotel.name} enterDelay={500} leaveDelay={200} placement='top-start' arrow>
               <Box textAlign="center" fontSize={18}>
-                {_.truncate(hotel.name, {'length': 30, 'separator': ' '})}
+                {_.truncate(hotel.name, {'length': 25, 'separator': ' '})}
               </Box>
             </Tooltip>
           }

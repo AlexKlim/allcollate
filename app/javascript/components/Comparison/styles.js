@@ -40,11 +40,14 @@ export const useStyles = makeStyles({
     contentBox: {
       alignSelf: 'flex-center',
       width: '100%',
-      height: '100%',
+      height: '105%',
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'space-around',
-      alignItems: 'center'
+      alignItems: 'center',
+      border: '1px solid #B2B2B2',
+      borderRadius: '4px',
+      backgroundColor: '#FFFFFF'
     },
     card: {
       width: '245px',
@@ -54,8 +57,11 @@ export const useStyles = makeStyles({
       align: 'center'
     },
     media: {
-      height: '0px',
+      height: '30%',
+      width: '50%',
+      marginLeft: '25%',
       paddingTop: '56.25%',
+      borderRadius: '4px'
     },
     removeButton: {
       '&:hover': {
@@ -71,10 +77,10 @@ export const useStyles = makeStyles({
       borderWidth: '1px;',
       borderColor: 'grey;',
       borderStyle: 'solid;',
-      borderRadius: '4px;'
+      borderRadius: '4px;',
     },
     cell: {
-      minWidth: '340px;'
+      minWidth: '345px;'
     },
     leftColumnHeader: {
       position: 'sticky',
@@ -89,7 +95,9 @@ export const useStyles = makeStyles({
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'space-around',
-      alignItems: 'center'
+      alignItems: 'center',
+      width: '100%',
+      height: '100%',
     },
     leftColumn: {
       position: 'sticky',
