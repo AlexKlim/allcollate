@@ -6,9 +6,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { useComparisonContext } from './ComparisonProvider';
 import Box from '@material-ui/core/Box';
-import { hotelNameTrancate } from './helpers'
 import Tooltip from '@material-ui/core/Tooltip';
 import {useStyles} from './styles'
+import _ from 'lodash'
 
 
 export default function ComparisonResultHeaderCard(props) {
@@ -29,7 +29,7 @@ export default function ComparisonResultHeaderCard(props) {
           title={
             <Tooltip title={hotel.name} enterDelay={500} leaveDelay={200} placement='top-start' arrow>
               <Box textAlign="center" fontSize={18}>
-                {hotelNameTrancate(hotel.name)}
+                {_.truncate(hotel.name, {'length': 30, 'separator': ' '})}
               </Box>
             </Tooltip>
           }
