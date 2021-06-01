@@ -35,6 +35,7 @@ export default function ComparisonResultTableRow(props) {
       <CircularProgress />
       }
     </TableRow>
+    <br />
     </>
   )
 }
