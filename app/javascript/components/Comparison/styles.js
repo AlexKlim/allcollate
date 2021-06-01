@@ -39,22 +39,21 @@ export const useStyles = makeStyles({
     },
     contentBox: {
       alignSelf: 'flex-center',
-      width: '100%',
+      width: '245px',
+      width: 'fit-content',
       padding: '0px',
       height: '105%',
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'space-around',
       alignItems: 'center',
-      border: '1px solid #B2B2B2',
-      borderRadius: '4px',
       backgroundColor: '#FFFFFF'
     },
     card: {
-      width: '100%',
-      height: '100%',
-      maxWidth: '345px',
-      maxHeight: '345px',
+      width: '245px',
+      height: '245px',
+      border: 'none',
+      boxShadow: 'none'
     },
     cardHeader: {
       align: 'center'
@@ -72,8 +71,7 @@ export const useStyles = makeStyles({
       }
     },
     table: {
-      borderTopWidth: 1,
-      marginTop: '50px'
+      marginTop: '50px',
     },
     row: {
       border: '1px;',
@@ -83,7 +81,12 @@ export const useStyles = makeStyles({
       borderRadius: '4px;',
     },
     cell: {
-      minWidth: '345px;'
+      width: '245px',
+      // maxWidth: '245px',
+      background: '#FFFFFF',
+      border: '1px solid #B2B2B2',
+      boxSizing: 'border-box',
+      borderRadius: '4px'
     },
     leftColumnHeader: {
       position: 'sticky',
@@ -97,6 +100,8 @@ export const useStyles = makeStyles({
     headerCardBox: {
       display: 'flex',
       flexWrap: 'wrap',
+      background: '#FFFFFF',
+      // border: '1px solid #B2B2B2',
       justifyContent: 'space-around',
       alignItems: 'center',
       width: '100%',
@@ -108,9 +113,10 @@ export const useStyles = makeStyles({
       color: 'black',
       background: '#FFFFFF',
       zIndex: '9999999',
-      width: 'fit-content',
+      // width: 'fit-content',
       minWidth: '150px',
       border: '1px solid #B2B2B2',
+      borderTopLeftRadius: '4px',
       boxSizing: 'border-box',
       borderRadius: '4px'
     },
@@ -122,5 +128,8 @@ export const useStyles = makeStyles({
       border: '1px solid #B2B2B2',
       boxSizing: 'border-box',
       borderRadius: '4px'
+    },
+    row: {
+      marginTop: '30px'
     }
   })

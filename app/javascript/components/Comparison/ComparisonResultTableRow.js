@@ -13,7 +13,8 @@ export default function ComparisonResultTableRow(props) {
   const classes = useStyles()
 
   return (
-    <TableRow>
+    <>
+    <TableRow className={classes.row}>
       <TableCell className={classes.leftColumn} >
         {`${props.comparisonOption}`}
       </TableCell>
@@ -34,5 +35,6 @@ export default function ComparisonResultTableRow(props) {
       <CircularProgress />
       }
     </TableRow>
+    </>
   )
 }

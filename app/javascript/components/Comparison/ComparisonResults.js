@@ -20,7 +20,7 @@ function ComparisonResults() {
 
   return (
     <TableContainer>
-      <Table className={classes.table} aria-label="customized table">
+      <Table className={classes.table} aria-label="customized table" style={{maxWidth: '885px'}}>
         <TableHead>
           <TableRow>
             <TableCell className={classes.leftColumnHeader}/>

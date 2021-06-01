@@ -23,12 +23,12 @@ export default function ComparisonResultHeaderCard(props) {
   const { hotel } = props
 
   return (
-    <Box className={classes.contentBox}>
+    <Box textAlign="center">
       <Card className={classes.card}>
         <CardHeader
           title={
             <Tooltip title={hotel.name} enterDelay={500} leaveDelay={200} placement='top-start' arrow>
-              <Box textAlign="center" fontSize={18}>
+              <Box fontSize={18}>
                 {_.truncate(hotel.name, {'length': 25, 'separator': ' '})}
               </Box>
             </Tooltip>
