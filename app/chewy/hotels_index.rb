@@ -17,6 +17,7 @@ class HotelsIndex < Chewy::Index
   }
 
   index_scope Hotel.active.includes(:photos, :rates)
+  default_import_options batch_size: 100, bulk_size: 10.megabytes, refresh: false
 
   field :id, type: 'integer'
   field :name, :overview, :slug, :addressline1

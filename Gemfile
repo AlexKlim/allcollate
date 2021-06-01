@@ -17,6 +17,8 @@ gem 'react-rails', '~> 2.6.1'
 gem 'rubocop', '~> 0.88.0', require: false
 
 gem 'chewy', '~> 7.2.2'
+gem 'faraday', '~> 1.4.2'
+gem 'faraday_middleware', '~> 1.0.0'
 gem 'faraday_middleware-aws-sigv4', '~> 0.5.0'
 
 gem 'jsonapi-serializer', '~> 2.2.0'

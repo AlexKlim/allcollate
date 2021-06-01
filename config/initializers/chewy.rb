@@ -1,3 +1,5 @@
+require 'faraday_middleware/aws_sigv4'
+
 Chewy.settings = if Rails.env.development? || Rails.env.test?
   { host: 'localhost:9200', prefix: 'allcollacte_' }
 else
