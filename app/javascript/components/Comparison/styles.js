@@ -82,7 +82,6 @@ export const useStyles = makeStyles({
     },
     cell: {
       width: '245px',
-      // maxWidth: '245px',
       background: '#FFFFFF',
       border: '1px solid #B2B2B2',
       boxSizing: 'border-box',

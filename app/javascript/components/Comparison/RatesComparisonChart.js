@@ -9,15 +9,15 @@ export default function RatesComparisonChart(props) {
 
   const getOption = () => {
     const sortedRates = hotels.map(hotel => hotel.rates)
-    const date = sortedRates.map(hotel => {
+    const actualOnDates = sortedRates.map(hotel => {
         return hotel.map(item => item.actual_on)
     })
 
-    let correctDate = []
+    let correctDates = []
 
-    date.map(hotelDateRates => {
+    actualOnDates.map(hotelDateRates => {
         hotelDateRates.map(hotelDateRate => {
-            correctDate.push(hotelDateRate)
+            correctDates.push(hotelDateRate)
         })
     })
 
