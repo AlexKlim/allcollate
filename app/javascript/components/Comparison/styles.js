@@ -91,7 +91,8 @@ export const useStyles = makeStyles({
     leftColumnHeader: {
       position: 'sticky',
       left: '0px',
-      backgroundColor: '#F5F7FB'
+      backgroundColor: '#F5F7FB',
+      border: 'none'
     },
     noHotelsBox: {
       minWidth: '100%;',
