@@ -13,11 +13,11 @@ export default function RatesComparisonChart(props) {
         return hotel.map(item => item.actual_on)
     })
 
-    let correctDates = []
+    let correctDate = []
 
     actualOnDates.map(hotelDateRates => {
         hotelDateRates.map(hotelDateRate => {
-            correctDates.push(hotelDateRate)
+            correctDate.push(hotelDateRate)
         })
     })
 
