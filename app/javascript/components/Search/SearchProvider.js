@@ -4,7 +4,7 @@ import SearchAPI from '../../api/SearchAPI';
 
 export const SearchContext = React.createContext();
 
-const SearchProvider = ({ query }) => {
+const SearchProvider = ({ query, hotelPlaceholderUrl }) => {
   const [hotels, setHotels] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [pagingData, setPagingData] = useState({});
@@ -62,6 +62,7 @@ const SearchProvider = ({ query }) => {
         query,
         hotels,
         activePage,
+        hotelPlaceholderUrl,
         handlePageChange: (pageNum) => {
           setActivePage(pageNum);
         },
