@@ -49,7 +49,7 @@ export default function ComparisonResultHeaderCard(props) {
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            {hotel.country + ', ' + hotel.city}
+            {hotel.country + ', ' + hotel.city + ', ' + hotel.addressline1}
           </Typography>
         </CardContent>
       </Card>

@@ -118,7 +118,8 @@ export const useStyles = makeStyles({
       borderRadius: '4px'
     },
     dataCell: {
-      borderRight: '1px solid #ececec'
+      borderRight: '1px solid #ececec',
+      borderRadius: '4px'
     },
     resultTableRow: {
       background: '#FFFFFF',
