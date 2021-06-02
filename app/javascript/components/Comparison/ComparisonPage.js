@@ -44,6 +44,7 @@ function SearchPage() {
           <SuggestionForm
             onSuggestionSelected={onSuggestionSelected}
             onSubmit={onSubmit}
+            comparisonPage={true}
           />
           <Box>
             <Link

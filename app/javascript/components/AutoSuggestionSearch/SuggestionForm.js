@@ -125,7 +125,8 @@ class SuggestionForm extends React.Component {
       name: 'q',
       onChange: this.onChange,
       value: this.state.query || '',
-      fetched: this.state.fetched
+      fetched: this.state.fetched,
+      comparisonPage: this.props.comparisonPage
     };
 
     return (

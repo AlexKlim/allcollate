@@ -9,13 +9,15 @@ export default props => {
       <input {...rest} />
       {fetched && (
         <div className="suggestion-input__loader_container">
-          <Loader className="suggestion-input__loader"/>
+          <Loader className="suggestion-input__loader" />
         </div>
       )}
       <div className="input-group-btn suggestion-input__btn-search">
-        <button className="suggestion-input__btn-search-input" type="submit">
-          Search
+        {!props.comparisonPage &&
+          <button className="suggestion-input__btn-search-input" type="submit">
+            Search
         </button>
+        }
       </div>
     </div>
   );
