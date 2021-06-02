@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Tag } from 'tabler-react';
 import StarRatings from 'react-star-ratings';
-import Tooltip from 'rc-tooltip';
+import Tooltip from '@material-ui/core/Tooltip';
 import Pagination from 'reactive-pagination';
 import { useSearchContext } from './SearchProvider';
 import Routes from '../../helpers/routes';
@@ -20,6 +20,7 @@ function SearchResults() {
     activePage,
     pagingData,
     isLoading,
+    hotelPlaceholderUrl,
   } = useSearchContext();
 
   const number_or_na = (val) => {
@@ -39,20 +40,22 @@ function SearchResults() {
     }
 
     return (
-      <Tooltip
-        placement='top'
-        overlay={
-          <div>
+      <Tooltip arrow placement='top'
+        title={
+          <Typography variant="body2">
             Review score.
             <br />
             Based on <b>{reviewCount}</b> review counts.
-          </div>
+          </Typography>
         }
       >
-        <Tag color={color}>{rating}</Tag>
+        <span>
+          <Tag color={color}>{rating}</Tag>
+        </span>
       </Tooltip>
     );
   };
+
   return (
     <>
       {isLoading && hotels.length == 0 && (
@@ -83,7 +86,7 @@ function SearchResults() {
                   </div>
                   <div className='col-md-2'>
                     <a href={Routes.hotelPath(hotel.slug)}>
-                      <img src={hotel.photo} className='search__hotel-photo' />
+                      <img src={hotel.photo || hotelPlaceholderUrl} className='search__hotel-photo' />
                     </a>
                   </div>
                   <div className='col-md-3'>
