@@ -15,6 +15,7 @@ const ComparisonProvider = ({ initHotels }) => {
     setNotificationOn(true)
   }
 
+
   useEffect(() => {
     const fetchData = async () => {
 
@@ -25,16 +26,23 @@ const ComparisonProvider = ({ initHotels }) => {
         setHotels([..._.uniqWith(hotels, _.isEqual)])
         return
       }
+
       hotels.unshift(data.results)
+
+      const rawHotels = _.cloneDeep([hotels])[0]
+      
+      if (! _.isEqual(rawHotels, _.uniqWith(hotels, _.isEqual))) {
+        toggleNotification()
+      }
+
       setHotels(_.uniqWith(hotels, _.isEqual));
     };
 
-    fetchData();
+    fetchData(); 
 
   }, [
     slug
   ]);
-
 
 
   return (

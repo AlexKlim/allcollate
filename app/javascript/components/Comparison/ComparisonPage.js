@@ -8,7 +8,7 @@ import Link from '@material-ui/core/Link';
 import RatesComparisonChart from './RatesComparisonChart';
 import Box from '@material-ui/core/Box';
 import Notification from './Notification'
-import {useStyles} from './styles'
+import { useStyles } from './styles'
 
 
 function SearchPage() {
@@ -68,7 +68,7 @@ function SearchPage() {
             <>
               <Box>
                 <ComparisonResults />
-                {hotels.length !== 0 ? <RatesComparisonChart /> : null}
+                <RatesComparisonChart />
                 <Notification />
               </Box>
             </>

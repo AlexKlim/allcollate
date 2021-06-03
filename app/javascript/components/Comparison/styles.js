@@ -111,7 +111,7 @@ export const useStyles = makeStyles({
       left: '0px',
       color: 'black',
       background: '#FFFFFF',
-      zIndex: '9999999',
+      zIndex: '99999',
       minWidth: '340px',
       border: '1px solid #B2B2B2',
       boxSizing: 'border-box',

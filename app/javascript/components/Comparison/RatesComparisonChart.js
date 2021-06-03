@@ -2,8 +2,9 @@ import * as React from "react";
 import echarts from 'echarts';
 import ReactEcharts from 'echarts-for-react';
 import { useComparisonContext } from "./ComparisonProvider";
+import { useEffect, useState } from 'react';
 
-export default function RatesComparisonChart(props) {
+export default function RatesComparisonChart() {
 
     const { hotels } = useComparisonContext()
 
@@ -22,6 +23,7 @@ export default function RatesComparisonChart(props) {
         })
 
         const uniqueDate = Array.from(new Set(correctDate))
+
 
         const data = hotels.map(hotel => {
             const dailyRates = hotel.rates.map(item => item.daily_rate)
@@ -74,7 +76,6 @@ export default function RatesComparisonChart(props) {
                 }
             }],
             series: data.map(i => {
-                console.log(i)
                 return ({
                     name: `Currency ($) ${i.hotelName}`,
                     type: 'line',
@@ -85,6 +86,7 @@ export default function RatesComparisonChart(props) {
             })
         });
     }
+    
 
     return (
         <ReactEcharts option={getOption()} />
