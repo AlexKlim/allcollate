@@ -13,7 +13,7 @@ export default props => {
         </div>
       )}
       <div className="input-group-btn suggestion-input__btn-search">
-        {!props.comparisonPage &&
+        {!props.withoutSearchButton &&
           <button className="suggestion-input__btn-search-input" type="submit">
             Search
         </button>
