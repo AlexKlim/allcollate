@@ -8,6 +8,7 @@ export default function RatesComparisonChart() {
 
     const { hotels } = useComparisonContext()
 
+
     const getOption = () => {
 
         const date = hotels.map(hotel => {
@@ -89,6 +90,9 @@ export default function RatesComparisonChart() {
     
 
     return (
-        <ReactEcharts option={getOption()} />
+        <ReactEcharts
+        option={getOption()}
+        notMerge={true}
+        />
     );
 }
