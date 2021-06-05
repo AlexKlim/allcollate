@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
     '& > * + *': {
       marginTop: theme.spacing(2),
     },
-    zIndex: '999999999999'
-  },
+    zIndex: '9999'
+  }
 }));
 
 export default function Notification() {

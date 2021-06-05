@@ -93,6 +93,11 @@ export const useStyles = makeStyles({
       backgroundColor: '#F5F7FB',
       border: 'none'
     },
+    leftColumnHeaderBox: {
+      left: '0px',
+      top: '0px',
+      backgroundColor: '#F5F7FB'
+    },
     noHotelsBox: {
       minWidth: '100%;',
       marginTop: '25%'
@@ -111,7 +116,7 @@ export const useStyles = makeStyles({
       left: '0px',
       color: 'black',
       background: '#FFFFFF',
-      zIndex: '99999',
+      zIndex: '999',
       minWidth: '340px',
       border: '1px solid #B2B2B2',
       boxSizing: 'border-box',
