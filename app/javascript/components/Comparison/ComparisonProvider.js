@@ -37,7 +37,7 @@ const ComparisonProvider = ({ initHotels }) => {
 
       setHotels(_.uniqWith(hotels, _.isEqual));
     };
-
+console.log(slug)
     fetchData(); 
 
   }, [

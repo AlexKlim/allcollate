@@ -23,7 +23,9 @@ function ComparisonResults() {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <TableCell className={classes.leftColumnHeader} />
+                <TableCell className={classes.leftColumnHeader}>
+              <Box className={classes.leftColumnHeaderBox} />
+                  </ TableCell>
             {hotels.map((hotel, i) => {
               return (
                 <TableCell className={classes.cell} key={i}>

@@ -94,6 +94,8 @@ export const useStyles = makeStyles({
       border: 'none'
     },
     leftColumnHeaderBox: {
+      width: '345px',
+      height: '245px',
       left: '0px',
       top: '0px',
       backgroundColor: '#F5F7FB'
