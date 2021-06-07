@@ -47,7 +47,7 @@ export default function Notification() {
     <Box className={classes.root}>
       <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="info">
-          Hotel is already in the list!
+        Hotel is already in the comparison list
         </Alert>
       </Snackbar>
     </Box>

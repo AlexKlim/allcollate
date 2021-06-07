@@ -29,6 +29,8 @@ const ComparisonProvider = ({ initHotels }) => {
 
       hotels.unshift(data.results)
 
+      console.log(hotels)
+
       const rawHotels = _.cloneDeep([hotels])[0]
       
       if (! _.isEqual(rawHotels, _.uniqWith(hotels, _.isEqual))) {
@@ -37,7 +39,6 @@ const ComparisonProvider = ({ initHotels }) => {
 
       setHotels(_.uniqWith(hotels, _.isEqual));
     };
-console.log(slug)
     fetchData(); 
 
   }, [
