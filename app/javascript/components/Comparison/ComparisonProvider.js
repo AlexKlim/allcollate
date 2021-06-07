@@ -41,7 +41,7 @@ const ComparisonProvider = ({ initHotels }) => {
 
       let newHotels = _.cloneDeep(hotels)
 
-      myHotels.unshift(data.results)
+      newHotels.unshift(data.results)
 
       _.uniqWith(newHotels, _.isEqual)
 
