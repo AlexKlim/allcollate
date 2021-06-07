@@ -21,25 +21,33 @@ const ComparisonProvider = ({ initHotels }) => {
 
       const comparisonAPI = new ComparisonAPI();
       const data = await comparisonAPI.fetchHotels(slug);
+      console.log(data.results)
 
-      // if (!data) {
-      //   setHotels([..._.uniqWith(hotels, _.isEqual)])
-      //   return
-      // }
-
-      hotels.unshift(data.results)
-
-      console.log(hotels)
-
-      const rawHotels = _.cloneDeep([hotels])[0]
-      
-      if (! _.isEqual(rawHotels, _.uniqWith(hotels, _.isEqual))) {
-        toggleNotification()
+      const isDuplicate = (newHotel) => {
+        let status = false
+        hotels.map(hotel => {
+          if (_.isEqual(hotel, newHotel)) {
+            toggleNotification()
+            status = true
+            return
+          }
+        })
+          return status
       }
 
-      setHotels(_.uniqWith(hotels, _.isEqual));
+      if( !data.results || isDuplicate(data.results)) {
+        return
+      }
+
+      let newHotels = _.cloneDeep(hotels)
+
+      myHotels.unshift(data.results)
+
+      _.uniqWith(newHotels, _.isEqual)
+
+      setHotels(newHotels);
     };
-    fetchData(); 
+    fetchData();
 
   }, [
     slug
