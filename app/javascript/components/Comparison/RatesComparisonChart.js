@@ -78,7 +78,7 @@ export default function RatesComparisonChart() {
             }],
             series: data.map(i => {
                 return ({
-                    name: `Currency ($) ${i.hotelName}`,
+                    name: `${i.hotelName} Currency ($)`,
                     type: 'line',
                     smooth: false,
                     showSymbol: false,
