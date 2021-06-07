@@ -22,10 +22,10 @@ const ComparisonProvider = ({ initHotels }) => {
       const comparisonAPI = new ComparisonAPI();
       const data = await comparisonAPI.fetchHotels(slug);
 
-      if (!data) {
-        setHotels([..._.uniqWith(hotels, _.isEqual)])
-        return
-      }
+      // if (!data) {
+      //   setHotels([..._.uniqWith(hotels, _.isEqual)])
+      //   return
+      // }
 
       hotels.unshift(data.results)
 
