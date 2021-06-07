@@ -1,21 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useComparisonContext } from './ComparisonProvider';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from '@material-ui/core';
 import ComparisonResultHeaderCard from './ComparisonResultHeaderCard'
 import ComparisonResultTableRow from './ComparisonResultTableRow'
-import Box from '@material-ui/core/Box';
 import { comparisonOptions } from './constants'
-import {useStyles} from './styles'
+import { useStyles } from './styles'
 
 function ComparisonResults() {
   const { hotels } = useComparisonContext();
-
-
   const classes = useStyles()
 
   return (
@@ -23,31 +15,27 @@ function ComparisonResults() {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-                <TableCell className={classes.leftColumnHeader}>
+            <TableCell className={classes.leftColumnHeader}>
               <Box className={classes.leftColumnHeaderBox} />
-                  </ TableCell>
+            </TableCell>
             {hotels.map((hotel, i) => {
               return (
                 <TableCell className={classes.cell} key={i}>
                   <Box className={classes.headerCardBox}>
-                  <ComparisonResultHeaderCard hotel={hotel} />
+                    <ComparisonResultHeaderCard hotel={hotel} />
                   </Box>
                 </TableCell>
               )
-            })
-            }
+            })}
           </TableRow>
           <br />
         </TableHead>
         <TableBody>
-          {
-            comparisonOptions.map((option, i) => {
-              return (
-                <ComparisonResultTableRow hotels={hotels} comparisonOption={option.title} data={option.key} key={i} />
-              )
-            }
+          {comparisonOptions.map((option, i) => {
+            return (
+              <ComparisonResultTableRow hotels={hotels} comparisonOption={option.title} data={option.key} key={i} />
             )
-          }
+          })}
         </TableBody>
       </Table>
     </TableContainer>

@@ -1,140 +1,140 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export const useStyles = makeStyles({
-    page: {
-      minWidth: '100%'
-    },
-    content: {
-      width: '100%'
-    },
-    pageHeader: {
-      display: 'flex',
-      marginTop: '50px',
-      display: 'flex',
-      flexWrap: 'wrap',
-      alignItems: 'center'
-    },
-    titleBox: {
-      width: 'fit-content'
-    },
-    title: {
-      fontStyle: 'normal',
-      fontWeight: 'normal',
-      fontSize: '34px',
-      lineHeight: '40px',
-      color: 'black'
-    },
-    searchBox: {
-      width: '6000px',
-    },
-    noHotelsBox: {
-      position: 'absolute',
-      minWidth: '100%;',
-      left: 0,
-      textAlign: 'center',
-      backgroundColor: '#F5F7FB'
-    },
-    noHotelsTitle: {
-      marginTop: '15%'
-    },
-    contentBox: {
-      alignSelf: 'flex-center',
-      width: '245px',
-      width: 'fit-content',
-      padding: '0px',
-      height: '105%',
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      alignItems: 'center',
-      backgroundColor: '#FFFFFF'
-    },
-    card: {
-      width: '245px',
-      height: '245px',
-      border: 'none',
-      boxShadow: 'none'
-    },
-    cardHeader: {
-      align: 'center'
-    },
-    media: {
-      height: '30%',
-      width: '50%',
-      marginLeft: '25%',
-      paddingTop: '56.25%',
-      borderRadius: '4px'
-    },
-    removeButton: {
-      '&:hover': {
-        cursor: 'pointer'
-      }
-    },
-    table: {
-      marginTop: '50px',
-    },
-    row: {
-      border: '1px;',
-      borderWidth: '1px;',
-      borderColor: 'grey;',
-      borderStyle: 'solid;',
-      borderRadius: '4px;',
-    },
-    cell: {
-      width: '245px',
-      background: '#FFFFFF',
-      border: '1px solid #B2B2B2',
-      boxSizing: 'border-box',
-      borderRadius: '4px'
-    },
-    leftColumnHeader: {
-      position: 'sticky',
-      left: '0px',
-      backgroundColor: '#F5F7FB',
-      border: 'none'
-    },
-    leftColumnHeaderBox: {
-      width: '345px',
-      height: '245px',
-      left: '0px',
-      top: '0px',
-      backgroundColor: '#F5F7FB'
-    },
-    noHotelsBox: {
-      minWidth: '100%;',
-      marginTop: '25%'
-    },
-    headerCardBox: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      background: '#FFFFFF',
-      justifyContent: 'space-around',
-      alignItems: 'center',
-      width: '245px',
-      height: '245px',
-    },
-    leftColumn: {
-      position: 'sticky',
-      left: '0px',
-      color: 'black',
-      background: '#FFFFFF',
-      zIndex: '999',
-      minWidth: '340px',
-      border: '1px solid #B2B2B2',
-      boxSizing: 'border-box',
-      borderRadius: '4px'
-    },
-    dataCell: {
-      borderRight: '1px solid #ececec',
-      borderRadius: '4px'
-    },
-    resultTableRow: {
-      background: '#FFFFFF',
-      border: '1px solid #B2B2B2',
-      boxSizing: 'border-box',
-      borderRadius: '4px'
-    },
-    row: {
-      marginTop: '30px'
+  page: {
+    minWidth: '100%'
+  },
+  content: {
+    width: '100%'
+  },
+  pageHeader: {
+    display: 'flex',
+    marginTop: '50px',
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center'
+  },
+  titleBox: {
+    width: 'fit-content'
+  },
+  title: {
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '34px',
+    lineHeight: '40px',
+    color: 'black'
+  },
+  searchBox: {
+    width: '6000px',
+  },
+  noHotelsBox: {
+    position: 'absolute',
+    minWidth: '100%;',
+    left: 0,
+    textAlign: 'center',
+    backgroundColor: '#F5F7FB'
+  },
+  noHotelsTitle: {
+    marginTop: '15%'
+  },
+  contentBox: {
+    alignSelf: 'flex-center',
+    width: '245px',
+    width: 'fit-content',
+    padding: '0px',
+    height: '105%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF'
+  },
+  card: {
+    width: '245px',
+    height: '245px',
+    border: 'none',
+    boxShadow: 'none'
+  },
+  cardHeader: {
+    align: 'center'
+  },
+  media: {
+    height: '30%',
+    width: '50%',
+    marginLeft: '25%',
+    paddingTop: '56.25%',
+    borderRadius: '4px'
+  },
+  removeButton: {
+    '&:hover': {
+      cursor: 'pointer'
     }
-  })
+  },
+  table: {
+    marginTop: '50px',
+  },
+  row: {
+    border: '1px;',
+    borderWidth: '1px;',
+    borderColor: 'grey;',
+    borderStyle: 'solid;',
+    borderRadius: '4px;',
+  },
+  cell: {
+    width: '245px',
+    background: '#FFFFFF',
+    border: '1px solid #B2B2B2',
+    boxSizing: 'border-box',
+    borderRadius: '4px'
+  },
+  leftColumnHeader: {
+    position: 'sticky',
+    left: '0px',
+    backgroundColor: '#F5F7FB',
+    border: 'none'
+  },
+  leftColumnHeaderBox: {
+    width: '345px',
+    height: '245px',
+    left: '0px',
+    top: '0px',
+    backgroundColor: '#F5F7FB'
+  },
+  noHotelsBox: {
+    minWidth: '100%;',
+    marginTop: '25%'
+  },
+  headerCardBox: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    background: '#FFFFFF',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: '245px',
+    height: '245px',
+  },
+  leftColumn: {
+    position: 'sticky',
+    left: '0px',
+    color: 'black',
+    background: '#FFFFFF',
+    zIndex: '999',
+    minWidth: '340px',
+    border: '1px solid #B2B2B2',
+    boxSizing: 'border-box',
+    borderRadius: '4px'
+  },
+  dataCell: {
+    borderRight: '1px solid #ececec',
+    borderRadius: '4px'
+  },
+  resultTableRow: {
+    background: '#FFFFFF',
+    border: '1px solid #B2B2B2',
+    boxSizing: 'border-box',
+    borderRadius: '4px'
+  },
+  row: {
+    marginTop: '30px'
+  }
+})

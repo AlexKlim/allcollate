@@ -1,20 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import SuggestionForm from '../AutoSuggestionSearch/SuggestionForm'
 import ComparisonResults from './ComparisonResults';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid'
+import { Typography, Box, Link } from '@material-ui/core';
 import { useComparisonContext } from './ComparisonProvider';
-import Link from '@material-ui/core/Link';
 import RatesComparisonChart from './RatesComparisonChart';
-import Box from '@material-ui/core/Box';
 import Notification from './Notification'
 import { useStyles } from './styles'
 
-
 function SearchPage() {
-
   const { setHotels, setSlug, hotels } = useComparisonContext()
-
   const classes = useStyles()
 
   const onSuggestionSelected = (that, suggestion, value) => {
@@ -29,8 +23,6 @@ function SearchPage() {
   const onSubmit = (e) => {
     e.preventDefault();
   }
-
-
 
   return (
     <Box className={classes.page}>
@@ -69,7 +61,7 @@ function SearchPage() {
               <Box>
                 <ComparisonResults />
                 <RatesComparisonChart />
-                <Notification />
+                <Notification text="Hotel is already in the comparison list" />
               </Box>
             </>
         }

@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
-import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
+import { Snackbar, Box, makeStyles } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
-import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
 import { useComparisonContext } from './ComparisonProvider';
 
 const Alert = (props) => {
@@ -20,19 +17,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Notification() {
-
-    const {notificationOn, setNotificationOn} = useComparisonContext()
-
+export default function Notification({ text }) {
+  const { notificationOn, setNotificationOn } = useComparisonContext()
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     if (notificationOn) {
-    setOpen(true);
+      setOpen(true);
     }
   }, [
-      notificationOn
+    notificationOn
   ])
 
   const handleClose = (event, reason) => {
@@ -45,9 +40,12 @@ export default function Notification() {
 
   return (
     <Box className={classes.root}>
-      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+      <Snackbar
+        open={open} autoHideDuration={4000} onClose={handleClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
         <Alert onClose={handleClose} severity="info">
-        Hotel is already in the comparison list
+          {text}
         </Alert>
       </Snackbar>
     </Box>

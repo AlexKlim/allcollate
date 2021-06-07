@@ -1,26 +1,18 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { CardHeader, CardMedia, CardContent, Typography, Box, Tooltip } from '@material-ui/core';
 import { useComparisonContext } from './ComparisonProvider';
-import Box from '@material-ui/core/Box';
-import Tooltip from '@material-ui/core/Tooltip';
 import {useStyles} from './styles'
 import _ from 'lodash'
 
-
 export default function ComparisonResultHeaderCard(props) {
   const classes = useStyles();
-
-  let { hotels, setHotels } = useComparisonContext()
+  const { hotel } = props
+  const { hotels, setHotels } = useComparisonContext()
 
   const removeHotelFromList = (name) => {
     setHotels(hotels.filter((hotel) => hotel.name !== name))
   }
-
-  const { hotel } = props
 
   return (
     <Box textAlign="center">

@@ -15,44 +15,22 @@ const ComparisonProvider = ({ initHotels }) => {
     setNotificationOn(true)
   }
 
-
   useEffect(() => {
     const fetchData = async () => {
-
       const comparisonAPI = new ComparisonAPI();
       const data = await comparisonAPI.fetchHotels(slug);
-      console.log(data.results)
 
-      const isDuplicate = (newHotel) => {
-        let status = false
-        hotels.map(hotel => {
-          if (_.isEqual(hotel, newHotel)) {
-            toggleNotification()
-            status = true
-            return
-          }
-        })
-          return status
+      if (_.find(hotels, { id: data.results.id })) {
+        toggleNotification()
+      } else {
+        const updatedHotels = _.unionWith([data.results], hotels, _.isEqual)
+        setHotels(updatedHotels);
       }
-
-      if( !data.results || isDuplicate(data.results)) {
-        return
-      }
-
-      let newHotels = _.cloneDeep(hotels)
-
-      newHotels.unshift(data.results)
-
-      _.uniqWith(newHotels, _.isEqual)
-
-      setHotels(newHotels);
     };
-    fetchData();
-
+    if (slug) { fetchData(); }
   }, [
     slug
   ]);
-
 
   return (
     <ComparisonContext.Provider
