@@ -7,22 +7,22 @@ export default props => {
 
   return (
     <>
-    <div className="suggestion-input__input-group input-group input-group-lg">
-      <input {...rest} />
-      {fetched && (
-        <div className="suggestion-input__loader_container">
-          <Loader className="suggestion-input__loader" />
-        </div>
-      )}
-      <div className="input-group-btn suggestion-input__btn-search">
+      <div className="suggestion-input__input-group input-group input-group-lg">
+        <input {...rest} />
+        {fetched && (
+          <div className="suggestion-input__loader_container">
+            <Loader className="suggestion-input__loader" />
+          </div>
+        )}
+        <div className="input-group-btn suggestion-input__btn-search">
           <button className="suggestion-input__btn-search-input" type="submit">
-        {!props.withoutSearchButton ?
-            <>Search</> :
-      <ClearAllButton />
-        }
-        </button>
+            {props.withoutSearchButton ?
+              <ClearAllButton /> :
+              <>Search</>
+            }
+          </button>
+        </div>
       </div>
-    </div>
-        </>
+    </>
   );
 };
