@@ -6,6 +6,7 @@ import { useComparisonContext } from './ComparisonProvider';
 import RatesComparisonChart from './RatesComparisonChart';
 import Notification from './Notification'
 import { useStyles } from './styles'
+import ClearAllButton from './ClearAllButton';
 
 function SearchPage() {
   const { setHotels, setSlug, hotels } = useComparisonContext()
@@ -39,13 +40,13 @@ function SearchPage() {
             withoutSearchButton={true}
           />
           <Box>
-            <Link
+            {/* <Link
               component="button"
               variant="body2"
               onClick={() => onClearAll()}
             >
               Clear all
-          </Link>
+          </Link> */}
           </Box>
         </Box>
         {
