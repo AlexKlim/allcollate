@@ -15,7 +15,7 @@ function ComparisonResults() {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <TableCell className={classes.leftColumnHeader}>
+            <TableCell className={classes.leftColumnHeader} style={{borderRadius: '4px;'}}>
               <Box className={classes.leftColumnHeaderBox} />
             </TableCell>
             {hotels.map((hotel, i) => {

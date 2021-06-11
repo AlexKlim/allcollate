@@ -72,6 +72,8 @@ export const useStyles = makeStyles({
   },
   table: {
     marginTop: '50px',
+    borderRight: '1px solid #ececec',
+    borderRadius: '4px'
   },
   row: {
     border: '1px;',
@@ -84,8 +86,7 @@ export const useStyles = makeStyles({
     width: '245px',
     background: '#FFFFFF',
     border: '1px solid #B2B2B2',
-    boxSizing: 'border-box',
-    borderRadius: '4px'
+    boxSizing: 'border-box'
   },
   leftColumnHeader: {
     position: 'sticky',
@@ -98,7 +99,9 @@ export const useStyles = makeStyles({
     height: '245px',
     left: '0px',
     top: '0px',
-    backgroundColor: '#F5F7FB'
+    backgroundColor: '#F5F7FB',
+    borderRight: '1px solid #ececec',
+    borderRadius: '4px'
   },
   noHotelsBox: {
     minWidth: '100%;',
@@ -115,13 +118,14 @@ export const useStyles = makeStyles({
   },
   leftColumn: {
     position: 'sticky',
+    minWidth: '200px',
     left: '0px',
     color: 'black',
     background: '#FFFFFF',
     zIndex: '999',
-    minWidth: '340px',
     border: '1px solid #B2B2B2',
     boxSizing: 'border-box',
+    borderRight: '1px solid #ececec',
     borderRadius: '4px'
   },
   dataCell: {
@@ -131,10 +135,11 @@ export const useStyles = makeStyles({
   resultTableRow: {
     background: '#FFFFFF',
     border: '1px solid #B2B2B2',
-    boxSizing: 'border-box',
-    borderRadius: '4px'
+    boxSizing: 'border-box'
   },
   row: {
-    marginTop: '30px'
+    marginTop: '30px',
+    borderRight: '1px solid #ececec',
+    borderRadius: '4px'
   }
 })
