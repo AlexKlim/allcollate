@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles'
-import zIndex from '@material-ui/core/styles/zIndex'
 
 export const useStyles = makeStyles({
   page: {
@@ -51,7 +50,7 @@ export const useStyles = makeStyles({
     backgroundColor: '#FFFFFF'
   },
   card: {
-    width: '245px',
+    width: '243px',
     height: '243px',
     border: 'none',
     boxShadow: 'none'
@@ -62,7 +61,7 @@ export const useStyles = makeStyles({
   media: {
     width: '100px',
     height: '100px',
-    marginLeft: '72.5px',
+    marginLeft: '71.5px',
     marginTop: '15px',
     borderRadius: '4px'
   },
@@ -94,12 +93,11 @@ export const useStyles = makeStyles({
     backgroundColor: '#F5F7FB',
   },
   leftColumnHeaderBox: {
-    width: '200px',
+    minWidth: '200px',
     height: '245px',
     left: '0px',
     top: '0px',
-    backgroundColor: '#F5F7FB',
-    borderRadius: '4px'
+    backgroundColor: '#F5F7FB'
   },
   noHotelsBox: {
     minWidth: '100%;',
@@ -140,7 +138,7 @@ export const useStyles = makeStyles({
     borderRadius: '4px'
   },
   hotelDataCell: {
-    position: "relative",
+    position: 'relative',
     display: 'block',
     width: '100%',
     height: '60px',
@@ -151,7 +149,7 @@ export const useStyles = makeStyles({
     borderBottom: '1px solid #B2B2B2',
   },
   comparisonOptionBlock: {
-    position: "relative",
+    position: 'relative',
     display: 'block',
     width: '100%',
     height: '60px',
