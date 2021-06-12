@@ -139,7 +139,10 @@ export const useStyles = makeStyles({
   },
   hotelDataCell: {
     position: 'relative',
-    display: 'block',
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignContent: 'space-evenly',
+    justifyContent: 'space-around',
     width: '100%',
     height: '60px',
     marginLeft: '0px',
@@ -150,7 +153,10 @@ export const useStyles = makeStyles({
   },
   comparisonOptionBlock: {
     position: 'relative',
-    display: 'block',
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignContent: 'space-evenly',
+    justifyContent: 'space-around',
     width: '100%',
     height: '60px',
     border: '1px solid #B2B2B2',

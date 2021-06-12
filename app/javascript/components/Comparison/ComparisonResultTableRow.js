@@ -12,7 +12,9 @@ export default function ComparisonResultTableRow(props) {
       <TableRow className={classes.row}>
         <td padding="none" align="center" className={classes.leftColumn}>
           <div className={classes.comparisonOptionBlock}>
+            <div>
             {`${props.comparisonOption}`}
+            </div>
           </div>
         </td>
         {props.hotels ? props.hotels.map((hotel, i) => {
