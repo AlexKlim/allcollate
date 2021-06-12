@@ -40,13 +40,6 @@ function SearchPage() {
             withoutSearchButton={true}
           />
           <Box>
-            {/* <Link
-              component="button"
-              variant="body2"
-              onClick={() => onClearAll()}
-            >
-              Clear all
-          </Link> */}
           </Box>
         </Box>
         {
