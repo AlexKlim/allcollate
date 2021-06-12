@@ -15,8 +15,8 @@ export default function ComparisonResultHeaderCard(props) {
   }
 
   return (
-    <Box textAlign="center">
-      <Card className={classes.card}>
+    <Box textAlign="center" style={{width: '245px', left: '0px', height: '245px', top: '0px', border: '1px solid #B2B2B2'}}>
+      <Card className={classes.card} >
         <CardHeader
           title={
             <Tooltip title={hotel.name} enterDelay={500} leaveDelay={200} placement='top-start' arrow>

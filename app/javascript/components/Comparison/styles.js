@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles'
+import zIndex from '@material-ui/core/styles/zIndex'
 
 export const useStyles = makeStyles({
   page: {
@@ -40,9 +41,9 @@ export const useStyles = makeStyles({
   contentBox: {
     alignSelf: 'flex-center',
     width: '245px',
-    width: 'fit-content',
+    // width: 'fit-content',
     padding: '0px',
-    height: '105%',
+    height: '245px',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
@@ -51,7 +52,7 @@ export const useStyles = makeStyles({
   },
   card: {
     width: '245px',
-    height: '245px',
+    height: '243px',
     border: 'none',
     boxShadow: 'none'
   },
@@ -85,22 +86,19 @@ export const useStyles = makeStyles({
   cell: {
     width: '245px',
     background: '#FFFFFF',
-    border: '1px solid #B2B2B2',
     boxSizing: 'border-box'
   },
   leftColumnHeader: {
     position: 'sticky',
     left: '0px',
     backgroundColor: '#F5F7FB',
-    border: 'none'
   },
   leftColumnHeaderBox: {
-    width: '345px',
+    width: '200px',
     height: '245px',
     left: '0px',
     top: '0px',
     backgroundColor: '#F5F7FB',
-    borderRight: '1px solid #ececec',
     borderRadius: '4px'
   },
   noHotelsBox: {
@@ -123,10 +121,10 @@ export const useStyles = makeStyles({
     color: 'black',
     background: '#FFFFFF',
     zIndex: '999',
-    border: '1px solid #B2B2B2',
     boxSizing: 'border-box',
-    borderRight: '1px solid #ececec',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    paddingTop: '0px',
+    paddingBottom: '0px',
   },
   dataCell: {
     borderRight: '1px solid #ececec',
@@ -134,12 +132,39 @@ export const useStyles = makeStyles({
   },
   resultTableRow: {
     background: '#FFFFFF',
-    border: '1px solid #B2B2B2',
     boxSizing: 'border-box'
   },
   row: {
-    marginTop: '30px',
-    borderRight: '1px solid #ececec',
+    marginTop: '11px',
+    height: '58px',
     borderRadius: '4px'
-  }
+  },
+  hotelDataCell: {
+    position: "relative",
+    display: 'block',
+    width: '100%',
+    height: '60px',
+    marginLeft: '0px',
+    padding: '0px',
+    borderRight: '1px solid #B2B2B2',
+    borderTop: '1px solid #B2B2B2',
+    borderBottom: '1px solid #B2B2B2',
+  },
+  comparisonOptionBlock: {
+    position: "relative",
+    display: 'block',
+    width: '100%',
+    height: '60px',
+    border: '1px solid #B2B2B2',
+    marginLeft: '0px',
+    padding: '0px',
+    borderTopLeftRadius: '4px',
+    borderBottomLeftRadius: '4px'
+  },
+  headerCell: {
+    width: '245px',
+    background: '#FFFFFF',
+    boxSizing: 'border-box',
+    border: 'none'
+  },
 })

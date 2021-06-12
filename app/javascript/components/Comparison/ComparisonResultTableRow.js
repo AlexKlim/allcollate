@@ -10,21 +10,26 @@ export default function ComparisonResultTableRow(props) {
   return (
     <>
       <TableRow className={classes.row}>
-        <TableCell className={classes.leftColumn} >
-          {`${props.comparisonOption}`}
-        </TableCell>
+        <td padding="none" align="center" className={classes.leftColumn}>
+          <div className={classes.comparisonOptionBlock}>
+            {`${props.comparisonOption}`}
+          </div>
+        </td>
         {props.hotels ? props.hotels.map((hotel, i) => {
           return (
-            <TableCell key={i} className={classes.resultTableRow} align='center'>{props.data !== 'starRating' ? hotel[`${props.data}`] :
-              <StarRatings
-                rating={hotel[`${props.data}`]}
-                starDimension='20px'
-                starRatedColor='gold'
-                numberOfStars={hotel[`${props.data}`]}
-                starSpacing='0px'
+            <td key={i} className={classes.resultTableRow} align='center'>
+            <div className={classes.hotelDataCell}>
+              {props.data !== 'starRating' ? hotel[`${props.data}`] :
+                <StarRatings
+                  rating={hotel[`${props.data}`]}
+                  starDimension='20px'
+                  starRatedColor='gold'
+                  numberOfStars={hotel[`${props.data}`]}  
+                  starSpacing='0px'
 
-              />}
-            </TableCell>
+                />}
+                </div>
+            </td>
           )
         }) :
           <CircularProgress />
