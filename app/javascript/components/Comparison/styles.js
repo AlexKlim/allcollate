@@ -60,10 +60,10 @@ export const useStyles = makeStyles({
     align: 'center'
   },
   media: {
-    height: '30%',
-    width: '50%',
-    marginLeft: '25%',
-    paddingTop: '56.25%',
+    width: '100px',
+    height: '100px',
+    marginLeft: '72.5px',
+    marginTop: '15px',
     borderRadius: '4px'
   },
   removeButton: {
