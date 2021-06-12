@@ -9,7 +9,6 @@ function ClearAllButton() {
         setHotels([])
     }
     return (
-        // <Box className="input-group-btn suggestion-input__btn-search">
             <Link
                 className="suggestion-input__btn-search-input"
                 component="button"
@@ -18,7 +17,6 @@ function ClearAllButton() {
             >
                 Clear all
             </Link>
-        // </Box>
     )
 }
 
