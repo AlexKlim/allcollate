@@ -73,7 +73,8 @@ export const useStyles = makeStyles({
   table: {
     marginTop: '50px',
     borderRight: '1px solid #ececec',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    width: 'fit-content'
   },
   row: {
     border: '1px;',
@@ -93,7 +94,7 @@ export const useStyles = makeStyles({
     backgroundColor: '#F5F7FB',
   },
   leftColumnHeaderBox: {
-    minWidth: '200px',
+    width: '200px',
     height: '245px',
     left: '0px',
     top: '0px',
@@ -114,7 +115,7 @@ export const useStyles = makeStyles({
   },
   leftColumn: {
     position: 'sticky',
-    minWidth: '200px',
+    width: '200px',
     left: '0px',
     color: 'black',
     background: '#FFFFFF',
