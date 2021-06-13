@@ -98,7 +98,10 @@ export const useStyles = makeStyles({
     height: '245px',
     left: '0px',
     top: '0px',
-    backgroundColor: '#F5F7FB'
+    backgroundColor: '#F5F7FB',
+    borderBottom: '1px solid #F5F7FB',
+    borderTop: '1px solid #F5F7FB',
+    borderleft: '1px solid #F5F7FB'
   },
   noHotelsBox: {
     minWidth: '100%;',
@@ -127,7 +130,6 @@ export const useStyles = makeStyles({
   },
   dataCell: {
     borderRight: '1px solid #ececec',
-    borderRadius: '4px'
   },
   resultTableRow: {
     background: '#FFFFFF',
@@ -152,6 +154,22 @@ export const useStyles = makeStyles({
     borderTop: '1px solid #B2B2B2',
     borderBottom: '1px solid #B2B2B2',
   },
+  hotelDataCellLast: {
+    position: 'relative',
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignContent: 'space-evenly',
+    justifyContent: 'space-around',
+    width: '100%',
+    height: '60px',
+    marginLeft: '0px',
+    padding: '0px',
+    borderRight: '1px solid #B2B2B2',
+    borderTop: '1px solid #B2B2B2',
+    borderBottom: '1px solid #B2B2B2',
+    borderTopRightRadius: '4px',
+    borderBottomRightRadius: '4px'
+  },
   comparisonOptionBlock: {
     position: 'relative',
     display: 'flex',
@@ -172,4 +190,50 @@ export const useStyles = makeStyles({
     boxSizing: 'border-box',
     border: 'none'
   },
+  headerCardContainer: {
+    width: '245px',
+    left: '0px',
+    height: '245px',
+    top: '0px',
+    borderTop: '1px solid #B2B2B2',
+    borderBottom: '1px solid #B2B2B2',
+    borderRight: '1px solid #B2B2B2'
+  },
+  headerCardContainerLast: {
+    width: '245px',
+    left: '0px',
+    height: '245px',
+    top: '0px',
+    borderTop: '1px solid #B2B2B2',
+    borderBottom: '1px solid #B2B2B2',
+    borderRight: '1px solid #B2B2B2',
+    borderTopRightRadius: '4px',
+    borderBottomRightRadius: '4px'
+  },
+  headerCardContainerFirst: {
+    width: '245px',
+    left: '0px',
+    height: '245px',
+    top: '0px',
+    borderTop: '1px solid #B2B2B2',
+    borderBottom: '1px solid #B2B2B2',
+    borderRight: '1px solid #B2B2B2',
+    borderLeft:  '1px solid #B2B2B2',
+    borderTopLeftRadius: '4px',
+    borderBottomLeftRadius: '4px'
+  },
+  headerCardContainerOnly: {
+    width: '245px',
+    left: '0px',
+    height: '245px',
+    top: '0px',
+    borderTop: '1px solid #B2B2B2',
+    borderBottom: '1px solid #B2B2B2',
+    borderRight: '1px solid #B2B2B2',
+    borderLeft:  '1px solid #B2B2B2',
+    borderTopLeftRadius: '4px',
+    borderBottomLeftRadius: '4px',
+    borderTopRightRadius: '4px',
+    borderBottomRightRadius: '4px'
+  }
 })

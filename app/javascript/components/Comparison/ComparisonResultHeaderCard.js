@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from '@material-ui/core/Card';
 import { CardHeader, CardMedia, CardContent, Typography, Box, Tooltip } from '@material-ui/core';
 import { useComparisonContext } from './ComparisonProvider';
@@ -7,23 +7,29 @@ import _ from 'lodash'
 
 export default function ComparisonResultHeaderCard(props) {
   const classes = useStyles();
-  const { hotel } = props
+  const { hotel, index } = props
   const { hotels, setHotels } = useComparisonContext()
 
   const removeHotelFromList = (name) => {
     setHotels(hotels.filter((hotel) => hotel.name !== name))
   }
 
+    const createHeaderContainerClassName = (hotelsCount, index) => {
+      if (hotelsCount === 1) {
+        return classes.headerCardContainerOnly
+      }
+      else if (index === 0) {
+        return classes.headerCardContainerFirst
+      }
+      else if (index === (hotels.length - 1)) {
+        return classes.headerCardContainerLast
+      } else {
+        return classes.headerCardContainer
+      }
+    }
+
   return (
-    <Box textAlign="center" style={{
-      width: '245px',
-      left: '0px',
-      height: '245px',
-      top: '0px',
-      borderTop: '1px solid #B2B2B2',
-      borderBottom: '1px solid #B2B2B2',
-      borderRight: '1px solid #B2B2B2'
-      }}>
+    <Box textAlign="center" className={createHeaderContainerClassName(hotels, index)}>
       <Card className={classes.card} >
         <CardHeader
           title={

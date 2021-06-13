@@ -16,18 +16,13 @@ function ComparisonResults() {
         <TableHead>
           <tr>
             <td className={classes.leftColumnHeader}>
-              <div className={classes.leftColumnHeaderBox} style={{
-                borderBottom: '1px solid #F5F7FB',
-                borderTop: '1px solid #F5F7FB',
-                borderleft: '1px solid #F5F7FB',
-                borderRight: '1px solid  #B2B2B2'
-                }}/>
+              <div className={classes.leftColumnHeaderBox}/>
             </td>
             {hotels.map((hotel, i) => {
               return (
                 <td className={classes.headerCell} key={i} border="none">
                   <div className={classes.headerCardBox}  >
-                    <ComparisonResultHeaderCard hotel={hotel} />
+                    <ComparisonResultHeaderCard hotel={hotel} index={i} />
                   </div>
                 </td>
               )
