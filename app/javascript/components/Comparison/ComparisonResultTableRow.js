@@ -7,6 +7,15 @@ import { useStyles } from './styles'
 export default function ComparisonResultTableRow(props) {
   const classes = useStyles()
 
+
+  const createDataCellContainerClassName = (hotelsCount, index) => {
+    if (index === (hotelsCount - 1)) {
+      return classes.hotelDataCellLast
+    } else {
+      return classes.hotelDataCell
+    }
+  }
+
   return (
     <>
       <TableRow className={classes.row}>
@@ -20,7 +29,8 @@ export default function ComparisonResultTableRow(props) {
         {props.hotels ? props.hotels.map((hotel, i) => {
           return (
             <td key={i} className={classes.resultTableRow} align='center'>
-            <div className={classes.hotelDataCell}>
+              {console.log(props.hotels.length, i)}
+            <div className={createDataCellContainerClassName(props.hotels.length, i)}>
               {props.data !== 'starRating' ? hotel[`${props.data}`] :
                 <StarRatings
                   rating={hotel[`${props.data}`]}

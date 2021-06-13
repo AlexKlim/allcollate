@@ -94,7 +94,7 @@ export const useStyles = makeStyles({
     backgroundColor: '#F5F7FB',
   },
   leftColumnHeaderBox: {
-    width: '200px',
+    width: '195px',
     height: '245px',
     left: '0px',
     top: '0px',
@@ -118,7 +118,7 @@ export const useStyles = makeStyles({
   },
   leftColumn: {
     position: 'sticky',
-    width: '200px',
+    width: '195px',
     left: '0px',
     color: 'black',
     background: '#FFFFFF',
