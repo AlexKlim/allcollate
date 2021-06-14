@@ -19,7 +19,6 @@ const ComparisonProvider = ({ initHotels }) => {
     const fetchData = async () => {
       const comparisonAPI = new ComparisonAPI();
       const data = await comparisonAPI.fetchHotels(slug);
-      console.log(hotels[0])
 
       if (_.find(hotels, { id: data.results.id })) {
         toggleNotification()
