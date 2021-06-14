@@ -41,7 +41,7 @@ export default function ComparisonResultHeaderCard(props) {
           }
           action={
             <Box onClick={() => removeHotelFromList(hotel.name)} className={classes.removeButton}>
-              <Typography>
+              <Typography variant="h5" >
                 &times;
         </Typography>
             </Box>
