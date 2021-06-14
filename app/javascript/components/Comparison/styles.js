@@ -40,7 +40,6 @@ export const useStyles = makeStyles({
   contentBox: {
     alignSelf: 'flex-center',
     width: '245px',
-    // width: 'fit-content',
     padding: '0px',
     height: '245px',
     display: 'flex',

@@ -29,7 +29,6 @@ export default function ComparisonResultTableRow(props) {
         {props.hotels ? props.hotels.map((hotel, i) => {
           return (
             <td key={i} className={classes.resultTableRow} align='center'>
-              {console.log(props.hotels.length, i)}
             <div className={createDataCellContainerClassName(props.hotels.length, i)}>
               {props.data !== 'starRating' ? hotel[`${props.data}`] :
                 <StarRatings
