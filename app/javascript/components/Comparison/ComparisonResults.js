@@ -28,7 +28,7 @@ function ComparisonResults() {
               )
             })}
           </tr>
-          <br />
+          <div style={{height: '45px'}} />
         </TableHead>
         <TableBody>
           {comparisonOptions.map((option, i) => {
