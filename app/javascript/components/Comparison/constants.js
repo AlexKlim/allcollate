@@ -4,39 +4,39 @@ export const comparisonOptions = [
     key: 'starRating'
   },
   {
-    title: 'Check-in',
-    key: 'checkin'
-  },
-  {
-    title: 'Check-out',
-    key: 'checkout'
-  },
-  {
-    title: 'Number of floors',
-    key: 'numberFloors'
-  },
-  {
-    title: 'Number of rooms',
-    key: 'numberRooms'
-  },
-  {
-    title: 'Rate',
-    key: 'rate'
-  },
-  {
-    title: 'Rating',
-    key: 'rating'
-  },
-  {
-    title: 'Reviews',
-    key: 'reviewCount'
-  },
-  {
     title: 'Year Opened',
     key: 'yearOpened'
   },
   {
     title: 'Year Renovated',
     key: 'yearRenovated'
+  },
+  {
+    title: 'Checkin',
+    key: 'checkin'
+  },
+  {
+    title: 'Checkout',
+    key: 'checkout'
+  },
+  {
+    title: 'Number Rooms',
+    key: 'numberRooms'
+  },
+  {
+    title: 'Number Floors',
+    key: 'numberFloors'
+  },
+  {
+    title: 'Review Score',
+    key: 'reviewScore'
+  },
+  {
+    title: 'Review Count',
+    key: 'reviewCount'
+  },
+  {
+    title: 'Rate',
+    key: 'rate'
   }
 ]

@@ -45,8 +45,8 @@ export default function ComparisonResultTableRow(props) {
         }) :
           <CircularProgress />
         }
-      </TableRow>
-      <br />
+      </TableRow>      
+      {(props.data === 'numberFloors' || props.data === 'reviewCount') ? <div style={{height: '44px'}} /> : <div style={{height: '11px'}} />}
     </>
   )
 }
