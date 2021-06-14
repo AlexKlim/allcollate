@@ -19,7 +19,7 @@ export default function ComparisonResultTableRow(props) {
 
   return (
     <>
-      <TableRow className={classes.row}>
+      <TableRow>
         <td padding="none" align="center" className={classes.leftColumn}>
           <div className={classes.comparisonOptionBlock}>
             <div>
@@ -57,7 +57,9 @@ export default function ComparisonResultTableRow(props) {
           <CircularProgress />
         }
       </TableRow>
-      {(props.data === 'numberFloors' || props.data === 'reviewCount') ? <div style={{ height: '44px' }} /> : <div style={{ height: '11px' }} />}
+      {(props.data === 'numberFloors' || props.data === 'reviewCount') ?
+        <div className={classes.bigInterRowSpacing} /> :
+        <div className={classes.normalInterRowSpacing} />}
     </>
   )
 }

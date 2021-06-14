@@ -28,7 +28,7 @@ function ComparisonResults() {
               )
             })}
           </tr>
-          <div style={{height: '45px'}} />
+          <div className={classes.headerSpacing} />
         </TableHead>
         <TableBody>
           {comparisonOptions.map((option, i) => {

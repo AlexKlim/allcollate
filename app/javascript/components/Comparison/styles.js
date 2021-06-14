@@ -134,11 +134,6 @@ export const useStyles = makeStyles({
     background: '#FFFFFF',
     boxSizing: 'border-box'
   },
-  row: {
-    marginTop: '11px',
-    height: '58px',
-    borderRadius: '4px'
-  },
   hotelDataCell: {
     position: 'relative',
     display: 'flex',
@@ -234,5 +229,14 @@ export const useStyles = makeStyles({
     borderBottomLeftRadius: '4px',
     borderTopRightRadius: '4px',
     borderBottomRightRadius: '4px'
+  },
+  bigInterRowSpacing: {
+    height: '44px'
+  },
+  normalInterRowSpacing: {
+    height: '11px'
+  },
+  headerSpacing: {
+    height: '45px'
   }
 })
