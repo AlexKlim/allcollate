@@ -9,14 +9,15 @@ function ClearAllButton() {
         setHotels([])
     }
     return (
+        <div style={{marginLeft: '-3.5px'}}>
             <Link
-                className="suggestion-input__btn-search-input"
-                component="button"
+                component="fragment"
                 variant="body2"
                 onClick={() => onClearAll()}
             >
                 Clear all
             </Link>
+            </div>
     )
 }
 
