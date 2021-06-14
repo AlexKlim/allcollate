@@ -36,7 +36,7 @@ export const comparisonOptions = [
     key: 'reviewCount'
   },
   {
-    title: 'Rate',
-    key: 'rate'
+    title: 'Daily Rate ($)',
+    key: 'rates'
   }
 ]

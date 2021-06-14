@@ -1,5 +1,5 @@
 import React from 'react'
-import { TableRow, TableCell } from '@material-ui/core';
+import { TableRow, TableCell, recomposeColor } from '@material-ui/core';
 import StarRatings from 'react-star-ratings';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useStyles } from './styles'
@@ -30,7 +30,8 @@ export default function ComparisonResultTableRow(props) {
           return (
             <td key={i} className={classes.resultTableRow} align='center'>
             <div className={createDataCellContainerClassName(props.hotels.length, i)}>
-              {props.data !== 'starRating' ? hotel[`${props.data}`] :
+              {props.data !== 'starRating' && props.data !== 'rates' ? hotel[`${props.data}`] :
+              props.data === 'starRating' ? 
                 <StarRatings
                   rating={hotel[`${props.data}`]}
                   starDimension='20px'
@@ -38,7 +39,8 @@ export default function ComparisonResultTableRow(props) {
                   numberOfStars={hotel[`${props.data}`]}  
                   starSpacing='0px'
 
-                />}
+                /> :
+                  hotel[`${props.data}`][0].daily_rate}
                 </div>
             </td>
           )
