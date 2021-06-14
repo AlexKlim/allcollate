@@ -14,7 +14,6 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "echarts": "^4.9.0",
     "echarts-for-react": "^2.0.16",
-    "fontsource-roboto": "^4.0.0",
     "material-ui": "^0.20.2",
     "prop-types": "^15.7.2",
     "rc-tooltip": "^5.1.0",

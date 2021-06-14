@@ -1,8 +1,9 @@
 import React from 'react'
-import { TableRow, TableCell, recomposeColor } from '@material-ui/core';
+import { TableRow } from '@material-ui/core';
 import StarRatings from 'react-star-ratings';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useStyles } from './styles'
+import Typography from '@material-ui/core/Typography';
 
 export default function ComparisonResultTableRow(props) {
   const classes = useStyles()
@@ -22,33 +23,41 @@ export default function ComparisonResultTableRow(props) {
         <td padding="none" align="center" className={classes.leftColumn}>
           <div className={classes.comparisonOptionBlock}>
             <div>
-            {`${props.comparisonOption}`}
+              <Typography>
+                {`${props.comparisonOption}`}
+              </Typography>
             </div>
           </div>
         </td>
         {props.hotels ? props.hotels.map((hotel, i) => {
           return (
             <td key={i} className={classes.resultTableRow} align='center'>
-            <div className={createDataCellContainerClassName(props.hotels.length, i)}>
-              {props.data !== 'starRating' && props.data !== 'rates' ? hotel[`${props.data}`] :
-              props.data === 'starRating' ? 
-                <StarRatings
-                  rating={hotel[`${props.data}`]}
-                  starDimension='20px'
-                  starRatedColor='gold'
-                  numberOfStars={hotel[`${props.data}`]}  
-                  starSpacing='0px'
+              <div className={createDataCellContainerClassName(props.hotels.length, i)}>
+                {props.data !== 'starRating' && props.data !== 'rates' ?
+                  <Typography>
+                    {hotel[`${props.data}`]}
+                  </Typography> :
+                  props.data === 'starRating' ?
+                    <StarRatings
+                      rating={hotel[`${props.data}`]}
+                      starDimension='20px'
+                      starRatedColor='gold'
+                      numberOfStars={hotel[`${props.data}`]}
+                      starSpacing='0px'
 
-                /> :
-                  hotel[`${props.data}`][0].daily_rate}
-                </div>
+                    /> :
+                    <Typography>
+                      {hotel[`${props.data}`][0].daily_rate}
+                    </Typography>
+                }
+              </div>
             </td>
           )
         }) :
           <CircularProgress />
         }
-      </TableRow>      
-      {(props.data === 'numberFloors' || props.data === 'reviewCount') ? <div style={{height: '44px'}} /> : <div style={{height: '11px'}} />}
+      </TableRow>
+      {(props.data === 'numberFloors' || props.data === 'reviewCount') ? <div style={{ height: '44px' }} /> : <div style={{ height: '11px' }} />}
     </>
   )
 }
