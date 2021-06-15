@@ -35,14 +35,14 @@ export const useStyles = makeStyles({
     width: '6000px',
   },
   noHotelsBox: {
-    position: 'absolute',
-    minWidth: '100%;',
+    width: '100%;',
+    marginTop: '10%',
     left: 0,
     textAlign: 'center',
     backgroundColor: '#F5F7FB'
   },
   noHotelsTitle: {
-    marginTop: '15%'
+    textAlign: 'center',
   },
   contentBox: {
     alignSelf: 'flex-center',
@@ -115,10 +115,6 @@ export const useStyles = makeStyles({
     borderBottom: '1px solid #F5F7FB',
     borderTop: '1px solid #F5F7FB',
     borderleft: '1px solid #F5F7FB'
-  },
-  noHotelsBox: {
-    minWidth: '100%;',
-    marginTop: '25%'
   },
   headerCardBox: {
     display: 'flex',

@@ -41,9 +41,9 @@ function SearchPage() {
           hotels.length === 0 ?
             <Box className={classes.noHotelsBox}>
               <Box className={classes.noHotelsTitle}>
-                <Typography variant="h2" gutterBottom>
-                  Please add at least one hotel to the list...
-        </Typography>
+                <Typography variant="h5" gutterBottom>
+                  Please add hotels
+                </Typography>
               </Box>
             </Box> :
             <>
