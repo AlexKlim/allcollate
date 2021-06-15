@@ -3,6 +3,7 @@ import { Card } from "tabler-react";
 
 import PageSectionHeader from './PageSectionHeader'
 import HighlightedMetrics from './HighlightedMetrics'
+import CompareButton from './CompareButton/CompareButton';
 
 export default class HotelOverview extends React.Component {
 
@@ -11,16 +12,20 @@ export default class HotelOverview extends React.Component {
   }
 
   render() {
-    const { overview } = this.props;
+    const { overview, slug } = this.props;
 
     return (
       <>
         <section>
-           {/*<PageSectionHeader title={`${hotelName} BRAND`} />*/}
+          {/*<PageSectionHeader title={`${hotelName} BRAND`} />*/}
         </section>
 
         <section>
-          <PageSectionHeader title="Overview" />
+          <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+            <PageSectionHeader title="Overview" />
+            {console.log('VOT I ON', slug)}
+            <CompareButton slug={slug}/>
+          </div>
           {overview && (
             <Card>
               <Card.Body>

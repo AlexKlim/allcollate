@@ -50,6 +50,11 @@ class SuggestionForm extends React.Component {
   onSuggestionSelected(event, { suggestion, suggestionValue: value }) {
     event.preventDefault();
 
+    if (this.props.onSuggestionSelected) {
+      this.props.onSuggestionSelected(this, suggestion, value )
+      return
+    }
+
     const { noResults } = this.state;
 
     if (noResults) {
@@ -97,20 +102,19 @@ class SuggestionForm extends React.Component {
   }
 
   onSubmit(e) {
-      const { value } = this.input
-      console.log(value)
-      if (_.isEmpty(value)) {
-        e.preventDefault()
-        Router.pushRoute("/search")
-        return
-      }
-
-      // const query = qs.stringify({ q: value });
-      // const { action } = e.target;
-      // const url = `${action}?${query}`;
-
-      // this.actions.addRecentSearch({ name: value, payload: { url } });
+    if (this.props.onSubmit) {
+      this.props.onSubmit(e)
+      return
     }
+
+    const { value } = this.input
+
+    if (_.isEmpty(value)) {
+      e.preventDefault()
+      Router.pushRoute("/search")
+      return
+    }
+  }
 
   render() {
     const onFocus = () => true;
@@ -121,12 +125,13 @@ class SuggestionForm extends React.Component {
       name: 'q',
       onChange: this.onChange,
       value: this.state.query || '',
-      fetched: this.state.fetched
+      fetched: this.state.fetched,
+      withoutSearchButton: this.props.withoutSearchButton
     };
 
     return (
       <Form action="/search" className="suggestion-form--group col-md-4" onSubmit={this.onSubmit.bind(this)} >
-        <Grid.Row gutters="xs">
+        <Grid.Row>
           <Grid.Col>
             <Autosuggest
               suggestions={this.currentSuggestions}
@@ -142,12 +147,6 @@ class SuggestionForm extends React.Component {
               renderSuggestionsContainer={this.renderSuggestionsContainer.bind(this)}
             />
           </Grid.Col>
-          {/* <Grid.Col auto>
-            <Button
-              color="secondary"
-              icon="search"
-            />
-          </Grid.Col> */}
         </Grid.Row>
       </Form>
     );

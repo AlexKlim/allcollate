@@ -16,7 +16,8 @@
               year_opened: @hotel.year_opened,
               year_renovated: @hotel.year_renovated,
               checkin: @hotel.checkin,
-              checkout: @hotel.checkout } , prerender: true)
+              checkout: @hotel.checkout,
+              slug: @hotel.slug } , prerender: true)
       = react_component('Hotel/Chart', { hotel_name: @hotel.name, hotel_rates: @hotel.rates }, prerender: true)
 
   section
