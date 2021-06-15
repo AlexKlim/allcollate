@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
-import { CardHeader, CardMedia, CardContent, Typography, Box, Tooltip } from '@material-ui/core';
+import { CardHeader, CardMedia, CardContent, Typography, Box, Tooltip, Link } from '@material-ui/core';
 import { useComparisonContext } from './ComparisonProvider';
+import Routes from '../../helpers/routes';
 import { useStyles } from './styles'
 import _ from 'lodash'
 
@@ -28,16 +29,53 @@ export default function ComparisonResultHeaderCard(props) {
     }
   }
 
+  const hotelNameBlock = (hotelName) => {
+    if (hotelName.length >= 55) {
+      return (
+        <Tooltip title={hotel.name} enterDelay={500} leaveDelay={200} placement='top-start' arrow>
+          <Box fontSize={18} className={classes.cardHeaderLink}>
+            {_.truncate(hotel.name, { 'length': 55, 'separator': ' ' })}
+          </Box>
+        </Tooltip>
+      )
+    } else {
+      return (
+        <Box fontSize={18} className={classes.cardHeaderLink}>
+          {hotel.name}
+        </Box>
+      )
+    }
+  }
+
+  const locationAddressBlock = (hotel) => {
+    const fullAddress = hotel.country + ', ' + hotel.city + ', ' + hotel.addressline1;
+
+    if (fullAddress.length >= 55) {
+      return (
+        <Tooltip title={fullAddress} enterDelay={500} leaveDelay={200} placement='top-start' arrow>
+          <Typography variant="body2" component="p">
+            {_.truncate(fullAddress, { 'length': 55, 'separator': ' ' })}
+          </Typography>
+        </Tooltip>
+      )
+    } else {
+      return (
+        <Typography variant="body2" component="p">
+          {fullAddress}
+        </Typography>
+      )
+    }
+  }
+
   return (
     <Box textAlign="center" className={createHeaderContainerClassName(hotels, index)}>
       <Card className={classes.card} >
         <CardHeader
+          className={classes.cardHeader}
           title={
-            <Tooltip title={hotel.name} enterDelay={500} leaveDelay={200} placement='top-start' arrow>
-              <Box fontSize={18}>
-                {_.truncate(hotel.name, { 'length': 25, 'separator': ' ' })}
-              </Box>
-            </Tooltip>
+            <a href={Routes.hotelPath(hotel.slug)} className={classes.cardHeaderLink}>
+              {hotelNameBlock(hotel.name)}
+            </a>
           }
           action={
             <Box onClick={() => removeHotelFromList(hotel.name)} className={classes.removeButton}>
@@ -48,14 +86,16 @@ export default function ComparisonResultHeaderCard(props) {
           }
         >
         </CardHeader>
-        <CardMedia
-          className={classes.media}
-          image={hotel.photo}
-          title={hotel.name}
-        />
+        <a href={Routes.hotelPath(hotel.slug)}>
+          <CardMedia
+            className={classes.media}
+            image={hotel.photo}
+            title={hotel.name}
+          />
+        </a>
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {hotel.country + ', ' + hotel.city + ', ' + hotel.addressline1}
+          <Typography variant="body2" component="p">
+            {locationAddressBlock(hotel)}
           </Typography>
         </CardContent>
       </Card>

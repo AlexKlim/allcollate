@@ -1,8 +1,11 @@
 import * as React from "react";
 import ReactEcharts from 'echarts-for-react';
 import { useComparisonContext } from "./ComparisonProvider";
+import Typography from '@material-ui/core/Typography';
+import { useStyles } from './styles'
 
 export default function RatesComparisonChart() {
+  const classes = useStyles()
   const { hotels } = useComparisonContext()
 
   const getOption = () => {
@@ -18,6 +21,9 @@ export default function RatesComparisonChart() {
     })
 
     return ({
+      legend: {
+        data: data.map(i => i.hotelName)
+      },
       tooltip: {
         trigger: 'axis',
         position: function (pt) {
@@ -59,7 +65,7 @@ export default function RatesComparisonChart() {
       }],
       series: data.map(i => (
         {
-          name: `${i.hotelName} ($)`,
+          name: i.hotelName,
           type: 'line',
           smooth: true,
           showSymbol: false,
@@ -70,9 +76,14 @@ export default function RatesComparisonChart() {
   }
 
   return (
-    <ReactEcharts
-      option={getOption()}
-      notMerge={true}
-    />
+    <div className={classes.graphBlock}>
+      <Typography variant="h6">
+        Dailry Rates History
+      </Typography>
+      <ReactEcharts
+        option={getOption()}
+        notMerge={true}
+      />
+    </div>
   );
 }

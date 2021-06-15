@@ -1,9 +1,7 @@
 import React from 'react'
-import { TableRow } from '@material-ui/core';
+import { TableRow, Typography, CircularProgress } from '@material-ui/core';
 import StarRatings from 'react-star-ratings';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { useStyles } from './styles'
-import Typography from '@material-ui/core/Typography';
 
 export default function ComparisonResultTableRow(props) {
   const classes = useStyles()
@@ -15,6 +13,23 @@ export default function ComparisonResultTableRow(props) {
     } else {
       return classes.hotelDataCell
     }
+  }
+
+  const formattedValue = (val) => {
+    return val ? val : <span>N/A</span>;
+  };
+
+  const startRating = (starRatingValue) => {
+    return (
+      starRatingValue != 0 ?
+        <StarRatings
+          rating={starRatingValue}
+          starDimension='20px'
+          starRatedColor='gold'
+          numberOfStars={starRatingValue}
+          starSpacing='0px'
+        /> : <span>N/A</span>
+    )
   }
 
   return (
@@ -35,19 +50,12 @@ export default function ComparisonResultTableRow(props) {
               <div className={createDataCellContainerClassName(props.hotels.length, i)}>
                 {props.data !== 'starRating' && props.data !== 'rates' ?
                   <Typography>
-                    {hotel[`${props.data}`]}
+                    {formattedValue(hotel[`${props.data}`])}
                   </Typography> :
                   props.data === 'starRating' ?
-                    <StarRatings
-                      rating={hotel[`${props.data}`]}
-                      starDimension='20px'
-                      starRatedColor='gold'
-                      numberOfStars={hotel[`${props.data}`]}
-                      starSpacing='0px'
-
-                    /> :
+                    startRating(hotel.starRating) :
                     <Typography>
-                      {hotel[`${props.data}`][0].daily_rate}
+                      {hotel.rates[0].daily_rate}
                     </Typography>
                 }
               </div>

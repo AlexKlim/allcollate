@@ -14,6 +14,13 @@ export const useStyles = makeStyles({
     flexWrap: 'wrap',
     alignItems: 'center'
   },
+  graphBlock: {
+    marginTop: '66px'
+  },
+  titlePage: {
+    fontSize: '26px',
+    color: 'black'
+  },
   titleBox: {
     width: 'fit-content'
   },
@@ -41,7 +48,7 @@ export const useStyles = makeStyles({
     alignSelf: 'flex-center',
     width: '245px',
     padding: '0px',
-    height: '245px',
+    height: '225px',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
@@ -50,21 +57,28 @@ export const useStyles = makeStyles({
   },
   card: {
     width: '243px',
-    height: '243px',
+    height: '220px',
     border: 'none',
     boxShadow: 'none'
   },
   cardHeader: {
-    align: 'center'
+    height: '60px'
+  },
+  cardHeaderLink: {
+    color: 'black',
+    '&:hover': {
+      opacity: '0.7',
+      textDecoration: 'none'
+    }
   },
   media: {
     width: '100px',
     height: '100px',
     marginLeft: '71.5px',
-    marginTop: '15px',
     borderRadius: '4px'
   },
   removeButton: {
+    marginTop: '-8px',
     '&:hover': {
       cursor: 'pointer'
     }
@@ -94,7 +108,7 @@ export const useStyles = makeStyles({
   },
   leftColumnHeaderBox: {
     width: '195px',
-    height: '245px',
+    height: '225px',
     left: '0px',
     top: '0px',
     backgroundColor: '#F5F7FB',
@@ -113,7 +127,7 @@ export const useStyles = makeStyles({
     justifyContent: 'space-around',
     alignItems: 'center',
     width: '245px',
-    height: '245px',
+    height: '225px',
   },
   leftColumn: {
     position: 'sticky',
@@ -187,7 +201,7 @@ export const useStyles = makeStyles({
   headerCardContainer: {
     width: '245px',
     left: '0px',
-    height: '245px',
+    height: '225px',
     top: '0px',
     borderTop: '1px solid #B2B2B2',
     borderBottom: '1px solid #B2B2B2',
@@ -196,7 +210,7 @@ export const useStyles = makeStyles({
   headerCardContainerLast: {
     width: '245px',
     left: '0px',
-    height: '245px',
+    height: '225px',
     top: '0px',
     borderTop: '1px solid #B2B2B2',
     borderBottom: '1px solid #B2B2B2',
@@ -207,7 +221,7 @@ export const useStyles = makeStyles({
   headerCardContainerFirst: {
     width: '245px',
     left: '0px',
-    height: '245px',
+    height: '225px',
     top: '0px',
     borderTop: '1px solid #B2B2B2',
     borderBottom: '1px solid #B2B2B2',
@@ -219,7 +233,7 @@ export const useStyles = makeStyles({
   headerCardContainerOnly: {
     width: '245px',
     left: '0px',
-    height: '245px',
+    height: '225px',
     top: '0px',
     borderTop: '1px solid #B2B2B2',
     borderBottom: '1px solid #B2B2B2',
