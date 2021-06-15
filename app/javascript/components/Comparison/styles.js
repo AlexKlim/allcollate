@@ -70,7 +70,7 @@ export const useStyles = makeStyles({
     }
   },
   table: {
-    marginTop: '50px',
+    marginTop: '44px',
     borderRight: '1px solid #ececec',
     borderRadius: '4px',
     width: 'fit-content'
