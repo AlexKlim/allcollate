@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_26_194740) do
+ActiveRecord::Schema.define(version: 2021_06_01_191226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_194740) do
     t.integer "order"
     t.datetime "created_at", precision: 6, default: -> { "now()" }, null: false
     t.datetime "updated_at", precision: 6, default: -> { "now()" }, null: false
+    t.index ["hotel_id", "order"], name: "index_photos_on_hotel_id_and_order"
     t.index ["hotel_id"], name: "index_photos_on_hotel_id"
   end
 
@@ -114,6 +115,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_194740) do
     t.float "star_rating"
     t.integer "review_count"
     t.float "review_score"
+    t.index ["hotel_id", "actual_on"], name: "index_rates_on_hotel_id_and_actual_on"
     t.index ["hotel_id"], name: "index_rates_on_hotel_id"
   end
 

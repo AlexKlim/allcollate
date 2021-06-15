@@ -1,37 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchContext } from "../SearchProvider";
 
-import { Card, Form, Tag } from "tabler-react";
-import Typography from "@material-ui/core/Typography";
+import { Card, Form } from "tabler-react";
+import { Typography, Chip } from "@material-ui/core";
 
 import SuggestionForm from "./AutoSuggestion/SuggestionForm";
 import SearchAPI from "../../../api/SearchAPI";
+import { useDebouncedCallback } from 'use-debounce';
+import useStyles from '../Styles';
+import _ from 'lodash';
+
 
 function SearchFiltersLocations({ value = "" }) {
+  const classes = useStyles();
+
   const {
-    locations,
-    setActivePage,
-    setLocations,
+    filterValue,
+    updateFilterValues,
   } = useSearchContext();
   const [results, setResults] = useState([]);
 
+  const [locations, setLocations] = useState(filterValue.locations);
+  useEffect(() => {
+    setLocations(filterValue.locations)
+  }, [
+    filterValue.locations,
+  ])
+
+  const debouncedSearch = useDebouncedCallback(
+    async (query) => {
+      const searchAPI = new SearchAPI();
+      const data = await searchAPI.fetchLocations(query);
+      setResults(data);
+    }, 100,
+  );
+
   const doSearch = async (query) => {
-    const searchAPI = new SearchAPI();
-    const data = await searchAPI.fetchLocations(query);
-    setResults(data);
+    debouncedSearch(query)
   };
 
   const doRemoveClick = (location) => {
     const filteredLocations = locations.filter(
       (item) => item.city !== location.city || item.country !== location.country
     );
-    setActivePage(1);
-    setLocations(filteredLocations);
+    updateFilterValues('locations', filteredLocations)
   };
 
   const doSuggestionSelected = async (item) => {
-    setActivePage(1);
-    setLocations((locations) => [...locations, item]);
+    updateFilterValues('locations', _.unionWith(locations, [item], _.isEqual))
   };
 
   return (
@@ -47,13 +63,14 @@ function SearchFiltersLocations({ value = "" }) {
             results={results}
             value={value}
           />
-          <Tag.List>
+          <div className={classes.locationChipsList}>
             {locations.map((tag) => (
-              <Tag onRemoveClick={doRemoveClick.bind(this, tag)} remove>
-                {tag.country}, {tag.city}
-              </Tag>
+              <Chip
+                style={{ borderRadius: 5 }} onDelete={doRemoveClick.bind(this, tag)}
+                label={`${tag.country}, ${tag.city}`}
+              />
             ))}
-          </Tag.List>
+            </div>
         </Form.Group>
       </Card.Body>
     </Card>

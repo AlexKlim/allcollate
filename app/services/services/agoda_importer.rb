@@ -27,9 +27,7 @@ class Services::AgodaImporter
     (response['results'] || []).each do |hotel_result|
       hotel = Hotel.find_by(agoda_hotel_id: hotel_result['hotelId'])
 
-      ActiveRecord::Base.transaction do
-        create_rate!(hotel, actual_on, hotel_result)
-      end
+      Chewy.strategy(:bypass) { create_rate!(hotel, actual_on, hotel_result) }
     end
   end
 

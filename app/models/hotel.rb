@@ -3,6 +3,8 @@ class Hotel < ApplicationRecord
 
   sluggable_from :name
 
+  update_index('hotels') { self if active? } if Rails.env.production?
+
   belongs_to :brand, optional: true
 
   has_many :rates
