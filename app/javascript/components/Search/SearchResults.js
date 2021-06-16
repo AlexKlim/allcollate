@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Tag } from 'tabler-react';
 import StarRatings from 'react-star-ratings';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -11,6 +11,7 @@ import _ from 'lodash';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { Divider } from '@material-ui/core';
 
 import useStyles from './Styles';
 
@@ -25,6 +26,26 @@ function SearchResults() {
     isLoading,
     hotelPlaceholderUrl,
   } = useSearchContext();
+
+  const [listUpdated, setListUpdated] = useState(false)
+
+  useEffect(() => {
+    if (listUpdated) {
+      setListUpdated(false)
+    }
+  }, [
+    listUpdated
+  ])
+
+  const onSelectHotel = (hotel) => {
+    if (!(hotel.slug in localStorage)) {
+      localStorage.setItem(`${hotel.slug}`, 1)
+    } else {
+      localStorage.removeItem(`${hotel.slug}`)
+    }
+    setListUpdated(true)
+    console.log(hotel.slug in localStorage)
+  }
 
   const number_or_na = (val) => {
     return val ? val : <span className='search__text-grey'>NA</span>;
@@ -85,6 +106,8 @@ function SearchResults() {
                     <input
                       type='checkbox'
                       className='search__compare-action-checkbox'
+                      onChange={() => onSelectHotel(hotel)}
+                      checked={hotel.slug in localStorage ? 'checked' : ''}
                     />
                   </div>
                   <div className='col-md-2'>
@@ -146,14 +169,16 @@ function SearchResults() {
         })}
       </div>
       <Box className='row' display='flex' flexDirection='row-reverse'>
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        endIcon={<DeleteIcon />}
-      >
-        Compare
-      </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          size='small'
+        >
+          <Typography>Compare  </Typography>
+          <Divider orientation="vertical" flexItem light />
+          <DeleteIcon />
+        </Button>
       </Box>
       {hotels.length > 0 && pagingData?.totalRecords > pagingData?.perPage && (
         <div className='row'>
