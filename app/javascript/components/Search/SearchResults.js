@@ -8,6 +8,9 @@ import Routes from '../../helpers/routes';
 import Typography from "@material-ui/core/Typography";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import _ from 'lodash';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import useStyles from './Styles';
 
@@ -142,6 +145,16 @@ function SearchResults() {
           );
         })}
       </div>
+      <Box className='row' display='flex' flexDirection='row-reverse'>
+      <Button
+        variant="contained"
+        color="primary"
+        className={classes.button}
+        endIcon={<DeleteIcon />}
+      >
+        Compare
+      </Button>
+      </Box>
       {hotels.length > 0 && pagingData?.totalRecords > pagingData?.perPage && (
         <div className='row'>
           <div className='col-12 text-center'>
