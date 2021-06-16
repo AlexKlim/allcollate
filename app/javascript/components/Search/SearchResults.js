@@ -47,10 +47,15 @@ function SearchResults() {
   ])
 
   useEffect(() => {
-    console.log('CURRRENT', compareSlug)
-  }, [
-    compareSlug
-  ])
+    const list = hotels.filter(hotel => hotel.slug in localStorage)
+    const slugsList = list.map(hotel => hotel.slug)
+    console.log(slugsList)
+    if (slugsList.length !== 0) {
+      setCompareSlug(slugsList.join(','))
+    } else {
+      setCompareSlug('')
+    }
+  })
 
   const onSelectHotel = (hotel) => {
     if (!(hotel.slug in localStorage)) {
@@ -189,6 +194,7 @@ function SearchResults() {
             color="primary"
             className={classes.button}
             size='small'
+            href=''
           >
             <Typography>Compare  </Typography>
             <Divider orientation="vertical" flexItem light />
