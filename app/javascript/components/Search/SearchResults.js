@@ -28,13 +28,28 @@ function SearchResults() {
   } = useSearchContext();
 
   const [listUpdated, setListUpdated] = useState(false)
+  const [compareSlug, setCompareSlug] = useState('')
 
   useEffect(() => {
     if (listUpdated) {
+      const list = hotels.filter(hotel => hotel.slug in localStorage)
+      const slugsList = list.map(hotel => hotel.slug)
+      console.log(slugsList)
+      if (slugsList.length !== 0) {
+        setCompareSlug(slugsList.join(','))
+      } else {
+        setCompareSlug('')
+      }
       setListUpdated(false)
     }
   }, [
     listUpdated
+  ])
+
+  useEffect(() => {
+    console.log('CURRRENT', compareSlug)
+  }, [
+    compareSlug
   ])
 
   const onSelectHotel = (hotel) => {
@@ -44,7 +59,6 @@ function SearchResults() {
       localStorage.removeItem(`${hotel.slug}`)
     }
     setListUpdated(true)
-    console.log(hotel.slug in localStorage)
   }
 
   const number_or_na = (val) => {
@@ -168,18 +182,20 @@ function SearchResults() {
           );
         })}
       </div>
-      <Box className='row' display='flex' flexDirection='row-reverse'>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          size='small'
-        >
-          <Typography>Compare  </Typography>
-          <Divider orientation="vertical" flexItem light />
-          <DeleteIcon />
-        </Button>
-      </Box>
+      {compareSlug !== '' &&
+        <Box className='row' display='flex' flexDirection='row-reverse'>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            size='small'
+          >
+            <Typography>Compare  </Typography>
+            <Divider orientation="vertical" flexItem light />
+            <DeleteIcon />
+          </Button>
+        </Box>
+      }
       {hotels.length > 0 && pagingData?.totalRecords > pagingData?.perPage && (
         <div className='row'>
           <div className='col-12 text-center'>
