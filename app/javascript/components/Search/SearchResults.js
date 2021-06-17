@@ -12,6 +12,8 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Divider } from '@material-ui/core';
+import { Link } from '@material-ui/core';
+
 
 import useStyles from './Styles';
 
@@ -51,7 +53,7 @@ function SearchResults() {
     const list = hotels.filter(hotel => hotel.slug in localStorage)
     const slugsList = list.map(hotel => hotel.slug)
     if (slugsList.length !== 0) {
-    // setComparisonList(slugsList)
+      // setComparisonList(slugsList)
       setCompareSlug(slugsList.join(','))
     } else {
       setCompareSlug('')
@@ -195,10 +197,12 @@ function SearchResults() {
             color="primary"
             className={classes.link}
             size='small'
-            href={Routes.comparePath(compareSlug)}
           >
-            <Typography>{compareSlug.split(',').length} Compare</Typography>
-            <Divider orientation="vertical" flexItem light />
+            <Link href={Routes.comparePath(compareSlug)} style={{color: 'white'}}>
+            <Typography>
+              {compareSlug.split(',').length} Compare  <Divider orientation="vertical" flexItem light />
+            </Typography>
+            </Link>
             <DeleteIcon />
           </Button>
         </Box>
