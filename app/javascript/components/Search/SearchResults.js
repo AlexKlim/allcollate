@@ -69,6 +69,12 @@ function SearchResults() {
     setListUpdated(true)
   }
 
+  const onRemoveCompareList = () => {
+    const hotels = compareSlug.split(',')
+    hotels.map(hotel => localStorage.removeItem(`${hotel}`))
+    setListUpdated(true)
+  }
+
   const number_or_na = (val) => {
     return val ? val : <span className='search__text-grey'>NA</span>;
   };
@@ -203,7 +209,9 @@ function SearchResults() {
               {compareSlug.split(',').length} Compare  <Divider orientation="vertical" flexItem light />
             </Typography>
             </Link>
+            <div onClick={() => onRemoveCompareList()}>
             <DeleteIcon />
+            </div>
           </Button>
         </Box>
       }
