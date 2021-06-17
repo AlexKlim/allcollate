@@ -49,7 +49,6 @@ function SearchResults() {
   useEffect(() => {
     const list = hotels.filter(hotel => hotel.slug in localStorage)
     const slugsList = list.map(hotel => hotel.slug)
-    console.log(slugsList)
     if (slugsList.length !== 0) {
       setCompareSlug(slugsList.join(','))
     } else {
@@ -194,7 +193,7 @@ function SearchResults() {
             color="primary"
             className={classes.button}
             size='small'
-            href=''
+            href={`comparisons?hotels=${compareSlug}`}
           >
             <Typography>Compare  </Typography>
             <Divider orientation="vertical" flexItem light />
