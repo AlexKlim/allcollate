@@ -28,6 +28,7 @@ function SearchResults() {
   } = useSearchContext();
 
   const [listUpdated, setListUpdated] = useState(false)
+  const [comparisonList, setComparisonList] = useState([])
   const [compareSlug, setCompareSlug] = useState('')
 
   useEffect(() => {
@@ -50,6 +51,7 @@ function SearchResults() {
     const list = hotels.filter(hotel => hotel.slug in localStorage)
     const slugsList = list.map(hotel => hotel.slug)
     if (slugsList.length !== 0) {
+    // setComparisonList(slugsList)
       setCompareSlug(slugsList.join(','))
     } else {
       setCompareSlug('')
@@ -195,6 +197,9 @@ function SearchResults() {
             size='small'
             href={Routes.comparePath(compareSlug)}
           >
+            <Typography>
+              {compareSlug.split(',').length}
+            </Typography>
             <Typography>Compare  </Typography>
             <Divider orientation="vertical" flexItem light />
             <DeleteIcon />
