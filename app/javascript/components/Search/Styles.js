@@ -15,6 +15,15 @@ const useStyles = makeStyles({
       margin: '5px 5px 5px 0',
     },
   },
+  link: {
+    backgroundColor: '#5C73C2',
+    color: 'white',
+    '&:hover': {
+      color: 'white',
+      backgroundColor: '#5C73C2',
+      opacity: '0.8'
+    }
+  },
 })
 
 export default useStyles;

@@ -193,14 +193,11 @@ function SearchResults() {
           <Button
             variant="contained"
             color="primary"
-            className={classes.button}
+            className={classes.link}
             size='small'
             href={Routes.comparePath(compareSlug)}
           >
-            <Typography>
-              {compareSlug.split(',').length}
-            </Typography>
-            <Typography>Compare  </Typography>
+            <Typography>{compareSlug.split(',').length} Compare</Typography>
             <Divider orientation="vertical" flexItem light />
             <DeleteIcon />
           </Button>
