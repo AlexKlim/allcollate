@@ -193,7 +193,7 @@ function SearchResults() {
             color="primary"
             className={classes.button}
             size='small'
-            href={`comparisons?hotels=${compareSlug}`}
+            href={Routes.comparePath(compareSlug)}
           >
             <Typography>Compare  </Typography>
             <Divider orientation="vertical" flexItem light />
