@@ -203,14 +203,18 @@ function SearchResults() {
             color="primary"
             className={classes.link}
             size='small'
+            style={{ width: '150px' }}
           >
-            <Link href={Routes.comparePath(compareSlug)} style={{color: 'white'}}>
-            <Typography>
-              {compareSlug.split(',').length} Compare  <Divider orientation="vertical" flexItem light />
-            </Typography>
-            </Link>
-            <div onClick={() => onRemoveCompareList()}>
-            <DeleteIcon />
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <div style={{ width: '75%' }}>
+                <Link href={Routes.comparePath(compareSlug)} style={{ color: 'white' }}>
+                  <Typography variant="body2">
+                    {compareSlug.split(',').length} Compare
+                  </Typography>
+                </Link>
+              </div>
+              <Divider orientation="vertical" flexItem />
+              <DeleteIcon onClick={() => onRemoveCompareList()} />
             </div>
           </Button>
         </Box>
