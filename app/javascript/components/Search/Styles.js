@@ -24,6 +24,24 @@ const useStyles = makeStyles({
       opacity: '0.8'
     }
   },
+  compareButtonBlock: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    height: '35px'
+  },
+  compareLinkBlock: {
+    width: '70%'
+  },
+  compareLink: {
+    color: 'white'
+  },
+  removeListIconBlock: {
+    margin: 'auto',
+    marginTop: '4px'
+  }
 })
 
 export default useStyles;

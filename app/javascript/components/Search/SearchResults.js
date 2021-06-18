@@ -203,18 +203,20 @@ function SearchResults() {
             color="primary"
             className={classes.link}
             size='small'
-            style={{ width: '150px' }}
+            style={{ width: '150px', padding: '0px 0px' }}
           >
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-              <div style={{ width: '75%' }}>
-                <Link href={Routes.comparePath(compareSlug)} style={{ color: 'white' }}>
+            <div className={classes.compareButtonBlock}>
+              <div className={classes.compareLinkBlock} style={{padding: '4px 1px 4px 5px'}}>
+                <Link href={Routes.comparePath(compareSlug)} className={classes.compareLink}>
                   <Typography variant="body2">
                     {compareSlug.split(',').length} Compare
                   </Typography>
                 </Link>
               </div>
               <Divider orientation="vertical" flexItem />
-              <DeleteIcon onClick={() => onRemoveCompareList()} />
+              <div className={classes.removeListIconBlock}>
+              <DeleteIcon onClick={() => onRemoveCompareList()}/>
+              </div>
             </div>
           </Button>
         </Box>
