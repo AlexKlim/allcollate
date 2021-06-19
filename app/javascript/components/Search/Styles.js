@@ -33,7 +33,8 @@ const useStyles = makeStyles({
     height: '35px'
   },
   compareLinkBlock: {
-    width: '70%'
+    width: '70%',
+    padding: '4px 1px 4px 5px'
   },
   compareLink: {
     color: 'white'
@@ -41,6 +42,11 @@ const useStyles = makeStyles({
   removeListIconBlock: {
     margin: 'auto',
     marginTop: '4px'
+  },
+  compareButton: {
+    width: '150px',
+    padding: '0px 0px',
+    opacity: '0.7'
   }
 })
 

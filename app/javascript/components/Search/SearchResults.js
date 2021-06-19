@@ -203,10 +203,10 @@ function SearchResults() {
             color="primary"
             className={classes.link}
             size='small'
-            style={{ width: '150px', padding: '0px 0px' }}
+            className={classes.compareButton}
           >
             <div className={classes.compareButtonBlock}>
-              <div className={classes.compareLinkBlock} style={{padding: '4px 1px 4px 5px'}}>
+              <div className={classes.compareLinkBlock}>
                 <Link href={Routes.comparePath(compareSlug)} className={classes.compareLink}>
                   <Typography variant="body2">
                     {compareSlug.split(',').length} Compare
