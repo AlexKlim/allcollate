@@ -9,20 +9,26 @@ export default function RatesComparisonChart() {
   const { hotels } = useComparisonContext()
 
   const getOption = () => {
-    let dates = []
     const data = hotels.map(hotel => {
       const sortedRates = _.sortBy(hotel.rates, 'actual_on')
-      const hotelDates = sortedRates.map(item => item.actual_on)
-      dates = _.unionWith(dates, hotelDates, _.isEqual)
       return {
-        rates: hotel.rates.map(item => item.daily_rate),
-        hotelName: hotel.name
+        name: hotel.name,
+        data: sortedRates.map(rate => [rate.actual_on, rate.daily_rate])
       }
     })
 
     return ({
+      grid: {
+        right: 35,
+        bottom: 40,
+        containLabel: true,
+      },
+      dataset: data.map((hotel) => ({
+        source: hotel.data,
+        dimensions: ['Date', 'Value'],
+      })),
       legend: {
-        data: data.map(i => i.hotelName)
+        show: true,
       },
       tooltip: {
         trigger: 'axis',
@@ -39,15 +45,17 @@ export default function RatesComparisonChart() {
         }
       },
       xAxis: {
-        type: 'category',
+        type: 'time',
         nameLocation: 'middle',
         boundaryGap: false,
-        data: dates.sort(),
       },
-      yAxis: {
-        type: 'value',
-        name: 'Rate ($)',
-      },
+      yAxis: [
+        {
+          axisLine: {
+            show: true,
+          },
+        },
+      ],
       dataZoom: [{
         type: 'inside',
         start: 0,
@@ -63,15 +71,17 @@ export default function RatesComparisonChart() {
           shadowOffsetY: 2
         }
       }],
-      series: data.map(i => (
-        {
-          name: i.hotelName,
-          type: 'line',
-          smooth: true,
-          showSymbol: false,
-          data: i.rates
-        }
-      ))
+      series: data.map((value, index) => ({
+        type: 'line',
+        name: value.name,
+        datasetIndex: index,
+        encode: {
+          x: 'Date',
+          y: 'Value',
+        },
+        smooth: true,
+        showSymbol: false,
+      }))
     });
   }
 
