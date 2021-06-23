@@ -46,7 +46,10 @@ const useStyles = makeStyles({
   compareButton: {
     width: '150px',
     padding: '0px 0px',
-    opacity: '0.7'
+    opacity: '0.5',
+    '&:hover': {
+      opacity: '1'
+    }
   }
 })
 

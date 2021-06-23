@@ -124,6 +124,32 @@ function SearchResults() {
         </div>
       )}
 
+      {compareSlug !== '' &&
+        <Box className='row' display='flex' flexDirection='row-reverse' style={{position: 'fixed', zIndex: '99999', bottom: '10%', left: '75%'}}>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.link}
+            size='small'
+            className={classes.compareButton}
+          >
+            <div className={classes.compareButtonBlock}>
+              <div className={classes.compareLinkBlock}>
+                <Link href={Routes.comparePath(compareSlug)} className={classes.compareLink}>
+                  <Typography variant="body2">
+                    {compareSlug.split(',').length} Compare
+                  </Typography>
+                </Link>
+              </div>
+              <Divider orientation="vertical" flexItem />
+              <div className={classes.removeListIconBlock}>
+              <DeleteIcon onClick={() => onRemoveCompareList()}/>
+              </div>
+            </div>
+          </Button>
+        </Box>
+      }
+
       <div className={`row ${isLoading && classes.loading}`}>
         {hotels.map((hotel, index) => {
           return (
@@ -196,31 +222,6 @@ function SearchResults() {
           );
         })}
       </div>
-      {compareSlug !== '' &&
-        <Box className='row' display='flex' flexDirection='row-reverse'>
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.link}
-            size='small'
-            className={classes.compareButton}
-          >
-            <div className={classes.compareButtonBlock}>
-              <div className={classes.compareLinkBlock}>
-                <Link href={Routes.comparePath(compareSlug)} className={classes.compareLink}>
-                  <Typography variant="body2">
-                    {compareSlug.split(',').length} Compare
-                  </Typography>
-                </Link>
-              </div>
-              <Divider orientation="vertical" flexItem />
-              <div className={classes.removeListIconBlock}>
-              <DeleteIcon onClick={() => onRemoveCompareList()}/>
-              </div>
-            </div>
-          </Button>
-        </Box>
-      }
       {hotels.length > 0 && pagingData?.totalRecords > pagingData?.perPage && (
         <div className='row'>
           <div className='col-12 text-center'>
