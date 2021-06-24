@@ -4,18 +4,13 @@ import { Card } from "tabler-react";
 import PageSectionHeader from './PageSectionHeader'
 import HighlightedMetrics from './HighlightedMetrics'
 import CompareButton from './CompareButton/CompareButton';
+import HotelChart from './Chart'
 
-export default class HotelOverview extends React.Component {
+const HotelOverview =({ overview, slug, hotelName, hotelRates, ...rest }) => {
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { overview, slug } = this.props;
-
-    return (
-      <>
+  return (
+    <div className="page-content">
+      <div className="container">
         <section>
           {/*<PageSectionHeader title={`${hotelName} BRAND`} />*/}
         </section>
@@ -35,8 +30,11 @@ export default class HotelOverview extends React.Component {
           )}
         </section>
 
-        <HighlightedMetrics hotel={this.props} />
-      </>
-    );
-  }
+        <HighlightedMetrics hotel={rest} />
+        <HotelChart hotelName={hotelName} hotelRates={hotelRates} />
+      </div>
+    </div>
+  );
 }
+
+export default HotelOverview;
