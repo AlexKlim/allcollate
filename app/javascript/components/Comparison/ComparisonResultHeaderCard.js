@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import { CardHeader, CardMedia, CardContent, Typography, Box, Tooltip, Link } from '@material-ui/core';
+import { CardHeader, CardMedia, CardContent, Typography, Box, Tooltip } from '@material-ui/core';
 import { useComparisonContext } from './ComparisonProvider';
 import Routes from '../../helpers/routes';
 import { useStyles } from './styles'
