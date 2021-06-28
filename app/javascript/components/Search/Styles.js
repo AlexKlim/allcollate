@@ -37,7 +37,13 @@ const useStyles = makeStyles({
     padding: '4px 1px 4px 5px'
   },
   compareLink: {
-    color: 'white'
+    color: 'white',
+    '&:hover': {
+      color: 'white',
+      backgroundColor: '#5C73C2',
+      opacity: '0.8',
+      textDecoration: 'none',
+    }
   },
   removeListIconBlock: {
     margin: 'auto',
@@ -45,8 +51,13 @@ const useStyles = makeStyles({
   },
   compareButton: {
     width: '150px',
-    padding: '0px 0px',
-    opacity: '1'
+    padding: '3px',
+    opacity: '1',
+    backgroundColor: '#5C73C2',
+    '&:hover': {
+      backgroundColor: '#5C73C2',
+      opacity: '0.8',
+    }
   }
 })
 
