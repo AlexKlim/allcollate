@@ -8,11 +8,6 @@ import Routes from '../../helpers/routes';
 import Typography from "@material-ui/core/Typography";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import _ from 'lodash';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { Divider } from '@material-ui/core';
-import { Link } from '@material-ui/core';
 import CompareButton from './CompareButton';
 
 
