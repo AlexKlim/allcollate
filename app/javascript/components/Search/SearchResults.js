@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Tag } from 'tabler-react';
 import StarRatings from 'react-star-ratings';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -8,6 +8,8 @@ import Routes from '../../helpers/routes';
 import Typography from "@material-ui/core/Typography";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import _ from 'lodash';
+import CompareButton from './CompareButton';
+
 
 import useStyles from './Styles';
 
@@ -22,6 +24,49 @@ function SearchResults() {
     isLoading,
     hotelPlaceholderUrl,
   } = useSearchContext();
+
+  const [listUpdated, setListUpdated] = useState(false)
+  const [compareUrl, setCompareUrl] = useState('')
+
+  useEffect(() => {
+    if (listUpdated) {
+      const list = hotels.filter(hotel => hotel.slug in localStorage)
+      const slugsList = list.map(hotel => hotel.slug)
+      if (slugsList.length !== 0) {
+        setCompareUrl(slugsList.join(','))
+      } else {
+        setCompareUrl('')
+      }
+      setListUpdated(false)
+    }
+  }, [
+    listUpdated
+  ])
+
+  useEffect(() => {
+    const list = hotels.filter(hotel => hotel.slug in localStorage)
+    const slugsList = list.map(hotel => hotel.slug)
+    if (slugsList.length !== 0) {
+      setCompareUrl(slugsList.join(','))
+    } else {
+      setCompareUrl('')
+    }
+  })
+
+  const onSelectHotel = (hotel) => {
+    if (!(hotel.slug in localStorage)) {
+      localStorage.setItem(hotel.slug, 1)
+    } else {
+      localStorage.removeItem(hotel.slug)
+    }
+    setListUpdated(true)
+  }
+
+  const onRemoveCompareList = () => {
+    const hotels = compareUrl.split(',')
+    hotels.map(hotel => localStorage.removeItem(hotel))
+    setListUpdated(true)
+  }
 
   const number_or_na = (val) => {
     return val ? val : <span className='search__text-grey'>NA</span>;
@@ -72,6 +117,8 @@ function SearchResults() {
         </div>
       )}
 
+      <CompareButton compareUrl={compareUrl} onRemoveCompareList={onRemoveCompareList} />
+
       <div className={`row ${isLoading && classes.loading}`}>
         {hotels.map((hotel, index) => {
           return (
@@ -82,6 +129,8 @@ function SearchResults() {
                     <input
                       type='checkbox'
                       className='search__compare-action-checkbox'
+                      onChange={() => onSelectHotel(hotel)}
+                      checked={hotel.slug in localStorage ? 'checked' : ''}
                     />
                   </div>
                   <div className='col-md-2'>
