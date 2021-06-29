@@ -10,12 +10,12 @@ import Typography from "@material-ui/core/Typography";
 import useStyles from './Styles';
 
 const CompareButton = (props) => {
-    const { compareSlug, onRemoveCompareList } = props
+    const { compareUrl, onRemoveCompareList } = props
 
     const classes = useStyles();
 
     return (
-        compareSlug !== '' &&
+        compareUrl !== '' &&
         <Box className='row' display='flex' flexDirection='row-reverse' style={{ position: 'fixed', zIndex: '99999', bottom: '10%', left: '75%' }}>
             <Button
                 variant="contained"
@@ -26,9 +26,9 @@ const CompareButton = (props) => {
             >
                 <div className={classes.compareButtonBlock}>
                     <div className={classes.compareLinkBlock}>
-                        <Link href={Routes.comparePath(compareSlug)} className={classes.compareLink}>
+                        <Link href={Routes.comparePath(compareUrl)} className={classes.compareLink}>
                             <Typography variant="body2">
-                                {compareSlug.split(',').length} Compare
+                                {compareUrl.split(',').length} Compare
                             </Typography>
                         </Link>
                     </div>

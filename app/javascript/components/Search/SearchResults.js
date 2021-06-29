@@ -26,16 +26,16 @@ function SearchResults() {
   } = useSearchContext();
 
   const [listUpdated, setListUpdated] = useState(false)
-  const [compareSlug, setCompareSlug] = useState('')
+  const [compareUrl, setCompareUrl] = useState('')
 
   useEffect(() => {
     if (listUpdated) {
       const list = hotels.filter(hotel => hotel.slug in localStorage)
       const slugsList = list.map(hotel => hotel.slug)
       if (slugsList.length !== 0) {
-        setCompareSlug(slugsList.join(','))
+        setCompareUrl(slugsList.join(','))
       } else {
-        setCompareSlug('')
+        setCompareUrl('')
       }
       setListUpdated(false)
     }
@@ -47,9 +47,9 @@ function SearchResults() {
     const list = hotels.filter(hotel => hotel.slug in localStorage)
     const slugsList = list.map(hotel => hotel.slug)
     if (slugsList.length !== 0) {
-      setCompareSlug(slugsList.join(','))
+      setCompareUrl(slugsList.join(','))
     } else {
-      setCompareSlug('')
+      setCompareUrl('')
     }
   })
 
@@ -63,7 +63,7 @@ function SearchResults() {
   }
 
   const onRemoveCompareList = () => {
-    const hotels = compareSlug.split(',')
+    const hotels = compareUrl.split(',')
     hotels.map(hotel => localStorage.removeItem(hotel))
     setListUpdated(true)
   }
@@ -117,7 +117,7 @@ function SearchResults() {
         </div>
       )}
 
-      <CompareButton compareSlug={compareSlug} onRemoveCompareList={onRemoveCompareList} />
+      <CompareButton compareUrl={compareUrl} onRemoveCompareList={onRemoveCompareList} />
 
       <div className={`row ${isLoading && classes.loading}`}>
         {hotels.map((hotel, index) => {
