@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Divider } from '@material-ui/core';
 import { Link } from '@material-ui/core';
+import CompareButton from './CompareButton';
 
 
 import useStyles from './Styles';
@@ -30,14 +31,12 @@ function SearchResults() {
   } = useSearchContext();
 
   const [listUpdated, setListUpdated] = useState(false)
-  const [comparisonList, setComparisonList] = useState([])
   const [compareSlug, setCompareSlug] = useState('')
 
   useEffect(() => {
     if (listUpdated) {
       const list = hotels.filter(hotel => hotel.slug in localStorage)
       const slugsList = list.map(hotel => hotel.slug)
-      console.log(slugsList)
       if (slugsList.length !== 0) {
         setCompareSlug(slugsList.join(','))
       } else {
@@ -53,7 +52,6 @@ function SearchResults() {
     const list = hotels.filter(hotel => hotel.slug in localStorage)
     const slugsList = list.map(hotel => hotel.slug)
     if (slugsList.length !== 0) {
-      // setComparisonList(slugsList)
       setCompareSlug(slugsList.join(','))
     } else {
       setCompareSlug('')
@@ -62,16 +60,16 @@ function SearchResults() {
 
   const onSelectHotel = (hotel) => {
     if (!(hotel.slug in localStorage)) {
-      localStorage.setItem(`${hotel.slug}`, 1)
+      localStorage.setItem(hotel.slug, 1)
     } else {
-      localStorage.removeItem(`${hotel.slug}`)
+      localStorage.removeItem(hotel.slug)
     }
     setListUpdated(true)
   }
 
   const onRemoveCompareList = () => {
     const hotels = compareSlug.split(',')
-    hotels.map(hotel => localStorage.removeItem(`${hotel}`))
+    hotels.map(hotel => localStorage.removeItem(hotel))
     setListUpdated(true)
   }
 
@@ -124,31 +122,7 @@ function SearchResults() {
         </div>
       )}
 
-      {compareSlug !== '' &&
-        <Box className='row' display='flex' flexDirection='row-reverse' style={{position: 'fixed', zIndex: '99999', bottom: '10%', left: '75%'}}>
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.link}
-            size='small'
-            className={classes.compareButton}
-          >
-            <div className={classes.compareButtonBlock}>
-              <div className={classes.compareLinkBlock}>
-                <Link href={Routes.comparePath(compareSlug)} className={classes.compareLink}>
-                  <Typography variant="body2">
-                    {compareSlug.split(',').length} Compare
-                  </Typography>
-                </Link>
-              </div>
-              <Divider orientation="vertical" flexItem />
-              <div className={classes.removeListIconBlock}>
-              <DeleteIcon onClick={() => onRemoveCompareList()}/>
-              </div>
-            </div>
-          </Button>
-        </Box>
-      }
+      <CompareButton compareSlug={compareSlug} onRemoveCompareList={onRemoveCompareList} />
 
       <div className={`row ${isLoading && classes.loading}`}>
         {hotels.map((hotel, index) => {
