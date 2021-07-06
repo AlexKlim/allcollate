@@ -50,24 +50,18 @@ export default function HotelCard() {
   return (
     <Card className={classes.root}>
       <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
         action={
           <IconButton aria-label="settings">
-            {/* <MoreVertIcon /> */}
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title="HotelName"
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
+        image="http://pix4.agoda.net/hotelimages/6/6/6_1112201742005261861.jpg"
         title="Paella dish"
-      />
+      >
+      </CardMedia>
     </Card>
   );
 }
