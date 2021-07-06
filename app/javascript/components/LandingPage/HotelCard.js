@@ -48,7 +48,7 @@ export default function HotelCard() {
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{width: '234px', height: '220px', borderRadius: '4px'}}>
       <CardHeader
         action={
           <IconButton aria-label="settings">

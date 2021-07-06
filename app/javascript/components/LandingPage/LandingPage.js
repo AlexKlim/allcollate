@@ -41,10 +41,15 @@ const LandingPage = () => {
                     </Box>
                 </Box>
             </Box>
-            <Box component='section' className='features-icons text-center'>
+            <Box component='section' className='features-icons text-center' style={{
+                borderTop: '1px solid #B2B2B2',
+                borderBottom: '1px solid #B2B2B2',
+                paddingTop: '0px',
+                height: '360px'
+                }}>
                 <Box className='container'>
                     <Box className='row'>
-                        <Box className='col-lg-4'>
+                        <Box className='col-lg-4' style={{marginTop: '70px'}}>
                             <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
                                 <Box className='features-icons-icon d-flex'
                                 >
@@ -52,14 +57,14 @@ const LandingPage = () => {
                                 </Box>
                             </Box>
                         </Box>
-                        <Box className='col-lg-4'>
+                        <Box className='col-lg-4' style={{marginTop: '70px'}}>
                             <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
                                 <Box className='features-icons-icon d-flex'>
                                     <HotelCard />
                                 </Box>
                             </Box>
                         </Box>
-                        <Box className='col-lg-4'>
+                        <Box className='col-lg-4' style={{marginTop: '70px'}}>
                             <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
                                 <Box className='features-icons-icon d-flex'>
                                     <HotelCard />
@@ -69,6 +74,8 @@ const LandingPage = () => {
                     </Box>
                 </Box>
             </Box>
+            <Box style={{width: '100%', height: '171px', background: '#f8f9fa'}}>
+                </Box>
             <Footer />
         </>
     )
