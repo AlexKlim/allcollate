@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import SuggestionForm from '../AutoSuggestionSearch/SuggestionForm';
 import HotelCard from './HotelCard'
+import Footer from './Footer';
 
 const LandingPage = () => {
 
@@ -68,22 +69,7 @@ const LandingPage = () => {
                     </Box>
                 </Box>
             </Box>
-            <Box component='footer' className='footer bg-light'>
-                <Box className='container'>
-                    <Box className='row'>
-                        <Box className='col-lg-6 h-100 text-center text-lg-left my-auto'>
-                            <Box style={{ display: 'inline-flex' }}>
-                                <Typography>
-                                    Erketu Technology
-                                </Typography>
-                                <Typography className='text-muted small mb-4 mb-lg-0' style={{marginLeft: '100px'}}>
-                                    All Rights Reserved. &copy;
-                                </Typography>
-                            </Box>
-                        </Box>
-                    </Box>
-                </Box>
-            </Box>
+            <Footer />
         </>
     )
 }
