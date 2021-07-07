@@ -22,20 +22,19 @@ const LandingPage = () => {
                     <Box className='container'>
                         <Box className='row'>
                             <Box className='col-xl-9 mx-auto' style={{ marginTop: '234px' }}>
-                                <Typography variant="h1" component="h2" className='mb-5'>
+                                <Typography variant="h1" component="h2" className='mb-5' style={{color: '#5C73C2', fontSize: '64px'}}>
                                     Allcollate
                                 </Typography>
-                                <br />
-                                Find and track any hotels
-                                <br />
-                                <Typography>
-                                    Suggestion form
+                                <Typography style={{fontSize: '32px', marginTop: '35px' }}>
+                                    Find and track any hotels
                                 </Typography>
-                                <SuggestionForm
-                                    onSuggestionSelected={onSuggestionSelected}
-                                    onSubmit={onSubmit}
-                                    withoutSearchButton={false}
-                                />
+                                <Box style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '35px' }}>
+                                    <SuggestionForm
+                                        onSuggestionSelected={onSuggestionSelected}
+                                        onSubmit={onSubmit}
+                                        withoutSearchButton={false}
+                                    />
+                                </Box>
                             </Box>
                         </Box>
                     </Box>
@@ -46,10 +45,10 @@ const LandingPage = () => {
                 borderBottom: '1px solid #B2B2B2',
                 paddingTop: '0px',
                 height: '360px'
-                }}>
+            }}>
                 <Box className='container'>
                     <Box className='row'>
-                        <Box className='col-lg-4' style={{marginTop: '70px'}}>
+                        <Box className='col-lg-4' style={{ marginTop: '70px' }}>
                             <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
                                 <Box className='features-icons-icon d-flex'
                                 >
@@ -57,14 +56,14 @@ const LandingPage = () => {
                                 </Box>
                             </Box>
                         </Box>
-                        <Box className='col-lg-4' style={{marginTop: '70px'}}>
+                        <Box className='col-lg-4' style={{ marginTop: '70px' }}>
                             <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
                                 <Box className='features-icons-icon d-flex'>
                                     <HotelCard />
                                 </Box>
                             </Box>
                         </Box>
-                        <Box className='col-lg-4' style={{marginTop: '70px'}}>
+                        <Box className='col-lg-4' style={{ marginTop: '70px' }}>
                             <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
                                 <Box className='features-icons-icon d-flex'>
                                     <HotelCard />
@@ -74,8 +73,8 @@ const LandingPage = () => {
                     </Box>
                 </Box>
             </Box>
-            <Box style={{width: '100%', height: '171px', background: '#f8f9fa'}}>
-                </Box>
+            <Box style={{ width: '100%', height: '171px', background: '#f8f9fa' }}>
+            </Box>
             <Footer />
         </>
     )

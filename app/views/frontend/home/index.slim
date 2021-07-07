@@ -1,2 +1,5 @@
+= content_for :stylesheet_link_tag do
+  = stylesheet_link_tag 'comparison', media: 'all'
+
 .main
   = react_component('LandingPage/LandingPageProvider', {}, prerender: true)
