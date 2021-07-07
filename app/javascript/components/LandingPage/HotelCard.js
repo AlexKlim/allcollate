@@ -49,10 +49,10 @@ export default function HotelCard() {
 
     return (
         <Card className={classes.root} style={{ width: '234px', height: '220px', borderRadius: '4px' }}>
-            <div style={{width: '234px', height: '45px', background: 'blue'}}>
+            <div style={{ width: '234px', height: '45px', background: 'blue' }}>
 
             </div>
-            <div style={{width: '45px', height: '45px', marginLeft: '189px', marginTop: '130px', background: 'blue'}}>
+            <div style={{ width: '45px', height: '45px', marginLeft: '189px', marginTop: '130px', background: 'blue' }}>
 
             </div>
         </Card>

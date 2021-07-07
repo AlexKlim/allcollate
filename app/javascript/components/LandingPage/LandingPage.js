@@ -31,11 +31,11 @@ const LandingPage = () => {
                                 <Typography>
                                     Suggestion form
                                 </Typography>
-                                {/* <SuggestionForm
+                                <SuggestionForm
                                     onSuggestionSelected={onSuggestionSelected}
                                     onSubmit={onSubmit}
-                                    withoutSearchButton={true}
-                                /> */}
+                                    withoutSearchButton={false}
+                                />
                             </Box>
                         </Box>
                     </Box>
