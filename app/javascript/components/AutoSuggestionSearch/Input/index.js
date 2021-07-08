@@ -16,9 +16,13 @@ export default props => {
         )}
         <div className="input-group-btn suggestion-input__btn-search">
           <button className="suggestion-input__btn-search-input" type="submit">
-            {props.withoutSearchButton ?
+            {props.withSearchButton ?
+              <>Search</> :
+              null
+            }
+            {props.withClearAllButton ?
               <ClearAllButton /> :
-              <>Search</>
+              null
             }
           </button>
         </div>

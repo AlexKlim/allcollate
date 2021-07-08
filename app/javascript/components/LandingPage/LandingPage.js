@@ -32,7 +32,8 @@ const LandingPage = () => {
                                     <SuggestionForm
                                         onSuggestionSelected={onSuggestionSelected}
                                         onSubmit={onSubmit}
-                                        withoutSearchButton={false}
+                                        withSearchButton={false}
+                                        withClearAllButton={false}
                                     />
                                 </Box>
                             </Box>

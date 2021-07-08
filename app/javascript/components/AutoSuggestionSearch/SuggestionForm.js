@@ -126,7 +126,8 @@ class SuggestionForm extends React.Component {
       onChange: this.onChange,
       value: this.state.query || '',
       fetched: this.state.fetched,
-      withoutSearchButton: this.props.withoutSearchButton
+      withSearchButton: this.props.withSearchButton === undefined ? true : false,
+      withClearAllButton: this.props.withClearAllButton
     };
 
     return (

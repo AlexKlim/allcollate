@@ -32,7 +32,8 @@ function SearchPage() {
           <SuggestionForm
             onSuggestionSelected={onSuggestionSelected}
             onSubmit={onSubmit}
-            withoutSearchButton={true}
+            withSearchButton={false}
+            withClearAllButton={true}
           />
           <Box>
           </Box>
