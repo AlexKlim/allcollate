@@ -21,7 +21,7 @@ const LandingPage = () => {
                 <Box className='overlay'>
                     <Box className='container'>
                         <Box className='row'>
-                            <Box className='col-xl-9 mx-auto' style={{ marginTop: '234px' }}>
+                            <Box className='col-xl-12 mx-auto' style={{ marginTop: '234px' }}>
                                 <Typography variant="h1" component="h2" className='mb-5' style={{color: '#5C73C2', fontSize: '64px'}}>
                                     Allcollate
                                 </Typography>

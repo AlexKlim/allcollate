@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
 export default function HotelCard() {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -49,7 +50,12 @@ export default function HotelCard() {
 
     return (
         <Card className={classes.root} style={{ width: '234px', height: '220px', borderRadius: '4px' }}>
-            <div style={{ width: '234px', height: '45px', background: 'blue', opacity: '0.8' }}>
+            <div style={{
+                width: '234px',
+                height: '45px',
+                background: 'blue',
+                opacity: '0.8'
+            }}>
 
             </div>
             <div style={{
@@ -61,7 +67,6 @@ export default function HotelCard() {
                 borderTopLeftRadius: '4px',
                 borderBottomRightRadius: '4px'
             }}>
-
             </div>
         </Card>
     );
