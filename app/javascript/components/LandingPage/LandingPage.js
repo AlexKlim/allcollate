@@ -22,7 +22,7 @@ const LandingPage = () => {
                 width: '130px',
                 height: '5px',
                 left: '464px',
-                top: '164px',
+                top: '64px',
                 background: '#A49D9D',
                 borderRadius: '5px',
                 opacity: '0.5'
@@ -32,7 +32,7 @@ const LandingPage = () => {
                 width: '70px',
                 height: '5px',
                 left: '464px',
-                top: '179px',                
+                top: '79px',                
                 background: '#A49D9D',
                 borderRadius: '5px',
                 opacity: '0.5'
@@ -42,7 +42,7 @@ const LandingPage = () => {
                 width: '110px',
                 height: '5px',
                 left: '464px',
-                top: '194px',                
+                top: '94px',                
                 background: '#A49D9D',
                 borderRadius: '5px',
                 opacity: '0.5'
@@ -52,7 +52,7 @@ const LandingPage = () => {
                 width: '50px',
                 height: '5px',
                 left: '464px',
-                top: '209px',
+                top: '109px',
                 
                 background: '#A49D9D',
                 borderRadius: '5px',
@@ -85,7 +85,7 @@ const LandingPage = () => {
                 width: '800px',
                 height: '0px',
                 left: '0px',
-                top: '127px',
+                top: '50px',
                 
                 border: '1px solid #C4BBBB',
                 opacity: '0.5'
