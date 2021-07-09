@@ -49,7 +49,7 @@ export default function HotelCard() {
     };
 
     return (
-        <Card className={classes.root} style={{ width: '234px', height: '220px', borderRadius: '4px' }}>
+        <Card className={classes.root} style={{ width: '234px', height: '220px', borderRadius: '4px', backgroundImage: "http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x" }}>
             <div style={{
                 width: '234px',
                 height: '45px',

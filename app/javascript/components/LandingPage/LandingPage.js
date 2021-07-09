@@ -17,15 +17,88 @@ const LandingPage = () => {
     }
     return (
         <>
+            <Box style={{
+                position: 'absolute',
+                width: '130px',
+                height: '5px',
+                left: '464px',
+                top: '164px',
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.5'
+            }} />
+            <Box style={{
+                position: 'absolute',
+                width: '70px',
+                height: '5px',
+                left: '464px',
+                top: '179px',                
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '110px',
+                height: '5px',
+                left: '464px',
+                top: '194px',                
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '50px',
+                height: '5px',
+                left: '464px',
+                top: '209px',
+                
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '550px',
+                height: '0px',
+                left: '335px',
+                top: '0px',
+                
+                border: '1px solid #C3BBBB',
+                transform: 'rotate(90deg)',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '550px',
+                height: '0px',
+                left: '175px',
+                top: '0px',
+                
+                border: '1px solid #C3BBBB',
+                transform: 'rotate(90deg)',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '800px',
+                height: '0px',
+                left: '0px',
+                top: '127px',
+                
+                border: '1px solid #C4BBBB',
+                opacity: '0.5'
+            }}/>
             <Box component='header' className='text-center  bg-light' style={{ height: '578px' }}>
                 <Box className='overlay'>
                     <Box className='container'>
                         <Box className='row'>
                             <Box className='col-xl-12 mx-auto' style={{ marginTop: '234px' }}>
-                                <Typography variant="h1" component="h2" className='mb-5' style={{color: '#5C73C2', fontSize: '64px'}}>
+                                <Typography variant="h1" component="h2" className='mb-5' style={{ color: '#5C73C2', fontSize: '64px' }}>
                                     Allcollate
                                 </Typography>
-                                <Typography style={{fontSize: '32px', marginTop: '35px' }}>
+                                <Typography style={{ fontSize: '32px', marginTop: '35px' }}>
                                     Find and track any hotels
                                 </Typography>
                                 <Box style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '35px' }}>
