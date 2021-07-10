@@ -22,7 +22,7 @@ const LandingPage = () => {
                 width: '130px',
                 height: '5px',
                 left: '464px',
-                top: '64px',
+                top: '104px',
                 background: '#A49D9D',
                 borderRadius: '5px',
                 opacity: '0.5'
@@ -32,7 +32,7 @@ const LandingPage = () => {
                 width: '70px',
                 height: '5px',
                 left: '464px',
-                top: '79px',                
+                top: '119px',                
                 background: '#A49D9D',
                 borderRadius: '5px',
                 opacity: '0.5'
@@ -42,7 +42,7 @@ const LandingPage = () => {
                 width: '110px',
                 height: '5px',
                 left: '464px',
-                top: '94px',                
+                top: '134px',                
                 background: '#A49D9D',
                 borderRadius: '5px',
                 opacity: '0.5'
@@ -52,7 +52,7 @@ const LandingPage = () => {
                 width: '50px',
                 height: '5px',
                 left: '464px',
-                top: '109px',
+                top: '149px',
                 
                 background: '#A49D9D',
                 borderRadius: '5px',
@@ -88,6 +88,48 @@ const LandingPage = () => {
                 top: '50px',
                 
                 border: '1px solid #C4BBBB',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '130px',
+                height: '5px',
+                left: '630px',
+                top: '64px',
+                
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '70px',
+                height: '5px',
+                left: '630px',
+                top: '79px',
+                
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '110px',
+                height: '5px',
+                left: '630px',
+                top: '94px',                
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '50px',
+                height: '5px',
+                left: '630px',
+                top: '109px',                
+                background: '#A49D9D',
+                borderRadius: '5px',
                 opacity: '0.5'
             }}/>
             <Box component='header' className='text-center  bg-light' style={{ height: '578px' }}>
