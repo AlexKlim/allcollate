@@ -132,6 +132,48 @@ const LandingPage = () => {
                 borderRadius: '5px',
                 opacity: '0.5'
             }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '130px',
+                height: '5px',
+                left: '630px',
+                top: '164px',
+                
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '70px',
+                height: '5px',
+                left: '630px',
+                top: '179px',
+                
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '110px',
+                height: '5px',
+                left: '630px',
+                top: '194px',                
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.5'
+            }}/>
+            <Box style={{
+                position: 'absolute',
+                width: '50px',
+                height: '5px',
+                left: '630px',
+                top: '209px',                
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.5'
+            }}/>
             <Box component='header' className='text-center  bg-light' style={{ height: '578px' }}>
                 <Box className='overlay'>
                     <Box className='container'>
