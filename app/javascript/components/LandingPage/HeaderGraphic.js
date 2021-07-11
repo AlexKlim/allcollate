@@ -167,7 +167,7 @@ const HeaderGraphic = () => {
                 width: '130px',
                 height: '5px',
                 left: '300px',
-                top: '337px',
+                top: '267px',
 
                 background: '#A49D9D',
                 borderRadius: '5px',
@@ -178,7 +178,7 @@ const HeaderGraphic = () => {
                 width: '70px',
                 height: '5px',
                 left: '300px',
-                top: '352px',
+                top: '282px',
 
                 background: '#A49D9D',
                 borderRadius: '5px',
@@ -189,7 +189,7 @@ const HeaderGraphic = () => {
                 width: '110px',
                 height: '5px',
                 left: '300px',
-                top: '367px',
+                top: '297px',
                 background: '#A49D9D',
                 borderRadius: '5px',
                 opacity: '0.25'
@@ -199,11 +199,55 @@ const HeaderGraphic = () => {
                 width: '50px',
                 height: '5px',
                 left: '300px',
-                top: '382px',
+                top: '312px',
                 background: '#A49D9D',
                 borderRadius: '5px',
                 opacity: '0.25'
             }} />
+
+            <Box style={{
+                position: 'absolute',
+                width: '130px',
+                height: '5px',
+                left: '140px',
+                top: '367px',
+
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.25'
+            }} />
+            <Box style={{
+                position: 'absolute',
+                width: '70px',
+                height: '5px',
+                left: '140px',
+                top: '382px',
+
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.25'
+            }} />
+            <Box style={{
+                position: 'absolute',
+                width: '110px',
+                height: '5px',
+                left: '140px',
+                top: '397px',
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.25'
+            }} />
+            <Box style={{
+                position: 'absolute',
+                width: '50px',
+                height: '5px',
+                left: '140px',
+                top: '412px',
+                background: '#A49D9D',
+                borderRadius: '5px',
+                opacity: '0.25'
+            }} />
+
             <Box style={{
                 position: 'absolute',
                 width: '550px',
@@ -215,6 +259,25 @@ const HeaderGraphic = () => {
                 transform: 'rotate(90deg)',
                 opacity: '0.25'
             }} />
+            <Box style={{
+
+                position: 'absolute',
+                left: '70px',
+                top: '200px',
+
+                fontStyle: 'normal',
+                fontWeight: 'normal',
+                fontSize: '36px',
+                lineHeight: '42px',
+                display: 'flex',
+                alignItems: 'center',
+                textAlign: 'center',
+
+                color: 'rgba(0, 0, 0, 0.5)',
+                opacity: '0.25'
+            }}>
+                Compare
+            </Box>
         </>
     )
 }
