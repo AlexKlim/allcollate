@@ -50,8 +50,8 @@ const LandingPage = () => {
                 paddingTop: '0px',
                 height: '360px'
             }}>
-                <Box className='container'>
-                    <Box className='row'>
+                <Box className='container' style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
+                    <Box className='row' style={{width: '800px'}}>
                         <Box className='col-lg-4' style={{ marginTop: '70px' }}>
                             <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
                                 <Box className='features-icons-icon d-flex'
