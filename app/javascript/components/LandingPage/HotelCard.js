@@ -1,20 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-// import FavoriteIcon from '@material-ui/icons/Favorite';
-// import ShareIcon from '@material-ui/icons/Share';
-// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     },
     media: {
         height: 0,
-        paddingTop: '56.25%', // 16:9
+        paddingTop: '56.25%',
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -40,23 +28,36 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function HotelCard() {
+export default function HotelCard(props) {
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
+    const { picture } = props
 
     return (
-        <Card className={classes.root} style={{ width: '234px', height: '220px', borderRadius: '4px', background: 'url(http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x)' }}>
+        <Card className={classes.root} style={{
+            width: '234px',
+            height: '220px',
+            borderRadius: '4px',
+            background: `url(${picture})`
+        }}>
             <div style={{
                 width: '234px',
                 height: '45px',
                 background: 'rgba(92, 115, 194, 0.9)',
-                // opacity: '0.5'
-            }}>
 
+                fontFamily: 'Roboto',
+                fontStyle: 'normal',
+                fontWeight: 'normal',
+                fontSize: '20px',
+                lineHeight: '23px',
+                display: 'flex',
+                alignItems: 'center',
+                textAlign: 'center',
+
+                color: '#FFFFFF'
+            }}>
+                <Typography>
+                    Hotel Name
+                </Typography>
             </div>
             <div style={{
                 width: '45px',
@@ -66,8 +67,20 @@ export default function HotelCard() {
                 background: 'rgba(92, 115, 194, 0.9)',
                 borderTopLeftRadius: '4px',
                 borderBottomRightRadius: '4px',
-                // opacity: '0.5'
+
+                fontStyle: 'normal',
+                fontWeight: 'normal',
+                fontSize: '18px',
+                lineHeight: '21px',
+                display: 'flex',
+                alignItems: 'center',
+                textAlign: 'center',
+
+                color: '#FFFFFF'
             }}>
+                <Typography>
+                50$
+                </Typography>
             </div>
         </Card>
     );

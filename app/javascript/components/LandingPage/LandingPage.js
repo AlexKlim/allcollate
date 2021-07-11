@@ -56,21 +56,21 @@ const LandingPage = () => {
                             <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
                                 <Box className='features-icons-icon d-flex'
                                 >
-                                    <HotelCard />
+                                    <HotelCard picture={'http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x'}/>
                                 </Box>
                             </Box>
                         </Box>
                         <Box className='col-lg-4' style={{ marginTop: '70px' }}>
                             <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
                                 <Box className='features-icons-icon d-flex'>
-                                    <HotelCard />
+                                    <HotelCard picture={'http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x'}/>
                                 </Box>
                             </Box>
                         </Box>
                         <Box className='col-lg-4' style={{ marginTop: '70px' }}>
                             <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
                                 <Box className='features-icons-icon d-flex'>
-                                    <HotelCard />
+                                    <HotelCard picture={'http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x'}/>
                                 </Box>
                             </Box>
                         </Box>
