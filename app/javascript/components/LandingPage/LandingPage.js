@@ -50,30 +50,11 @@ const LandingPage = () => {
                 paddingTop: '0px',
                 height: '360px'
             }}>
-                <Box className='container' style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
-                    <Box className='row' style={{width: '800px'}}>
-                        <Box className='col-lg-4' style={{ marginTop: '70px' }}>
-                            <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
-                                <Box className='features-icons-icon d-flex'
-                                >
-                                    <HotelCard picture={'http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x'}/>
-                                </Box>
-                            </Box>
-                        </Box>
-                        <Box className='col-lg-4' style={{ marginTop: '70px' }}>
-                            <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
-                                <Box className='features-icons-icon d-flex'>
-                                    <HotelCard picture={'http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x'}/>
-                                </Box>
-                            </Box>
-                        </Box>
-                        <Box className='col-lg-4' style={{ marginTop: '70px' }}>
-                            <Box className='features-icons-item mx-auto mb-5.mb-lg-0 mb-lg-3'>
-                                <Box className='features-icons-icon d-flex'>
-                                    <HotelCard picture={'http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x'}/>
-                                </Box>
-                            </Box>
-                        </Box>
+                <Box className='container' style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    <Box className='row' style={{ width: '800px' }}>
+                        <HotelCard picture={'http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x'} />
+                        <HotelCard picture={'http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x'} />
+                        <HotelCard picture={'http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x'} />
                     </Box>
                 </Box>
             </Box>
