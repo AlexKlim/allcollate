@@ -49,12 +49,12 @@ export default function HotelCard() {
     };
 
     return (
-        <Card className={classes.root} style={{ width: '234px', height: '220px', borderRadius: '4px', backgroundImage: "http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x" }}>
+        <Card className={classes.root} style={{ width: '234px', height: '220px', borderRadius: '4px', background: 'url(http://pix5.agoda.net/hotelimages/38/38/38_120516001857736.jpg?s=312x)' }}>
             <div style={{
                 width: '234px',
                 height: '45px',
-                background: 'blue',
-                opacity: '0.8'
+                background: 'rgba(92, 115, 194, 0.9)',
+                // opacity: '0.5'
             }}>
 
             </div>
@@ -63,9 +63,10 @@ export default function HotelCard() {
                 height: '45px',
                 marginLeft: '189px',
                 marginTop: '130px',
-                background: 'blue',
+                background: 'rgba(92, 115, 194, 0.9)',
                 borderTopLeftRadius: '4px',
-                borderBottomRightRadius: '4px'
+                borderBottomRightRadius: '4px',
+                // opacity: '0.5'
             }}>
             </div>
         </Card>
