@@ -280,35 +280,17 @@ const HeaderGraphic = () => {
             </Box>
             <Box style={{
                 position: 'absolute',
-                left: '530px',
                 top: '230px',
-                // border: '1px solid #F5F7FB',
+                left: '500px',
                 opacity: '0.25'
             }}>
-                <svg width="98" height="119" viewBox="0 0 98 119" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M39.2901 0.94864C48.6709 0.94671 57.9125 3.24021 66.2244 7.63291C74.5362 12.0256 81.6708 18.3868 87.0178 26.1722C92.3648 33.9576 95.7651 42.9355 96.9276 52.3378C98.0902 61.7401 96.9805 71.2869 93.6934 80.1615C90.4064 89.0361 85.0399 96.9743 78.053 103.297C71.066 109.62 62.6668 114.139 53.5737 116.467C44.4805 118.796 34.9643 118.865 25.8391 116.668C16.7139 114.471 8.25125 110.075 1.17529 103.854L39.302 59.6074L39.2901 0.94864Z" fill="#7CB5EC" stroke="#F5F7FB" stroke-linejoin="round" />
-                </svg>
-            </Box>
-            <Box style={{
-                position: 'absolute',
-                left: '508px',
-                top: '285px',
-                // border: '1px solid #F5F7FB',
-                opacity: '0.25'
-            }}>
-                <svg width="60" height="46" viewBox="0 0 60 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20.4114 45.1454C9.44542 35.4852 2.46919 22.0189 0.863281 7.41145L58.5818 0.937439L20.4114 45.1454Z" fill="#434348" stroke="#F5F7FB" stroke-linejoin="round" />
-                </svg>
-            </Box>
-            <Box style={{
-                position: 'absolute',
-                left: '508px',
-                top: '253px',
-                // border: '1px solid #F5F7FB',
-                opacity: '0.25'
-            }}>
-                <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.856792 39.3533C-0.596953 26.0083 2.52538 12.5634 9.7025 1.2634L58.5817 32.9376L0.856792 39.3533Z" fill="#90ED7D" stroke="#F5F7FB" stroke-linejoin="round" />
+                <svg width="121" height="121" viewBox="0 0 121 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M62.2901 2.94864C71.6709 2.94671 80.9125 5.24021 89.2244 9.63291C97.5362 14.0256 104.671 20.3868 110.018 28.1722C115.365 35.9576 118.765 44.9355 119.928 54.3378C121.09 63.7401 119.98 73.2869 116.693 82.1615C113.406 91.0361 108.04 98.9743 101.053 105.297C94.066 111.62 85.6668 116.139 76.5737 118.467C67.4805 120.796 57.9643 120.865 48.8391 118.668C39.7139 116.471 31.2513 112.075 24.1753 105.854L62.302 61.6074L62.2901 2.94864Z" fill="#7CB5EC" stroke="#F5F7FB" stroke-linejoin="round" />
+                    <path d="M20.4114 104.145C9.44542 94.4852 2.46919 81.0189 0.863281 66.4114L58.5818 59.9374L20.4114 104.145Z" fill="#434348" stroke="#F5F7FB" stroke-linejoin="round" />
+                    <path d="M0.856792 66.3533C-0.596953 53.0083 2.52538 39.5634 9.7025 28.2634L58.5817 59.9376L0.856792 66.3533Z" fill="#90ED7D" stroke="#F5F7FB" stroke-linejoin="round" />
+                    <path d="M9.73389 28.2141C12.8068 23.3865 16.5645 19.0406 20.8868 15.3153L58.5817 59.9377L9.73389 28.2141Z" fill="#F7A35C" stroke="#F5F7FB" stroke-linejoin="round" />
+                    <path d="M20.9312 15.2772C24.7833 11.9638 29.0476 9.1732 33.6157 6.97614L58.5818 59.9376L20.9312 15.2772Z" fill="#8085E9" stroke="#F5F7FB" stroke-linejoin="round" />
+                    <path d="M33.668 6.95085C41.4284 3.22807 49.9098 1.29083 58.501 1.27878L58.5816 59.9375L33.668 6.95085Z" fill="#F15C80" stroke="#F5F7FB" stroke-linejoin="round" />
                 </svg>
 
             </Box>
