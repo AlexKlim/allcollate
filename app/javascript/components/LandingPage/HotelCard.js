@@ -52,10 +52,11 @@ export default function HotelCard(props) {
                 display: 'flex',
                 alignItems: 'center',
                 textAlign: 'center',
+                justifyContent: 'center',
 
                 color: '#FFFFFF'
             }}>
-                <Typography>
+                <Typography align='center'>
                     Hotel Name
                 </Typography>
             </div>
@@ -75,10 +76,11 @@ export default function HotelCard(props) {
                 display: 'flex',
                 alignItems: 'center',
                 textAlign: 'center',
+                justifyContent: 'center',
 
                 color: '#FFFFFF'
             }}>
-                <Typography>
+                <Typography align='center'>
                 50$
                 </Typography>
             </div>
