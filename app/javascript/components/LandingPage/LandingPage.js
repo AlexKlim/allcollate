@@ -7,12 +7,6 @@ import HeaderGraphic from './HeaderGraphic';
 
 const LandingPage = () => {
 
-    const onSuggestionSelected = (that, suggestion, value) => {
-        // setSlug(suggestion.slug);
-        // that.setState({ query: '' });
-        console.log(that, suggestion, value)
-    }
-
     const onSubmit = (e) => {
         e.preventDefault();
     }
@@ -33,7 +27,6 @@ const LandingPage = () => {
                                 </Typography>
                                 <Box style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '35px' }}>
                                     <SuggestionForm
-                                        onSuggestionSelected={onSuggestionSelected}
                                         onSubmit={onSubmit}
                                         withSearchButton={false}
                                         withClearAllButton={false}
