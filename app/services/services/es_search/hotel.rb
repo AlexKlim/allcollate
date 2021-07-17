@@ -21,7 +21,7 @@ class Services::EsSearch::Hotel
   def do
     [query_string, keyword_string, year_renovated_filter, year_opened_filter,
      start_rating_filter, country_filter, city_filter,
-     rate_filter].compact.reduce(:merge).page(page).per(PER_PAGE).order(star_rating: :desc, id: :desc)
+     rate_filter].compact.reduce(:merge).page(page).per(PER_PAGE).order(star_rating: :desc, rating: :desc)
   end
 
   def query_string

@@ -1,0 +1,9 @@
+= content_for :stylesheet_link_tag do
+  = stylesheet_link_tag 'comparison', media: 'all'
+
+.main
+  .page-content
+    .container
+      / h1.search__title Comparison For Hotels
+
+      = react_component('Comparison/ComparisonProvider', { initHotels: @hotels_json }, prerender: true)

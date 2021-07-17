@@ -1,30 +1,31 @@
 import * as React from "react";
-
-import {
-    Site,
-} from "tabler-react";
+import { Typography } from '@material-ui/core';
+import { Site } from "tabler-react";
 import StarRatings from 'react-star-ratings';
+import { useStyles } from './styles'
 
-class HeaderSubtitle extends React.Component {
-    render() {
-      return (
-        <div className="container header-subtitle">
-          <React.Fragment>
-            {this.props.headerLogo && (
-              <Site.Logo href={this.props.headerLink} alt={this.props.headerAlt} src={this.props.headerLogo} />
-            )}
-            <div className="d-flex order-lg-2 header-brand-title">
-              <h1 className="hotel-name">
-                {this.props.headerAlt}
-              </h1>
-              <div className="rating-wrapper">
-                <StarRatings rating={this.props.starRating} starDimension="20px" starRatedColor="gold" starSpacing="0px" />
-              </div>
+function HeaderSubtitle({ headerLink, headerAlt, headerLogo, starRating }) {
+  const classes = useStyles()
+
+  return (
+    <div className="sub-header">
+      <div className="container header-subtitle">
+        <React.Fragment>
+          {headerLogo && (
+            <Site.Logo href={headerLink} alt={headerAlt} src={headerLogo} />
+          )}
+          <div className="d-flex order-lg-2 header-brand-title">
+            <Typography variant="h1" className={classes.hotelName}>
+              {headerAlt}
+            </Typography>
+            <div className="rating-wrapper">
+              <StarRatings rating={starRating} starDimension="20px" starRatedColor="gold" starSpacing="0px" />
             </div>
-          </React.Fragment>
-        </div>
-      );
-    }
+          </div>
+        </React.Fragment>
+      </div>
+    </div>
+  );
 }
 
 export default HeaderSubtitle;
