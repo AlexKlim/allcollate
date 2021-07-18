@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 export default class ComparisonAPI {
-  fetchHotels(slug) {
+  fetchHotels(slugs) {
     return axios
-      .get(`api/comparisons?slug=${slug}`)
+      .get(`api/comparisons?slugs=${slugs.join(',')}`)
       .then((res) => res && res.data);
   }
 }

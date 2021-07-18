@@ -7,12 +7,21 @@ import RatesComparisonChart from './RatesComparisonChart';
 import Notification from './Notification'
 import { useStyles } from './styles'
 
-function SearchPage() {
-  const { setSlug, hotels } = useComparisonContext()
+function ComparisonPage() {
+  const { currentUser, setSlugs, hotels } = useComparisonContext()
   const classes = useStyles()
 
   const onSuggestionSelected = (that, suggestion, value) => {
-    setSlug(suggestion.slug);
+    let slugs = []
+    const hotelSlugs = hotels.map(hotel => hotel.slug)
+
+    if (currentUser.access.fullComparison ) {
+      slugs = [...hotelSlugs, suggestion.slug].slice(0, currentUser.settings.comparison.authLimits)
+    } else {
+      slugs = [...hotelSlugs, suggestion.slug].slice(0, currentUser.settings.comparison.nonAuthLimits)
+    }
+
+    setSlugs(slugs);
     that.setState({ query: '' });
   }
 
@@ -59,4 +68,4 @@ function SearchPage() {
   );
 }
 
-export default SearchPage;
+export default ComparisonPage;

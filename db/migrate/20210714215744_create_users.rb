@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :uid
       t.string :username
       t.string :email, null: false, index: true, unique: true
-      t.string :subscription_plan
+      t.string :subscription_plan, default: 'general', null: false
       t.string :image
       t.boolean :verified
       t.integer :login_count, default: 0

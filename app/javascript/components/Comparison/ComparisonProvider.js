@@ -5,9 +5,10 @@ import _ from 'lodash'
 
 export const ComparisonContext = React.createContext();
 
-const ComparisonProvider = ({ initHotels }) => {
+const ComparisonProvider = ({ initCurrentUser, initHotels }) => {
   const [hotels, setHotels] = useState(initHotels);
-  const [slug, setSlug] = useState();
+  const [currentUser, _setCurrentUser] = useState(initCurrentUser)
+  const [slugs, setSlugs] = useState([]);
   const [notificationOn, setNotificationOn] = useState(false)
 
 
@@ -18,25 +19,25 @@ const ComparisonProvider = ({ initHotels }) => {
   useEffect(() => {
     const fetchData = async () => {
       const comparisonAPI = new ComparisonAPI();
-      const data = await comparisonAPI.fetchHotels(slug);
+      const data = await comparisonAPI.fetchHotels(slugs);
 
       if (_.find(hotels, { id: data.results.id })) {
         toggleNotification()
       } else {
-        const updatedHotels = _.unionWith([data.results], hotels, _.isEqual)
-        setHotels(updatedHotels);
+        setHotels(data.results);
       }
     };
-    if (slug) { fetchData(); }
+    if (slugs.length > 0) { fetchData(); }
   }, [
-    slug
+    slugs
   ]);
 
   return (
     <ComparisonContext.Provider
       value={{
+        currentUser,
         hotels,
-        setSlug,
+        setSlugs,
         setHotels,
         notificationOn,
         setNotificationOn

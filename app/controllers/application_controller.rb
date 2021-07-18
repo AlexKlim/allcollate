@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
-  helper_method :current_user
+  helper_method :current_user, :current_user_attributes
 
   def not_found
     redirect_to('/', status: 301) if !request.xhr? && request.get? && request.format == :html
@@ -13,5 +13,15 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def current_user_attributes
+    {
+      info: current_user&.attributes || nil,
+      access: {
+        fullComparison: current_user && !current_user.subscription_plan_general?
+      },
+      settings: User.settings.to_h.deep_transform_keys { |key| key.to_s.camelcase(:lower) }
+    }
   end
 end
