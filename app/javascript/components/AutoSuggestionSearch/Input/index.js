@@ -20,9 +20,10 @@ export default props => {
               <>Search</> :
               null
             }
-            {props.withClearAllButton ?
-              <ClearAllButton /> :
-              null
+            {
+              props.withClearAllButton ?
+                <ClearAllButton /> :
+                null
             }
           </button>
         </div>

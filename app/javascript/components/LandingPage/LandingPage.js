@@ -8,7 +8,7 @@ import Title from './Title'
 import { useStyles } from './Styles';
 
 const LandingPage = () => {
-const classes = useStyles()
+    const classes = useStyles()
     const onSubmit = (e) => {
         e.preventDefault();
     }
@@ -24,7 +24,12 @@ const classes = useStyles()
                                 <Typography style={{ fontSize: '32px', marginTop: '35px' }}>
                                     Find and track any hotels
                                 </Typography>
-                                <Box style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '35px' }}>
+                                <Box style={{
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    justifyContent: 'center',
+                                    marginTop: '35px'
+                                }}>
                                     <SuggestionForm
                                         onSubmit={onSubmit}
                                         withSearchButton={false}
@@ -45,7 +50,7 @@ const classes = useStyles()
                     </Box>
                 </Box>
             </Box>
-            <Box style={{ width: '100%', height: '171px', background: '#f8f9fa' }}>
+            <Box className={classes.whiteSpaceBlock}>
             </Box>
             <Footer />
         </>

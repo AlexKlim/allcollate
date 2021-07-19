@@ -61,5 +61,10 @@ export const useStyles = makeStyles((theme) => ({
         borderBottom: '1px solid #B2B2B2',
         paddingTop: '0px',
         height: '360px'
+    },
+    whiteSpaceBlock: {
+        width: '100%',
+        height: '171px',
+        background: '#f8f9fa'
     }
 }));
