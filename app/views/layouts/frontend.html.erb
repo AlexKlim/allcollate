@@ -95,10 +95,16 @@
             </div>
           </div>
           <div class="col col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-            &copy;
-            <%= Date.current.year %>
-            <%= link_to ' allcollate.com', root_path %>
-            All rights reserved.
+            <%= link_to 'https://www.erketutech.com' do %>
+              <%= image_tag 'logo_et.png', class: 'footer__et-logo' %>
+              Erketu Technology
+            <% end %>
+
+            <span class="footer__year">
+              All rights reserved.
+              &copy;
+              <%= Date.current.year %>
+            </span>
           </div>
         </div>
       </div>
