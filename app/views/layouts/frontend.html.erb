@@ -65,24 +65,26 @@
 
   <div class="page">
     <div class="page-main">
-      <div class="search-header">
-        <div class="container header-container">
-          <div class="d-flex">
-            <div class="main-header-py4">
-              <div class="d-flex main-header">
-                <div class="order-lg-2 header-brand-title">
-                  <a class="navbar-brand allcollate-title-link" href='/'>
-                    <span class="allcollate-title"> Allcollate </span>
-                  </a>
-                  <span class="allcollate-title allcollate-title-beta"> beta </span>
+      <%- unless local_assigns[:without_search] %>
+        <div class="search-header">
+          <div class="container header-container">
+            <div class="d-flex">
+              <div class="main-header-py4">
+                <div class="d-flex main-header">
+                  <div class="order-lg-2 header-brand-title">
+                    <a class="navbar-brand allcollate-title-link" href='/'>
+                      <span class="allcollate-title"> Allcollate </span>
+                    </a>
+                    <span class="allcollate-title allcollate-title-beta"> beta </span>
 
-                  <%= react_component('AutoSuggestionSearch/SuggestionForm', { query: params[:q] }, prerender: false, class: 'suggestion-form__container') %>
+                    <%= react_component('AutoSuggestionSearch/SuggestionForm', { query: params[:q] }, prerender: false, class: 'suggestion-form__container') %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div >
+        </div >
+      <% end %>
 
       <%= yield %>
     </div>

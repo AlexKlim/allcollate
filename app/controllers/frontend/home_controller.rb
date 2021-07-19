@@ -6,5 +6,9 @@ class Frontend::HomeController < Frontend::BaseController
 
     @hotels = HotelLandingSerializer.new(hotels, is_collection: true).serializable_hash[:data]
                                     .map { |item| item[:attributes] }
+
+    render locals: {
+      without_search: true
+    }
   end
 end
