@@ -1,4 +1,4 @@
-class Frontend::HomeController < ApplicationController
+class Frontend::HomeController < Frontend::BaseController
   HOTELS_SLUGS = ['the-st-regis-san-francisco', 'hotel-arenal-bilbao', 'miniattico']
 
   def index

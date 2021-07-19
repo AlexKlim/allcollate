@@ -1,11 +1,9 @@
 import * as React from "react";
 import { Typography } from '@material-ui/core';
-import { useStyles } from './styles'
-
-import {
-    Site,
-} from "tabler-react";
+import { Site } from "tabler-react";
 import StarRatings from 'react-star-ratings';
+
+import { useStyles } from './styles'
 
 function HeaderSubtitle({ headerLink, headerAlt, headerLogo, starRating }) {
 

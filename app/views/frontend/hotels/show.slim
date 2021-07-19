@@ -2,23 +2,20 @@
   = stylesheet_link_tag 'hotel-show', media: 'all'
 
 .main
-  .sub-header
-    = react_component('Header/Subtitle', { header_link: hotel_path(@hotel),
-      header_alt: @hotel.name,
-      header_logo: @hotel.photos.order(order: :asc).first&.url,
-      star_rating: @hotel.star_rating }, prerender: true)
-
-  .page-content
-    .container
-      = react_component('Hotel/Overview', { overview: @hotel.overview,
-              number_rooms: @hotel.number_rooms,
-              number_floors: @hotel.number_floors,
-              year_opened: @hotel.year_opened,
-              year_renovated: @hotel.year_renovated,
-              checkin: @hotel.checkin,
-              checkout: @hotel.checkout,
-              slug: @hotel.slug } , prerender: true)
-      = react_component('Hotel/Chart', { hotel_name: @hotel.name, hotel_rates: @hotel.rates }, prerender: true)
+  = react_component('Hotel/Show', { headerLink: hotel_path(@hotel),
+    headerAlt: @hotel.name,
+    headerLogo: @hotel.photos.order(order: :asc).first&.url,
+    starRating: @hotel.star_rating,
+    overview: @hotel.overview,
+    number_rooms: @hotel.number_rooms,
+    number_floors: @hotel.number_floors,
+    year_opened: @hotel.year_opened,
+    year_renovated: @hotel.year_renovated,
+    checkin: @hotel.checkin,
+    checkout: @hotel.checkout,
+    slug: @hotel.slug,
+    hotelName: @hotel.name,
+    hotelRates: @hotel.rates }, prerender: true)
 
   section
     .map-container

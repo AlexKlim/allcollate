@@ -1,5 +1,10 @@
 = content_for :stylesheet_link_tag do
   = stylesheet_link_tag 'home', media: 'all'
 
+= content_for :javascript_link_tag do
+  script src="//cdn0.agoda.net/images/sherpa/js/init-dynamic_v8.min.js" type="text/javascript"
+  javascript:
+    | var stg = new Object(); stg.crt="10803011703754";stg.version="1.05"; stg.id=stg.name="adgshp-988197843"; stg.Width="450px"; stg.Height="375px";stg.RefKey="yeVbxdpnbdmVEYWjOlN3rg==";stg.AutoScrollSpeed=3000;stg.AutoScrollToggle=true;stg.SearchboxShow=false;stg.DiscountedOnly=false;stg.Layout="oblongdynamic"; stg.Language="en-us";stg.ApiKey="E571C5F7-1F23-41B7-9553-A5EBA3476BE9";stg.Cid="1845623";  stg.City="15470";stg.Currency="USD";stg.OverideConf=false; new AgdDynamic('adgshp-988197843').initialize(stg);
+
 .main
   = react_component('LandingPage/LandingPageProvider', { hotels: @hotels }, prerender: true)
