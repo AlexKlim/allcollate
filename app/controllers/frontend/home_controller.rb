@@ -8,7 +8,7 @@ class Frontend::HomeController < Frontend::BaseController
                                     .map { |item| item[:attributes] }
 
     render locals: {
-      without_search: true
+      without_header: true
     }
   end
 end
