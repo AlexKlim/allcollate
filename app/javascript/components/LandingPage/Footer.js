@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Typography } from '@material-ui/core';
 
 const Footer = () => {
+    const date = new Date()
     return (
         <Box component='footer' className='footer' style={{
             paddingTop: '0px',
@@ -19,7 +20,7 @@ const Footer = () => {
                             </Box>
                             <Box>
                                 <Typography className='text-muted small mb-4 mb-lg-0' style={{ marginLeft: '100px' }}>
-                                    All Rights Reserved. &copy; 2021
+                                    All Rights Reserved. &copy; {date.getFullYear()}
                                 </Typography>
                             </Box>
                         </Box>
