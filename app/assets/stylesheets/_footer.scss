@@ -2,3 +2,15 @@ footer.footer {
   padding-top: 4rem;
   padding-bottom: 1rem;
 }
+
+.footer {
+  &__et-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  &__year {
+    margin-left: 2rem;
+    color: #828282;
+  }
+}
