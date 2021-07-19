@@ -2,4 +2,4 @@
   = stylesheet_link_tag 'home', media: 'all'
 
 .main
-  = react_component('LandingPage/LandingPageProvider', {}, prerender: true)
+  = react_component('LandingPage/LandingPageProvider', { hotels: @hotels }, prerender: true)
