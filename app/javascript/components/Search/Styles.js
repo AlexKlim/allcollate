@@ -1,6 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
+  titlePage: {
+    fontSize: '26px',
+    color: 'black',
+    marginTop: '50px'
+  },
   centerContent: {
     justifyContent: 'center'
   },

@@ -4,5 +4,4 @@
 .main
   .page-content
     .container
-      h1.search__title Search For Hotels
       = react_component('Search/SearchProvider', { query: params[:q], hotelPlaceholderUrl: image_url('hotel_placeholder.png') }, prerender: true)
