@@ -60,8 +60,7 @@ const useStyles = makeStyles({
     opacity: '1',
     backgroundColor: '#5C73C2',
     '&:hover': {
-      backgroundColor: '#5C73C2',
-      opacity: '0.8',
+      backgroundColor: '#303f9f',
     }
   }
 })

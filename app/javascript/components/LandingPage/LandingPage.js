@@ -8,9 +8,7 @@ import { useStyles } from './Styles';
 
 const LandingPage = ({ hotels }) => {
 	const classes = useStyles()
-	const onSubmit = (e) => {
-		e.preventDefault();
-	}
+
 	return (
 		<>
 			<HeaderGraphic />
@@ -25,9 +23,10 @@ const LandingPage = ({ hotels }) => {
 								</Typography>
 								<Box style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '35px' }}>
 									<SuggestionForm
-										onSubmit={onSubmit}
+										formClassName="col-md-8 suggestion__form-home"
 										withSearchButton={false}
 										withClearAllButton={false}
+										autofocus="autofocus"
 									/>
 								</Box>
 							</Box>

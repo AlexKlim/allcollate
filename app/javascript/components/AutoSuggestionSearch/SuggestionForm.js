@@ -127,11 +127,12 @@ class SuggestionForm extends React.Component {
       value: this.state.query || '',
       fetched: this.state.fetched,
       withSearchButton: this.props.withSearchButton !== false,
-      withClearAllButton: this.props.withClearAllButton
+      withClearAllButton: this.props.withClearAllButton,
+      autofocus: this.props.autofocus,
     };
-
+    const formClass = this.props.formClassName || 'col-md-4'
     return (
-      <Form action="/search" className="suggestion-form--group col-md-4" onSubmit={this.onSubmit.bind(this)} >
+      <Form action="/search" className={`suggestion-form--group ${formClass}`} onSubmit={this.onSubmit.bind(this)} >
         <Grid.Row>
           <Grid.Col>
             <Autosuggest
