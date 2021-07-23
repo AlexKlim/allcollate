@@ -30,9 +30,11 @@ function SearchPage() {
             </Typography>
           </Box>
           <SuggestionForm
+            formClassName="col-md-6 suggestion__form-comparison"
             onSuggestionSelected={onSuggestionSelected}
             onSubmit={onSubmit}
-            withoutSearchButton={true}
+            withSearchButton={false}
+            withClearAllButton={true}
           />
           <Box>
           </Box>

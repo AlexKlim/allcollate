@@ -1,0 +1,14 @@
+development:
+  page:
+    home:
+      hotels: ['pullman-bordeaux-lac', 'hotel-agua-escondida', 'gioberti-hotel']
+
+test:
+  page:
+    home:
+      hotels: ['pullman-bordeaux-lac', 'hotel-agua-escondida', 'gioberti-hotel']
+
+production:
+  page:
+    home:
+      hotels: ['the-st-regis-san-francisco', 'hotel-arenal-bilbao', 'miniattico']

@@ -1,6 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
+  titlePage: {
+    fontSize: '26px',
+    color: 'black',
+    marginTop: '50px'
+  },
   centerContent: {
     justifyContent: 'center'
   },
@@ -55,8 +60,7 @@ const useStyles = makeStyles({
     opacity: '1',
     backgroundColor: '#5C73C2',
     '&:hover': {
-      backgroundColor: '#5C73C2',
-      opacity: '0.8',
+      backgroundColor: '#303f9f',
     }
   }
 })

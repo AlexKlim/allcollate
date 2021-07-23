@@ -1,6 +1,4 @@
-class Frontend::HotelsController < ApplicationController
-  layout 'frontend'
-
+class Frontend::HotelsController < Frontend::BaseController
   def show
     @hotel = Hotel.active.includes(:photos, :rates).friendly.find(params[:id])
   end

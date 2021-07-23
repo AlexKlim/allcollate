@@ -1,6 +1,4 @@
-class Frontend::Directory::HotelsController < ApplicationController
-  layout 'frontend'
-
+class Frontend::Directory::HotelsController < Frontend::BaseController
   # before_action :check_prefix
 
   PER_PAGE = 75

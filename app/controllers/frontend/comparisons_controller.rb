@@ -1,6 +1,4 @@
-class Frontend::ComparisonsController < ApplicationController
-  layout 'frontend'
-
+class Frontend::ComparisonsController < Frontend::BaseController
   def index
     slugs = params[:hotels]&.split(',')&.map(&:strip)
     hotels = Hotel.active.where(slug: slugs)

@@ -18,7 +18,6 @@ const HotelOverview =({ overview, slug, hotelName, hotelRates, ...rest }) => {
         <section>
           <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
             <PageSectionHeader title="Overview" />
-            {console.log('VOT I ON', slug)}
             <CompareButton slug={slug}/>
           </div>
           {overview && (

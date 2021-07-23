@@ -20,7 +20,7 @@
   max-height: calc(100vh - 60px);
   overflow: auto;
   margin-left: 13px;
-  margin-right: 81px;
+  margin-right: 84px;
 
   &__help-text {
     margin-left: 5px;
@@ -30,7 +30,7 @@
     z-index: 10;
     display: block;
     color: #34394c;
-    align-items: center;
+    text-align: left;
     padding: 8px 24px 8px 10px;
     cursor: pointer;
     font-size: 18px;
@@ -45,7 +45,7 @@
 .suggestion-input {
   &__loader_container {
     position: absolute;
-    right: 75px;
+    right: 10px;
     top: calc(50% - 10px);
     z-index: 99999;
   }
@@ -74,8 +74,43 @@
       outline: none;
     }
   }
+
+  &__clear-all {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 17px;
+    margin-left: 6px;
+    font-size: 17px;
+
+    &:focus, &:hover {
+      text-decoration: underline;
+      outline: none;
+    }
+  }
 }
 
 .suggestion__input {
   border-radius: 4px !important;
+}
+
+.suggestion__form-home {
+  input.suggestion__input {
+    border: 3px solid #5C73C2;
+  }
+
+  ul.suggestion-results {
+    margin-right: 13px;
+  }
+}
+
+.suggestion__form-comparison {
+  ul.suggestion-results {
+    margin-right: 114px;
+  }
+}
+
+.suggestion-input__block {
+  display: flex;
 }

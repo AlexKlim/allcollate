@@ -1,6 +1,4 @@
-class Frontend::SearchesController < ApplicationController
-  layout 'frontend'
-
+class Frontend::SearchesController < Frontend::BaseController
   def suggestions
     results = if Rails.env.development? || Rails.env.test?
                 Hotel.active.ransack(name_start: params[:q]).result.first(5)
