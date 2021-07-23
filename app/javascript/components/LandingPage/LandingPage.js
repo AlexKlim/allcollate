@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import SuggestionForm from '../AutoSuggestionSearch/SuggestionForm';
 import HotelCard from './HotelCard'
+import HotelCardAgoda from './HotelCardAgoda'
 import HeaderGraphic from './HeaderGraphic';
 import Title from './Title'
 import { useStyles } from './Styles';
@@ -35,17 +36,15 @@ const LandingPage = ({ hotels }) => {
 				</Box>
 			</Box>
 			<Box component='section' className={`features-icons text-center ${classes.hotelCardsRow}`}>
-				<Box className='container' style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-					<Box className='row' style={{ width: '800px' }}>
+				<Box className={`container ${classes.featureContainer}`}>
+					<Box className='row'>
 						<HotelCard hotel={hotels[0]} />
-						{/* <HotelCard hotel={hotels[1]} /> */}
-						<div id="adgshp-988197843" />
-						<HotelCard hotel={hotels[2]} />
+						<HotelCardAgoda />
+						<HotelCard hotel={hotels[1]} />
 					</Box>
 				</Box>
 			</Box>
-			<Box style={{ width: '100%', height: '171px', background: '#f8f9fa' }}>
-			</Box>
+			<Box component='section' className={classes.emptyRow}></Box>
 		</>
 	)
 }

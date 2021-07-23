@@ -1,54 +1,43 @@
 
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles((theme) => ({
-	root: {
-		maxWidth: 345,
+export const useStyles = makeStyles({
+	cardLink: {
+		height: '276px',
+		width: '300px',
 	},
-	media: {
-		height: 0,
-		paddingTop: '56.25%',
+	cardBody: {
+		height: '276px',
+		width: '300px',
+		background: props => `url(${props.backgroundUrl})`,
+		display: 'flex',
+    flexDirection: 'column',
+		marginTop: '23px',
 	},
-	expand: {
-		transform: 'rotate(0deg)',
-		marginLeft: 'auto',
-		transition: theme.transitions.create('transform', {
-			duration: theme.transitions.duration.shortest,
-		}),
-	},
-	expandOpen: {
-		transform: 'rotate(180deg)',
+	featureContainer: {
+		padding: '40px 0',
 	},
 	hotelNameContainer: {
-		width: '234px',
-		height: '45px',
+		padding: '10px 0',
 		background: 'rgba(92, 115, 194, 0.9)',
-
-		fontFamily: 'Roboto',
-		fontStyle: 'normal',
-		fontWeight: 'normal',
-		fontSize: '20px',
-		lineHeight: '23px',
 		display: 'flex',
 		alignItems: 'center',
-		textAlign: 'center',
 		justifyContent: 'center',
-
 		color: '#FFFFFF'
 	},
-	hotelCurrentDateContainer: {
-		width: '45px',
-		height: '45px',
-		marginLeft: '189px',
-		marginTop: '130px',
+	hotelPriceContainer: {
+		height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent: 'flex-end',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+	},
+	hotelPrice: {
+		padding: '10px',
 		background: 'rgba(92, 115, 194, 0.9)',
 		borderTopLeftRadius: '4px',
 		borderBottomRightRadius: '4px',
-
-		fontStyle: 'normal',
-		fontWeight: 'normal',
-		fontSize: '18px',
-		lineHeight: '21px',
 		display: 'flex',
 		alignItems: 'center',
 		textAlign: 'center',
@@ -59,12 +48,10 @@ export const useStyles = makeStyles((theme) => ({
 	hotelCardsRow: {
 		borderTop: '1px solid #B2B2B2',
 		borderBottom: '1px solid #B2B2B2',
-		paddingTop: '0px',
-		height: '360px'
+		backgroundColor: "white",
 	},
-	whiteSpaceBlock: {
-		width: '100%',
-		height: '171px',
-		background: '#f8f9fa'
+	emptyRow: {
+		backgroundColor: "#f8f9fa",
+		height: "170px",
 	}
-}));
+});

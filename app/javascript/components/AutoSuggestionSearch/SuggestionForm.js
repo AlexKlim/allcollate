@@ -1,12 +1,7 @@
 import * as React from "react";
 import Autosuggest from 'react-autosuggest';
 import _ from 'underscore';
-import {
-  Button,
-  Form,
-  Grid,
-} from "tabler-react";
-
+import { Form, Grid } from "tabler-react";
 import SearchAPI from '../../api/SearchAPI'
 import theme from './theme';
 import Input from './Input/index';
@@ -51,7 +46,7 @@ class SuggestionForm extends React.Component {
     event.preventDefault();
 
     if (this.props.onSuggestionSelected) {
-      this.props.onSuggestionSelected(this, suggestion, value )
+      this.props.onSuggestionSelected(this, suggestion, value)
       return
     }
 
@@ -98,7 +93,7 @@ class SuggestionForm extends React.Component {
           </li>
         </ul>
       </div>
-      )
+    )
   }
 
   onSubmit(e) {
@@ -126,7 +121,7 @@ class SuggestionForm extends React.Component {
       onChange: this.onChange,
       value: this.state.query || '',
       fetched: this.state.fetched,
-      withSearchButton: this.props.withSearchButton !== false,
+      withSearchButton: this.props.withSearchButton,
       withClearAllButton: this.props.withClearAllButton,
       autofocus: this.props.autofocus,
     };
@@ -153,6 +148,10 @@ class SuggestionForm extends React.Component {
       </Form>
     );
   }
+}
+
+SuggestionForm.defaultProps = {
+  withSearchButton: true
 }
 
 export default SuggestionForm;
