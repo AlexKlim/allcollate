@@ -53,5 +53,12 @@ export const useStyles = makeStyles({
 	emptyRow: {
 		backgroundColor: "#f8f9fa",
 		height: "170px",
+	},
+	beta: {
+		marginLeft: '5px',
+    fontSize: '16px'
+	},
+	titleBlockWithBeta: {
+		display: 'inline-flex'
 	}
 });
