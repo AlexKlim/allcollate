@@ -8,7 +8,7 @@ class HotelCompareSerializer
              :year_renovated, :checkin, :checkout, :number_rooms, :number_floors
 
   attribute :photo do |hotel|
-    hotel.photos.order(order: :asc).first&.url
+    hotel.photos.order(order: :asc).first&.url&.gsub(/\?s=.*/, '')
   end
 
   attribute :rates do |hotel|

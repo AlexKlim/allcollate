@@ -7,7 +7,7 @@ class HotelLandingSerializer
   attributes :name, :star_rating, :slug
 
   attribute :photo do |hotel|
-    hotel.photos.order(order: :asc).first&.url
+    hotel.photos.order(order: :asc).first&.url&.gsub(/\?s=.*/, '')
   end
 
   attribute :rate do |hotel|

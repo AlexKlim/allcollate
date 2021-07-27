@@ -11,4 +11,4 @@ test:
 production:
   page:
     home:
-      hotels: ['the-st-regis-san-francisco', 'hotel-arenal-bilbao', 'miniattico']
+      hotels: ['hotel-arenal-bilbao', 'the-st-regis-san-francisco', 'miniattico']
