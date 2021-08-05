@@ -33,14 +33,14 @@ export default function ComparisonResultHeaderCard(props) {
     if (hotelName.length >= 55) {
       return (
         <Tooltip title={hotel.name} enterDelay={500} leaveDelay={200} placement='top-start' arrow>
-          <Box fontSize={18} className={classes.cardHeaderLink}>
+          <Box fontSize={15} className={classes.cardHeaderLink}>
             {_.truncate(hotel.name, { 'length': 55, 'separator': ' ' })}
           </Box>
         </Tooltip>
       )
     } else {
       return (
-        <Box fontSize={18} className={classes.cardHeaderLink}>
+        <Box fontSize={15} className={classes.cardHeaderLink}>
           {hotel.name}
         </Box>
       )
