@@ -1,5 +1,7 @@
 class Services::AgodaImporter
   URL = 'http://affiliateapi7643.agoda.com/affiliateservice/lt_v1'.freeze
+  MAX_TRIES = 3
+  DELAY = 10
 
   def hotel_stats!
     request = json_base
@@ -11,7 +13,20 @@ class Services::AgodaImporter
       request[:criteria][:hotelId] = hotels.map(&:agoda_hotel_id)
 
       options = { body: request.to_json, verify: false, timeout: 180, headers: headers }
-      response = HTTParty.post(URL, options)
+
+      tries = 0
+      begin
+        response = HTTParty.post(URL, options)
+      rescue Errno::ECONNRESET
+        Rails.logger.error('AgodaImporter Call', { status: response.code,
+                                                   message: "Error request body: #{response.body}",
+                                                   hotels_ids: request[:criteria][:hotelId] })
+        unless tries >= MAX_TRIES
+          tries += 1
+          sleep DELAY
+          retry
+        end
+      end
 
       if response.success?
         parse_response(response, request[:criteria][:checkInDate])
