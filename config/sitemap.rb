@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sitemap_generator'
 
-SitemapGenerator::Sitemap.default_host = 'http://www.allcollate.com'
+SitemapGenerator::Sitemap.default_host = 'https://www.allcollate.com'
 
 SitemapGenerator::Sitemap.sitemaps_host = "https://#{Rails.application.credentials.aws[:fog_upload_bucket]}.s3.amazonaws.com/"
 SitemapGenerator::Sitemap.public_path += 'tmp/' unless File.split(SitemapGenerator::Sitemap.public_path).include?('tmp')
