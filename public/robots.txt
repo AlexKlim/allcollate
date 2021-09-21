@@ -9,4 +9,7 @@ Disallow: /
 
 User-agent: *
 
+Disallow: /search$
+Disallow: /search?*$
+
 Sitemap: https://et-allcollate-production.s3.amazonaws.com/sitemaps/sitemap.xml

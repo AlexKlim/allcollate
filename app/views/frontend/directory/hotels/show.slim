@@ -1,3 +1,6 @@
+= content_for :canonical_tag do
+  link href="#{hotel_directory_url(prefix: [@prefix, @page].compact.join('-'))}" rel='canonical'
+
 = content_for :stylesheet_link_tag do
   = stylesheet_link_tag 'directory-show', media: 'all'
 
@@ -11,9 +14,9 @@
         nav.directory__navigation
           ul.pagination
             - ('A'..'Z').each do |item|
-              li.page-item class=('directory__navigation--active' if params[:prefix] == item.downcase)
+              li.page-item class=('directory__navigation--active' if @prefix == item.downcase)
                 = link_to item, hotel_directory_path(prefix: item.downcase), class: 'page-link'
-            li.page-item class=('active' if params[:prefix] == 'more')
+            li.page-item class=('active' if @prefix == 'more')
                 = link_to '#', hotel_directory_path(prefix: 'more'), class: 'page-link'
 
       .directory__hotels.row
@@ -29,5 +32,6 @@
         ul.directory__browse_pages_whitespace
           - 1.upto(@hotels.total_pages).each do |page|
             li.directory__browse_pages_item
-              = link_to page, hotel_directory_path(prefix: params[:prefix], page: page),
-                class: ('directory__browse_pages_item--active' if params[:page].to_i == page || (params[:page].nil? && page == 1 ))
+              - prefix = page == 1 ? @prefix : [@prefix, page].join('-')
+              = link_to page, hotel_directory_path(prefix: "#{prefix}"),
+                class: ('directory__browse_pages_item--active' if @page.to_i == page || (@page.nil? && page == 1 ))

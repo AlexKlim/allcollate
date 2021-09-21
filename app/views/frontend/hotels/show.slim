@@ -1,3 +1,6 @@
+= content_for :canonical_tag do
+  link href="#{hotel_url(@hotel.slug)}" rel='canonical'
+
 = content_for :stylesheet_link_tag do
   = stylesheet_link_tag 'hotel-show', media: 'all'
 

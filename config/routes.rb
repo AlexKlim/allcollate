@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   end
 
   get '/directory/companies/:prefix' => 'frontend/directory/hotels#show', constraints: {
-    prefix: /[a-z]|more/
+    prefix: /([a-z]|more)(\-\d*)?/
   }, as: :hotel_directory
 
   get '/hotel/:id' => 'frontend/hotels#show', as: :hotel

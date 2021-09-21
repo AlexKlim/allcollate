@@ -7,7 +7,7 @@
     <meta content='Allcollate - Compare hotels, price, rooms' property='og:title'>
     <meta content='Allcollate is an analytics platform providing comparing and analyzing for hotels. We collect and organize data from thousands of sources to provide up-to-date information, prices, rooms across the whole world.' property='og:description'>
 
-    <link href='http://www.allcollate.com' rel='canonical'>
+    <%= yield(:canonical_tag) %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>

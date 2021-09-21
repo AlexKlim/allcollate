@@ -5,5 +5,8 @@
 /       var stg = new Object(); stg.crt="921861710810";stg.version="1.05"; stg.id=stg.name="adgshp-988197843"; stg.Width="300px"; stg.Height="300px";stg.RefKey="yeVbxdpnbdmVEYWjOlN3rg==";stg.AutoScrollSpeed=3000;stg.AutoScrollToggle=true;stg.SearchboxShow=false;stg.DiscountedOnly=false;stg.Layout="squaredynamic"; stg.Language="en-us";stg.ApiKey="E571C5F7-1F23-41B7-9553-A5EBA3476BE9";stg.Cid="1845623";  stg.City="13801";stg.Currency="USD";stg.OverideConf=false; new AgdDynamic('adgshp-988197843').initialize(stg);
 /     })
 
+= content_for :canonical_tag do
+  link href="#{root_url}" rel='canonical'
+
 .main
   = react_component('LandingPage/LandingPageProvider', { hotels: @hotels }, prerender: true)
