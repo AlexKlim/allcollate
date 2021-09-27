@@ -41,13 +41,17 @@ resource "aws_lb_target_group" "allcollate_lb_target" {
   }
 }
 
-resource "aws_lb_listener_rule" "default" {
+resource "aws_lb_listener_rule" "redirect_http_to_https" {
   listener_arn = "${data.terraform_remote_state.master.lb_listener_arn}"
-  priority     = 2
 
   action {
-    type             = "forward"
-    target_group_arn = "${aws_lb_target_group.allcollate_lb_target.arn}"
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
   }
 
   condition {
