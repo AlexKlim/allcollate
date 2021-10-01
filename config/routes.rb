@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   get '/sitemap.xml' => redirect('https://et-allcollate-production.s3.amazonaws.com/sitemaps/sitemap.xml', status: 301)
 
   scope module: 'frontend' do
+    resources :hotels, only: [:show], path: 'hotel' do
+      get :compare
+    end
+
     resource :search, only: :show do
       get :suggestions
     end
@@ -43,6 +47,4 @@ Rails.application.routes.draw do
   get '/directory/companies/:prefix' => 'frontend/directory/hotels#show', constraints: {
     prefix: /([a-z]|more)(\-\d*)?/
   }, as: :hotel_directory
-
-  get '/hotel/:id' => 'frontend/hotels#show', as: :hotel
 end

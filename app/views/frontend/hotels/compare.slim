@@ -1,0 +1,6 @@
+.main
+  .page-content
+    .container
+      / h1.search__title Comparison For Hotels
+
+      = react_component('Comparison/ComparisonProvider', { initHotels: @hotels_json }, prerender: true)

@@ -9,7 +9,7 @@ function CompareButton(props) {
 
   return (
     <div className="page-subheader">
-      <Button variant="contained" href={Routes.comparePath(slug)} size="medium" className={classes.link}>
+      <Button variant="contained" href={Routes.hotelComparePath(slug)} size="medium" className={classes.link}>
         Compare
       </Button>
     </div>

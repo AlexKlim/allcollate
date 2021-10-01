@@ -2,7 +2,7 @@ class Services::EsSearch::Hotel
   PER_PAGE = 10
   SUGGESTION_SIZE = 5
 
-  attr_reader :query, :year_renovated, :year_opened, :star_ratings, :locations, :rates, :page
+  attr_reader :query, :year_renovated, :year_opened, :star_ratings, :locations, :rates, :page, :per_page
 
   def initialize(params, page = 1)
     @query = params[:q]
@@ -12,6 +12,8 @@ class Services::EsSearch::Hotel
     @locations = parse_json(params[:locations])
     @rates = parse_json(params[:rates])
     @page = page.present? ? page.to_i : 1
+
+    @per_page = params[:perPage] || PER_PAGE
   end
 
   def index
@@ -21,7 +23,7 @@ class Services::EsSearch::Hotel
   def do
     [query_string, keyword_string, year_renovated_filter, year_opened_filter,
      start_rating_filter, country_filter, city_filter,
-     rate_filter].compact.reduce(:merge).page(page).per(PER_PAGE).order(star_rating: :desc, rating: :desc)
+     rate_filter].compact.reduce(:merge).page(page).per(per_page).order(star_rating: :desc, rating: :desc)
   end
 
   def query_string
@@ -38,6 +40,8 @@ class Services::EsSearch::Hotel
   end
 
   def year_renovated_filter
+    return unless year_renovated
+
     body = {}.tap do |body|
       body.merge!(gte: year_renovated[0]) if year_renovated[0] != 1000
       body.merge!(lte: year_renovated[1]) if year_renovated[1] != 2020
@@ -46,6 +50,8 @@ class Services::EsSearch::Hotel
   end
 
   def year_opened_filter
+    return unless year_opened
+
     body = {}.tap do |body|
       body.merge!(gte: year_opened[0]) if year_opened[0] != 705
       body.merge!(lte: year_opened[1]) if year_opened[1] != 2020
@@ -58,16 +64,18 @@ class Services::EsSearch::Hotel
   end
 
   def country_filter
-    countries = locations.map { |location| location['country'] }
+    countries = (locations || []).map { |location| location['country'] }
     index.filter(terms: { country: countries }) if countries.present?
   end
 
   def city_filter
-    cities = locations.map { |location| location['city'] }
+    cities = (locations || []).map { |location| location['city'] }
     index.filter(terms: { city: cities }) if cities.present?
   end
 
   def rate_filter
+    return unless rates
+
     body = {}.tap do |body|
       body.merge!(gte: rates[0].to_f) if rates[0] != 10
       body.merge!(lte: rates[1].to_f) if rates[1] != 1000
@@ -97,6 +105,6 @@ class Services::EsSearch::Hotel
   def parse_json(object)
     return unless object
 
-    JSON.parse(object).compact
+    object.is_a?(String) ? JSON.parse(object).compact : object
   end
 end
