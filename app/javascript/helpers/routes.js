@@ -3,6 +3,10 @@ class Routes {
     return `/hotel/${hotleSlug}`;
   }
 
+  static hotelComparePath(slug) {
+    return `/hotel/${slug}/compare`;
+  }
+
   static comparePath(slugs) {
     return `/comparisons?hotels=${slugs}`;
   }
