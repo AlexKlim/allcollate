@@ -18,9 +18,9 @@ class Services::AgodaImporter
       begin
         response = HTTParty.post(URL, options)
       rescue Errno::ECONNRESET
-        Rails.logger.error('AgodaImporter Call', { status: response.code,
-                                                   message: "Error request body: #{response.body}",
-                                                   hotels_ids: request[:criteria][:hotelId] })
+        Rails.logger.tagged('AgodaImporter Call').error(status: response.code,
+                                                        message: "Error request body: #{response.body}",
+                                                        hotels_ids: request[:criteria][:hotelId] )
         unless tries >= MAX_TRIES
           tries += 1
           sleep DELAY
@@ -31,9 +31,11 @@ class Services::AgodaImporter
       if response.success?
         parse_response(response, request[:criteria][:checkInDate])
       else
-        Rails.logger.error('Agoda', { status: response.code, message: "Error request body: #{response.body}" })
+        Rails.logger.tagged('Agoda').error(status: response.code, message: "Error request body: #{response.body}")
       end
     end
+
+    Rails.logger.tagged('Agoda').info(message: 'Services::AgodaImporter has been finished')
   end
 
   private
