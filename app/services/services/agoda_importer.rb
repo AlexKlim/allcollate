@@ -42,9 +42,10 @@ class Services::AgodaImporter
     (response['results'] || []).each do |hotel_result|
       hotel = Hotel.find_by(agoda_hotel_id: hotel_result['hotelId'])
 
-      # Chewy.strategy(:bypass) { create_rate!(hotel, actual_on, hotel_result) }
-      create_rate!(hotel, actual_on, hotel_result)
-      HotelsIndex.import hotel.reload
+      Chewy.strategy(:bypass) do
+        create_rate!(hotel, actual_on, hotel_result)
+        HotelsIndex.import hotel.reload
+      end
     end
   end
 
