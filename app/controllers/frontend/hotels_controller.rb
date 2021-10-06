@@ -29,7 +29,7 @@ class Frontend::HotelsController < Frontend::BaseController
     params[:starRating] = [hotel.star_rating - 1, hotel.star_rating + 1] if hotel.star_rating
 
     rate = hotel.rates.order(actual_on: :desc).first&.daily_rate
-    params[:rates] = [rate * 0.8, rate * 1.2] if rate
+    params[:rates] = [rate * 0.7, rate * 1.3] if rate
 
     params[:perPage] = COMPARE_PER_PAGE
 
