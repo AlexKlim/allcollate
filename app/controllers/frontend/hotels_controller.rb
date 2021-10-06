@@ -24,8 +24,8 @@ class Frontend::HotelsController < Frontend::BaseController
     params = {}
 
     params[:locations] = [{ 'city' => hotel.city, 'country' => hotel.country }] if hotel.city && hotel.country
-    params[:yearRenovated] = [hotel.year_renovated - 5, hotel.year_renovated + 5] if hotel.year_renovated
-    params[:yearOpened] = [hotel.year_opened - 5, hotel.year_opened + 5] if hotel.year_opened
+    params[:yearRenovated] = [hotel.year_renovated - 10, hotel.year_renovated + 10] if hotel.year_renovated
+    params[:yearOpened] = [hotel.year_opened - 10, hotel.year_opened + 10] if hotel.year_opened
     params[:starRating] = [hotel.star_rating - 1, hotel.star_rating + 1] if hotel.star_rating
 
     rate = hotel.rates.order(actual_on: :desc).first&.daily_rate
