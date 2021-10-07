@@ -46,7 +46,7 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'simple-line-icons-rails', '~> 0.1.6'
 
 gem 'httparty', '~> 0.18.0'
-gem 'sidekiq', '~> 6.0.7'
+gem 'sidekiq', '~> 6.2.1'
 
 gem 'carrierwave', '~> 2.2.1'
 gem 'fog-aws', '~> 3.6.5'
