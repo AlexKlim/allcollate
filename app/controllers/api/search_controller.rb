@@ -44,9 +44,7 @@ class Api::SearchController < ApplicationController
 
   def brands
     search = Services::EsSearch::Brand.new(params[:q])
-
     results = search.suggestion.map { |suggest| suggest['_source'] }
-
     results = results.map do |result|
       {
         name: result['brand_name'],

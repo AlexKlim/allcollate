@@ -4,6 +4,5 @@ namespace :brands do
     Brand.all.each do |brand|
       brand.update_hotels_count
     end
-
   end
 end

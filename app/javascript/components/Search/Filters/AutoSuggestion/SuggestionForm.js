@@ -34,20 +34,6 @@ const SuggestionForm = ({ doSuggestionSelected, doSearch, results, value, sugges
         </ul>
       </div>
     );
-
-    if (suggestionView) {
-      suggestionView(suggestion);
-    } else {
-      return (
-        <div className='results__item'>
-          <ul className='list-unstyled us-results__list'>
-            <li className='search-filters-suggestion__results-item'>
-              {suggestion.city}, {suggestion.country}
-            </li>
-          </ul>
-        </div>
-      );
-    }
   };
 
   const onSuggestionSelected = (
