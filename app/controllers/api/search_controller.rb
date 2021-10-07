@@ -2,7 +2,7 @@ class Api::SearchController < ApplicationController
   layout nil
 
   def index
-    hotels_json = if false # Rails.env.development? || Rails.env.test?
+    hotels_json = if Rails.env.development? || Rails.env.test?
                     search = Services::Search::Hotel.new(params[:q], params[:pageNum])
                     search.add_locations!(params[:locations])
                     search.add_year_renovated!(params[:yearRenovated])
