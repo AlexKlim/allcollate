@@ -13,6 +13,8 @@ export default class SearchAPI {
       filterValue.rate
     )}&starRating=${JSON.stringify(
       filterValue.rating
+    )}&brands=${JSON.stringify(
+      filterValue.brands
     )}&pageNum=${pageNum}`;
     return axios.get(url).then((res) => res && res.data);
   }
@@ -26,6 +28,12 @@ export default class SearchAPI {
   fetchLocations(query) {
     return axios
       .get(`api/search/locations?q=${query}`)
+      .then((res) => res && res.data);
+  }
+
+  fetchBrands(query) {
+    return axios
+      .get(`api/search/brands?q=${query}`)
       .then((res) => res && res.data);
   }
 }

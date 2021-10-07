@@ -26,7 +26,7 @@ class HotelsIndex < Chewy::Index
   field :year_renovated, type: 'integer'
   field :year_opened, type: 'integer'
   field :star_rating, type: 'integer'
-  field :day30_daily_rate, type: 'float', value: ->(hotel) do
+  field :day30_daily_rate, type: 'float', value: -> (hotel) do
     daily_rates = hotel.rates.where('actual_on >= ?', Date.today - 1.months).map(&:daily_rate)
     (daily_rates.inject(0.0) { |sum, el| sum + el } / daily_rates.size)&.round(2)
   end
@@ -34,11 +34,13 @@ class HotelsIndex < Chewy::Index
   field :rate, type: 'float', value: ->(hotel) { hotel.rates.order(actual_on: :desc).first&.daily_rate }
   field :rating, type: 'float', value: ->(hotel) { hotel.rates.order(actual_on: :desc).first&.review_score }
   field :review_count, type: 'integer', value: ->(hotel) { hotel.rates.order(actual_on: :desc).first&.review_count }
+  field :brand_name, type: 'keyword', value: ->(hotel) { hotel.brand&.brand_name }
+  field :brand_id, type: 'integer', value: ->(hotel) { hotel.brand&.id }
 
   field :autocomplete, {
-    value: -> {
+    value: -> do
       { input: [name].compact }
-    },
+    end,
     type: 'completion',
     analyzer: 'full_string'
   }

@@ -1,6 +1,4 @@
 import React from 'react';
-import { Card } from "tabler-react";
-import PageSectionHeader from './PageSectionHeader'
 
 export default class HotelLocation extends React.Component {
 

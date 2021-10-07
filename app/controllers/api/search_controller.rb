@@ -2,7 +2,7 @@ class Api::SearchController < ApplicationController
   layout nil
 
   def index
-    hotels_json = if Rails.env.development? || Rails.env.test?
+    hotels_json = if false # Rails.env.development? || Rails.env.test?
                     search = Services::Search::Hotel.new(params[:q], params[:pageNum])
                     search.add_locations!(params[:locations])
                     search.add_year_renovated!(params[:yearRenovated])
@@ -36,6 +36,21 @@ class Api::SearchController < ApplicationController
       {
         city: result['city'],
         country: result['country']
+      }
+    end
+
+    render json: results
+  end
+
+  def brands
+    search = Services::EsSearch::Brand.new(params[:q])
+
+    results = search.suggestion.map { |suggest| suggest['_source'] }
+
+    results = results.map do |result|
+      {
+        name: result['brand_name'],
+        id: result['id']
       }
     end
 

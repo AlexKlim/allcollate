@@ -27,6 +27,7 @@ const SearchProvider = ({ query, hotelPlaceholderUrl }) => {
     yearRenovation: [minYearRenovated, maxYearRenovated],
     rate: [minRate, maxRate],
     rating: [],
+    brands: [],
   }
   const [filterValue, setFilterValues] = useState(initFilterValues);
 
