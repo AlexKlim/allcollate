@@ -5,8 +5,9 @@ import PageSectionHeader from './PageSectionHeader'
 import HighlightedMetrics from './HighlightedMetrics'
 import CompareButton from './CompareButton/CompareButton';
 import HotelChart from './Chart'
+import Brand from './Brand'
 
-const HotelOverview =({ overview, slug, hotelName, hotelRates, ...rest }) => {
+const HotelOverview =({ overview, slug, hotelName, hotelRates, brandName, brandHotelsCount, brandId, ...rest }) => {
 
   return (
     <div className="page-content">
@@ -30,6 +31,7 @@ const HotelOverview =({ overview, slug, hotelName, hotelRates, ...rest }) => {
         </section>
 
         <HighlightedMetrics hotel={rest} />
+        { brandHotelsCount > 0 && <Brand brandName={brandName} brandId={brandId} brandHotelsCount={brandHotelsCount} /> }
         <HotelChart hotelName={hotelName} hotelRates={hotelRates} />
       </div>
     </div>

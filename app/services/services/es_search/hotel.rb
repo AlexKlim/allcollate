@@ -2,7 +2,7 @@ class Services::EsSearch::Hotel
   PER_PAGE = 10
   SUGGESTION_SIZE = 5
 
-  attr_reader :query, :year_renovated, :year_opened, :star_ratings, :locations, :rates, :page, :per_page
+  attr_reader :query, :year_renovated, :year_opened, :star_ratings, :locations, :brands, :rates, :page, :per_page
 
   def initialize(params, page = 1)
     @query = params[:q]
@@ -11,6 +11,7 @@ class Services::EsSearch::Hotel
     @star_ratings = parse_json(params[:starRating])
     @locations = parse_json(params[:locations])
     @rates = parse_json(params[:rates])
+    @brands = parse_json(params[:brands])
     @page = page.present? ? page.to_i : 1
 
     @per_page = params[:perPage] || PER_PAGE
@@ -23,7 +24,7 @@ class Services::EsSearch::Hotel
   def do
     [query_string, keyword_string, year_renovated_filter, year_opened_filter,
      start_rating_filter, country_filter, city_filter,
-     rate_filter].compact.reduce(:merge).page(page).per(per_page).order(star_rating: :desc, rating: :desc)
+     rate_filter, brand_filter].compact.reduce(:merge).page(page).per(per_page).order(star_rating: :desc, rating: :desc)
   end
 
   def query_string
@@ -82,6 +83,11 @@ class Services::EsSearch::Hotel
     end
 
     index.query(range: { day30_daily_rate: body }) if body.present?
+  end
+
+  def brand_filter
+    brands_id = (brands || []).map { |brand| brand['id'] }
+    index.filter(terms: { brand_id: brands_id }) if brands_id.present?
   end
 
   def suggestion

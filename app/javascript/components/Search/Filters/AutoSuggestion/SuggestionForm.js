@@ -4,7 +4,7 @@ import Autosuggest from 'react-autosuggest';
 import theme from './theme';
 import Input from './Input/index';
 
-const SuggestionForm = ({ doSuggestionSelected, doSearch, results, value }) => {
+const SuggestionForm = ({ doSuggestionSelected, doSearch, results, value, suggestionView }) => {
   const [localValue, setLocalValue] = useState('');
   useEffect(() => setLocalValue(value), [value]);
 
@@ -27,7 +27,9 @@ const SuggestionForm = ({ doSuggestionSelected, doSearch, results, value }) => {
       <div className='results__item'>
         <ul className='list-unstyled us-results__list'>
           <li className='search-filters-suggestion__results-item'>
-            {suggestion.city}, {suggestion.country}
+            {
+              suggestionView ? (suggestionView(suggestion)) : `${suggestion.city}, ${suggestion.country}`
+            }
           </li>
         </ul>
       </div>

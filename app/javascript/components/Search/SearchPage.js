@@ -7,6 +7,7 @@ import Rates from './Filters/Rates';
 import StarRating from './Filters/StarRating';
 import YearOpened from './Filters/YearOpened';
 import YearRenovated from './Filters/YearRenovated';
+import SearchFiltersBrands from './Filters/Brands';
 import SearchResults from './SearchResults';
 
 import useStyles from './Styles';
@@ -27,6 +28,7 @@ function SearchPage() {
           <Rates />
           <YearRenovated />
           <YearOpened />
+          <SearchFiltersBrands />
         </div>
         <div className='col-md-9 search__results'>
           <SearchResults />

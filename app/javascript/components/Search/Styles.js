@@ -20,6 +20,14 @@ const useStyles = makeStyles({
       margin: '5px 5px 5px 0',
     },
   },
+  brandChipsList: {
+    display: 'flex',
+    marginTop: '10px',
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: '5px 5px 5px 0',
+    },
+  },
   link: {
     backgroundColor: '#5C73C2',
     color: 'white',

@@ -16,6 +16,7 @@
     "echarts": "^4.9.0",
     "echarts-for-react": "^2.0.16",
     "material-ui": "^0.20.2",
+    "pluralize": "^8.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-autosuggest": "^10.1.0",

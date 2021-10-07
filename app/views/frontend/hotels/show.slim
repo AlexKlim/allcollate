@@ -18,7 +18,10 @@
     checkout: @hotel.checkout,
     slug: @hotel.slug,
     hotelName: @hotel.name,
-    hotelRates: @hotel.rates }, prerender: true)
+    hotelRates: @hotel.rates,
+    brandName: @hotel.brand&.brand_name,
+    brandHotelsCount: @hotel.brand&.hotels_count,
+    brandId: @hotel.brand&.id }, prerender: true)
 
   section
     .map-container

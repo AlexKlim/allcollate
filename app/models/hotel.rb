@@ -7,6 +7,9 @@ class Hotel < ApplicationRecord
 
   belongs_to :brand, optional: true
 
+  after_save :update_counter_cache
+  after_destroy :update_counter_cache
+
   has_many :rates
   has_many :photos
 
@@ -32,5 +35,11 @@ class Hotel < ApplicationRecord
 
   def self.ransackable_scopes(_auth_object = nil)
     %i[latest_rates_between latest_rates_more_than latest_rates_less_than]
+  end
+
+  private
+
+  def update_counter_cache
+    brand.update_hotels_count
   end
 end

@@ -41,4 +41,17 @@ class Api::SearchController < ApplicationController
 
     render json: results
   end
+
+  def brands
+    search = Services::EsSearch::Brand.new(params[:q])
+    results = search.suggestion.map { |suggest| suggest['_source'] }
+    results = results.map do |result|
+      {
+        name: result['brand_name'],
+        id: result['id']
+      }
+    end
+
+    render json: results
+  end
 end
