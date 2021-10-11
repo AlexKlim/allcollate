@@ -58,7 +58,7 @@ function SearchFiltersBrands({ value = "" }) {
     <Card>
       <Card.Body>
       <Typography id='brand' gutterBottom variant="h6">
-          Brands
+          Brand
         </Typography>
         <Form.Group>
           <SuggestionForm

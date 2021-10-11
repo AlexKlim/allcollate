@@ -12,9 +12,9 @@ gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
 gem 'react-rails', '~> 2.6.1'
 gem 'rubocop', '~> 0.88.0', require: false
+gem 'webpacker', '~> 4.0'
 
 gem 'chewy', '~> 7.2.2'
 gem 'faraday', '~> 1.4.2'
@@ -44,6 +44,7 @@ gem 'friendly_id', '~> 5.3.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
 gem 'simple-line-icons-rails', '~> 0.1.6'
+gem 'staccato', '~> 0.5.3'
 
 gem 'httparty', '~> 0.18.0'
 gem 'sidekiq', '~> 6.2.1'

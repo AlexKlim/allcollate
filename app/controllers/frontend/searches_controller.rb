@@ -8,13 +8,15 @@ class Frontend::SearchesController < Frontend::BaseController
               end
 
     results = results.map do |result|
-                {
-                  name: result['name'],
-                  slug: result['slug'],
-                  city: result['city'],
-                  country: result['country']
-                }
-              end
+      {
+        name: result['name'],
+        slug: result['slug'],
+        city: result['city'],
+        country: result['country']
+      }
+    end
+
+    Services::Ga::Tracker.event(category: 'search', action: 'suggestion', label: 'user_input', value: params[:q])
 
     render json: results
   end
