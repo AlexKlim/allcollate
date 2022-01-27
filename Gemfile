@@ -47,7 +47,7 @@ gem 'simple-line-icons-rails', '~> 0.1.6'
 gem 'staccato', '~> 0.5.3'
 
 gem 'httparty', '~> 0.18.0'
-gem 'sidekiq', '~> 6.2.1'
+gem 'sidekiq', '~> 6.4.0'
 
 gem 'carrierwave', '~> 2.2.1'
 gem 'fog-aws', '~> 3.6.5'
