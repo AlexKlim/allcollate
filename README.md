@@ -1,6 +1,7 @@
 ## Overview
 
 AllCollate it is place which makes the ability to choose hotels easily.
+Collect hotels info and pricing stats 
 
 ## Technology
 
