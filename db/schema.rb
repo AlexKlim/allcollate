@@ -10,10 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_01_191226) do
+ActiveRecord::Schema.define(version: 2021_07_14_215744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "agoda_cores", id: false, force: :cascade do |t|
+    t.integer "hotel_id"
+    t.integer "chain_id"
+    t.text "chain_name"
+    t.integer "brand_id"
+    t.text "brand_name"
+    t.text "hotel_name"
+    t.text "hotel_formerly_name"
+    t.text "hotel_translated_name"
+    t.text "addressline1"
+    t.text "addressline2"
+    t.text "zipcode"
+    t.text "city"
+    t.text "state"
+    t.text "country"
+    t.text "countryisocode"
+    t.integer "star_rating"
+    t.float "longitude"
+    t.float "latitude"
+    t.text "url"
+    t.text "checkin"
+    t.text "checkout"
+    t.integer "numberrooms"
+    t.text "numberfloors"
+    t.integer "yearopened"
+    t.integer "yearrenovated"
+    t.text "photo1"
+    t.text "photo2"
+    t.text "photo3"
+    t.text "photo4"
+    t.text "photo5"
+    t.text "overview"
+    t.integer "rates_from"
+    t.integer "continent_id"
+    t.text "continent_name"
+    t.integer "city_id"
+    t.integer "country_id"
+    t.integer "number_of_reviews"
+    t.float "rating_average"
+    t.text "rates_currency"
+  end
 
   create_table "brands", force: :cascade do |t|
     t.string "brand_name"
@@ -119,22 +161,24 @@ ActiveRecord::Schema.define(version: 2021_06_01_191226) do
     t.index ["hotel_id"], name: "index_rates_on_hotel_id"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.bigint "hotel_id"
-    t.integer "partner_id"
-    t.string "roomtype_name"
-    t.float "star_rating"
-    t.integer "review_count"
-    t.float "review_score"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["hotel_id"], name: "index_ratings_on_hotel_id"
-  end
-
   create_table "subscriptions", force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "uid"
+    t.string "username"
+    t.string "email", null: false
+    t.string "subscription_plan", default: "general", null: false
+    t.string "image"
+    t.boolean "verified"
+    t.integer "login_count", default: 0
+    t.datetime "last_login_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email"
   end
 
 end

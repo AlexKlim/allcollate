@@ -60,6 +60,9 @@ gem 'sentry-rails', '~> 4.3.2'
 gem 'sentry-ruby', '~> 4.3.0'
 gem 'will_paginate', '~> 3.1.0'
 
+gem 'omniauth-auth0', '~> 3.0.0'
+gem 'omniauth-rails_csrf_protection', '~> 1.0.0'
+
 group :development, :test do
   gem 'pry'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

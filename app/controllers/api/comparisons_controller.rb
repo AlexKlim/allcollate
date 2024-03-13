@@ -1,9 +1,13 @@
 class Api::ComparisonsController < Api::BaseController
-  def index
-    hotel = Hotel.active.find_by(slug: params[:slug])
-    render json: nil and return unless hotel
+  include ComparisonHelper
 
-    hotels_json = HotelCompareSerializer.new(hotel, is_collection: false).serializable_hash[:data][:attributes]
+  def index
+    slugs = prepare_slugs(params[:slugs].split(','))
+    hotels = Hotel.active.where(slug: slugs)
+    render json: [] and return unless hotels
+
+    hotels_json = HotelCompareSerializer.new(hotels, is_collection: true).serializable_hash[:data]
+                                        .map { |item| item[:attributes] }
 
     render json: { results: hotels_json }
   end

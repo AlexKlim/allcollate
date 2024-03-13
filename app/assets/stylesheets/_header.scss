@@ -16,3 +16,23 @@
     margin-left: 5px;
   }
 }
+
+.header {
+  &__login-block {
+    align-self: center;
+    text-align: right;
+  }
+
+  &__login-link, &__signup-link {
+    color: white;
+    margin-right: 30px;
+    font-size: 18px;
+
+    &:hover, &:active, &:focus {
+      color: white;
+      text-decoration: none;
+      opacity: 0.6;
+    }
+  }
+
+}

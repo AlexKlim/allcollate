@@ -66,6 +66,11 @@
     <div class="page-main">
       <div class="search-header">
         <div class="container header-container">
+
+          <%- if flash.notice %>
+            <%= react_component('FlashMessage/index', { message: 'Everything is almost done! Just the last step, please, confirm your email.' }, prerender: false) %>
+          <% end %>
+
           <div class="d-flex">
             <div class="main-header-py4">
               <div class="d-flex main-header">
@@ -76,6 +81,14 @@
                   <span class="allcollate-title allcollate-title-beta"> beta </span>
 
                   <%= react_component('AutoSuggestionSearch/SuggestionForm', { query: params[:q] }, prerender: false, class: 'suggestion-form__container') %>
+                  <div class="header__login-block col-md-5">
+                    <%- if current_user %>
+                      <%= link_to 'Sign Out', logout_path, class: 'header__login-link' %>
+                    <% else %>
+                      <%= link_to 'Log In', authentication_path, method: :post, class: 'header__login-link' %>
+                      <%= link_to 'Sign Up', authentication_path(screen_hint: :signup), method: :post, class: 'header__signup-link' %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>

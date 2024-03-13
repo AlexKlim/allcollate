@@ -6,6 +6,7 @@ nav.navbar.navbar-light.bg-light.static-top
 
 / Masthead
 header.masthead.text-white.text-center
+  = link_to 'Login', 'auth/auth0', method: :post
   .overlay
   .container
     .row
@@ -26,7 +27,6 @@ header.masthead.text-white.text-center
                   .text-danger Please provide a valid email.
               .col-12.col-md-4
                 button.btn.btn-block.btn-lg.btn-primary type="submit" Get In Touch
-
 
 / Icons Grid
 section.features-icons.bg-light.text-center

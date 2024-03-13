@@ -1,0 +1,12 @@
+shared:
+  auth0_callback_url: '/auth/auth0/callback'
+
+development:
+  auth0_domain: erketutech-dev.eu.auth0.com
+  auth0_client_id: 29rCaDPZNV7B6oGIpyX4CqqkW0fbCq22
+  auth0_client_secret: 1FM_smCefd66VW4lb5CTZNaLPxRvcktg_vl3ejvsGMWuKe-77HJyoEPY13ugUf3B
+
+production:
+  auth0_domain: erketutech.eu.auth0.com
+  auth0_client_id: FYUzqKD4nqaqrVDtrSYTLmTApWcJIj1C
+  auth0_client_secret: <%= Rails.application.credentials.auth0&.dig(:client_secret) %>
