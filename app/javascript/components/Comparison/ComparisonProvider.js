@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ComparisonPage from './ComparisonPage';
 import ComparisonAPI from '../../api/ComparisonAPI';
-import _ from 'lodash'
+import _ from 'lodash';
 
 export const ComparisonContext = React.createContext();
 
