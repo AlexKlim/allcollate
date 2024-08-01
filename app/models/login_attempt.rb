@@ -6,5 +6,12 @@ class LoginAttempt < ApplicationRecord
   validates :ip_address, presence: true
   validates :user_id, presence: true
 
-  # Additional business logic or custom methods can be added here
+  def self.log_attempt(user_id:, ip_address:, successful:)
+    create(
+      user_id: user_id,
+      ip_address: ip_address,
+      successful: successful,
+      attempted_at: Time.current
+    )
+  end
 end
