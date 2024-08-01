@@ -42,10 +42,11 @@ Rails.application.routes.draw do
       end
     end
 
+    post 'log_login_attempt', to: 'base#log_login_attempt'
+
     resources :comparisons, only: [:index]
   end
 
-  post '/api/authenticate', to: 'api/base#authenticate'
   get '/directory/companies/:prefix' => 'frontend/directory/hotels#show', constraints: {
     prefix: /([a-z]|more)(\-\d*)?/
   }, as: :hotel_directory
