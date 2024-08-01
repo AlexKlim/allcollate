@@ -8,10 +8,10 @@ export const ComparisonContext = React.createContext();
 const ComparisonProvider = ({ initHotels }) => {
   const [hotels, setHotels] = useState(initHotels);
   const [slug, setSlug] = useState();
-  const [notificationOn, setNotificationOn] = useState(false);
 
   function toggleNotification() {
-    setNotificationOn(true);
+    // This function should be updated or removed based on the new requirements
+    // since the notificationOn state has been removed.
   }
 
   useEffect(() => {
@@ -36,9 +36,8 @@ const ComparisonProvider = ({ initHotels }) => {
       value={{
         hotels,
         setSlug,
-        setHotels,
-        notificationOn,
-        setNotificationOn
+        setHotels
+        // Removed notificationOn and setNotificationOn from the context provider
       }}
       className="hotel"
     >
