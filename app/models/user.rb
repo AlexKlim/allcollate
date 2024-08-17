@@ -8,4 +8,9 @@ class User < ApplicationRecord
 
   # Relations
   has_many :authentication_events, foreign_key: 'user_id'
+
+  # Class methods
+  def self.email_exists?(email)
+    exists?(email: email)
+  end
 end
