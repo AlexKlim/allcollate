@@ -8,4 +8,15 @@ class ApplicationController < ActionController::Base
   def common_paging_data(page, per_page, records)
     ResponseBuilder.get_paging_data(page, per_page, records)
   end
+
+  def login
+    user = User.find_by(email: params[:email])
+    if user && BCrypt::Password.new(user.password) == params[:password]
+      session[:user_id] = user.id
+      render json: { success: true, message: 'Login successful.' }, status: :ok
+    else
+      render json: { success: false, message: 'Invalid email or password.' }, status: :unauthorized
+    end
+  end
+
 end

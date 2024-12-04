@@ -1,26 +1,23 @@
 class Api::BaseController < ApplicationController
   layout nil
 
-  def authenticate_user
-    email = params[:email]
-    password = params[:password]
-
-    user = User.find_by(email: email)
-
-    if user.nil? || !user.authenticate(password)
-      render json: { message: 'Incorrect credentials' }, status: 401
+  def create
+    user = User.new(user_params)
+    user.password = User.hash_password(params[:password])
+    if user.save
+      render json: { success: true, message: 'User created successfully.' }, status: :created
     else
-      token = generate_jwt_token(user)
-      render json: { message: 'Login successful', token: token }
+      render json: { success: false, errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
-  private
-
-  def generate_jwt_token(user)
-    JWT.encode({ user_id: user.id, exp: 24.hours.from_now.to_i }, Rails.application.secrets.secret_key_base)
+  def update
+    user = User.find(params[:id])
+    user.password = User.hash_password(params[:password]) if params[:password].present?
+    if user.save
+      render json: { success: true, message: 'User updated successfully.' }, status: :ok
+    else
+      render json: { success: false, errors: user.errors.full_messages }, status: :unprocessable_entity
+    end
   end
-end
-
-end
 end
