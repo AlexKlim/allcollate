@@ -45,6 +45,8 @@ Rails.application.routes.draw do
     resources :comparisons, only: [:index]
   end
 
+  post '/api/authenticate', to: 'api/base#authenticate'
+
   get '/directory/companies/:prefix' => 'frontend/directory/hotels#show', constraints: {
     prefix: /([a-z]|more)(\-\d*)?/
   }, as: :hotel_directory
