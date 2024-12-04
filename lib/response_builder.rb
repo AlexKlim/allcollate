@@ -14,4 +14,11 @@ module ResponseBuilder
       previousPageExist: previous_page_exist
     }
   end
+
+  def self.log_failed_login(email:, timestamp:, ip_address:)
+    Rails.logger.info "Failed login attempt for email: #{email} at #{timestamp}, IP: #{ip_address}"
+  rescue StandardError => e
+    Rails.logger.error "Error logging failed login attempt: #{e.message}"
+  end
+end
 end
