@@ -12,7 +12,7 @@ class Frontend::HotelsController < Frontend::BaseController
     ids = search.do.map(&:id)
     ids.unshift(hotel.id)
 
-    hotels = Hotel.active.where(id: ids)
+    hotels = Hotel.active.where(id: ids).last(100)
 
     @hotels_json = HotelCompareSerializer.new(hotels, is_collection: true).serializable_hash[:data]
                                          .map { |item| item[:attributes] }
