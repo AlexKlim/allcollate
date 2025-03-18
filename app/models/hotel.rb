@@ -13,7 +13,7 @@ class Hotel < ApplicationRecord
   has_many :rates
   has_many :photos
 
-  enum hotel_state: { active: 'active', draft: 'draft' }
+  enum hotel_state: { active: 'active', draft: 'draft', pending: 'pending' }
 
   def self.latest_rates_between(start_rate, end_rate)
     joins(:rates).where('rates.actual_on >= ?', Date.today - 1.months)
