@@ -37,6 +37,10 @@ class Hotel < ApplicationRecord
     %i[latest_rates_between latest_rates_more_than latest_rates_less_than]
   end
 
+  def rate
+    12
+  end
+
   private
 
   def update_counter_cache
