@@ -1,68 +1,41 @@
-## Overview
+# AllCollate
 
-AllCollate it is place which makes the ability to choose hotels easily.
-Collect hotels info and pricing stats 
+A hotel search that keeps the prices as well as the hotels.
 
-## Technology
+Most hotel sites show you what a room costs right now. AllCollate collected
+the listings along with their prices over time, so you could tell whether
+today's price was actually a good one before booking.
 
-* Ruby On Rails
-* ReactJS
-* PostgreSQL
-* AWS
+A side project, built with a friend from 2020. I no longer host it, but
+everything needed to run it locally is in the repository, including a
+database dump.
+
+## What it does
+
+- Imports hotel listings, rates, ratings, brands and locations from a
+  partner feed
+- Keeps the price history rather than only the current rate
+- Indexes hotels, brands and locations in Elasticsearch for search
+- Collects statistics on a schedule through background workers
+- Serves all of it through a Rails application with a React front end
+
+## How it is built
+
+| Part | What we use |
+|---|---|
+| Application | Ruby on Rails |
+| Front end | React, rendered through react-rails |
+| Database | PostgreSQL |
+| Search | Elasticsearch, through Chewy |
+| Background jobs | Sidekiq |
+| Hosting | AWS |
+
+Server side rendering is used wherever it is useful, so pages arrive
+rendered rather than assembled in the browser.
 
 ## Setup
 
-In your local machine you have to install (you can use rvm if you want):
+You need Ruby 2.7.1, Node.js 12.16.1, Yarn and PostgreSQL. rvm works fine
+for Ruby.
 
-* [Ruby 2.7.1](https://www.ruby-lang.org/en/downloads/)
-* [Nodejs 12.16.1](https://nodejs.org/en/)
-* [Yarn](https://yarnpkg.com)
-* [PSQL](https://www.postgresql.org)
-
-## Restore DB
-
-Create DB
-```
-$ rake db:create
-```
-
-Restore DB Dump
-```
-$ psql -d allcollate_development < db_dump/allcollate_development_dump.sql
-```
-
-Run DB migrations
-```
-$ rake db:migrate
-```
-
-## Start
-
-Install gems
-```
-$ bundle install
-```
-
-Install npm packages
-```
-$ yarn install
-```
-
-To start the server run the command in the terminal _(do not stop the server)_
-
-```
-$ rails s
-```
-
-To compile the JS (React) run the command in a **new terminal window** _(do not stop)_
-
-```
-$ bin/webpack-dev-server
-```
-
-## Rails & React
-For ReactJS in Ruby on Rails we use [react-rails gem](https://github.com/reactjs/react-rails).
-
-Each component should be integrated into a page. We agreed to use server render (_{ prerender: true }_) where it is possibles and useful.
-
-Please, check out the gem if you have not worked with the react-rails gem before.
+Create the database:
